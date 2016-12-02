@@ -1,0 +1,49 @@
+#ifndef __CBASEGAMEOBJECT__H__
+#define __CBASEGAMEOBJECT__H__
+#include "Global.h"
+
+enum Direction
+{
+	NONE_DIR = 0,
+	LEFT = 1,
+	RIGHT = 2,
+};
+
+class CBaseGameObject
+{
+public:
+	int m_Id;// id cua Object. dung de load hinh anh
+	Vector2 m_Pos;//vi tri
+	Direction m_Dir;//dang huong ve phia nao
+	bool m_isLive; // check xem doi tuong con song hay ko?
+	bool isLeft; // direction, default left
+
+	float m_Width;//chieu rong cua hinh
+	float m_Height;//chieu cao cua hinh
+
+	//do dai that de xet va cham
+	float m_realWidth;
+	float m_realHeight;
+
+	RECT *m_RectRS;//de xet va cham
+
+public:
+	CBaseGameObject();
+	~CBaseGameObject();
+	int GetID() { return this->m_Id; };
+	Direction GetDirection() { return this->m_Dir; };
+
+	virtual void Update(float deltaTime);//ham Update chinh cua game
+
+	virtual void SetPos(Vector2 pos);
+	virtual Vector2 GetPos();
+
+	int GetWidth() { return this->m_Width; };
+	int GetHeight() { return this->m_Height; };
+
+	virtual Box GetBox();
+	virtual RECT* GetBound();
+	virtual RECT* GetRectRS();
+};
+#endif // !__OBJECT_GAME__H__
+

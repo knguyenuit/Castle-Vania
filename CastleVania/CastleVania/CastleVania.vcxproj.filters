@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{6abdf35e-16d3-4f1f-9689-7284153440f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Device">
+      <UniqueIdentifier>{2a0c56b2-da3f-4ba7-adf7-5e89cdb6b94d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Input">
+      <UniqueIdentifier>{e755b70b-af8d-43d5-af08-1729115a058f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Background">
+      <UniqueIdentifier>{e0520f18-279d-4f7c-8add-9554f5a857e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Windows">
+      <UniqueIdentifier>{8c534c1d-b6f9-4e18-b64b-98ad1ae6b85d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Player">
+      <UniqueIdentifier>{734b3a2e-b9b3-4079-9b54-72f8cd0680b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\DrawObject">
+      <UniqueIdentifier>{9a89712c-645a-40a5-9fb6-b84f8a27b361}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Collision">
+      <UniqueIdentifier>{09f9ac89-56c8-426e-a77b-1541f266b97f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game">
+      <UniqueIdentifier>{f66210d5-3e0a-4e8a-982a-643e2d113b24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\BaseObjectGame">
+      <UniqueIdentifier>{9c8cfa14-9a06-45d0-9749-7f759c5e6ecf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Player\Simon">
+      <UniqueIdentifier>{6dd172e3-5081-4035-9b8d-a7703ff20a77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game\GamePlay">
+      <UniqueIdentifier>{8492635c-4451-49d3-882d-d2a2ef212751}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object">
+      <UniqueIdentifier>{357b4dda-e517-4794-bc61-5943d20d6f16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Object\Item">
+      <UniqueIdentifier>{8920f252-f4b8-4600-a37b-f96f811de4fe}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Global.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Framework\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Framework\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Framework\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Framework\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="Input.h">
+      <Filter>Framework\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadBackground.h">
+      <Filter>Framework\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewWindows.h">
+      <Filter>Framework\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Device.h">
+      <Filter>Framework\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="FileUtil.h" />
+    <ClInclude Include="Collision.h">
+      <Filter>Framework\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="CastleVania.h">
+      <Filter>Framework\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Framework\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseGameObject.h">
+      <Filter>Framework\BaseObjectGame</Filter>
+    </ClInclude>
+    <ClInclude Include="Move.h">
+      <Filter>Framework\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Simon.h">
+      <Filter>Framework\Player\Simon</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawObject.h">
+      <Filter>Framework\DrawObject</Filter>
+    </ClInclude>
+    <ClInclude Include="PoolObject.h">
+      <Filter>Framework\DrawObject</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Framework\Game\GamePlay</Filter>
+    </ClInclude>
+    <ClInclude Include="Cane.h">
+      <Filter>Framework\Player\Simon</Filter>
+    </ClInclude>
+    <ClInclude Include="Resources.h" />
+    <ClInclude Include="HinhVuong.h" />
+    <ClInclude Include="HinhChuNhat.h" />
+    <ClInclude Include="OnCollision.h">
+      <Filter>Framework\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadObject.h">
+      <Filter>Framework\DrawObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Game Object\Item</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Framework\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Framework\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>Framework\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Framework\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="Input.cpp">
+      <Filter>Framework\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadBackground.cpp">
+      <Filter>Framework\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewWindows.cpp">
+      <Filter>Framework\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Device.cpp">
+      <Filter>Framework\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="FileUtil.cpp" />
+    <ClCompile Include="Main.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Framework\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="CastleVania.cpp">
+      <Filter>Framework\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Framework\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseGameObject.cpp">
+      <Filter>Framework\BaseObjectGame</Filter>
+    </ClCompile>
+    <ClCompile Include="Simon.cpp">
+      <Filter>Framework\Player\Simon</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawObject.cpp">
+      <Filter>Framework\DrawObject</Filter>
+    </ClCompile>
+    <ClCompile Include="PoolObject.cpp">
+      <Filter>Framework\DrawObject</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Framework\Game\GamePlay</Filter>
+    </ClCompile>
+    <ClCompile Include="Cane.cpp">
+      <Filter>Framework\Player\Simon</Filter>
+    </ClCompile>
+    <ClCompile Include="HinhVuong.cpp" />
+    <ClCompile Include="HinhChuNhat.cpp" />
+    <ClCompile Include="OnCollision.cpp">
+      <Filter>Framework\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadObject.cpp">
+      <Filter>Framework\DrawObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Game Object\Item</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

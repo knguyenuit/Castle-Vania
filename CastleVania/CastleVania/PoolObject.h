@@ -1,0 +1,32 @@
+#ifndef __CPOOLOBJECT_H__
+#define __CPOOLOBJECT_H__
+#include "Simon.h"
+#include "Cane.h"
+#include "HinhChuNhat.h"
+#include "HinhVuong.h"
+#include "Singleton.h"
+#include "Collision.h"
+#include "DrawObject.h"
+#include "Ground.h"
+class CPoolObject : public CSingleton<CPoolObject>
+{
+	friend class CSingleton<CPoolObject>;
+public:
+	//ve bao nhieu doi tuong thi o day tao bay nhieu doi tuong
+	CSimon *simon; 
+	CHinhChuNhat *hcn;
+	CHinhVuong *hv;
+	CGround *ground;
+public:
+
+	CPoolObject();
+	~CPoolObject();
+public:
+	CDrawObject *drawManager;
+	void Init();
+	void Update(float deltaTime);
+	void OnCollision(float deltaTime);
+	void Draw();
+};
+
+#endif
