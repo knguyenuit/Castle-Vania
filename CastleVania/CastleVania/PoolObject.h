@@ -10,6 +10,7 @@
 #include "DrawObject.h"
 #include "Ground.h"
 #include "ItemManage.h"
+#include "EnemyManage.h"
 class CPoolObject : public CSingleton<CPoolObject>
 {
 	friend class CSingleton<CPoolObject>;

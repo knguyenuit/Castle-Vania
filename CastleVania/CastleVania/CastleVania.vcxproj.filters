@@ -43,6 +43,12 @@
     <Filter Include="Framework\Game Object\Item">
       <UniqueIdentifier>{8920f252-f4b8-4600-a37b-f96f811de4fe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Game Object\Enemy">
+      <UniqueIdentifier>{681f9bae-de96-4e08-aa6b-3a71b8709c8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\Enemy\Zombie">
+      <UniqueIdentifier>{fdd7aa91-dcbf-4543-b880-304e50c6830d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global.h">
@@ -124,6 +130,13 @@
     <ClInclude Include="ItemManage.h">
       <Filter>Framework\Game Object\Item</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Framework\Game Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h" />
+    <ClInclude Include="EnemyManage.h">
+      <Filter>Framework\Game Object\Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture.cpp">
@@ -197,6 +210,13 @@
     </ClCompile>
     <ClCompile Include="ItemManage.cpp">
       <Filter>Framework\Game Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Framework\Game Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Zombie.cpp" />
+    <ClCompile Include="EnemyManage.cpp">
+      <Filter>Framework\Game Object\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

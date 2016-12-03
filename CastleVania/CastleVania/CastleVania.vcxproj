@@ -153,6 +153,8 @@
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Device.h" />
     <ClInclude Include="DrawObject.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyManage.h" />
     <ClInclude Include="FileUtil.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
@@ -174,6 +176,7 @@
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="ViewWindows.h" />
+    <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
@@ -184,6 +187,8 @@
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Device.cpp" />
     <ClCompile Include="DrawObject.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyManage.cpp" />
     <ClCompile Include="FileUtil.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -202,6 +207,7 @@
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="ViewWindows.cpp" />
+    <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -209,3 +209,21 @@ enum ITEM_name
 	Dagger = 312
 
 };
+
+enum ENEMY_type
+{
+	Zombie = 201,
+	BlackLeopard = 202,
+	VampireBat = 203,
+	Medusa = 204,
+	FishMan = 205,
+	AxeMan = 206,
+	DragonSkullCanon = 207,
+	BlackKnight = 208,
+	WhiteSkeleton = 209,
+	Ghost = 210,
+	FireBall = 211,
+	Bullet = 212,
+	BossLevel1 = 401,
+	BossLevel2 = 402
+};

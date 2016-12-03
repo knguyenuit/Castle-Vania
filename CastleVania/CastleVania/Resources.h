@@ -24,6 +24,11 @@
 #define ITEM_DAGGER "..\\Resources\\image\\item\\Dagger.png"
 #pragma endregion
 
+//Enemy
+#define ENEMY_ZOMBIE "..\\Resources\\image\\enemy\\Zombie.png"
+#define ENEMY_BLACKLEOPARD "..\\Resources\\image\\enemy\\BlackLeopard.png"
+#define ENEMY_AXEMAN "..\\Resources\\image\\enemy\\AxeMan.png"
+
 #define FILE_LIST_OBJECT "..\\Resources\\Object\\lv1GO.txt"
 
 #endif // !__CRESOURCES_H__

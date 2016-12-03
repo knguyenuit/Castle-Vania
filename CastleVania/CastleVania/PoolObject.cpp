@@ -32,7 +32,7 @@ void CPoolObject::Update(float deltaTime)
 {
 	this->simon->Update(deltaTime);
 	CItemManage::GetInstance()->Update(deltaTime);
-
+	CEnemyManage::GetInstance()->Update(deltaTime);
 	//this->ground->Update(deltaTime);
 	//CLoadObject::GetInstance()->Collision(deltaTime, this->simon);
 	//OnCollision(deltaTime);
@@ -95,7 +95,7 @@ void CPoolObject::Draw()
 		this->drawManager->Draw(this->simon->cane);
 	}
 	CItemManage::GetInstance()->Draw();
-	
+	CEnemyManage::GetInstance()->Draw();
 	this->drawManager->Draw(this->hcn);
 	this->drawManager->Draw(this->hv);
 }
