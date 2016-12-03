@@ -18,10 +18,12 @@ CPoolObject::~CPoolObject()
 void CPoolObject::Init()
 {
 	this->drawManager = new CDrawObject();
+	this->itemManage = new CItemManage();
 	this->simon = new CSimon();
 	this->hcn = new CHinhChuNhat();
 	this->hv = new CHinhVuong();
 	//this->ground = new CGround();
+	//this->item = new CItem(ITEM_name::MorningStar, Vector2(300,300));
 	
 	
 }
@@ -29,6 +31,7 @@ void CPoolObject::Init()
 void CPoolObject::Update(float deltaTime)
 {
 	this->simon->Update(deltaTime);
+	this->itemManage->Update(deltaTime);
 	//this->ground->Update(deltaTime);
 	//CLoadObject::GetInstance()->Collision(deltaTime, this->simon);
 	//OnCollision(deltaTime);
@@ -91,6 +94,7 @@ void CPoolObject::Draw()
 		this->drawManager->Draw(this->simon->cane);
 	}
 
+	
 	this->drawManager->Draw(this->hcn);
 	this->drawManager->Draw(this->hv);
 }

@@ -37,10 +37,10 @@
     <Filter Include="Framework\Game\GamePlay">
       <UniqueIdentifier>{8492635c-4451-49d3-882d-d2a2ef212751}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game Object">
+    <Filter Include="Framework\Game Object">
       <UniqueIdentifier>{357b4dda-e517-4794-bc61-5943d20d6f16}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game Object\Item">
+    <Filter Include="Framework\Game Object\Item">
       <UniqueIdentifier>{8920f252-f4b8-4600-a37b-f96f811de4fe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -116,10 +116,13 @@
       <Filter>Framework\DrawObject</Filter>
     </ClInclude>
     <ClInclude Include="Ground.h">
-      <Filter>Game Object</Filter>
+      <Filter>Framework\Game Object</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
-      <Filter>Game Object\Item</Filter>
+      <Filter>Framework\Game Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemManage.h">
+      <Filter>Framework\Game Object\Item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -187,10 +190,13 @@
       <Filter>Framework\DrawObject</Filter>
     </ClCompile>
     <ClCompile Include="Ground.cpp">
-      <Filter>Game Object</Filter>
+      <Filter>Framework\Game Object</Filter>
     </ClCompile>
     <ClCompile Include="Item.cpp">
-      <Filter>Game Object\Item</Filter>
+      <Filter>Framework\Game Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemManage.cpp">
+      <Filter>Framework\Game Object\Item</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

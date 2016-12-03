@@ -269,6 +269,7 @@ void CSimon::OnCollision(float deltaTime, std::hash_map<int, Box> listBox)
 		timeCollision = COnCollision::GetInstance()->SweepAABB(this->GetBox(), it->second, normalX, normalY, deltaTime);
 		if (normalY == CDirection::ON_DOWN)
 		{
+			
 			isFree = false;
 			canJump = true;
 		}

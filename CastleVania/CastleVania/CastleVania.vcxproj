@@ -162,6 +162,7 @@
     <ClInclude Include="HinhVuong.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemManage.h" />
     <ClInclude Include="LoadBackground.h" />
     <ClInclude Include="LoadObject.h" />
     <ClInclude Include="Move.h" />
@@ -191,6 +192,7 @@
     <ClCompile Include="HinhVuong.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemManage.cpp" />
     <ClCompile Include="LoadBackground.cpp" />
     <ClCompile Include="LoadObject.cpp" />
     <ClCompile Include="Main.cpp" />

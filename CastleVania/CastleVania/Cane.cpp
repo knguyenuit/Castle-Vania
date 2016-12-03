@@ -1,5 +1,6 @@
 ﻿#include "Cane.h"
 #include "Simon.h"
+#include "ItemManage.h"
 
 
 
@@ -86,7 +87,7 @@ void CCane::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObjec
 				}*/
 				if (CCollision::GetInstance()->AABBCheck(this->GetBox(), obj->GetBox()))
 				{
-					MessageBox(NULL, "Danh trung Ground", "BG", MB_OK);
+					CItemManage::GetInstance()->m_isActive = true;
 				}
 
 			}

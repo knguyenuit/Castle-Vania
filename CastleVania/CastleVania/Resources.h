@@ -17,7 +17,11 @@
 #define GROUND1 "..\\Resources\\image\\601.png"
 #define TEST "..\\Resources\\image\\fireball.png"
 
-
+//item
+#define ITEM_LARGE_HEART "..\\Resources\\image\\item\\LargeHeart.png"
+#define ITEM_SMALL_HEART "..\\Resources\\image\\item\\SmallHeart.png"
+#define ITEM_MORNING_STAR "..\\Resources\\image\\item\\MorningStar.png"
+#define ITEM_DAGGER "..\\Resources\\image\\item\\Dagger.png"
 #pragma endregion
 
 #define FILE_LIST_OBJECT "..\\Resources\\Object\\lv1GO.txt"

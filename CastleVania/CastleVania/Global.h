@@ -199,3 +199,13 @@ enum SIMON_status
 	FALL = 6,
 	ACTACK = 7
 };
+
+
+enum ITEM_name
+{
+	SmallHeart = 301,
+	LargeHeart = 302,
+	MorningStar = 310,
+	Dagger = 312
+
+};
