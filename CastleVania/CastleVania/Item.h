@@ -18,7 +18,7 @@ public:
 	void Update(float deltaTime);
 	virtual void MoveUpdate(float deltaTime);
 	RECT* GetRectRS();
-	
+
 };
 
 #endif // !__CITEM_H__

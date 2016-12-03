@@ -19,6 +19,7 @@ public:
 	void DrawItem(CItem* item);
 	std::vector<CItem*> m_ListItem;
 	bool isActive = false;
+	bool isAdd = true;
 public:
 	CSprite* m_draw; //quan ly viec ve
 };

@@ -27,14 +27,15 @@ void CItemManage::Update(float deltaTime)
 			Item->Update(deltaTime);
 		}
 	}
-	
+
 }
 
 void CItemManage::CreateItem(ITEM_name itemName, Vector2 pos)
 {
 	CItem* Item = new CItem(itemName, pos);
 	this->m_ListItem.push_back(Item);
-	
+	isAdd = false;
+
 }
 
 void CItemManage::CreateRandomItem(Vector2 pos)
@@ -42,13 +43,16 @@ void CItemManage::CreateRandomItem(Vector2 pos)
 	int item_id_arr[4] = { 301,302,310,312 };
 	int item_index = rand() % 4;
 	ITEM_name name = static_cast<ITEM_name>(item_id_arr[item_index]);
-	this->CreateItem(name, pos);
+	if (isAdd)
+	{
+		this->CreateItem(name, pos);
+	}
 }
 
 void CItemManage::Draw()
 {
-	
-	if (this->m_ListItem.size()!=0)
+
+	if (this->m_ListItem.size() != 0)
 	{
 		for (std::vector<CItem*>::iterator em = this->m_ListItem.begin(); em != this->m_ListItem.end(); ++em)
 		{
@@ -56,7 +60,10 @@ void CItemManage::Draw()
 			if (Item->m_IsActive)
 			{
 				this->DrawItem(Item);
+
+				break;
 			}
+
 		}
 	}
 }
