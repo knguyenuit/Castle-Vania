@@ -31,7 +31,9 @@ void CPoolObject::Init()
 void CPoolObject::Update(float deltaTime)
 {
 	this->simon->Update(deltaTime);
-	this->itemManage->Update(deltaTime);
+	//CItemManage::GetInstance()->Update(deltaTime);
+	CItem* Item = new CItem(ITEM_name::Dagger, Vector2(400, 400));
+	CItemManage::GetInstance()->DrawItem(Item);
 	//this->ground->Update(deltaTime);
 	//CLoadObject::GetInstance()->Collision(deltaTime, this->simon);
 	//OnCollision(deltaTime);

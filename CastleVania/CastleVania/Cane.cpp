@@ -87,7 +87,7 @@ void CCane::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObjec
 				}*/
 				if (CCollision::GetInstance()->AABBCheck(this->GetBox(), obj->GetBox()))
 				{
-					CItemManage::GetInstance()->m_isActive = true;
+					CItemManage::GetInstance()->CreateItem(ITEM_name::Dagger,Vector2(400,400));
 				}
 
 			}
