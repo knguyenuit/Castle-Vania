@@ -12,6 +12,7 @@ public:
 	~CItem();
 public:
 	bool m_IsActive;
+	float m_current_time_life;
 public:
 	void Init();
 	void Update(float deltaTime);

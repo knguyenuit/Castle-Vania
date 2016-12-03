@@ -13,29 +13,52 @@ CItemManage::~CItemManage()
 
 void CItemManage::Init()
 {
-	
+
 }
 
 void CItemManage::Update(float deltaTime)
 {
-	/*for (std::vector<CItem*>::iterator em = this->m_ListItem.begin(); em !=this->m_ListItem.end(); ++em)
-	{
-		CItem* Item = *em;
-		DrawItem(Item);
-	}*/
-	/*if (this->m_ListItem.size()!=0)
-	{
-		DrawItem(this->m_ListItem.at(0));
-	}*/
 
+	if (this->m_ListItem.size() != 0)
+	{
+		for (std::vector<CItem*>::iterator em = this->m_ListItem.begin(); em != this->m_ListItem.end(); ++em)
+		{
+			CItem* Item = *em;
+			Item->Update(deltaTime);
+		}
+	}
 	
 }
 
-CItem* CItemManage::CreateItem(ITEM_name itemName, Vector2 pos)
+void CItemManage::CreateItem(ITEM_name itemName, Vector2 pos)
 {
 	CItem* Item = new CItem(itemName, pos);
-	return Item;
-	//this->m_ListItem.push_back(Item);
+	this->m_ListItem.push_back(Item);
+	
+}
+
+void CItemManage::CreateRandomItem(Vector2 pos)
+{
+	int item_id_arr[4] = { 301,302,310,312 };
+	int item_index = rand() % 4;
+	ITEM_name name = static_cast<ITEM_name>(item_id_arr[item_index]);
+	this->CreateItem(name, pos);
+}
+
+void CItemManage::Draw()
+{
+	
+	if (this->m_ListItem.size()!=0)
+	{
+		for (std::vector<CItem*>::iterator em = this->m_ListItem.begin(); em != this->m_ListItem.end(); ++em)
+		{
+			CItem* Item = *em;
+			if (Item->m_IsActive)
+			{
+				this->DrawItem(Item);
+			}
+		}
+	}
 }
 
 void CItemManage::DrawItem(CItem * obj)

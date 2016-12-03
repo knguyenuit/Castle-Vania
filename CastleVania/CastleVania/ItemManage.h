@@ -12,10 +12,13 @@ public:
 public:
 	void Init();
 	void Update(float deltaTime);
-	CItem* CreateItem(ITEM_name name, Vector2 pos);
+	void CreateItem(ITEM_name name, Vector2 pos);
+	void CreateRandomItem(Vector2 pos);
 	CItem* m_item;
+	void Draw();
 	void DrawItem(CItem* item);
 	std::vector<CItem*> m_ListItem;
+	bool isActive = false;
 public:
 	CSprite* m_draw; //quan ly viec ve
 };

@@ -9,6 +9,7 @@ CItem::CItem()
 
 CItem::CItem(ITEM_name itemName, Vector2 pos)
 {
+	Init();
 	switch (itemName)
 	{
 	case ITEM_name::SmallHeart:
@@ -47,14 +48,20 @@ CItem::CItem(ITEM_name itemName, Vector2 pos)
 
 void CItem::Init()
 {
-	this->m_vx = 0;
-	this->m_vy = 10;
-	this->m_IsActive = false;
+	this->m_vxDefault = 0;
+	this->m_vyDefault = 10;
+	this->m_IsActive = true;
+	this->m_current_time_life = 0.0f;
 }
 
 void CItem::Update(float deltaTime)
 {
-	MoveUpdate(deltaTime);
+	this->m_Pos.y -= this->m_vyDefault*deltaTime;
+	this->m_current_time_life += deltaTime;
+	if(this->m_current_time_life >= 3.0f) {
+		m_IsActive = false;
+	}
+	//MoveUpdate(deltaTime);
 }
 
 void CItem::MoveUpdate(float deltaTime)
