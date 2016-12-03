@@ -4,9 +4,4 @@ d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(41): war
 d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(42): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 d:\study\courses\game\cv\trunk\castlevania\castlevania\hinhvuong.h(22): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
 d:\study\courses\game\cv\trunk\castlevania\castlevania\hinhvuong.h(24): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-  ItemManage.cpp
-  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(41): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(42): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
   CastleVania.vcxproj -> D:\STUDY\Courses\game\cv\trunk\CastleVania\Debug\CastleVania.exe
