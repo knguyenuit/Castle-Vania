@@ -68,7 +68,6 @@ void CSimon::Update(float deltaTime)
 
 	OnCollision(deltaTime, hv);
 	this->cane->Update(deltaTime);
-	
 }
 
 
@@ -405,6 +404,9 @@ void CSimon::OnKeyDown(float deltaTime)
 		this->simon_Status = SIMON_status::ACTACK;
 		
 		
+		break;
+	case DIK_Q:
+		this->cane->m_State = caneState::state3;
 		break;
 	default:
 		break;

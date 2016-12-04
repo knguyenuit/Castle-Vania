@@ -34,7 +34,7 @@ void CCane::Init()
 	this->m_totalFrame = 12;
 	this->m_column = 4;
 	this->m_Dir = Direction::LEFT;
-
+	this->m_State = caneState::default;
 	
 }
 
@@ -43,6 +43,26 @@ void CCane::Update(float deltaTime)
 	
 	OnCollision(deltaTime, CLoadObject::GetInstance()->m_listGameObject);
 	
+	switch (this->m_State)
+	{
+	case caneState::default:
+		
+		this->m_startFrame = 0;
+		this->m_endFrame = 3;
+		break;
+	case caneState::state2:
+		
+		this->m_startFrame = 4;
+		this->m_endFrame = 7;
+		break;
+	case caneState::state3:
+		
+		this->m_startFrame = 8;
+		this->m_endFrame = 11;
+		break;
+	default:
+		break;
+	}
 	if (this->m_checkActive)
 	{
 		ChangeFrame(deltaTime);
@@ -52,8 +72,21 @@ void CCane::Update(float deltaTime)
 	{
 		this->m_checkActive = false;
 		this->isChangeSimonStatus = true;
-		this->m_currentFrame = 0;
+		if (m_State == caneState::default)
+		{
+			this->m_currentFrame = 0;
+		}
+		if (m_State == caneState::state2)
+		{
+			this->m_currentFrame = 4;
+		}
+		if (m_State == caneState::state3)
+		{
+			this->m_currentFrame = 8;
+		}
+
 	}
+	
 }
 
 Vector2 CCane::GetPos()
@@ -134,6 +167,30 @@ void CCane::Use(D3DXVECTOR2 m_posSimon, bool isLeft)
 void CCane::SetFrame()
 {
 	this->m_currentFrame = 0;
+}
+
+void CCane::updateState(caneState state, float deltaTime)
+{
+	switch (state)
+	{
+	case caneState::default:
+		this->m_currentFrame = 0;
+		this->m_startFrame = 0;
+		this->m_endFrame = 3;
+		break;
+	case caneState::state2:
+		this->m_currentFrame = 4;
+		this->m_startFrame = 4;
+		this->m_endFrame = 7;
+		break;
+	case caneState::state3:
+		this->m_currentFrame = 8;
+		this->m_startFrame = 8;
+		this->m_endFrame = 11;
+		break;
+	default:
+		break;
+	}
 }
 
 

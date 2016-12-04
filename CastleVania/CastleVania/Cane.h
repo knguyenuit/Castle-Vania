@@ -5,15 +5,21 @@
 #include "BaseGameObject.h"
 #include "LoadObject.h"
 
-
+enum caneState {
+	default = 1,
+	state2 = 2,
+	state3 = 3
+};
 class CCane : public CBaseGameObject, public CAnimation
 {
+
 public:
 	CCane();
 
 	~CCane();
 public:
 	void Init();
+	caneState m_State;
 	void Update(float deltaTime);//ham Update chinh cua game
 	Vector2 GetPos();
 	void OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObject);
@@ -26,9 +32,10 @@ public:
 public:
 	void SetFrame();		// ham chuyen frame.
 	int getCurrentFrame() { return m_currentFrame; }
+	void updateState(caneState state, float deltaTime);
 public:
 	bool m_checkActive = false; //xet xem co' danh' roi hay ko
-	bool isChangeSimonStatus = false;;
+	bool isChangeSimonStatus = false;
 };
 
 #endif // !__CCANE_H__
