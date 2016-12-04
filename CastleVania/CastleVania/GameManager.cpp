@@ -36,8 +36,6 @@ void CGameManager::Draw()
 		CDevice::s_spriteHandle->Begin(D3DXSPRITE_ALPHABLEND);
 		CLoadBackground::GetInstance()->Draw();
 		CPoolObject::GetInstance()->Draw();
-		CLoadObject::GetInstance()->Draw();
-		
 
 		CDevice::s_spriteHandle->End();
 		CDevice::s_d3ddv->EndScene();

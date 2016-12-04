@@ -18,6 +18,27 @@ CLoadObject::~CLoadObject()
 
 void CLoadObject::Update(float deltaTime)
 {
+
+	for (std::vector<CBaseGameObject*>::iterator it = this->m_listGameObject.begin();
+		it != this->m_listGameObject.end();
+		)
+	{
+		CBaseGameObject* gameObj = *it;
+
+		if (gameObj != NULL && gameObj->m_isRemove == false)
+		{
+			gameObj->Update(deltaTime);
+		}
+
+		if (gameObj->m_isRemove)
+		{
+			it = this->m_listGameObject.erase(it);
+		}
+		else
+		{
+			it++;
+		}
+	}
 }
 
 void CLoadObject::Collision(float deltaTime, CBaseGameObject *gameObj)
@@ -34,11 +55,9 @@ void CLoadObject::Draw()
 	for (std::vector<CBaseGameObject*>::iterator it = this->m_listGameObject.begin();
 		it != this->m_listGameObject.end();
 		++it)
-	{
-		CBaseGameObject* gameObj = *it;
-		
-			CDrawObject::GetInstance()->Draw(gameObj);
-		
+	{		
+		CBaseGameObject* gameObj = *it;	
+		CDrawObject::GetInstance()->Draw(gameObj);		
 	}
 }
 
