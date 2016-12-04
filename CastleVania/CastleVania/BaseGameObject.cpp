@@ -11,6 +11,7 @@ CBaseGameObject::CBaseGameObject()
 	this->m_Width = 0;
 	this->m_Height = 0;
 	this->m_RectRS = NULL;
+	m_isRemove = false;
 
 }
 

@@ -36,7 +36,9 @@ void CLoadObject::Draw()
 		++it)
 	{
 		CBaseGameObject* gameObj = *it;
-		CDrawObject::GetInstance()->Draw(gameObj);
+		
+			CDrawObject::GetInstance()->Draw(gameObj);
+		
 	}
 }
 

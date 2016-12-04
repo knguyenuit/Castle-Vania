@@ -1,6 +1,7 @@
 ﻿#include "Simon.h"
 #include "Camera.h"
 #include "LoadObject.h"
+
 #define MAX_HIGH 400
 
 CSimon::CSimon()
@@ -399,7 +400,7 @@ void CSimon::OnKeyDown(float deltaTime)
 			this->cane->m_Pos.y = 40;
 		}
 		else*/
-		
+		CItemManage::GetInstance()->isAdd = true;
 		isAttacking = true;
 		this->simon_Status = SIMON_status::ACTACK;
 		

@@ -19,12 +19,24 @@ void CItemManage::Init()
 void CItemManage::Update(float deltaTime)
 {
 
-	if (this->m_ListItem.size() != 0)
+	if (!this->m_ListItem.empty())
 	{
 		for (std::vector<CItem*>::iterator em = this->m_ListItem.begin(); em != this->m_ListItem.end(); ++em)
 		{
-			CItem* Item = *em;
-			Item->Update(deltaTime);
+			CItem* gameObj = *em;
+			if (gameObj != NULL && gameObj->m_isRemove == false)
+			{
+				gameObj->Update(deltaTime);
+			}
+			
+			if (gameObj->m_isRemove)
+			{
+				em = this->m_ListItem.erase(em);
+				if (m_ListItem.empty())
+				{
+					break;
+				}
+			}
 		}
 	}
 

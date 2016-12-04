@@ -13,6 +13,7 @@ CGround::CGround(Vector2 pos)
 	Init();
 	InitAnimation();
 	this->m_Pos = pos;
+	m_isRemove = false;
 }
 
 

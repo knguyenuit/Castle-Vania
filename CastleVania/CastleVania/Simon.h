@@ -11,7 +11,7 @@
 #include "Global.h"
 #include "OnCollision.h"
 #include "HinhChuNhat.h"
-
+#include "ItemManage.h"
 class CSimon : public CBaseGameObject, public CAnimation, public CMove, public CSingleton<CSimon>
 {
 	friend class CSingleton<CSimon>;

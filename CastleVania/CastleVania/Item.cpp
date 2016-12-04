@@ -5,6 +5,7 @@
 CItem::CItem()
 {
 	Init();
+	
 }
 
 
@@ -44,6 +45,7 @@ CItem::CItem(ITEM_name itemName, Vector2 pos)
 	default:
 		break;
 	}
+	m_isRemove = false;
 }
 
 
@@ -57,14 +59,15 @@ void CItem::Init()
 
 void CItem::Update(float deltaTime)
 {
-	this->m_Pos.y -= this->m_vyDefault * deltaTime;
+	
 	this->m_current_time_life += deltaTime;
 	if (this->m_current_time_life >= 3.0f)
 	{
 		m_IsActive = false;
 		CItemManage::GetInstance()->isAdd = true;
+		m_isRemove = true;
 		
-
+		
 	}
 	//MoveUpdate(deltaTime);
 }

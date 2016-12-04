@@ -27,6 +27,8 @@ public:
 
 	RECT *m_RectRS;//de xet va cham
 
+	bool m_isRemove; //xoa' doi' tuong.
+
 public:
 	CBaseGameObject();
 	~CBaseGameObject();
