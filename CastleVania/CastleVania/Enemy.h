@@ -16,7 +16,7 @@ public:
 	CEnemy();
 	void InitAnimation();
 	void Update(float deltaTime);
-	RECT* GetRectRS(float height, float width);
+	RECT* GetRectRS();
 	~CEnemy();
 
 };

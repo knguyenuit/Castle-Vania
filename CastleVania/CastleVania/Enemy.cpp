@@ -16,11 +16,10 @@ void CEnemy::Update(float deltaTime)
 	ChangeFrame(deltaTime);
 }
 
-RECT * CEnemy::GetRectRS(float height, float width)
+RECT * CEnemy::GetRectRS()
 {
-	return this->UpdateRectResource(height,width);
+	return nullptr;
 }
-
 
 
 CEnemy::~CEnemy()
