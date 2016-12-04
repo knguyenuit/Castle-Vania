@@ -5,6 +5,7 @@ class CBlackLeopard :
 {
 public:
 	CBlackLeopard();
+	CBlackLeopard(Vector2 pos);
 	~CBlackLeopard();
 public:
 	void Init();

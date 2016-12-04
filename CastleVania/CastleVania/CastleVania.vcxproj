@@ -147,6 +147,7 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="BaseGameObject.h" />
+    <ClInclude Include="BlackLeopard.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cane.h" />
     <ClInclude Include="CastleVania.h" />
@@ -175,12 +176,14 @@
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="VampireBat.h" />
     <ClInclude Include="ViewWindows.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="BaseGameObject.cpp" />
+    <ClCompile Include="BlackLeopard.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cane.cpp" />
     <ClCompile Include="CastleVania.cpp" />
@@ -201,11 +204,13 @@
     <ClCompile Include="LoadBackground.cpp" />
     <ClCompile Include="LoadObject.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Move.cpp" />
     <ClCompile Include="OnCollision.cpp" />
     <ClCompile Include="PoolObject.cpp" />
     <ClCompile Include="Simon.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="VampireBat.cpp" />
     <ClCompile Include="ViewWindows.cpp" />
     <ClCompile Include="Zombie.cpp" />
   </ItemGroup>

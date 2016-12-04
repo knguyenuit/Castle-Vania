@@ -94,23 +94,20 @@ void CEnemyManage::Draw()
 
 void CEnemyManage::Update(float deltaTime)
 {
-	for (std::vector<CEnemy*>::iterator it = this->m_ListEnemy.begin(); it != this->m_ListEnemy.end(); ++it)
+	if (!this->m_ListEnemy.empty())
 	{
-		CEnemy* enemy = *it;
-		if (enemy!=NULL && enemy->m_isRemove==false)
+		for (std::vector<CEnemy*>::iterator it = this->m_ListEnemy.begin(); it != this->m_ListEnemy.end(); ++it)
 		{
-			enemy->Update(deltaTime);
-		}
-		if (enemy->m_isRemove)
-		{
-			if (this->m_ListEnemy.empty())
+			CEnemy* enemy = *it;
+			if (enemy!=NULL && enemy->m_isRemove==false)
 			{
-				break;
+				enemy->Update(deltaTime);
 			}
-			it = this->m_ListEnemy.erase(it);
-			
+			if (enemy->m_isRemove)
+			{
+				it = this->m_ListEnemy.erase(it);
+			}
 		}
-		
 	}
 	/*this->currentEnemy->Update(deltaTime);
 	if (this->currentEnemy->GetPos().x<=100)

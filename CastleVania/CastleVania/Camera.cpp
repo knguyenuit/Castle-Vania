@@ -16,10 +16,11 @@ CCamera::~CCamera()
 }
 void CCamera::Update(float x, float y)
 {
-	//m_pos.x = x -100;
-	
-
-	//m_pos.y = __SCREEN_HEIGHT;
+	if (x>320)
+	{
+		m_pos.x = x - 320;
+	}
+	m_pos.y = __SCREEN_HEIGHT;
 }
 
 RECT*& CCamera::GetBound()
