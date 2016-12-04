@@ -31,6 +31,7 @@ public:
 	void UpdateGround(float deltaTime, std::vector<CBaseGameObject*> listObject);
 	void OnCollision(float deltaTime, CBaseGameObject* hv);
 	void OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObject);
+	void OnCollision(float deltaTime, std::vector<CItem*> listItem);
 	Box GetBox();
 	RECT* GetBound();
 	RECT* GetRectRS();

@@ -88,7 +88,7 @@ void CCane::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObjec
 			CDirection normalX;
 			CDirection normalY;
 			float timeCollision;
-			if (m_currentFrame == 2)
+			if (m_currentFrame == 2 || m_currentFrame == 6 || m_currentFrame == 10)
 			{
 				
 				/*timeCollision = COnCollision::GetInstance()->SweepAABB(this->GetBox(), obj->GetBox(), normalX, normalY, deltaTime);
@@ -100,7 +100,7 @@ void CCane::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObjec
 				}*/
 				if (CCollision::GetInstance()->AABBCheck(this->GetBox(), obj->GetBox()))
 				{
-					CItemManage::GetInstance()->CreateRandomItem(Vector2(300,60));
+					CItemManage::GetInstance()->CreateRandomItem(obj->GetPos());
 					obj->m_isRemove = true;
 				}
 

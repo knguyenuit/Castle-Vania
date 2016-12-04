@@ -61,13 +61,11 @@ void CItem::Update(float deltaTime)
 {
 	
 	this->m_current_time_life += deltaTime;
-	if (this->m_current_time_life >= 3.0f)
+	if (this->m_current_time_life >= 5.0f)
 	{
 		m_IsActive = false;
 		CItemManage::GetInstance()->isAdd = true;
 		m_isRemove = true;
-		
-		
 	}
 	//MoveUpdate(deltaTime);
 }
@@ -75,6 +73,11 @@ void CItem::Update(float deltaTime)
 void CItem::MoveUpdate(float deltaTime)
 {
 	this->m_Pos.y -= this->m_vy * deltaTime;
+}
+
+Box CItem::GetBox()
+{
+	return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width - 2, this->m_Height-2);
 }
 
 RECT * CItem::GetRectRS()

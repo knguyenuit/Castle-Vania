@@ -17,6 +17,7 @@ public:
 	void Init();
 	void Update(float deltaTime);
 	virtual void MoveUpdate(float deltaTime);
+	Box GetBox();
 	RECT* GetRectRS();
 
 };

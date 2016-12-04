@@ -65,7 +65,7 @@ void CSimon::Update(float deltaTime)
 	OnCollision(deltaTime, CLoadObject::GetInstance()->listBox);
 	UpdateGround(deltaTime, CLoadObject::GetInstance()->m_listGameObject);
 	OnCollision(deltaTime, CLoadObject::GetInstance()->m_listGameObject);
-
+	OnCollision(deltaTime, CItemManage::GetInstance()->m_ListItem);
 	OnCollision(deltaTime, hv);
 	this->cane->Update(deltaTime);
 }
@@ -338,10 +338,42 @@ void CSimon::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObje
 		}
 	}
 }
+void CSimon::OnCollision(float deltaTime, std::vector<CItem*> listItem)
+{
+	for (std::vector<CItem*>::iterator it = listItem.begin();
+		it != listItem.end();
+		++it)
+	{
+		CItem* item = *it;
+		if (item->m_Id == 301 || item->m_Id==302 || item->m_Id==310 || item->m_Id==312)
+		{
+			CDirection normalX;
+			CDirection normalY;
+			float timeCollision;
+			timeCollision = COnCollision::GetInstance()->SweepAABB(this, item, normalX, normalX, deltaTime);
+			if (normalX == CDirection::ON_LEFT || normalX == CDirection::ON_RIGHT)
+			{
+				if (this->cane->m_State==caneState::default)
+				{
+					this->cane->updateState(state2);
+				}
+				else 
+				{
+					if (this->cane->m_State == state2)
+					{
+						this->cane->updateState(state3);
+					}
+				}
+				
+				item->m_isRemove = true;
+			}
+		}
+	}
+}
 
 Box CSimon::GetBox()
 {
-	return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width, this->m_Height - 8, this->m_vx, this->m_vy);
+	return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width - 30, this->m_Height - 8, this->m_vx, this->m_vy);
 }
 RECT* CSimon::GetBound()
 {
