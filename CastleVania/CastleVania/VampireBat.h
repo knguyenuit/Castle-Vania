@@ -5,6 +5,7 @@ class CVampireBat :
 {
 public:
 	CVampireBat();
+	CVampireBat(Vector2 pos);
 	~CVampireBat();
 public:
 	void Init();

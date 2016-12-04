@@ -4,6 +4,7 @@
 #include "Move.h"
 #include "DrawObject.h"
 #include "Animation.h"
+#include "Simon.h"
 class CEnemy : public CBaseGameObject, public CMove, public CAnimation
 {
 public:
@@ -16,6 +17,7 @@ public:
 	CEnemy();
 	void InitAnimation();
 	void Update(float deltaTime);
+	virtual void MoveUpdate(float deltaTime);
 	RECT* GetRectRS();
 	~CEnemy();
 

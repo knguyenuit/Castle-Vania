@@ -49,6 +49,12 @@
     <Filter Include="Framework\Game Object\Enemy\Zombie">
       <UniqueIdentifier>{fdd7aa91-dcbf-4543-b880-304e50c6830d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Game Object\Enemy\BlackLeopard">
+      <UniqueIdentifier>{34f6f581-e215-4572-acc4-84df6ec67e33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\Enemy\VampireBat">
+      <UniqueIdentifier>{b6d3e71e-e8a3-4526-ba19-499d8ebfc914}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global.h">
@@ -133,9 +139,17 @@
     <ClInclude Include="Enemy.h">
       <Filter>Framework\Game Object\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="Zombie.h" />
     <ClInclude Include="EnemyManage.h">
       <Filter>Framework\Game Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Zombie.h">
+      <Filter>Framework\Game Object\Enemy\Zombie</Filter>
+    </ClInclude>
+    <ClInclude Include="VampireBat.h">
+      <Filter>Framework\Game Object\Enemy\VampireBat</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackLeopard.h">
+      <Filter>Framework\Game Object\Enemy\BlackLeopard</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -214,9 +228,18 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Framework\Game Object\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="EnemyManage.cpp">
       <Filter>Framework\Game Object\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="Zombie.cpp">
+      <Filter>Framework\Game Object\Enemy\Zombie</Filter>
+    </ClCompile>
+    <ClCompile Include="VampireBat.cpp">
+      <Filter>Framework\Game Object\Enemy\VampireBat</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackLeopard.cpp">
+      <Filter>Framework\Game Object\Enemy\BlackLeopard</Filter>
+    </ClCompile>
+    <ClCompile Include="Move.cpp" />
   </ItemGroup>
 </Project>

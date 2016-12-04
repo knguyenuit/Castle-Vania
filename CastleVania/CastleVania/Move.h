@@ -31,7 +31,7 @@ public:
 	float g = 10.0f;
 	float x;
 	float m_jumpMax;
-	virtual void MoveUpdate(float deltaTime) = 0;
+	virtual void MoveUpdate(float deltaTime);
 };
 
 

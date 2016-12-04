@@ -36,10 +36,7 @@ RECT * CZombie::GetRectRS()
 	return this->UpdateRectResource(m_Height, m_Width);
 }
 
+
 CZombie::~CZombie()
 {
-}
-void CZombie::MoveUpdate(float deltaTime)
-{
-
 }

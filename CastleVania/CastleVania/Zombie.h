@@ -11,7 +11,5 @@ public:
 public:
 	void Init();
 	RECT* GetRectRS();
-public:
-	virtual void MoveUpdate(float deltaTime);
 };
 

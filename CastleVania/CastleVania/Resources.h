@@ -27,6 +27,7 @@
 //Enemy
 #define ENEMY_ZOMBIE "..\\Resources\\image\\enemy\\Zombie.png"
 #define ENEMY_BLACKLEOPARD "..\\Resources\\image\\enemy\\BlackLeopard.png"
+#define ENEMY_VAMPIREBAT "..\\Resources\\image\\enemy\\VampireBat.png"
 #define ENEMY_AXEMAN "..\\Resources\\image\\enemy\\AxeMan.png"
 
 #define FILE_LIST_OBJECT "..\\Resources\\Object\\lv1GO.txt"
