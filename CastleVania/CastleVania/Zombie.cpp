@@ -31,10 +31,7 @@ void CZombie::Init() {
 	this->m_column = 2;
 }
 
-RECT * CZombie::GetRectRS()
-{
-	return this->UpdateRectResource(m_Height, m_Width);
-}
+
 
 CZombie::~CZombie()
 {
@@ -43,3 +40,8 @@ void CZombie::MoveUpdate(float deltaTime)
 {
 
 }
+
+//RECT * CZombie::GetRectRS()
+//{
+//	return this->UpdateRectResource(this->m_Height,this->m_Width);
+//}

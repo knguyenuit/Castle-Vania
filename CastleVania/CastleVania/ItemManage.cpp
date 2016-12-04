@@ -19,7 +19,7 @@ void CItemManage::Init()
 void CItemManage::Update(float deltaTime)
 {
 
-	if (this->m_ListItem.size() != 0)
+	if (!this->m_ListItem.empty())
 	{
 		for (std::vector<CItem*>::iterator em = this->m_ListItem.begin(); em != this->m_ListItem.end(); ++em)
 		{
@@ -43,10 +43,7 @@ void CItemManage::CreateRandomItem(Vector2 pos)
 	int item_id_arr[4] = { 301,302,310,312 };
 	int item_index = rand() % 4;
 	ITEM_name name = static_cast<ITEM_name>(item_id_arr[item_index]);
-	if (isAdd)
-	{
-		this->CreateItem(name, pos);
-	}
+	this->CreateItem(name, pos);
 }
 
 void CItemManage::Draw()
@@ -60,8 +57,6 @@ void CItemManage::Draw()
 			if (Item->m_IsActive)
 			{
 				this->DrawItem(Item);
-
-				break;
 			}
 
 		}

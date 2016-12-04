@@ -10,8 +10,8 @@ public:
 	~CZombie();
 public:
 	void Init();
-	RECT* GetRectRS();
 public:
-	virtual void MoveUpdate(float deltaTime);
+	void MoveUpdate(float deltaTime);
+	//RECT* GetRectRS();
 };
 

@@ -1,10 +1,11 @@
 #include "EnemyManage.h"
 #include "Zombie.h"
+#include "BlackLeopard.h"
 #include "Resources.h"
 
 CEnemyManage::CEnemyManage()
 {
-	this->currentEnemy = new CZombie(Vector2(400,400));
+	CreateEnemy(BlackLeopard,Vector2(400,400));
 }
 
 
@@ -16,8 +17,11 @@ void CEnemyManage::CreateEnemy(ENEMY_type enemyType, Vector2 pos)
 {
 	switch (enemyType)
 	{
-	case ENEMY_type::Zombie:
-		this->currentEnemy = new CZombie();
+	case Zombie:
+		this->currentEnemy = new CZombie(pos);
+		break;
+	case BlackLeopard:
+		this->currentEnemy = new CBlackLeopard(pos);
 		break;
 	default:
 		break;
@@ -32,18 +36,12 @@ void CEnemyManage::DrawEnemy(CEnemy* enemyObj)
 	{
 	case Zombie:
 		Texture->LoadImageFromFile(ENEMY_ZOMBIE, D3DCOLOR_XRGB(255, 0, 255));
-		if (enemyObj->m_Dir == LEFT)
-		{
-			this->m_draw->Draw(Texture, enemyObj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
-		}
-		else
-		{
-			this->m_draw->DrawFlipX(Texture, enemyObj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
-		}
 		break;
 	case BlackLeopard:
+		Texture->LoadImageFromFile(ENEMY_BLACKLEOPARD, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 	case VampireBat:
+		Texture->LoadImageFromFile(ENEMY_VAMPIREBAT, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 	case Medusa:
 		break;
@@ -69,6 +67,14 @@ void CEnemyManage::DrawEnemy(CEnemy* enemyObj)
 		break;
 	default:
 		break;
+	}
+	if (enemyObj->m_Dir == LEFT)
+	{
+		this->m_draw->Draw(Texture, enemyObj->UpdateRectResource(enemyObj->m_Height,enemyObj->m_Width), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+	}
+	else
+	{
+		this->m_draw->DrawFlipX(Texture, enemyObj->UpdateRectResource(enemyObj->m_Height, enemyObj->m_Width), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 	}
 }
 
