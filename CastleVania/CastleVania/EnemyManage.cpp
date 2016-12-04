@@ -105,7 +105,8 @@ void CEnemyManage::Update(float deltaTime)
 			}
 			if (enemy->m_isRemove)
 			{
-				it = this->m_ListEnemy.erase(it);
+				int a = 5;
+				//it = this->m_ListEnemy.erase(it);
 			}
 		}
 	}

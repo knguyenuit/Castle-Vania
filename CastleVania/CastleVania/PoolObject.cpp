@@ -22,6 +22,7 @@ void CPoolObject::Init()
 	this->simon = new CSimon();
 	this->hcn = new CHinhChuNhat();
 	this->hv = new CHinhVuong();
+	this->banner = new CBanner();
 	//this->ground = new CGround();
 	//this->item = new CItem(ITEM_name::MorningStar, Vector2(300,300));
 	
@@ -98,6 +99,8 @@ void CPoolObject::Draw()
 	CLoadObject::GetInstance()->Draw();
 	CItemManage::GetInstance()->Draw();
 	CEnemyManage::GetInstance()->Draw();
+	banner->Draw();
 	this->drawManager->Draw(this->hcn);
 	this->drawManager->Draw(this->hv);
+
 }

@@ -30,6 +30,8 @@
 #define ENEMY_VAMPIREBAT "..\\Resources\\image\\enemy\\VampireBat.png"
 #define ENEMY_AXEMAN "..\\Resources\\image\\enemy\\AxeMan.png"
 
+//Banner
+#define BANNER "..\\Resources\\image\\Banner\\fullbanner.png"
 #define FILE_LIST_OBJECT "..\\Resources\\Object\\lv1GO.txt"
 
 #endif // !__CRESOURCES_H__

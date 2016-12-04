@@ -11,6 +11,7 @@
 #include "Ground.h"
 #include "ItemManage.h"
 #include "EnemyManage.h"
+#include "Banner.h"
 class CPoolObject : public CSingleton<CPoolObject>
 {
 	friend class CSingleton<CPoolObject>;
@@ -21,6 +22,7 @@ public:
 	CHinhChuNhat *hcn;
 	CHinhVuong *hv;
 	CGround *ground;
+	CBanner *banner;
 public:
 
 	CPoolObject();
