@@ -43,26 +43,6 @@ void CCane::Update(float deltaTime)
 	
 	OnCollision(deltaTime, CLoadObject::GetInstance()->m_listGameObject);
 	
-	switch (this->m_State)
-	{
-	case caneState::default:
-		
-		this->m_startFrame = 0;
-		this->m_endFrame = 3;
-		break;
-	case caneState::state2:
-		
-		this->m_startFrame = 4;
-		this->m_endFrame = 7;
-		break;
-	case caneState::state3:
-		
-		this->m_startFrame = 8;
-		this->m_endFrame = 11;
-		break;
-	default:
-		break;
-	}
 	if (this->m_checkActive)
 	{
 		ChangeFrame(deltaTime);
@@ -169,8 +149,9 @@ void CCane::SetFrame()
 	this->m_currentFrame = 0;
 }
 
-void CCane::updateState(caneState state, float deltaTime)
+void CCane::updateState(caneState state)
 {
+	this->m_State = state;
 	switch (state)
 	{
 	case caneState::default:
@@ -192,5 +173,3 @@ void CCane::updateState(caneState state, float deltaTime)
 		break;
 	}
 }
-
-

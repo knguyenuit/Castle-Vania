@@ -406,7 +406,7 @@ void CSimon::OnKeyDown(float deltaTime)
 		
 		break;
 	case DIK_Q:
-		this->cane->m_State = caneState::state3;
+		this->cane->updateState(state2);
 		break;
 	default:
 		break;

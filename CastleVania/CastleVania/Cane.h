@@ -32,7 +32,7 @@ public:
 public:
 	void SetFrame();		// ham chuyen frame.
 	int getCurrentFrame() { return m_currentFrame; }
-	void updateState(caneState state, float deltaTime);
+	void updateState(caneState state);
 public:
 	bool m_checkActive = false; //xet xem co' danh' roi hay ko
 	bool isChangeSimonStatus = false;
