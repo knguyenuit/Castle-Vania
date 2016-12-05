@@ -4,7 +4,6 @@
 #include "Animation.h"
 #include "BaseGameObject.h"
 #include "LoadObject.h"
-
 enum caneState {
 	default = 1,
 	state2 = 2,
@@ -23,7 +22,6 @@ public:
 	void Update(float deltaTime);//ham Update chinh cua game
 	Vector2 GetPos();
 	void OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObject);
-	
 	Box GetBox();
 	RECT* GetBound();
 	RECT* GetRectRS();

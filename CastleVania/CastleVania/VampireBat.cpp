@@ -39,10 +39,10 @@ RECT * CVampireBat::GetRectRS()
 
 void CVampireBat::MoveUpdate(float deltaTime)
 {
-	if (this->x<CSimon::GetInstance()->m_Pos.x - 300)
+	/*if (this->x<CSimon::GetInstance()->m_Pos.x - 300)
 	{
 		this->m_isRemove = true;
-	}
+	}*/
 	this->m_Pos.x -= m_vx*deltaTime;
 }
 

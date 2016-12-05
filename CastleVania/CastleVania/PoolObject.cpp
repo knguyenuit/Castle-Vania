@@ -18,8 +18,8 @@ CPoolObject::~CPoolObject()
 void CPoolObject::Init()
 {
 	this->drawManager = new CDrawObject();
-	this->itemManage = new CItemManage();
-	this->simon = new CSimon();
+	this->itemManage = CItemManage::GetInstance();
+	this->simon = CSimon::GetInstance();
 	this->hcn = new CHinhChuNhat();
 	this->hv = new CHinhVuong();
 	this->banner = new CBanner();
@@ -31,7 +31,7 @@ void CPoolObject::Init()
 
 void CPoolObject::Update(float deltaTime)
 {
-	this->simon->Update(deltaTime);
+	CSimon::GetInstance()->Update(deltaTime);
 	CItemManage::GetInstance()->Update(deltaTime);
 	CEnemyManage::GetInstance()->Update(deltaTime);
 	CLoadObject::GetInstance()->Update(deltaTime);
@@ -102,5 +102,4 @@ void CPoolObject::Draw()
 	banner->Draw();
 	this->drawManager->Draw(this->hcn);
 	this->drawManager->Draw(this->hv);
-
 }

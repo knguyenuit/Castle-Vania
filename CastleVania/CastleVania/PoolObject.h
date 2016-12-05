@@ -12,6 +12,7 @@
 #include "ItemManage.h"
 #include "EnemyManage.h"
 #include "Banner.h"
+
 class CPoolObject : public CSingleton<CPoolObject>
 {
 	friend class CSingleton<CPoolObject>;

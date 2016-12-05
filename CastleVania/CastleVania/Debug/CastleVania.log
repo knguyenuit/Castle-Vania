@@ -1,34 +1,25 @@
-﻿  PoolObject.cpp
+﻿  Zombie.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(43): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\hinhvuong.h(22): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\hinhvuong.h(24): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-  LoadObject.cpp
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(43): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\zombie.cpp(36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  VampireBat.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(43): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\loadobject.cpp(125): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\loadobject.cpp(126): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\loadobject.cpp(160): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\loadobject.cpp(161): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\loadobject.cpp(162): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\loadobject.cpp(163): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  GameManager.cpp
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(43): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\vampirebat.cpp(37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  BlackLeopard.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(43): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\hinhvuong.h(22): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\hinhvuong.h(24): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-  Cane.cpp
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(43): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\blackleopard.cpp(37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Banner.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(43): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\cane.cpp(75): warning C4101: 'normalX': unreferenced local variable
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\cane.cpp(77): warning C4101: 'timeCollision': unreferenced local variable
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\cane.cpp(76): warning C4101: 'normalY': unreferenced local variable
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\cane.cpp(123): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(43): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\banner.cpp(27): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\banner.cpp(29): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\banner.cpp(38): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\banner.cpp(40): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
   Generating Code...
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\loadobject.cpp(99): warning C4715: 'CLoadObject::CreateObject': not all control paths return a value
-  CastleVania.vcxproj -> D:\Game CastleVania\Castle Vania\trunk\CastleVania\Debug\CastleVania.exe
-  CastleVania.vcxproj -> D:\Game CastleVania\Castle Vania\trunk\CastleVania\Debug\CastleVania.pdb (Full PDB)
+  CastleVania.vcxproj -> D:\STUDY\Courses\game\cv\trunk\CastleVania\Debug\CastleVania.exe

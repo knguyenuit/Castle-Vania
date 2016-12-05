@@ -1,9 +1,6 @@
 ﻿#include "Cane.h"
 #include "Simon.h"
 #include "ItemManage.h"
-
-
-
 CCane::CCane()
 {
 	Init();
@@ -42,7 +39,6 @@ void CCane::Update(float deltaTime)
 {
 	
 	OnCollision(deltaTime, CLoadObject::GetInstance()->m_listGameObject);
-	
 	if (this->m_checkActive)
 	{
 		ChangeFrame(deltaTime);
@@ -110,6 +106,7 @@ void CCane::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObjec
 	}
 	
 }
+
 
 Box CCane::GetBox()
 {

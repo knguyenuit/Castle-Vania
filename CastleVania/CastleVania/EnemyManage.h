@@ -6,8 +6,11 @@
 #include "BlackLeopard.h"
 #include "VampireBat.h"
 #include "Resources.h"
+#include "OnCollision.h"
+#include "Simon.h"
 class CEnemyManage : public CSingleton<CEnemyManage> 
 {
+	friend class CSingleton<CEnemyManage>;
 public:
 	CEnemyManage();
 	~CEnemyManage();
@@ -15,6 +18,8 @@ public:
 	CEnemy* currentEnemy;
 	std::vector<CEnemy*> m_ListEnemy;
 public:
+	void OnCaneCollision();
+	void OnSimonCollision();
 	void CreateEnemy(ENEMY_type enemyType, Vector2 pos);
 	void DrawEnemy(CEnemy* enemyObj);
 	void Draw();

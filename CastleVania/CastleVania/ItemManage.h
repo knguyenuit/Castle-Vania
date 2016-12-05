@@ -18,6 +18,7 @@ public:
 	void Draw();
 	void DrawItem(CItem* item);
 	std::vector<CItem*> m_ListItem;
+	void OnSimonCollision(float deltaTime);
 	bool isActive = false;
 	bool isAdd = true;
 public:

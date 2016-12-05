@@ -1,0 +1,9 @@
+﻿  Simon.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(43): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\simon.cpp(285): warning C4101: 'timeCollision': unreferenced local variable
+d:\study\courses\game\cv\trunk\castlevania\castlevania\simon.cpp(312): warning C4101: 'normalY': unreferenced local variable
+d:\study\courses\game\cv\trunk\castlevania\castlevania\simon.cpp(331): warning C4101: 'normalY': unreferenced local variable
+d:\study\courses\game\cv\trunk\castlevania\castlevania\simon.cpp(352): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  CastleVania.vcxproj -> D:\STUDY\Courses\game\cv\trunk\CastleVania\Debug\CastleVania.exe

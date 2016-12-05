@@ -4,12 +4,12 @@
 #include "Move.h"
 #include "DrawObject.h"
 #include "Animation.h"
-#include "Simon.h"
 class CEnemy : public CBaseGameObject, public CMove, public CAnimation
 {
 public:
 	bool m_IsActive = false;
 	bool m_IsAlive = true;
+	bool m_isRemove = false;
 	ENEMY_type enemyType;
 public:
 	CDrawObject* drawEnemyManage;

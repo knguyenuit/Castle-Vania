@@ -1,7 +1,7 @@
 ﻿#include "Simon.h"
 #include "Camera.h"
 #include "LoadObject.h"
-
+#include "ItemManage.h"
 #define MAX_HIGH 400
 
 CSimon::CSimon()
@@ -15,7 +15,6 @@ CSimon::CSimon()
 	this->InitAnimation();
 	this->cane = new CCane();
 	this->cane->m_Pos = this->m_Pos;
-	
 	this->hv = new CHinhChuNhat();
 }
 #pragma region Init
@@ -60,12 +59,11 @@ void CSimon::Update(float deltaTime)
 	//SetFrame();
 	
 	ChangeFrame(deltaTime);
-	//this->m_Pos.y -= m_vx * deltaTime;
+	//this->m_Pos.x += m_vx * deltaTime;
 	MoveUpdate(deltaTime);
 	OnCollision(deltaTime, CLoadObject::GetInstance()->listBox);
 	UpdateGround(deltaTime, CLoadObject::GetInstance()->m_listGameObject);
 	OnCollision(deltaTime, CLoadObject::GetInstance()->m_listGameObject);
-	OnCollision(deltaTime, CItemManage::GetInstance()->m_ListItem);
 	OnCollision(deltaTime, hv);
 	this->cane->Update(deltaTime);
 }
@@ -237,7 +235,7 @@ void CSimon::MoveUpdate(float deltaTime)
 	
 	
 	//update camera
-	//CCamera::GetInstance()->Update(this->m_Pos.x, this->m_Pos.y);
+	CCamera::GetInstance()->Update(this->m_Pos.x, this->m_Pos.y);
 }
 
 //thay doi Frame
@@ -338,38 +336,7 @@ void CSimon::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObje
 		}
 	}
 }
-void CSimon::OnCollision(float deltaTime, std::vector<CItem*> listItem)
-{
-	for (std::vector<CItem*>::iterator it = listItem.begin();
-		it != listItem.end();
-		++it)
-	{
-		CItem* item = *it;
-		if (item->m_Id == 301 || item->m_Id==302 || item->m_Id==310 || item->m_Id==312)
-		{
-			CDirection normalX;
-			CDirection normalY;
-			float timeCollision;
-			timeCollision = COnCollision::GetInstance()->SweepAABB(this, item, normalX, normalX, deltaTime);
-			if (normalX == CDirection::ON_LEFT || normalX == CDirection::ON_RIGHT)
-			{
-				if (this->cane->m_State==caneState::default)
-				{
-					this->cane->updateState(state2);
-				}
-				else 
-				{
-					if (this->cane->m_State == state2)
-					{
-						this->cane->updateState(state3);
-					}
-				}
-				
-				item->m_isRemove = true;
-			}
-		}
-	}
-}
+
 
 Box CSimon::GetBox()
 {

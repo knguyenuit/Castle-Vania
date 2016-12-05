@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Banner.h" />
     <ClInclude Include="BaseGameObject.h" />
     <ClInclude Include="BlackLeopard.h" />
     <ClInclude Include="Camera.h" />
@@ -182,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Banner.cpp" />
     <ClCompile Include="BaseGameObject.cpp" />
     <ClCompile Include="BlackLeopard.cpp" />
     <ClCompile Include="Camera.cpp" />

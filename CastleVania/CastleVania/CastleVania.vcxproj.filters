@@ -55,6 +55,9 @@
     <Filter Include="Framework\Game Object\Enemy\VampireBat">
       <UniqueIdentifier>{b6d3e71e-e8a3-4526-ba19-499d8ebfc914}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Game Object\Banner">
+      <UniqueIdentifier>{642164af-45af-4ed5-a6f3-76f513f3b38b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global.h">
@@ -151,6 +154,9 @@
     <ClInclude Include="BlackLeopard.h">
       <Filter>Framework\Game Object\Enemy\BlackLeopard</Filter>
     </ClInclude>
+    <ClInclude Include="Banner.h">
+      <Filter>Framework\Game Object\Banner</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture.cpp">
@@ -241,5 +247,8 @@
       <Filter>Framework\Game Object\Enemy\BlackLeopard</Filter>
     </ClCompile>
     <ClCompile Include="Move.cpp" />
+    <ClCompile Include="Banner.cpp">
+      <Filter>Framework\Game Object\Banner</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

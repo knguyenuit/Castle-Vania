@@ -1,0 +1,10 @@
+﻿  Cane.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(43): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\cane.cpp(75): warning C4101: 'normalX': unreferenced local variable
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\cane.cpp(77): warning C4101: 'timeCollision': unreferenced local variable
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\cane.cpp(76): warning C4101: 'normalY': unreferenced local variable
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\cane.cpp(123): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  CastleVania.vcxproj -> D:\Game CastleVania\Castle Vania\trunk\CastleVania\Debug\CastleVania.exe
+  CastleVania.vcxproj -> D:\Game CastleVania\Castle Vania\trunk\CastleVania\Debug\CastleVania.pdb (Full PDB)

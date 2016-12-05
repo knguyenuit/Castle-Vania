@@ -32,6 +32,7 @@
 
 //Banner
 #define BANNER "..\\Resources\\image\\Banner\\fullbanner.png"
+
 #define FILE_LIST_OBJECT "..\\Resources\\Object\\lv1GO.txt"
 
 #endif // !__CRESOURCES_H__

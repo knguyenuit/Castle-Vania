@@ -1,7 +1,5 @@
+
 #include "BlackLeopard.h"
-
-
-
 CBlackLeopard::CBlackLeopard()
 {
 	Init();
@@ -39,14 +37,6 @@ RECT * CBlackLeopard::GetRectRS()
 	return this->UpdateRectResource(m_Height, m_Width);
 }
 
-void CBlackLeopard::MoveUpdate(float deltaTime)
-{
-	if (this->x<CSimon::GetInstance()->m_Pos.x - 300)
-	{
-		this->m_isRemove = true;
-	}
-	this->m_Pos.x -= m_vx*deltaTime;
-}
 
 CBlackLeopard::~CBlackLeopard()
 {

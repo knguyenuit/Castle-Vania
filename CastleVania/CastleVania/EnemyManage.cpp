@@ -1,10 +1,11 @@
 #include "EnemyManage.h"
-
+#include "ItemManage.h"
 CEnemyManage::CEnemyManage()
 {
-	CreateEnemy(Zombie, Vector2(400, 60));
-	CreateEnemy(BlackLeopard, Vector2(300, 48));
-	CreateEnemy(VampireBat, Vector2(200, 48));
+	CreateEnemy(Zombie, Vector2(800, 60));
+	CreateEnemy(BlackLeopard, Vector2(1000, 48));
+	CreateEnemy(Zombie, Vector2(1100, 60));
+	CreateEnemy(VampireBat, Vector2(1200, 48));
 }
 
 
@@ -12,6 +13,49 @@ CEnemyManage::~CEnemyManage()
 {
 }
 
+void CEnemyManage::OnCaneCollision()
+{
+	CCane* cane = CSimon::GetInstance()->cane;
+		for (std::vector<CEnemy*>::iterator it = this->m_ListEnemy.begin();
+			it != this->m_ListEnemy.end();
+			++it)
+		{
+			CEnemy* obj = *it;
+			if (obj->enemyType == Zombie)
+			{
+				if (cane->getCurrentFrame() == 2 ||
+					cane->getCurrentFrame() == 6 || 
+					cane->getCurrentFrame() == 10)
+				{
+					if (CCollision::GetInstance()->AABBCheck(cane->GetBox(), obj->GetBox()))
+					{
+						CItemManage::GetInstance()->CreateRandomItem(obj->GetPos());
+						obj->m_isRemove = true;
+					}
+				}
+			}
+
+		}
+}
+void CEnemyManage::OnSimonCollision()
+{
+	CSimon* simon = CSimon::GetInstance();
+	for (std::vector<CEnemy*>::iterator it = this->m_ListEnemy.begin();
+		it != this->m_ListEnemy.end();
+		++it)
+	{
+		CEnemy* obj = *it;
+		if (obj->enemyType == Zombie)
+		{
+				if (CCollision::GetInstance()->AABBCheck(simon->GetBox(), obj->GetBox()))
+				{
+					//CItemManage::GetInstance()->CreateRandomItem(obj->GetPos());
+					simon->cane->updateState(caneState::default);
+				}
+		}
+
+	}
+}
 void CEnemyManage::CreateEnemy(ENEMY_type enemyType, Vector2 pos)
 {
 	CEnemy * enemy;
@@ -94,9 +138,15 @@ void CEnemyManage::Draw()
 
 void CEnemyManage::Update(float deltaTime)
 {
+	if (CSimon::GetInstance()->cane->m_checkActive)
+	{
+		CEnemyManage::OnCaneCollision();
+	}
+	CEnemyManage::OnSimonCollision();
 	if (!this->m_ListEnemy.empty())
 	{
-		for (std::vector<CEnemy*>::iterator it = this->m_ListEnemy.begin(); it != this->m_ListEnemy.end(); ++it)
+		for (std::vector<CEnemy*>::iterator it = this->m_ListEnemy.begin(); 
+			it != this->m_ListEnemy.end(); ++it)
 		{
 			CEnemy* enemy = *it;
 			if (enemy!=NULL && enemy->m_isRemove==false)
@@ -105,32 +155,13 @@ void CEnemyManage::Update(float deltaTime)
 			}
 			if (enemy->m_isRemove)
 			{
-				int a = 5;
-				//it = this->m_ListEnemy.erase(it);
+				it = this->m_ListEnemy.erase(it);
+				if(m_ListEnemy.empty())
+				{
+					break;
+				}
+				
 			}
 		}
 	}
-	/*this->currentEnemy->Update(deltaTime);
-	if (this->currentEnemy->GetPos().x<=100)
-	{
-		this->currentEnemy->m_Dir = RIGHT;
-	} 
-	if(this->currentEnemy->m_Pos.x>=400)
-	{
-		this->currentEnemy->m_Dir = LEFT;
-	}
-	if (this->currentEnemy->m_Dir==LEFT)
-	{
-		this->currentEnemy->SetPos(Vector2(this->currentEnemy->GetPos().x - this->currentEnemy->m_vx*deltaTime, this->currentEnemy->GetPos().y));
-	} 
-	else 
-	{
-		this->currentEnemy->SetPos(Vector2(this->currentEnemy->GetPos().x + this->currentEnemy->m_vx*deltaTime, this->currentEnemy->GetPos().y));
-	}*/
-	
-	/*this->currentEnemy->m_Pos.x -= this->currentEnemy->m_vx * deltaTime;
-	if (this->currentEnemy->m_Pos.x <= 50)
-	{
-		this->currentEnemy->m_Pos.x += this->currentEnemy->m_vx * deltaTime;
-	}*/
 }

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __BLACKLEOPARD_H__
+#define __BLACKLEOPARD_H__
 #include "Enemy.h"
 class CBlackLeopard :
 	public CEnemy
@@ -10,7 +11,7 @@ public:
 public:
 	void Init();
 	RECT* GetRectRS();
-public:
-	virtual void MoveUpdate(float deltaTime);
 };
+
+#endif // !__BLACKLEOPARD_H__
 

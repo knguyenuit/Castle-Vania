@@ -1,6 +1,7 @@
 #include "ItemManage.h"
 #include "Resources.h"
-
+#include "Simon.h"
+#include "OnCollision.h"
 CItemManage::CItemManage()
 {
 	Init();
@@ -18,7 +19,7 @@ void CItemManage::Init()
 
 void CItemManage::Update(float deltaTime)
 {
-
+	CItemManage::OnSimonCollision(deltaTime);
 	if (!this->m_ListItem.empty())
 	{
 		for (std::vector<CItem*>::iterator em = this->m_ListItem.begin(); em != this->m_ListItem.end(); ++em)
@@ -108,6 +109,43 @@ void CItemManage::DrawItem(CItem * obj)
 		texture->LoadImageFromFile(ITEM_DAGGER, D3DCOLOR_XRGB(255, 255, 255));
 		this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 		break;
+	}
+}
+
+void CItemManage::OnSimonCollision(float deltaTime)
+{
+	if (!this->m_ListItem.empty())
+	{
+		CSimon* simon = CSimon::GetInstance();
+		for (std::vector<CItem*>::iterator it = this->m_ListItem.begin();
+			it != this->m_ListItem.end();
+			++it)
+		{
+			CItem* item = *it;
+			if (item->m_Id == 301 || item->m_Id == 302 || item->m_Id == 310 || item->m_Id == 312)
+			{
+				CDirection normalX;
+				CDirection normalY;
+				float timeCollision;
+				timeCollision = COnCollision::GetInstance()->SweepAABB(simon, item, normalX, normalX, deltaTime);
+				if (normalX == CDirection::ON_LEFT || normalX == CDirection::ON_RIGHT)
+				{
+					if (simon->cane->m_State == caneState::default)
+					{
+						simon->cane->updateState(state2);
+					}
+					else
+					{
+						if (simon->cane->m_State == state2)
+						{
+							simon->cane->updateState(state3);
+						}
+					}
+
+					item->m_isRemove = true;
+				}
+			}
+		}
 	}
 }
 

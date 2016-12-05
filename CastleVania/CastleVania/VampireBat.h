@@ -1,4 +1,6 @@
-#pragma once
+#ifndef __CVAMPIREBAT_H__
+#define __CVAMPIREBAT_H__
+
 #include "Enemy.h"
 class CVampireBat :
 	public CEnemy
@@ -14,3 +16,4 @@ public:
 	virtual void MoveUpdate(float deltaTime);
 };
 
+#endif // !__CVAMPIREBAT

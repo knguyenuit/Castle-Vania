@@ -10,7 +10,7 @@ void CBanner::Init()
 	this->m_Id = 100;
 	this->m_Pos = Vector2(255, 400);
 	m_TextureBanner = new CTexture();
-	
+
 }
 
 void CBanner::Update(float deltaTime)
