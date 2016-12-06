@@ -45,7 +45,6 @@ CItem::CItem(ITEM_name itemName, Vector2 pos)
 	default:
 		break;
 	}
-	m_isRemove = false;
 }
 
 
@@ -53,7 +52,7 @@ void CItem::Init()
 {
 	this->m_vxDefault = 0;
 	this->m_vyDefault = 10;
-	this->m_IsActive = true;
+	this->m_isRemove = false;
 	this->m_current_time_life = 0.0f;
 }
 
@@ -63,9 +62,7 @@ void CItem::Update(float deltaTime)
 	this->m_current_time_life += deltaTime;
 	if (this->m_current_time_life >= 5.0f)
 	{
-		m_IsActive = false;
-		CItemManage::GetInstance()->isAdd = true;
-		m_isRemove = true;
+		this->m_isRemove = true;
 	}
 	//MoveUpdate(deltaTime);
 }

@@ -8,13 +8,13 @@ CLoadBackground::CLoadBackground()
 	this->m_drawImg = new CSprite();
 	this->m_cols = 0;
 	this->m_rows = 0;
-	this->m_imageCurr->LoadImageFromFile(BACK_GROUND_1, D3DCOLOR_XRGB(255, 0, 255));
 
-	
-	
-	
+
+
+
+
 	this->m_drawImg = new CSprite();
-	
+
 	this->m_matrix = nullptr;
 }
 
@@ -65,13 +65,17 @@ void CLoadBackground::Draw()
 
 
 }
-void CLoadBackground::LoadBackgroundFromFile()
+void CLoadBackground::LoadBackgroundFromFile(std::string filePath)
 {
 	//LoadMatrix(FILE_MAP);
-	LoadMatrixFromFile(FILE_MAP);
+	LoadMatrixFromFile(filePath);
 	//this->m_tileCols = this->m_imageCurr->GetImageWidth() / this->m_tileWidth;
 	//this->m_tileRows = this->m_imageCurr->GetImageHeight() / this->m_tileHeight;
-	
+
+}
+void CLoadBackground::LoadImageFromFile(std::string filePath)
+{
+	this->m_imageCurr->LoadImageFromFile(filePath, D3DCOLOR_XRGB(255, 0, 255));
 }
 bool CLoadBackground::InitMatrix()
 {
@@ -137,11 +141,25 @@ void CLoadBackground::Clear()
 {
 	if (this->m_matrix)
 		this->DeleteMatrix();
-	
+
 	if (this->m_imageCurr)
 	{
 		delete this->m_imageCurr;
-		this->m_imageCurr = nullptr;
+		this->m_imageCurr = new CTexture();
+	}
+	if (listBackground.size() != 0)
+	{
+		for (std::vector<BackGroundItem>::iterator it = this->listBackground.begin();
+			it != this->listBackground.end();
+			++it)
+		{
+
+			it = this->listBackground.erase(it);
+			if (listBackground.empty())
+			{
+				break;
+			}
+		}
 	}
 }
 

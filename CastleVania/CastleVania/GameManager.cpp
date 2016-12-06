@@ -4,11 +4,15 @@
 
 
 
+
 CGameManager::CGameManager()
 {
 	Init();
-	CLoadObject::GetInstance()->readFile(FILE_LIST_OBJECT);
-	
+	CLevel::GetInstance()->readFileLevel(MANAGE_LEVEL);
+
+	ChangeLevel(1);
+
+
 }
 
 
@@ -16,14 +20,27 @@ CGameManager::~CGameManager()
 {
 }
 
+
+
 void CGameManager::Init()
 {
 	CPoolObject::GetInstance()->Init();
-	CLoadBackground::GetInstance()->LoadBackgroundFromFile();
+	m_Level = 1;
+
 }
+
 
 void CGameManager::Update(float deltaTime)
 {
+
+
+	if (CSimon::GetInstance()->isCheckChangeState)
+	{
+		isCheck = true;
+
+		ChangeLevel(2);
+		CSimon::GetInstance()->isCheckChangeState = false;
+	}
 	CPoolObject::GetInstance()->Update(deltaTime);
 	this->Draw();
 }
@@ -41,4 +58,20 @@ void CGameManager::Draw()
 		CDevice::s_d3ddv->EndScene();
 	}
 	CDevice::s_d3ddv->Present(NULL, NULL, NULL, NULL);
+}
+
+void CGameManager::ChangeLevel(int lv)
+{
+	m_currentLevel = CLevel::GetInstance()->listLevel[lv];
+	if (m_currentLevel != NULL)
+	{
+		if (isCheck)
+		{
+			CLoadBackground::GetInstance()->Clear();
+			CLoadObject::GetInstance()->Clear();
+		}
+		CLoadBackground::GetInstance()->LoadImageFromFile(m_currentLevel->fileImageBackgroud);
+		CLoadObject::GetInstance()->readFile(m_currentLevel->fileObject);
+		CLoadBackground::GetInstance()->LoadBackgroundFromFile(m_currentLevel->fileBackground);
+	}
 }

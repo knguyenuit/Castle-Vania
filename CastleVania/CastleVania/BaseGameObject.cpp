@@ -35,6 +35,7 @@ void CBaseGameObject::SetPos(Vector2 pos)
 	this->m_Pos = pos;
 }
 
+
 Vector2 CBaseGameObject::GetPos()
 {
 	return this->m_Pos;

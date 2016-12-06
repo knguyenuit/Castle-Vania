@@ -36,7 +36,8 @@ public:
 	bool contains(std::vector<int> v, int x);
 
 	void readFile(const std::string&);
-	
+
+	void Clear(); //clear object khi chuyen background
 
 };
 

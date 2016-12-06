@@ -20,34 +20,12 @@ void CItemManage::Init()
 void CItemManage::Update(float deltaTime)
 {
 	CItemManage::OnSimonCollision(deltaTime);
-	if (!this->m_ListItem.empty())
-	{
-		for (std::vector<CItem*>::iterator em = this->m_ListItem.begin(); em != this->m_ListItem.end(); ++em)
-		{
-			CItem* gameObj = *em;
-			if (gameObj != NULL && gameObj->m_isRemove == false)
-			{
-				gameObj->Update(deltaTime);
-			}
-			
-			if (gameObj->m_isRemove)
-			{
-				em = this->m_ListItem.erase(em);
-				if (m_ListItem.empty())
-				{
-					break;
-				}
-			}
-		}
-	}
-
 }
 
 void CItemManage::CreateItem(ITEM_name itemName, Vector2 pos)
 {
 	CItem* Item = new CItem(itemName, pos);
 	this->m_ListItem.push_back(Item);
-	isAdd = false;
 
 }
 
@@ -56,27 +34,18 @@ void CItemManage::CreateRandomItem(Vector2 pos)
 	int item_id_arr[4] = { 301,302,310,312 };
 	int item_index = rand() % 4;
 	ITEM_name name = static_cast<ITEM_name>(item_id_arr[item_index]);
-	if (isAdd)
-	{
-		this->CreateItem(name, pos);
-	}
+	this->CreateItem(name, pos);
 }
 
 void CItemManage::Draw()
 {
 
-	if (this->m_ListItem.size() != 0)
+	if (!this->m_ListItem.empty())
 	{
-		for (std::vector<CItem*>::iterator em = this->m_ListItem.begin(); em != this->m_ListItem.end(); ++em)
+		for (std::list<CItem*>::iterator em = m_ListItem.begin(); em != m_ListItem.end(); ++em)
 		{
 			CItem* Item = *em;
-			if (Item->m_IsActive)
-			{
-				this->DrawItem(Item);
-
-				break;
-			}
-
+			this->DrawItem(Item);
 		}
 	}
 }
@@ -114,22 +83,19 @@ void CItemManage::DrawItem(CItem * obj)
 
 void CItemManage::OnSimonCollision(float deltaTime)
 {
-	if (!this->m_ListItem.empty())
+	if (this->m_ListItem.size()!=0)
 	{
 		CSimon* simon = CSimon::GetInstance();
-		for (std::vector<CItem*>::iterator it = this->m_ListItem.begin();
+		for (std::list<CItem*>::iterator it = this->m_ListItem.begin();
 			it != this->m_ListItem.end();
 			++it)
 		{
 			CItem* item = *it;
 			if (item->m_Id == 301 || item->m_Id == 302 || item->m_Id == 310 || item->m_Id == 312)
 			{
-				CDirection normalX;
-				CDirection normalY;
-				float timeCollision;
-				timeCollision = COnCollision::GetInstance()->SweepAABB(simon, item, normalX, normalX, deltaTime);
-				if (normalX == CDirection::ON_LEFT || normalX == CDirection::ON_RIGHT)
+				if (COnCollision::GetInstance()->AABBCheck(simon->GetBox(), item->GetBox()))
 				{
+					this->m_ListItem.erase(it);
 					if (simon->cane->m_State == caneState::default)
 					{
 						simon->cane->updateState(state2);
@@ -141,8 +107,7 @@ void CItemManage::OnSimonCollision(float deltaTime)
 							simon->cane->updateState(state3);
 						}
 					}
-
-					item->m_isRemove = true;
+					break;
 				}
 			}
 		}

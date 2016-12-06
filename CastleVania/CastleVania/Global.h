@@ -189,41 +189,6 @@ public:
 	}
 };
 
-enum SIMON_status
-{
-	NONE = 0,
-	IDLE = 1,
-	MOVE = 2,
-	JUMP = 3,
-	SIT = 5,
-	FALL = 6,
-	ACTACK = 7
-};
 
 
-enum ITEM_name
-{
-	SmallHeart = 301,
-	LargeHeart = 302,
-	MorningStar = 310,
-	Dagger = 312
 
-};
-
-enum ENEMY_type
-{
-	Zombie = 201,
-	BlackLeopard = 202,
-	VampireBat = 203,
-	Medusa = 204,
-	FishMan = 205,
-	AxeMan = 206,
-	DragonSkullCanon = 207,
-	BlackKnight = 208,
-	WhiteSkeleton = 209,
-	Ghost = 210,
-	FireBall = 211,
-	Bullet = 212,
-	BossLevel1 = 401,
-	BossLevel2 = 402
-};

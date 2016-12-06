@@ -10,6 +10,7 @@ public:
 	~CBlackLeopard();
 public:
 	void Init();
+	virtual void MoveUpdate(float deltaTime);
 	RECT* GetRectRS();
 };
 

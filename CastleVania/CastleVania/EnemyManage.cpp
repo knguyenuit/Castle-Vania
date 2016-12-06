@@ -3,41 +3,76 @@
 CEnemyManage::CEnemyManage()
 {
 	CreateEnemy(Zombie, Vector2(800, 60));
-	CreateEnemy(BlackLeopard, Vector2(1000, 48));
+	CreateEnemy(BlackLeopard, Vector2(1000, 200));
 	CreateEnemy(Zombie, Vector2(1100, 60));
-	CreateEnemy(VampireBat, Vector2(1200, 48));
+	CreateEnemy(VampireBat, Vector2(1200, 80));
 }
-
-
 CEnemyManage::~CEnemyManage()
 {
 }
 
+void CEnemyManage::Update(float deltaTime)
+{
+	if (CSimon::GetInstance()->cane->m_checkActive)
+	{
+		CEnemyManage::OnCaneCollision();
+	}
+	CEnemyManage::OnSimonCollision(deltaTime);
+	if (!this->m_ListEnemy.empty())
+	{
+		for (std::vector<CEnemy*>::iterator it = this->m_ListEnemy.begin();
+			it != this->m_ListEnemy.end(); ++it)
+		{
+			CEnemy* enemy = *it;
+			if (enemy != NULL && enemy->m_isRemove == false)
+			{
+				enemy->Update(deltaTime);
+			}
+			if (enemy->m_isRemove)
+			{
+				it = this->m_ListEnemy.erase(it);
+					break;
+
+			}
+		}
+	}
+}
 void CEnemyManage::OnCaneCollision()
 {
 	CCane* cane = CSimon::GetInstance()->cane;
+	if (!this->m_ListEnemy.empty())
+	{
 		for (std::vector<CEnemy*>::iterator it = this->m_ListEnemy.begin();
 			it != this->m_ListEnemy.end();
 			++it)
 		{
-			CEnemy* obj = *it;
-			if (obj->enemyType == Zombie)
-			{
+			CEnemy* enemy = *it;
 				if (cane->getCurrentFrame() == 2 ||
-					cane->getCurrentFrame() == 6 || 
+					cane->getCurrentFrame() == 6 ||
 					cane->getCurrentFrame() == 10)
 				{
-					if (CCollision::GetInstance()->AABBCheck(cane->GetBox(), obj->GetBox()))
+					if (CCollision::GetInstance()->AABBCheck(cane->GetBox(), enemy->GetBox()))
 					{
-						CItemManage::GetInstance()->CreateRandomItem(obj->GetPos());
-						obj->m_isRemove = true;
+						enemy->m_isRemove = true;
+						CItemManage::GetInstance()->CreateRandomItem(enemy->GetPos());
+						switch (enemy->enemyType)
+						{
+						case ENEMY_type::Zombie:
+
+							break;
+						case ENEMY_type::BlackLeopard:
+							enemy->changeState(ENEMY_state::FREE);
+							break;
+						default:
+							break;
+						}
 					}
 				}
-			}
-
 		}
+	}
+		
 }
-void CEnemyManage::OnSimonCollision()
+void CEnemyManage::OnSimonCollision(float deltaTime)
 {
 	CSimon* simon = CSimon::GetInstance();
 	for (std::vector<CEnemy*>::iterator it = this->m_ListEnemy.begin();
@@ -45,17 +80,24 @@ void CEnemyManage::OnSimonCollision()
 		++it)
 	{
 		CEnemy* obj = *it;
-		if (obj->enemyType == Zombie)
+		if (CCollision::GetInstance()->AABBCheck(simon->GetBox(), obj->GetBox()))
 		{
-				if (CCollision::GetInstance()->AABBCheck(simon->GetBox(), obj->GetBox()))
-				{
-					//CItemManage::GetInstance()->CreateRandomItem(obj->GetPos());
-					simon->cane->updateState(caneState::default);
-				}
+			if (obj->enemyType == Zombie)
+			{
+				
+						//CItemManage::GetInstance()->CreateRandomItem(obj->GetPos());
+						simon->cane->updateState(caneState::default);
+				
+			}
+			if (obj->enemyType == BlackLeopard)
+			{
+				simon->UpdateStatus(deltaTime, COLLISION_ENEMY);
+			}
 		}
 
 	}
 }
+
 void CEnemyManage::CreateEnemy(ENEMY_type enemyType, Vector2 pos)
 {
 	CEnemy * enemy;
@@ -125,7 +167,6 @@ void CEnemyManage::DrawEnemy(CEnemy* enemyObj)
 		this->m_draw->DrawFlipX(Texture, enemyObj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 	}
 }
-
 void CEnemyManage::Draw()
 {
 	for (std::vector<CEnemy*>::iterator it = this->m_ListEnemy.begin(); it != this->m_ListEnemy.end(); ++it)
@@ -136,32 +177,4 @@ void CEnemyManage::Draw()
 	
 }
 
-void CEnemyManage::Update(float deltaTime)
-{
-	if (CSimon::GetInstance()->cane->m_checkActive)
-	{
-		CEnemyManage::OnCaneCollision();
-	}
-	CEnemyManage::OnSimonCollision();
-	if (!this->m_ListEnemy.empty())
-	{
-		for (std::vector<CEnemy*>::iterator it = this->m_ListEnemy.begin(); 
-			it != this->m_ListEnemy.end(); ++it)
-		{
-			CEnemy* enemy = *it;
-			if (enemy!=NULL && enemy->m_isRemove==false)
-			{
-				enemy->Update(deltaTime);
-			}
-			if (enemy->m_isRemove)
-			{
-				it = this->m_ListEnemy.erase(it);
-				if(m_ListEnemy.empty())
-				{
-					break;
-				}
-				
-			}
-		}
-	}
-}
+

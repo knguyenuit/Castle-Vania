@@ -5,6 +5,8 @@
 #include "DrawObject.h"
 #include "LoadBackground.h"
 #include "Singleton.h"
+#include "Level.h"
+
 
 class CGameManager : public CSingleton<CGameManager>
 {
@@ -12,10 +14,18 @@ class CGameManager : public CSingleton<CGameManager>
 public:
 	CGameManager();
 	~CGameManager();
+
+
+
+	bool isCheck = false;
+
 public:
+	Level* m_currentLevel;
+	int m_Level;
 	void Init();
 	void Update(float deltaTime);
 	void Draw();
+	void ChangeLevel(int lv);
 };
 
 #endif // !__CGAMEMANAGER_H__

@@ -14,6 +14,7 @@ class CBaseGameObject
 public:
 	int m_Id;// id cua Object. dung de load hinh anh
 	Vector2 m_Pos;//vi tri
+	Vector2 m_PosDefault; //vi tri ban dau
 	Direction m_Dir;//dang huong ve phia nao
 	bool m_isLive; // check xem doi tuong con song hay ko?
 	bool isLeft; // direction, default left

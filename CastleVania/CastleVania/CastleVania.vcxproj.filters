@@ -58,6 +58,9 @@
     <Filter Include="Framework\Game Object\Banner">
       <UniqueIdentifier>{642164af-45af-4ed5-a6f3-76f513f3b38b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Level">
+      <UniqueIdentifier>{ae9dc212-df8a-4080-b662-d03748f0dac8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global.h">
@@ -157,6 +160,9 @@
     <ClInclude Include="Banner.h">
       <Filter>Framework\Game Object\Banner</Filter>
     </ClInclude>
+    <ClInclude Include="Level.h">
+      <Filter>Framework\Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture.cpp">
@@ -249,6 +255,9 @@
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="Banner.cpp">
       <Filter>Framework\Game Object\Banner</Filter>
+    </ClCompile>
+    <ClCompile Include="Level.cpp">
+      <Filter>Framework\Level</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

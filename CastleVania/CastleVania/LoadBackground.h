@@ -39,7 +39,8 @@ public:
 
 	CTexture* m_imageCurr; //Lay texture trong bo dem, can dung lop managertexture
 	CSprite* m_drawImg; //Dung de ve anh len man hinh, can dung lop managerSprite
-	
+
+	void LoadImageFromFile(std::string filePath);
 	bool InitMatrix();
 	void LoadMatrix(std::string filePath);
 	void DeleteMatrix();
@@ -48,7 +49,7 @@ public:
 	std::vector<BackGroundItem> listBackground;
 
 public:
-	void LoadBackgroundFromFile();
+	void LoadBackgroundFromFile(std::string filePath);
 	void Draw();
 };
 #endif

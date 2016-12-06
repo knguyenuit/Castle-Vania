@@ -33,6 +33,13 @@
 //Banner
 #define BANNER "..\\Resources\\image\\Banner\\fullbanner.png"
 
+//list object
 #define FILE_LIST_OBJECT "..\\Resources\\Object\\lv1GO.txt"
+#define FILE_LIST_OBJECT_lv2 "..\\Resources\\Object\\lv2GO.txt"
+
+
+
+//manager level
+#define MANAGE_LEVEL "..\\Resources\\Level\\ManageLevel.txt"
 
 #endif // !__CRESOURCES_H__

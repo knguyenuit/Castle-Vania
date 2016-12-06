@@ -11,6 +11,17 @@
 #include "Global.h"
 #include "OnCollision.h"
 #include "HinhChuNhat.h"
+enum SIMON_status
+{
+	NONE = 0,
+	IDLE = 1,
+	MOVE = 2,
+	JUMP = 3,
+	SIT = 5,
+	FALL = 6,
+	ACTACK = 7,
+	COLLISION_ENEMY = 8
+};
 class CSimon : public CBaseGameObject, public CAnimation, public CMove, public CSingleton<CSimon>
 {
 	friend class CSingleton<CSimon>;
@@ -56,7 +67,7 @@ public:
 	bool isAttacking= false;
 	bool isChangeStatus = false;
 	bool canChangeStatus = false;
-	
+	bool isCheckChangeState = false;
 private:
 	void InitAnimation();//khoi tao cac thong so cua Simon
 	void InitMove();//khoi tao cac thong so chuyen dong cua Simon

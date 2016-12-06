@@ -19,7 +19,7 @@ public:
 	std::vector<CEnemy*> m_ListEnemy;
 public:
 	void OnCaneCollision();
-	void OnSimonCollision();
+	void OnSimonCollision(float deltaTime);
 	void CreateEnemy(ENEMY_type enemyType, Vector2 pos);
 	void DrawEnemy(CEnemy* enemyObj);
 	void Draw();

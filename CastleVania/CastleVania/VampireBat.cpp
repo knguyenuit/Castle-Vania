@@ -9,6 +9,8 @@ CVampireBat::CVampireBat(Vector2 pos)
 {
 	Init();
 	this->SetPos(pos);
+	this->m_PosDefault.x = pos.x;
+	this->m_PosDefault.y = pos.y;
 }
 
 
@@ -19,7 +21,7 @@ void CVampireBat::Init()
 	this->m_Width = 32;
 	this->m_Height = 32;
 
-	this->m_vx = 50;
+	this->m_vx = 200;
 
 	//init animation
 	this->m_startFrame = 0;
@@ -39,11 +41,22 @@ RECT * CVampireBat::GetRectRS()
 
 void CVampireBat::MoveUpdate(float deltaTime)
 {
-	/*if (this->x<CSimon::GetInstance()->m_Pos.x - 300)
+	switch (this->m_State)
 	{
-		this->m_isRemove = true;
-	}*/
-	this->m_Pos.x -= m_vx*deltaTime;
+	case ENEMY_state::MOVE:
+		if (this->m_Dir==LEFT)
+		{
+			this->m_Pos.x -= this->m_vx*deltaTime;
+		} 
+		else 
+		{
+			this->m_Pos.x += this->m_vx*deltaTime;
+		}
+		this->m_Pos.y = this->m_PosDefault.y + std::sin((this->m_Pos.x-this->m_PosDefault.x)/200*PI) * 30;
+		break;
+	default:
+		break;
+	}
 }
 
 CVampireBat::~CVampireBat()

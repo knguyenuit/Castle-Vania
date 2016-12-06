@@ -10,7 +10,7 @@ CSimon::CSimon()
 	
 	this->isInput = false;
 	this->m_Dir = Direction::LEFT;
-
+	this->simon_Status = IDLE;
 	this->InitMove();
 	this->InitAnimation();
 	this->cane = new CCane();
@@ -213,7 +213,28 @@ void CSimon::UpdateStatus(float deltaTime,SIMON_status simon_status)
 			
 			this->cane->Use(this->m_Pos, isLeft);
 		}
-		
+		break;
+	case COLLISION_ENEMY:
+		this->m_startFrame = 8;
+		this->m_endFrame = 8;
+		if (this->m_Pos.y<300)
+		{
+			this->m_Pos.x -= deltaTime * 100;
+			this->m_Pos.y += deltaTime * 200;
+		}
+		else
+		{
+			this->isFree = true;
+		}
+		if (this->isFree)
+		{
+			if (this->m_Pos.y>60)
+			{
+				this->m_Pos.y -= deltaTime * 200;
+			}
+		}
+		break;
+
 	default:
 		break;
 	}
@@ -384,9 +405,7 @@ void CSimon::OnKeyDown(float deltaTime)
 	case DIK_UP:
 		break;
 	case DIK_DOWN:
-
 		this->simon_Status = SIMON_status::SIT;
-
 		break;
 	case DIK_Z:
 		/*if (isSit)
@@ -398,7 +417,6 @@ void CSimon::OnKeyDown(float deltaTime)
 			this->cane->m_Pos.y = 40;
 		}
 		else*/
-		CItemManage::GetInstance()->isAdd = true;
 		isAttacking = true;
 		this->simon_Status = SIMON_status::ACTACK;
 		
@@ -406,6 +424,9 @@ void CSimon::OnKeyDown(float deltaTime)
 		break;
 	case DIK_Q:
 		this->cane->updateState(state2);
+		break;
+	case DIK_C: //test change status
+		isCheckChangeState = true;
 		break;
 	default:
 		break;

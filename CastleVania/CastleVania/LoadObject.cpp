@@ -7,8 +7,8 @@
 
 CLoadObject::CLoadObject()
 {
-	
-	
+
+
 }
 
 
@@ -43,10 +43,10 @@ void CLoadObject::Update(float deltaTime)
 
 void CLoadObject::Collision(float deltaTime, CBaseGameObject *gameObj)
 {
-	
-	
 
-	
+
+
+
 }
 
 void CLoadObject::Draw()
@@ -55,9 +55,9 @@ void CLoadObject::Draw()
 	for (std::vector<CBaseGameObject*>::iterator it = this->m_listGameObject.begin();
 		it != this->m_listGameObject.end();
 		++it)
-	{		
-		CBaseGameObject* gameObj = *it;	
-		CDrawObject::GetInstance()->Draw(gameObj);		
+	{
+		CBaseGameObject* gameObj = *it;
+		CDrawObject::GetInstance()->Draw(gameObj);
 	}
 }
 
@@ -81,7 +81,7 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
 
 	switch (id)
 	{
-		
+
 	case 601://Cuc gach an tien binh thuong
 		return new CGround(pos);
 		break;
@@ -91,7 +91,7 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
 	case 603://Cuc gach an tien binh thuong
 		return new CGround(pos);
 		break;
-	
+
 	default:
 		break;
 	}
@@ -101,7 +101,7 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
 
 void CLoadObject::LoadGameObjectFromFile(const std::string& filePath)
 {
-	
+
 }
 std::hash_map<int, CBaseGameObject*> CLoadObject::LoadGameObjectInfo(const std::string& filePath)
 {
@@ -125,11 +125,11 @@ std::hash_map<int, CBaseGameObject*> CLoadObject::LoadGameObjectInfo(const std::
 				float x = atoi(item.at(2).c_str());
 				float y = atoi(item.at(3).c_str());
 				Vector2 pos = Vector2(x, y);
-				
-				
-					gameObj = this->CreateObject(idItem, pos);
-					this->m_listGameObject.push_back(gameObj);
-				
+
+
+				gameObj = this->CreateObject(idItem, pos);
+				this->m_listGameObject.push_back(gameObj);
+
 				listInfo.insert(Pair(iDObjectInMap, gameObj));
 			}
 
@@ -142,7 +142,7 @@ void CLoadObject::readFile(const std::string &filePath)
 {
 	std::vector<std::string> data = CFileUtil::GetInstance()->LoadFromFile(filePath);
 	std::vector<std::string> item;
-	
+
 	typedef pair<int, Box> Pair;
 	if (!data.empty())
 	{
@@ -169,7 +169,7 @@ void CLoadObject::readFile(const std::string &filePath)
 					gameObj = this->CreateObject(idItem, pos);
 					this->m_listGameObject.push_back(gameObj);
 				}
-				
+
 			}
 		}
 	}
@@ -177,4 +177,24 @@ void CLoadObject::readFile(const std::string &filePath)
 	{
 		MessageBox(NULL, "aaaaaaa", "aaaaaa", MB_OK);
 	}
+}
+
+void CLoadObject::Clear()
+{
+	/*if (m_listGameObject.size() != 0)
+	{
+	for (std::vector<CBaseGameObject*>::iterator it = this->m_listGameObject.begin();
+	it != this->m_listGameObject.end();
+	++it)
+	{
+
+	it = this->m_listGameObject.erase(it);
+	if (m_listGameObject.empty())
+	{
+	break;
+	}
+	}
+	}*/
+	m_listGameObject.clear();
+	listBox.clear();
 }
