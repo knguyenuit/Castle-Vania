@@ -125,25 +125,27 @@ void CSimon::UpdateStatus(float deltaTime,SIMON_status simon_status)
 		canJump = true;
 		break;
 	case MOVE:
-		if (isMove)
-		{
-			if (this->m_Dir == Direction::LEFT)
+		
+			if (isMove)
 			{
-				this->m_startFrame = 0;
-				this->m_endFrame = 3;
-				this->m_ax = 30;
-				this->m_ax += this->m_ax * deltaTime;
-				m_Pos.x -= this->m_ax * this->m_vx * deltaTime;
+				if (this->m_Dir == Direction::LEFT)
+				{
+					this->m_startFrame = 0;
+					this->m_endFrame = 3;
+					this->m_ax = 30;
+					this->m_ax += this->m_ax * deltaTime;
+					m_Pos.x -= this->m_ax * this->m_vx * deltaTime;
+				}
+				if (this->m_Dir == Direction::RIGHT)
+				{
+					this->m_startFrame = 0;
+					this->m_endFrame = 3;
+					this->m_ax = 30;
+					this->m_ax += this->m_ax * deltaTime;
+					m_Pos.x += this->m_ax * this->m_vx * deltaTime;
+				}
 			}
-			if (this->m_Dir == Direction::RIGHT)
-			{
-				this->m_startFrame = 0;
-				this->m_endFrame = 3;
-				this->m_ax = 30;
-				this->m_ax += this->m_ax * deltaTime;
-				m_Pos.x += this->m_ax * this->m_vx * deltaTime;
-			}
-		}
+		
 		break;
 	case JUMP:
 

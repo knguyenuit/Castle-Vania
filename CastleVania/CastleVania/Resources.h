@@ -32,6 +32,8 @@
 
 //Banner
 #define BANNER "..\\Resources\\image\\Banner\\fullbanner.png"
+#define SIMON_HP "..\\Resources\\image\\Banner\\heathplayer.png"
+#define ENEMY_HP "..\\Resources\\image\\Banner\\heathenemy.png"
 
 //list object
 #define FILE_LIST_OBJECT "..\\Resources\\Object\\lv1GO.txt"

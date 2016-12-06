@@ -50,9 +50,9 @@ void CVampireBat::MoveUpdate(float deltaTime)
 		} 
 		else 
 		{
-			this->m_Pos.x += this->m_vx*deltaTime;
+			this->m_Pos.x += this->m_vx * deltaTime;
 		}
-		this->m_Pos.y = this->m_PosDefault.y + std::sin((this->m_Pos.x-this->m_PosDefault.x)/200*PI) * 30;
+		this->m_Pos.y = this->m_PosDefault.y + std::sin((this->m_Pos.x - this->m_PosDefault.x)/200 * PI) * 30;
 		break;
 	default:
 		break;

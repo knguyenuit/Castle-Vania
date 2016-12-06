@@ -10,17 +10,23 @@ void CBanner::Init()
 	this->m_Id = 100;
 	this->m_Pos = Vector2(255, 400);
 	m_TextureBanner = new CTexture();
-
+	m_TextureBanner->LoadImageFromFile(BANNER, D3DCOLOR_XRGB(255, 0, 255));
+	m_textureHpPlayer = new CTexture();
+	m_textureHpPlayer->LoadImageFromFile(SIMON_HP, D3DCOLOR_XRGB(255, 0, 255));
+	this->posHpSimon = D3DXVECTOR3(176, 73, 0);
+	this->m_hpSimon = 16;
 }
 
 void CBanner::Update(float deltaTime)
 {
-
+	
+		this->m_Pos.x = CCamera::GetInstance()->m_pos.x + 320;
+	
 }
 
-void CBanner::Draw()
+void CBanner::DrawBannerBG()
 {
-	m_TextureBanner->LoadImageFromFile(BANNER, D3DCOLOR_XRGB(255, 0, 255));
+	
 	Vector3 pos = Vector3();
 	RECT* rec = new RECT();
 	rec->left = 0;
@@ -29,6 +35,16 @@ void CBanner::Draw()
 	rec->bottom = rec->top + m_Height;
 	pos = CCamera::GetInstance()->GetPointTransform(this->m_Pos.x, this->m_Pos.y);
 	this->m_Draw->Draw(m_TextureBanner, GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+}
+
+void CBanner::DrawBannerProperty()
+{
+	D3DXVECTOR3 positionHpSimon = this->posHpSimon;
+	for (int i = 0; i < this->m_hpSimon; i++)
+	{
+		this->m_Draw->Draw(this->m_textureHpPlayer, NULL, positionHpSimon);
+		positionHpSimon.x += 8;
+	}
 }
 
 RECT * CBanner::GetRectRS()
