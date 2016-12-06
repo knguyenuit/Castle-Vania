@@ -7,7 +7,7 @@
 CSimon::CSimon()
 {
 	this->m_Id = 1;
-	
+	m_hpSimon = 16;
 	this->isInput = false;
 	this->m_Dir = Direction::LEFT;
 	this->simon_Status = IDLE;
@@ -413,6 +413,7 @@ void CSimon::OnKeyDown(float deltaTime)
 			this->cane->m_Pos.y = 40;
 		}
 		else*/
+		
 		isAttacking = true;
 		this->simon_Status = SIMON_status::ACTACK;
 		

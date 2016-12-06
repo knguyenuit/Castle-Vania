@@ -14,13 +14,15 @@ void CBanner::Init()
 	m_textureHpPlayer = new CTexture();
 	m_textureHpPlayer->LoadImageFromFile(SIMON_HP, D3DCOLOR_XRGB(255, 0, 255));
 	this->posHpSimon = D3DXVECTOR3(176, 73, 0);
-	this->m_hpSimon = 16;
+	this->m_hpSimon = CSimon::GetInstance()->m_hpSimon;
 }
 
 void CBanner::Update(float deltaTime)
 {
-	
+	//ve banner theo camera
 		this->m_Pos.x = CCamera::GetInstance()->m_pos.x + 320;
+		//cap nhat mau cua simon
+		this->m_hpSimon = CSimon::GetInstance()->m_hpSimon;
 	
 }
 

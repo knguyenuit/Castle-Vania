@@ -77,7 +77,12 @@ void CEnemyManage::OnSimonCollision(float deltaTime)
 	CSimon* simon = CSimon::GetInstance();
 	if (simon->isCollisionEnemy)
 	{
+		
 		simon->simon_Status = COLLISION_ENEMY;
+		if (simon->timeCollisionEnemy == 0)
+		{
+			simon->m_hpSimon -= 1;
+		}
 		simon->timeCollisionEnemy += deltaTime;
 		if (simon->timeCollisionEnemy>=1)
 		{
@@ -85,6 +90,7 @@ void CEnemyManage::OnSimonCollision(float deltaTime)
 			simon->isCollisionEnemy = false;
 			simon->timeCollisionEnemy = 0;
 			simon->simon_Status = IDLE;
+			
 		}
 	}
 	else 

@@ -3,6 +3,7 @@
 #include "BaseGameObject.h"
 #include "Sprite.h"
 #include "Singleton.h"
+#include "Simon.h"
 
 
 class CBanner : public CBaseGameObject
