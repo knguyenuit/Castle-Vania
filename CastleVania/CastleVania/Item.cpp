@@ -12,34 +12,32 @@ CItem::CItem()
 CItem::CItem(ITEM_name itemName, Vector2 pos)
 {
 	Init();
+	this->m_PosDefault = this->m_Pos = pos;
+	this->m_vyDefault = this->m_vy = 100;
 	switch (itemName)
 	{
 	case ITEM_name::SmallHeart:
 		this->m_Width = 16;
 		this->m_Height = 16;
 		this->m_Id = (int)itemName;
-		this->m_Pos = pos;
 		this->m_RectRS = GetRectRS();
 		break;
 	case ITEM_name::LargeHeart:
 		this->m_Width = 24;
 		this->m_Height = 20;
 		this->m_Id = (int)itemName;
-		this->m_Pos = pos;
 		this->m_RectRS = GetRectRS();
 		break;
 	case ITEM_name::MorningStar:
 		this->m_Width = 32;
 		this->m_Height = 32;
 		this->m_Id = (int)itemName;
-		this->m_Pos = pos;
 		this->m_RectRS = GetRectRS();
 		break;
 	case ITEM_name::Dagger:
 		this->m_Width = 32;
 		this->m_Height = 18;
 		this->m_Id = (int)itemName;
-		this->m_Pos = pos;
 		this->m_RectRS = GetRectRS();
 		break;
 	default:
@@ -60,16 +58,21 @@ void CItem::Update(float deltaTime)
 {
 	
 	this->m_current_time_life += deltaTime;
-	if (this->m_current_time_life >= 5.0f)
+	if (this->m_current_time_life >= 3.0f)
 	{
 		this->m_isRemove = true;
 	}
-	//MoveUpdate(deltaTime);
+	MoveUpdate(deltaTime);
 }
 
 void CItem::MoveUpdate(float deltaTime)
 {
-	this->m_Pos.y -= this->m_vy * deltaTime;
+
+	if (this->m_Pos.y > 48) {
+		this->m_Pos.y -= this->m_vyDefault * deltaTime;
+		this->m_Pos.x = this->m_PosDefault.x + std::sin((this->m_Pos.y-this->m_PosDefault.y)/50*PI) * 30;
+	}
+	
 }
 
 Box CItem::GetBox()

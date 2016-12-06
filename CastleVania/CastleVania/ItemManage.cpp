@@ -20,6 +20,19 @@ void CItemManage::Init()
 void CItemManage::Update(float deltaTime)
 {
 	CItemManage::OnSimonCollision(deltaTime);
+	if (!this->m_ListItem.empty())
+	{
+		for (std::list<CItem*>::iterator em = m_ListItem.begin(); em != m_ListItem.end(); ++em)
+		{
+			CItem* Item = *em;
+			Item->Update(deltaTime);
+			if (Item->m_isRemove)
+			{
+				m_ListItem.erase(em);
+				break;
+			}
+		}
+	}
 }
 
 void CItemManage::CreateItem(ITEM_name itemName, Vector2 pos)
@@ -34,7 +47,7 @@ void CItemManage::CreateRandomItem(Vector2 pos)
 	int item_id_arr[4] = { 301,302,310,312 };
 	int item_index = rand() % 4;
 	ITEM_name name = static_cast<ITEM_name>(item_id_arr[item_index]);
-	this->CreateItem(name, pos);
+	this->CreateItem(name, Vector2(pos.x,pos.y+200));
 }
 
 void CItemManage::Draw()

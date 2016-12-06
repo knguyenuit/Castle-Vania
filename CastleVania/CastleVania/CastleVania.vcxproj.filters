@@ -252,12 +252,14 @@
     <ClCompile Include="BlackLeopard.cpp">
       <Filter>Framework\Game Object\Enemy\BlackLeopard</Filter>
     </ClCompile>
-    <ClCompile Include="Move.cpp" />
     <ClCompile Include="Banner.cpp">
       <Filter>Framework\Game Object\Banner</Filter>
     </ClCompile>
     <ClCompile Include="Level.cpp">
       <Filter>Framework\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Move.cpp">
+      <Filter>Framework\Player</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
