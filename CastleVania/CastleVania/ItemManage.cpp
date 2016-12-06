@@ -47,7 +47,7 @@ void CItemManage::CreateRandomItem(Vector2 pos)
 	int item_id_arr[4] = { 301,302,310,312 };
 	int item_index = rand() % 4;
 	ITEM_name name = static_cast<ITEM_name>(item_id_arr[item_index]);
-	this->CreateItem(name, Vector2(pos.x,pos.y+200));
+	this->CreateItem(name, Vector2(pos.x,pos.y));
 }
 
 void CItemManage::Draw()
@@ -106,7 +106,13 @@ void CItemManage::OnSimonCollision(float deltaTime)
 			CItem* item = *it;
 			if (item->m_Id == 301 || item->m_Id == 302 || item->m_Id == 310 || item->m_Id == 312)
 			{
-				if (COnCollision::GetInstance()->AABBCheck(simon->GetBox(), item->GetBox()))
+				/*CDirection normalX;
+				CDirection normalY;
+				float timeCollision;
+				timeCollision = COnCollision::GetInstance()->SweepAABB(simon, item, normalX, normalX, deltaTime);
+				if (normalX == CDirection::ON_LEFT || normalX == CDirection::ON_RIGHT)
+				{*/
+				if (COnCollision::GetInstance()->AABBCheck(simon->GetBox(),item->GetBox()))
 				{
 					this->m_ListItem.erase(it);
 					if (simon->cane->m_State == caneState::default)

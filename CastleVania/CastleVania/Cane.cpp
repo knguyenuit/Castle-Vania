@@ -97,7 +97,7 @@ void CCane::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObjec
 				if (CCollision::GetInstance()->AABBCheck(this->GetBox(), obj->GetBox()))
 				{
 					obj->m_isRemove = true;
-					CItemManage::GetInstance()->CreateRandomItem(obj->GetPos());
+					CItemManage::GetInstance()->CreateItem(ITEM_name::Dagger,obj->GetPos());
 					
 				}
 

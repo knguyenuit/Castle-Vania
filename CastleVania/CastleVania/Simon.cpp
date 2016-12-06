@@ -355,7 +355,7 @@ void CSimon::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObje
 
 Box CSimon::GetBox()
 {
-	return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width - 30, this->m_Height - 8, this->m_vx, this->m_vy);
+	return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width - 10, this->m_Height - 8, this->m_vx, this->m_vy);
 }
 RECT* CSimon::GetBound()
 {

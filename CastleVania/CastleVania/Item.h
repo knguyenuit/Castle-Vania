@@ -8,8 +8,12 @@ enum ITEM_name
 {
 	SmallHeart = 301,
 	LargeHeart = 302,
+	MoneyBag = 305,
+	Axe = 315,
+	PorkChop = 309,
 	MorningStar = 310,
-	Dagger = 312
+	Dagger = 312,
+	Cross = 316
 
 };
 
@@ -21,6 +25,7 @@ public:
 	~CItem();
 public:
 	float m_current_time_life;
+	ITEM_name itemName;
 public:
 	void Init();
 	void Update(float deltaTime);

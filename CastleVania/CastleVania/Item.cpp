@@ -11,10 +11,15 @@ CItem::CItem()
 
 CItem::CItem(ITEM_name itemName, Vector2 pos)
 {
-	Init();
+	this->itemName = itemName;
 	this->m_PosDefault = this->m_Pos = pos;
-	this->m_vyDefault = this->m_vy = 100;
-	switch (itemName)
+	Init();
+}
+
+
+void CItem::Init()
+{
+	switch (this->itemName)
 	{
 	case ITEM_name::SmallHeart:
 		this->m_Width = 16;
@@ -43,13 +48,8 @@ CItem::CItem(ITEM_name itemName, Vector2 pos)
 	default:
 		break;
 	}
-}
-
-
-void CItem::Init()
-{
 	this->m_vxDefault = 0;
-	this->m_vyDefault = 10;
+	this->m_vyDefault = 50;
 	this->m_isRemove = false;
 	this->m_current_time_life = 0.0f;
 }
@@ -58,7 +58,7 @@ void CItem::Update(float deltaTime)
 {
 	
 	this->m_current_time_life += deltaTime;
-	if (this->m_current_time_life >= 3.0f)
+	if (this->m_current_time_life >= 5.0f)
 	{
 		this->m_isRemove = true;
 	}
@@ -68,10 +68,14 @@ void CItem::Update(float deltaTime)
 void CItem::MoveUpdate(float deltaTime)
 {
 
-	if (this->m_Pos.y > 48) {
-		this->m_Pos.y -= this->m_vyDefault * deltaTime;
-		this->m_Pos.x = this->m_PosDefault.x + std::sin((this->m_Pos.y-this->m_PosDefault.y)/50*PI) * 30;
+	if (this->itemName == SmallHeart || this->itemName == LargeHeart)
+	{
+		if (this->m_Pos.y > 48) {
+			this->m_Pos.y -= this->m_vyDefault * deltaTime;
+			this->m_Pos.x = this->m_PosDefault.x + std::sin((this->m_Pos.y - this->m_PosDefault.y) / 50 * PI) * 30;
+		}
 	}
+
 	
 }
 
