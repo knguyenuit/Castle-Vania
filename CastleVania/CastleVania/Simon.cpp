@@ -217,22 +217,16 @@ void CSimon::UpdateStatus(float deltaTime,SIMON_status simon_status)
 	case COLLISION_ENEMY:
 		this->m_startFrame = 8;
 		this->m_endFrame = 8;
-		if (this->m_Pos.y<300)
+		if (this->timeCollisionEnemy<0.6)
 		{
 			this->m_Pos.x -= deltaTime * 100;
-			this->m_Pos.y += deltaTime * 200;
+			this->m_Pos.y += deltaTime * 100;
 		}
-		else
+		else 
 		{
-			this->isFree = true;
+			this->m_Pos.y -= deltaTime * 100;
 		}
-		if (this->isFree)
-		{
-			if (this->m_Pos.y>60)
-			{
-				this->m_Pos.y -= deltaTime * 200;
-			}
-		}
+		
 		break;
 
 	default:

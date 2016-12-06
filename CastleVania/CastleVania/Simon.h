@@ -68,6 +68,9 @@ public:
 	bool isChangeStatus = false;
 	bool canChangeStatus = false;
 	bool isCheckChangeState = false;
+	bool isCollisionEnemy = false;
+	bool isUnAvailable = false;
+	float timeCollisionEnemy = 0.0f;
 private:
 	void InitAnimation();//khoi tao cac thong so cua Simon
 	void InitMove();//khoi tao cac thong so chuyen dong cua Simon

@@ -63,7 +63,14 @@ void CBlackLeopard::MoveUpdate(float deltaTime)
 		this->m_startFrame = 1;
 		this->m_endFrame = 2;
 		this->m_increase = 1;
-		this->m_Pos.x -= m_vx*deltaTime;
+		if (this->m_Dir = LEFT)
+		{
+			this->m_Pos.x -= m_vx * deltaTime;
+		}
+		else
+		{
+			this->m_Pos.x += m_vx * deltaTime;
+		}
 	default:
 		break;
 	}

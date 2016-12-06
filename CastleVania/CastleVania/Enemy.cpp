@@ -25,20 +25,24 @@ void CEnemy::Update(float deltaTime)
 	this->ChangeFrame(deltaTime);
 	if (this->m_Pos.x < CCamera::GetInstance()->m_pos.x+600)
 	{
-		switch (this->enemyType)
+		if (this->m_State == ENEMY_state::IDLE)
 		{
-		case BlackLeopard:
-			this->m_State = ENEMY_state::JUMP;
-			break;
-		default:
-			this->m_State = ENEMY_state::MOVE;
-			break;
+			switch (this->enemyType)
+			{
+			case BlackLeopard:
+				this->m_State = ENEMY_state::JUMP;
+				break;
+			default:
+				this->m_State = ENEMY_state::MOVE;
+				break;
+			}
+
+			if (CCamera::GetInstance()->m_pos.x>this->m_Pos.x)
+			{
+				this->m_isRemove = true;
+			}
 		}
 		
-		if (CCamera::GetInstance()->m_pos.x>this->m_Pos.x)
-		{
-			this->m_isRemove = true;
-		}
 	}
 	if (this->m_State != ENEMY_state::IDLE)
 	{
@@ -58,7 +62,15 @@ void CEnemy::MoveUpdate(float deltaTime)
 	switch (this->m_State)
 	{
 	case ENEMY_state::MOVE:
-		this->m_Pos.x -= m_vx*deltaTime;
+		if (this->m_Dir = LEFT)
+		{
+			this->m_Pos.x -= m_vx * deltaTime;
+		} 
+		else 
+		{
+			this->m_Pos.x += m_vx * deltaTime;
+		}
+		
 		break;
 	case ENEMY_state::FREE:
 		this->m_Pos.y -= m_vy*deltaTime;

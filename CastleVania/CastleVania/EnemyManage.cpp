@@ -75,27 +75,46 @@ void CEnemyManage::OnCaneCollision()
 void CEnemyManage::OnSimonCollision(float deltaTime)
 {
 	CSimon* simon = CSimon::GetInstance();
-	for (std::vector<CEnemy*>::iterator it = this->m_ListEnemy.begin();
-		it != this->m_ListEnemy.end();
-		++it)
+	if (simon->isCollisionEnemy)
 	{
-		CEnemy* obj = *it;
-		if (CCollision::GetInstance()->AABBCheck(simon->GetBox(), obj->GetBox()))
+		simon->simon_Status = COLLISION_ENEMY;
+		simon->timeCollisionEnemy += deltaTime;
+		if (simon->timeCollisionEnemy>=1)
 		{
-			if (obj->enemyType == Zombie)
-			{
-				
-						//CItemManage::GetInstance()->CreateRandomItem(obj->GetPos());
-						simon->cane->updateState(caneState::default);
-				
-			}
-			if (obj->enemyType == BlackLeopard)
-			{
-				simon->UpdateStatus(deltaTime, COLLISION_ENEMY);
-			}
+			simon->m_Dir = simon->m_Dir == LEFT ? RIGHT : LEFT;
+			simon->isCollisionEnemy = false;
+			simon->timeCollisionEnemy = 0;
+			simon->simon_Status = IDLE;
 		}
-
 	}
+	else 
+	{
+		for (std::vector<CEnemy*>::iterator it = this->m_ListEnemy.begin();
+			it != this->m_ListEnemy.end();
+			++it)
+		{
+			CEnemy* obj = *it;
+			if (CCollision::GetInstance()->AABBCheck(simon->GetBox(), obj->GetBox()))
+			{
+
+				if (obj->enemyType == Zombie)
+				{
+
+					//CItemManage::GetInstance()->CreateRandomItem(obj->GetPos());
+					simon->cane->updateState(caneState::default);
+
+				}
+				if (obj->enemyType == BlackLeopard)
+				{
+					simon->isCollisionEnemy = true;
+					simon->m_Dir = obj->m_Dir;
+
+				}
+			}
+
+		}
+	}
+	
 }
 
 void CEnemyManage::CreateEnemy(ENEMY_type enemyType, Vector2 pos)
@@ -176,5 +195,4 @@ void CEnemyManage::Draw()
 	}
 	
 }
-
 

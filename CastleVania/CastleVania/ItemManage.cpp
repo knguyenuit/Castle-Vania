@@ -114,4 +114,3 @@ void CItemManage::OnSimonCollision(float deltaTime)
 	}
 }
 
-
