@@ -24,30 +24,47 @@ void CItem::Init()
 	case ITEM_name::SmallHeart:
 		this->m_Width = 16;
 		this->m_Height = 16;
-		this->m_Id = (int)itemName;
-		this->m_RectRS = GetRectRS();
 		break;
+
 	case ITEM_name::LargeHeart:
 		this->m_Width = 24;
 		this->m_Height = 20;
-		this->m_Id = (int)itemName;
-		this->m_RectRS = GetRectRS();
 		break;
+
 	case ITEM_name::MorningStar:
 		this->m_Width = 32;
 		this->m_Height = 32;
-		this->m_Id = (int)itemName;
-		this->m_RectRS = GetRectRS();
 		break;
+
 	case ITEM_name::Dagger:
 		this->m_Width = 32;
 		this->m_Height = 18;
-		this->m_Id = (int)itemName;
-		this->m_RectRS = GetRectRS();
+		break;
+
+	case ITEM_name::MoneyBag:
+		this->m_Width = 30;
+		this->m_Height = 30;
+		break;
+
+	case ITEM_name::Cross:
+		this->m_Width = 32;
+		this->m_Height = 32;
+		break;
+
+	case ITEM_name::Axe:
+		this->m_Width = 30;
+		this->m_Height = 28;
+		break;
+
+	case ITEM_name::PorkChop:
+		this->m_Width = 32;
+		this->m_Height = 26;
 		break;
 	default:
 		break;
 	}
+	this->m_Id = (int)itemName;
+	this->m_RectRS = GetRectRS();
 	this->m_vxDefault = 0;
 	this->m_vyDefault = 50;
 	this->m_isRemove = false;

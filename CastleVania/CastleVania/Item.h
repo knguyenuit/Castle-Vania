@@ -9,10 +9,10 @@ enum ITEM_name
 	SmallHeart = 301,
 	LargeHeart = 302,
 	MoneyBag = 305,
-	Axe = 315,
 	PorkChop = 309,
 	MorningStar = 310,
 	Dagger = 312,
+	Axe = 315,
 	Cross = 316
 
 };

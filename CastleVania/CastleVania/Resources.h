@@ -22,6 +22,12 @@
 #define ITEM_SMALL_HEART "..\\Resources\\image\\item\\SmallHeart.png"
 #define ITEM_MORNING_STAR "..\\Resources\\image\\item\\MorningStar.png"
 #define ITEM_DAGGER "..\\Resources\\image\\item\\Dagger.png"
+#define ITEM_MONEY_BAG "..\\Resources\\image\\item\\MoneyBag.png"
+#define ITEM_CROSS "..\\Resources\\image\\item\\Cross.png"
+#define ITEM_AXE "..\\Resources\\image\\item\\Axe.png"
+#define ITEM_PORK_CHOP "..\\Resources\\image\\item\\PorkChop.png"
+#define ITEM_DOUBLE_SHOT "..\\Resources\\image\\item\\DoubleShot.png"
+#define ITEM_DOUBLE_SHOT_2 "..\\Resources\\image\\item\\DoubleShot-2.png"
 #pragma endregion
 
 //Enemy

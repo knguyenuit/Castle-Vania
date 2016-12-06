@@ -44,8 +44,8 @@ void CItemManage::CreateItem(ITEM_name itemName, Vector2 pos)
 
 void CItemManage::CreateRandomItem(Vector2 pos)
 {
-	int item_id_arr[4] = { 301,302,310,312 };
-	int item_index = rand() % 4;
+	int item_id_arr[8] = { 301,302,305,309,310,312,315,316 };
+	int item_index = rand() % 8;
 	ITEM_name name = static_cast<ITEM_name>(item_id_arr[item_index]);
 	this->CreateItem(name, Vector2(pos.x,pos.y));
 }
@@ -66,32 +66,47 @@ void CItemManage::Draw()
 void CItemManage::DrawItem(CItem * obj)
 {
 	int id = obj->GetID();
+	ITEM_name itemName = obj->itemName;
 	CTexture* texture = new CTexture();
 	Vector3 pos = Vector3();
 	pos = CCamera::GetInstance()->GetPointTransform(obj->GetPos().x, obj->GetPos().y);
-	switch (id)
+	switch (itemName)
 	{
 
-	case 301:
+	case SmallHeart:
 		texture->LoadImageFromFile(ITEM_SMALL_HEART, D3DCOLOR_XRGB(255, 255, 255));
-		this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 		break;
 
-	case 302:
+	case LargeHeart:
 		texture->LoadImageFromFile(ITEM_LARGE_HEART, D3DCOLOR_XRGB(255, 255, 255));
-		this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 		break;
 
-	case 310:
+	case MoneyBag:
+		texture->LoadImageFromFile(ITEM_MONEY_BAG, D3DCOLOR_XRGB(255, 255, 255));
+		break;
+
+	case MorningStar:
 		texture->LoadImageFromFile(ITEM_MORNING_STAR, D3DCOLOR_XRGB(255, 255, 255));
-		this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 		break;
 
-	case 312:
+	case Dagger:
 		texture->LoadImageFromFile(ITEM_DAGGER, D3DCOLOR_XRGB(255, 255, 255));
-		this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 		break;
+
+	case Axe:
+		texture->LoadImageFromFile(ITEM_AXE, D3DCOLOR_XRGB(255, 255, 255));
+		break;
+
+	case Cross:
+		texture->LoadImageFromFile(ITEM_CROSS, D3DCOLOR_XRGB(255, 255, 255));
+		break;
+	case PorkChop:
+		texture->LoadImageFromFile(ITEM_PORK_CHOP, D3DCOLOR_XRGB(255, 255, 255));
+		break;
+
 	}
+
+	this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 }
 
 void CItemManage::OnSimonCollision(float deltaTime)
@@ -104,8 +119,8 @@ void CItemManage::OnSimonCollision(float deltaTime)
 			++it)
 		{
 			CItem* item = *it;
-			if (item->m_Id == 301 || item->m_Id == 302 || item->m_Id == 310 || item->m_Id == 312)
-			{
+			/*if (item->m_Id == 301 || item->m_Id == 302 || item->m_Id == 310 || item->m_Id == 312)
+			{*/
 				/*CDirection normalX;
 				CDirection normalY;
 				float timeCollision;
@@ -128,7 +143,7 @@ void CItemManage::OnSimonCollision(float deltaTime)
 					}
 					break;
 				}
-			}
+			/*}*/
 		}
 	}
 }
