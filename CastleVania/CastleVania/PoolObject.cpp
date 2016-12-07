@@ -106,6 +106,6 @@ void CPoolObject::Draw()
 	banner->DrawBannerBG();
 	banner->DrawBannerProperty();
 
-	this->drawManager->Draw(this->hcn);
-	this->drawManager->Draw(this->hv);
+	/*this->drawManager->Draw(this->hcn);
+	this->drawManager->Draw(this->hv);*/
 }

@@ -23,7 +23,7 @@ void CDrawObject::Draw(CBaseGameObject *obj)// quan li viec load va ve cac doi t
 		switch (id)
 		{
 		case 1:
-			texture->LoadImageFromFile(SIMON_RES, D3DCOLOR_XRGB(255, 255, 255));
+			texture->LoadImageFromFile(SIMON_RES, D3DCOLOR_XRGB(255, 0, 255));
 			if (obj->GetDirection() == Direction::LEFT)
 			{
 				this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
@@ -85,6 +85,10 @@ void CDrawObject::Draw(CBaseGameObject *obj)// quan li viec load va ve cac doi t
 
 		case 312:
 			texture->LoadImageFromFile(ITEM_DAGGER, D3DCOLOR_XRGB(255, 255, 255));
+			this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+			break;
+		case 702:
+			texture->LoadImageFromFile(BRICK, D3DCOLOR_XRGB(255, 255, 255));
 			this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 			break;
 		}
