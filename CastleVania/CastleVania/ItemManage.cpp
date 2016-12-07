@@ -41,10 +41,20 @@ void CItemManage::CreateItem(ITEM_name itemName, Vector2 pos)
 
 void CItemManage::CreateRandomItem(Vector2 pos)
 {
-	int item_id_arr[8] = { 301,302,305,309,310,312,315,316 };
-	int item_index = rand() % 8;
-	ITEM_name name = static_cast<ITEM_name>(item_id_arr[item_index]);
-	this->CreateItem(name, Vector2(pos.x,pos.y));
+	ITEM_name item_name_arr[10] = { 
+		ITEM_name::SmallHeart,
+		ITEM_name::LargeHeart,
+		ITEM_name::Axe,
+		ITEM_name::Boomerang,
+		ITEM_name::FireBomb,
+		ITEM_name::Dagger,
+		ITEM_name::PorkChop,
+		ITEM_name::Cross,
+		ITEM_name::MoneyBag,
+		ITEM_name::MorningStar
+		 };
+	int item_index = rand() % 10;
+	this->CreateItem(item_name_arr[item_index], Vector2(pos.x,pos.y));
 }
 
 void CItemManage::Draw()
@@ -70,34 +80,39 @@ void CItemManage::DrawItem(CItem * obj)
 	switch (itemName)
 	{
 
-	case SmallHeart:
+	case ITEM_name::SmallHeart:
 		texture->LoadImageFromFile(ITEM_SMALL_HEART, D3DCOLOR_XRGB(255, 255, 255));
 		break;
 
-	case LargeHeart:
+	case ITEM_name::LargeHeart:
 		texture->LoadImageFromFile(ITEM_LARGE_HEART, D3DCOLOR_XRGB(255, 255, 255));
 		break;
 
-	case MoneyBag:
+	case ITEM_name::MoneyBag:
 		texture->LoadImageFromFile(ITEM_MONEY_BAG, D3DCOLOR_XRGB(255, 255, 255));
 		break;
 
-	case MorningStar:
+	case ITEM_name::MorningStar:
 		texture->LoadImageFromFile(ITEM_MORNING_STAR, D3DCOLOR_XRGB(255, 255, 255));
 		break;
-
-	case Dagger:
+	//item weapon
+	case ITEM_name::Dagger:
 		texture->LoadImageFromFile(ITEM_DAGGER, D3DCOLOR_XRGB(255, 255, 255));
 		break;
-
-	case Axe:
+	case ITEM_name::Axe:
 		texture->LoadImageFromFile(ITEM_AXE, D3DCOLOR_XRGB(255, 255, 255));
 		break;
+	case ITEM_name::Boomerang:
+		texture->LoadImageFromFile(ITEM_BOOMERANG, D3DCOLOR_XRGB(255, 255, 255));
+		break;
+	case ITEM_name::FireBomb:
+		texture->LoadImageFromFile(ITEM_FIREBOMB, D3DCOLOR_XRGB(255, 255, 255));
+		break;
 
-	case Cross:
+	case ITEM_name::Cross:
 		texture->LoadImageFromFile(ITEM_CROSS, D3DCOLOR_XRGB(255, 255, 255));
 		break;
-	case PorkChop:
+	case ITEM_name::PorkChop:
 		texture->LoadImageFromFile(ITEM_PORK_CHOP, D3DCOLOR_XRGB(255, 255, 255));
 		break;
 
@@ -126,7 +141,24 @@ void CItemManage::OnSimonCollision(float deltaTime)
 				{*/
 				if (COnCollision::GetInstance()->AABBCheck(simon->GetBox(),item->GetBox()))
 				{
-					this->m_ListItem.erase(it);
+					switch (item->itemName)
+					{
+					case ITEM_name::Axe:
+						simon->m_currentWeapon = WEAPON_name::Axe;
+						break;
+					case ITEM_name::Boomerang:
+						simon->m_currentWeapon = WEAPON_name::Boomerang;
+						break;
+					case ITEM_name::FireBomb:
+						simon->m_currentWeapon = WEAPON_name::FireBomb2;
+						break;
+					case ITEM_name::Dagger:
+						simon->m_currentWeapon = WEAPON_name::Dagger;
+						break;
+					default:
+						break;
+					}
+					this->m_ListItem.erase(it);//xoa item khoi list khi cham vao simon
 					if (simon->cane->m_State == caneState::default)
 					{
 						simon->cane->updateState(state2);

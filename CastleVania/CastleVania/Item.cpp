@@ -36,11 +36,6 @@ void CItem::Init()
 		this->m_Height = 32;
 		break;
 
-	case ITEM_name::Dagger:
-		this->m_Width = 32;
-		this->m_Height = 18;
-		break;
-
 	case ITEM_name::MoneyBag:
 		this->m_Width = 30;
 		this->m_Height = 30;
@@ -50,10 +45,22 @@ void CItem::Init()
 		this->m_Width = 32;
 		this->m_Height = 32;
 		break;
-
+	//WEAPON ITEM
 	case ITEM_name::Axe:
 		this->m_Width = 30;
 		this->m_Height = 28;
+		break;
+	case ITEM_name::Boomerang:
+		this->m_Width = 30;
+		this->m_Height = 28;
+		break;
+	case ITEM_name::FireBomb:
+		this->m_Width = 32;
+		this->m_Height = 32;
+		break;
+	case ITEM_name::Dagger:
+		this->m_Width = 32;
+		this->m_Height = 18;
 		break;
 
 	case ITEM_name::PorkChop:
@@ -85,7 +92,7 @@ void CItem::Update(float deltaTime)
 void CItem::MoveUpdate(float deltaTime)
 {
 
-	if (this->itemName == SmallHeart || this->itemName == LargeHeart)
+	if (this->itemName == ITEM_name::SmallHeart || this->itemName == ITEM_name::LargeHeart)
 	{
 		if (this->m_Pos.y > 48) {
 			this->m_Pos.y -= this->m_vyDefault * deltaTime;

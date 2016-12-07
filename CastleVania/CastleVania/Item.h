@@ -4,7 +4,7 @@
 #include "BaseGameObject.h"
 #include "Move.h"
 
-enum ITEM_name
+enum class ITEM_name
 {
 	SmallHeart = 301,
 	LargeHeart = 302,
@@ -13,7 +13,9 @@ enum ITEM_name
 	MorningStar = 310,
 	Dagger = 312,
 	Axe = 315,
-	Cross = 316
+	Cross = 316,
+	Boomerang = 314,
+	FireBomb = 313
 
 };
 

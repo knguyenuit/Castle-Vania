@@ -25,6 +25,8 @@
 #define ITEM_MONEY_BAG "..\\Resources\\image\\item\\MoneyBag.png"
 #define ITEM_CROSS "..\\Resources\\image\\item\\Cross.png"
 #define ITEM_AXE "..\\Resources\\image\\item\\Axe.png"
+#define ITEM_BOOMERANG "..\\Resources\\image\\item\\Boomerang.png"
+#define ITEM_FIREBOMB "..\\Resources\\image\\item\\FireBomb.png"
 #define ITEM_PORK_CHOP "..\\Resources\\image\\item\\PorkChop.png"
 #define ITEM_DOUBLE_SHOT "..\\Resources\\image\\item\\DoubleShot.png"
 #define ITEM_DOUBLE_SHOT_2 "..\\Resources\\image\\item\\DoubleShot-2.png"
