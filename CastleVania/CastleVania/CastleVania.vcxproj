@@ -180,6 +180,8 @@
     <ClInclude Include="Texture.h" />
     <ClInclude Include="VampireBat.h" />
     <ClInclude Include="ViewWindows.h" />
+    <ClInclude Include="Weapon.h" />
+    <ClInclude Include="WeaponManage.h" />
     <ClInclude Include="Zombie.h" />
   </ItemGroup>
   <ItemGroup>
@@ -216,6 +218,8 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="VampireBat.cpp" />
     <ClCompile Include="ViewWindows.cpp" />
+    <ClCompile Include="Weapon.cpp" />
+    <ClCompile Include="WeaponManage.cpp" />
     <ClCompile Include="Zombie.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -6,6 +6,7 @@
 #include "BaseGameObject.h"
 //#include "CResourece.h"
 #include "Camera.h"
+#include "Resources.h"
 
 class CDrawObject : public CSingleton<CDrawObject>
 {
@@ -16,7 +17,7 @@ public:
 	~CDrawObject();
 	void Draw(CBaseGameObject*);
 	void Draw(CBaseGameObject*, D3DCOLOR);
-private:
+public:
 	//Khoi tao bien thanh vien
 	CSprite* m_draw; //quan ly viec ve
 

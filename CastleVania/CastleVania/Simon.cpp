@@ -16,9 +16,9 @@ CSimon::CSimon()
 	this->cane = new CCane();
 	this->cane->m_Pos = this->m_Pos;
 	this->hv = new CHinhChuNhat();
+	this->m_currentWeapon = WEAPON_name::Dagger;
 }
 #pragma region Init
-
 void CSimon::InitAnimation()
 {
 	this->m_startFrame = 0;
@@ -424,6 +424,9 @@ void CSimon::OnKeyDown(float deltaTime)
 		break;
 	case DIK_C: //test change status
 		isCheckChangeState = true;
+		break;
+	case DIK_E:
+		this->isWeaponAttacking = true;
 		break;
 	default:
 		break;

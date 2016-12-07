@@ -11,6 +11,7 @@
 #include "Ground.h"
 #include "ItemManage.h"
 #include "EnemyManage.h"
+#include "WeaponManage.h"
 #include "Banner.h"
 
 class CPoolObject : public CSingleton<CPoolObject>

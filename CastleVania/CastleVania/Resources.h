@@ -30,6 +30,12 @@
 #define ITEM_DOUBLE_SHOT_2 "..\\Resources\\image\\item\\DoubleShot-2.png"
 #pragma endregion
 
+//Weapon
+#define WEAPON_AXE "..\\Resources\\image\\weapon\\Axe.png"
+#define WEAPON_BOOMERANG "..\\Resources\\image\\weapon\\Boomerang.png"
+#define WEAPON_DAGGER "..\\Resources\\image\\weapon\\Dagger.png"
+#define WEAPON_FIREBOMB2 "..\\Resources\\image\\weapon\\FireBomb2.png"
+
 //Enemy
 #define ENEMY_ZOMBIE "..\\Resources\\image\\enemy\\Zombie.png"
 #define ENEMY_BLACKLEOPARD "..\\Resources\\image\\enemy\\BlackLeopard.png"

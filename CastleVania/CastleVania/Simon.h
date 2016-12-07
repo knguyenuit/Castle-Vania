@@ -11,6 +11,7 @@
 #include "Global.h"
 #include "OnCollision.h"
 #include "HinhChuNhat.h"
+#include "Weapon.h"
 enum SIMON_status
 {
 	NONE = 0,
@@ -22,6 +23,7 @@ enum SIMON_status
 	ACTACK = 7,
 	COLLISION_ENEMY = 8
 };
+
 class CSimon : public CBaseGameObject, public CAnimation, public CMove, public CSingleton<CSimon>
 {
 	friend class CSingleton<CSimon>;
@@ -64,7 +66,8 @@ public:
 	bool isFree = false;
 	bool isSit = false;
 	bool isMove = false;
-	bool isAttacking= false;
+	bool isAttacking= false; //tan cong bang cane
+	bool isWeaponAttacking = false; //tan cong bang weapon
 	bool isChangeStatus = false;
 	bool canChangeStatus = false;
 	bool isCheckChangeState = false;
@@ -73,6 +76,7 @@ public:
 	float timeCollisionEnemy = 0.0f;
 public:
 	int m_hpSimon;
+	WEAPON_name m_currentWeapon;
 private:
 	void InitAnimation();//khoi tao cac thong so cua Simon
 	void InitMove();//khoi tao cac thong so chuyen dong cua Simon

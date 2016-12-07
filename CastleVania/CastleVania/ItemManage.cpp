@@ -1,7 +1,4 @@
 #include "ItemManage.h"
-#include "Resources.h"
-#include "Simon.h"
-#include "OnCollision.h"
 CItemManage::CItemManage()
 {
 	Init();

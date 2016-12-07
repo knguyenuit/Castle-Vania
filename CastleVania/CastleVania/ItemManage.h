@@ -3,6 +3,8 @@
 #include "Item.h"
 #include "Singleton.h"
 #include "DrawObject.h"
+#include "Simon.h"
+#include "OnCollision.h"
 class CItemManage : public CSingleton<CItemManage>
 {
 	friend class CSingleton<CItemManage>;

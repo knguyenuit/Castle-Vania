@@ -1,9 +1,4 @@
 ﻿#include "DrawObject.h"
-#include "Resources.h"
-
-
-
-
 
 CDrawObject::CDrawObject()
 {
