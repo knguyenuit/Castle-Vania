@@ -28,6 +28,8 @@ void CWeapon::Init() {
 	this->m_time_life = 0.0f;
 	this->m_isRemove = false;
 	this->m_Id = static_cast<int>(this->m_WeaponName);
+	this->m_Dir = CSimon::GetInstance()->m_Dir;
+	this->m_vxDefault = this->m_vx = 200;
 	switch (this->m_WeaponName)
 	{
 
@@ -63,7 +65,7 @@ void CWeapon::Update(float deltaTime)
 	this->MoveUpdate(deltaTime);
 	this->ChangeFrame(deltaTime);
 	this->m_time_life += deltaTime;
-	if (this->m_time_life>=2.0)
+	if (this->m_time_life>=10.0f)
 	{
 		this->m_isRemove = true;
 	}
@@ -71,14 +73,82 @@ void CWeapon::Update(float deltaTime)
 }
 void CWeapon::MoveUpdate(float deltaTime) 
 {
+	
 	switch (this->m_WeaponName)
 	{
 	case WEAPON_name::Dagger:
 		this->m_vxDefault = this->m_vx = 200;
-		this->m_Pos.x += this->m_vx * deltaTime;
+		this->m_Pos.x =
+			(this->m_Dir == Direction::LEFT) ?
+			this->m_Pos.x - this->m_vx * deltaTime :
+			this->m_Pos.x + this->m_vx * deltaTime;
+		break;
+	case WEAPON_name::Axe:
+
+		this->m_Pos.x =
+			(this->m_Dir == Direction::LEFT) ?
+			this->m_Pos.x - this->m_vx * deltaTime :
+			this->m_Pos.x + this->m_vx * deltaTime;
+
+		break;
+	case WEAPON_name::Boomerang:
+		/*this->m_Pos.x = 
+			(
+			this->m_Dir == Direction::LEFT&&
+			this->m_Pos.x > (this->m_PosDefault.x - 300)
+			) 
+			?
+			this->m_Pos.x - this->m_vx * deltaTime 
+			:
+			this->m_Pos.x + this->m_vx * deltaTime;
+		this->m_isRemove =
+			(
+				this->m_Dir == Direction::LEFT&&
+
+			)
+			?
+				true
+			:
+			;*/
+		//RIGHT
+		if (this->m_Dir == Direction::RIGHT) {
+			if (this->m_Pos.x <= this->m_PosDefault.x + 300 && this->boomerang_turn_back == false)
+			{
+				this->m_Pos.x += this->m_vx * deltaTime;
+			}
+			else
+			{
+				this->boomerang_turn_back = true;
+				this->m_Pos.x -= this->m_vx * deltaTime;
+				this->m_isRemove = (this->m_Pos.x <= CSimon::GetInstance()->m_Pos.x) ? true : false;
+				if (this->m_isRemove) break;
+			}
+		} 
+		else 
+		{
+			//LEFT
+			if (this->m_Pos.x >= this->m_PosDefault.x - 300 && this->boomerang_turn_back == false)
+			{
+				this->m_Pos.x -= this->m_vx * deltaTime;
+			}
+			else
+			{
+				this->boomerang_turn_back = true;
+				this->m_Pos.x += this->m_vx * deltaTime;
+				this->m_isRemove = (this->m_Pos.x >= CSimon::GetInstance()->m_Pos.x) ? true : false;
+				if (this->m_isRemove) break;
+			}
+		}
+		
+		
+
+		break;
 	default:
 		this->m_vxDefault = this->m_vx = 200;
-		this->m_Pos.x += this->m_vx * deltaTime;
+		this->m_Pos.x =
+			(this->m_Dir == Direction::LEFT) ?
+			this->m_Pos.x - this->m_vx * deltaTime :
+			this->m_Pos.x + this->m_vx * deltaTime;
 		break;
 	}
 }

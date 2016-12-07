@@ -4,16 +4,7 @@
 #include "BaseGameObject.h"
 #include "Animation.h"
 #include "Move.h"
-enum class WEAPON_name
-{
-	Axe = 505,
-	Boomerang = 506,
-	Dagger = 507,
-	FireBomb = 508,
-	Watch = 509,
-	FireBomb2 = 511,
-	None = 0
-};
+#include "Simon.h"
 class CWeapon :
 	public CBaseGameObject,
 	public CAnimation,
@@ -24,8 +15,9 @@ public:
 	CWeapon(WEAPON_name weaponName, Vector2 pos);
 	~CWeapon();
 public:
-	WEAPON_name m_WeaponName;
+	WEAPON_name m_WeaponName = WEAPON_name::None;
 	float m_time_life;
+	bool boomerang_turn_back = false;
 public:
 	void Init();
 	void InitAnimate(int totalFrame, int column, int startFrame, int endFrame);

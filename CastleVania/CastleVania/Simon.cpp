@@ -16,7 +16,7 @@ CSimon::CSimon()
 	this->cane = new CCane();
 	this->cane->m_Pos = this->m_Pos;
 	this->hv = new CHinhChuNhat();
-	this->m_currentWeapon = WEAPON_name::Axe;
+	this->m_currentWeapon = WEAPON_name::Boomerang;
 }
 #pragma region Init
 void CSimon::InitAnimation()

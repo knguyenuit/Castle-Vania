@@ -10,7 +10,7 @@ CGameManager::CGameManager()
 	Init();
 	CLevel::GetInstance()->readFileLevel(MANAGE_LEVEL);
 
-	ChangeLevel(2);
+	ChangeLevel(1);
 
 
 }

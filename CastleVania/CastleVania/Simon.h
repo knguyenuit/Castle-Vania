@@ -11,7 +11,6 @@
 #include "Global.h"
 #include "OnCollision.h"
 #include "HinhChuNhat.h"
-#include "Weapon.h"
 enum SIMON_status
 {
 	NONE = 0,

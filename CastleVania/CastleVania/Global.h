@@ -189,6 +189,16 @@ public:
 	}
 };
 
-
+//weapon enum
+enum class WEAPON_name
+{
+	Axe = 505,
+	Boomerang = 506,
+	Dagger = 507,
+	FireBomb = 508,
+	Watch = 509,
+	FireBomb2 = 511,
+	None = 0
+};
 
 
