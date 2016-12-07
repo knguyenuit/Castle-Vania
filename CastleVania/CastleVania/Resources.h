@@ -16,6 +16,7 @@
 #define GROUND "..\\Resources\\image\\Light\\0.png"
 #define GROUND1 "..\\Resources\\image\\601.png"
 #define TEST "..\\Resources\\image\\fireball.png"
+#define BRICK "..\\Resources\\image\\Light\\2.png"
 
 //item
 #define ITEM_LARGE_HEART "..\\Resources\\image\\item\\LargeHeart.png"

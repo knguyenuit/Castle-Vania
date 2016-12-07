@@ -41,7 +41,7 @@ void CSimon::InitMove()
 	this->m_a = -900;
 	this->m_aDefault = this->m_a;
 	this->m_ax = 0;
-	this->m_Pos = Vector2(200, 60);
+	this->m_Pos = Vector2(300, 94);
 	this->m_Width = 60;
 	this->m_Height = 68;
 	this->m_isJumping = false;
@@ -77,12 +77,12 @@ void CSimon::Gravity(float deltaTime)
 
 void CSimon::Jump(float deltaTime)
 {
-	this->m_currentFrame = 0;
+	/*this->m_currentFrame = 0;
 	isAttacking = false;
 	this->m_Height = 68;
 	this->m_Pos.y = 60;
 	m_startFrame = 0;
-	m_endFrame = 0;
+	m_endFrame = 0;*/
 	
 }
 
@@ -95,7 +95,7 @@ void CSimon::UpdateStatus(float deltaTime,SIMON_status simon_status)
 			this->m_currentFrame = 0;
 			isAttacking = false;
 			this->m_Height = 68;
-			this->m_Pos.y = 60;
+			this->m_Pos.y = 94;
 			m_startFrame = 0;
 			m_endFrame = 0;
 		}
@@ -105,7 +105,7 @@ void CSimon::UpdateStatus(float deltaTime,SIMON_status simon_status)
 			m_startFrame = 4;
 			m_endFrame = 4;
 			this->m_Height = 50;
-			this->m_Pos.y = 51;
+			this->m_Pos.y = 85;
 			isAttacking = false;
 		}
 		this->cane->isChangeSimonStatus = false;
@@ -117,7 +117,7 @@ void CSimon::UpdateStatus(float deltaTime,SIMON_status simon_status)
 	case IDLE:
 		isAttacking = false;
 		this->m_Height = 68;
-		this->m_Pos.y = 60;
+		this->m_Pos.y = 94;
 		m_startFrame = 0;
 		m_endFrame = 0;
 		
@@ -178,7 +178,7 @@ void CSimon::UpdateStatus(float deltaTime,SIMON_status simon_status)
 			this->m_startFrame = 4;
 			this->m_endFrame = 4;
 			this->m_Height = 50;
-			this->m_Pos.y = 51;
+			this->m_Pos.y = 85;
 		}
 		isSit = true;
 		
@@ -201,9 +201,9 @@ void CSimon::UpdateStatus(float deltaTime,SIMON_status simon_status)
 			{
 				this->m_startFrame = 15;
 				this->m_endFrame = 17;
-				this->cane->m_Pos.y = 51;
+				this->cane->m_Pos.y = 85;
 				this->m_Height = 66;
-				this->m_Pos.y = 42;
+				this->m_Pos.y = 76;
 				this->cane->m_checkActive = true;
 			}
 			else

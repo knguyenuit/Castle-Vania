@@ -91,6 +91,8 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
 	case 603://Cuc gach an tien binh thuong
 		return new CGround(pos);
 		break;
+	case 702:
+		return new CBrick(pos);
 
 	default:
 		break;
@@ -134,6 +136,7 @@ std::hash_map<int, CBaseGameObject*> CLoadObject::LoadGameObjectInfo(const std::
 			}
 
 		}
+
 	}
 	return listInfo;
 }
@@ -163,7 +166,7 @@ void CLoadObject::readFile(const std::string &filePath)
 				float Height = atoi(item.at(5).c_str());
 				Box b = Box(PosX, PosY, Width, Height);
 				this->listBox.insert(Pair(iDObjectInMap, b));
-				if (idItem == 601 || idItem == 602 || idItem == 603)
+				if (idItem == 601 || idItem == 602 || idItem == 603 || idItem == 702)
 				{
 					Vector2 pos = Vector2(PosX, PosY);
 					gameObj = this->CreateObject(idItem, pos);
@@ -172,6 +175,7 @@ void CLoadObject::readFile(const std::string &filePath)
 
 			}
 		}
+
 	}
 	else
 	{

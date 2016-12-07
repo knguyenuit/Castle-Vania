@@ -4,6 +4,7 @@
 #include "Ground.h"
 #include "Singleton.h"
 #include "Collision.h"
+#include "Brick.h"
 
 
 

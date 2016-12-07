@@ -172,6 +172,7 @@
     <ClInclude Include="WeaponManage.h">
       <Filter>Framework\Game Object\Weapon</Filter>
     </ClInclude>
+    <ClInclude Include="Brick.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture.cpp">
@@ -276,5 +277,6 @@
     <ClCompile Include="WeaponManage.cpp">
       <Filter>Framework\Game Object\Weapon</Filter>
     </ClCompile>
+    <ClCompile Include="Brick.cpp" />
   </ItemGroup>
 </Project>
