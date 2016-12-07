@@ -36,11 +36,18 @@ void CWeapon::Init() {
 	case WEAPON_name::Axe:
 		this->m_Width = 30;
 		this->m_Height = 28;
+		//move
+		this->m_vxDefault = this->m_vx = 250;
+		this->m_vyDefault = this->m_vy = 400;
+		this->m_a = 1000.0f;
+		//animate
 		this->InitAnimate(4, 4, 0, 3);
 		break;
 	case WEAPON_name::Boomerang:
 		this->m_Width = 26;
 		this->m_Height = 28;
+		//move
+
 		//Init Animation
 		this->InitAnimate(3, 3, 0, 2);
 		break;
@@ -65,7 +72,7 @@ void CWeapon::Update(float deltaTime)
 	this->MoveUpdate(deltaTime);
 	this->ChangeFrame(deltaTime);
 	this->m_time_life += deltaTime;
-	if (this->m_time_life>=10.0f)
+	if (this->m_time_life>=2.0f)
 	{
 		this->m_isRemove = true;
 	}
@@ -77,7 +84,6 @@ void CWeapon::MoveUpdate(float deltaTime)
 	switch (this->m_WeaponName)
 	{
 	case WEAPON_name::Dagger:
-		this->m_vxDefault = this->m_vx = 200;
 		this->m_Pos.x =
 			(this->m_Dir == Direction::LEFT) ?
 			this->m_Pos.x - this->m_vx * deltaTime :
@@ -85,32 +91,20 @@ void CWeapon::MoveUpdate(float deltaTime)
 		break;
 	case WEAPON_name::Axe:
 
-		this->m_Pos.x =
-			(this->m_Dir == Direction::LEFT) ?
-			this->m_Pos.x - this->m_vx * deltaTime :
-			this->m_Pos.x + this->m_vx * deltaTime;
+		if (this->m_Dir==Direction::LEFT)
+		{
+			this->m_vx = -this->m_vxDefault;
+		}
+		else
+		{
+			this->m_vx = this->m_vxDefault;
+		}
+		this->m_Pos.x += this->m_vx * deltaTime;
 
+		this->m_vy -= this->m_a * deltaTime;
+		this->m_Pos.y += this->m_vy * deltaTime;
 		break;
 	case WEAPON_name::Boomerang:
-		/*this->m_Pos.x = 
-			(
-			this->m_Dir == Direction::LEFT&&
-			this->m_Pos.x > (this->m_PosDefault.x - 300)
-			) 
-			?
-			this->m_Pos.x - this->m_vx * deltaTime 
-			:
-			this->m_Pos.x + this->m_vx * deltaTime;
-		this->m_isRemove =
-			(
-				this->m_Dir == Direction::LEFT&&
-
-			)
-			?
-				true
-			:
-			;*/
-		//RIGHT
 		if (this->m_Dir == Direction::RIGHT) {
 			if (this->m_Pos.x <= this->m_PosDefault.x + 300 && this->boomerang_turn_back == false)
 			{
@@ -139,8 +133,6 @@ void CWeapon::MoveUpdate(float deltaTime)
 				if (this->m_isRemove) break;
 			}
 		}
-		
-		
 
 		break;
 	default:

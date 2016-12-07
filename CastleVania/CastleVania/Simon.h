@@ -11,6 +11,8 @@
 #include "Global.h"
 #include "OnCollision.h"
 #include "HinhChuNhat.h"
+#include "Camera.h"
+#include "LoadObject.h"
 enum SIMON_status
 {
 	NONE = 0,

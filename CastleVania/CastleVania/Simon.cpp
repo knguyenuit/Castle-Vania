@@ -1,7 +1,4 @@
 ﻿#include "Simon.h"
-#include "Camera.h"
-#include "LoadObject.h"
-#include "ItemManage.h"
 #define MAX_HIGH 400
 
 CSimon::CSimon()
@@ -9,14 +6,14 @@ CSimon::CSimon()
 	this->m_Id = 1;
 	m_hpSimon = 16;
 	this->isInput = false;
-	this->m_Dir = Direction::LEFT;
+	this->m_Dir = Direction::RIGHT;
 	this->simon_Status = IDLE;
 	this->InitMove();
 	this->InitAnimation();
 	this->cane = new CCane();
 	this->cane->m_Pos = this->m_Pos;
 	this->hv = new CHinhChuNhat();
-	this->m_currentWeapon = WEAPON_name::Boomerang;
+	this->m_currentWeapon = WEAPON_name::Axe;
 }
 #pragma region Init
 void CSimon::InitAnimation()
