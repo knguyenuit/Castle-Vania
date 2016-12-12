@@ -7,7 +7,7 @@ CWeapon::CWeapon()
 	this->m_WeaponName = WEAPON_name::None;
 	this->Init();
 }
-CWeapon::CWeapon(WEAPON_name weaponName,Vector2 pos)
+CWeapon::CWeapon(WEAPON_name weaponName, Vector2 pos)
 {
 	this->m_WeaponName = weaponName;
 	this->m_PosDefault = this->m_Pos = pos;
@@ -56,31 +56,35 @@ void CWeapon::Init() {
 		this->m_Height = 18;
 		this->InitAnimate(1, 1, 0, 0);
 		break;
-	case WEAPON_name::FireBomb2:
+	case WEAPON_name::FireBomb:
 		this->m_Width = 32;
 		this->m_Height = 26;
+		//move
+		this->m_vxDefault = this->m_vx = 250;
+		this->m_vyDefault = this->m_vy = 400;
+		this->m_a = 1000.0f;
 		this->InitAnimate(1, 1, 0, 0);
 		break;
 	default:
 		break;
 	}
-	
-	
+
+
 }
 void CWeapon::Update(float deltaTime)
 {
 	this->MoveUpdate(deltaTime);
 	this->ChangeFrame(deltaTime);
 	this->m_time_life += deltaTime;
-	if (this->m_time_life>=2.0f)
+	if (this->m_time_life >= 10.0f)
 	{
 		this->m_isRemove = true;
 	}
-	
+
 }
-void CWeapon::MoveUpdate(float deltaTime) 
+void CWeapon::MoveUpdate(float deltaTime)
 {
-	
+
 	switch (this->m_WeaponName)
 	{
 	case WEAPON_name::Dagger:
@@ -89,9 +93,10 @@ void CWeapon::MoveUpdate(float deltaTime)
 			this->m_Pos.x - this->m_vx * deltaTime :
 			this->m_Pos.x + this->m_vx * deltaTime;
 		break;
+	case WEAPON_name::FireBomb:
 	case WEAPON_name::Axe:
 
-		if (this->m_Dir==Direction::LEFT)
+		if (this->m_Dir == Direction::LEFT)
 		{
 			this->m_vx = -this->m_vxDefault;
 		}
@@ -114,11 +119,15 @@ void CWeapon::MoveUpdate(float deltaTime)
 			{
 				this->boomerang_turn_back = true;
 				this->m_Pos.x -= this->m_vx * deltaTime;
-				this->m_isRemove = (this->m_Pos.x <= CSimon::GetInstance()->m_Pos.x) ? true : false;
+				this->m_isRemove =
+					(
+						CCollision::GetInstance()->AABBCheck(this->GetBox(), CSimon::GetInstance()->GetBox()) ||
+						this->m_Pos.x <= CCamera::GetInstance()->m_pos.x
+						) ? true : false;
 				if (this->m_isRemove) break;
 			}
-		} 
-		else 
+		}
+		else
 		{
 			//LEFT
 			if (this->m_Pos.x >= this->m_PosDefault.x - 300 && this->boomerang_turn_back == false)
@@ -129,7 +138,11 @@ void CWeapon::MoveUpdate(float deltaTime)
 			{
 				this->boomerang_turn_back = true;
 				this->m_Pos.x += this->m_vx * deltaTime;
-				this->m_isRemove = (this->m_Pos.x >= CSimon::GetInstance()->m_Pos.x) ? true : false;
+				this->m_isRemove =
+					(
+						CCollision::GetInstance()->AABBCheck(this->GetBox(), CSimon::GetInstance()->GetBox()) ||
+						this->m_Pos.x >= (CCamera::GetInstance()->m_pos.x + 600)
+						) ? true : false;
 				if (this->m_isRemove) break;
 			}
 		}

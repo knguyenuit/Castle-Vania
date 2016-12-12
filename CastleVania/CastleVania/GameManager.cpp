@@ -51,6 +51,7 @@ void CGameManager::Draw()
 	if (CDevice::s_d3ddv->BeginScene())
 	{
 		CDevice::s_spriteHandle->Begin(D3DXSPRITE_ALPHABLEND);
+
 		CLoadBackground::GetInstance()->Draw();
 		CPoolObject::GetInstance()->Draw();
 
@@ -71,7 +72,7 @@ void CGameManager::ChangeLevel(int lv)
 			CLoadObject::GetInstance()->Clear();
 		}
 		CLoadBackground::GetInstance()->LoadImageFromFile(m_currentLevel->fileImageBackgroud);
-		CLoadObject::GetInstance()->readFile(m_currentLevel->fileObject);
-		CLoadBackground::GetInstance()->LoadBackgroundFromFile(m_currentLevel->fileBackground);
+		CLoadObject::GetInstance()->LoadReSourceFromFile(m_currentLevel->fileObject, m_currentLevel->fileObjectQuadtree);
+		CLoadBackground::GetInstance()->LoadBackgroundFromFile(m_currentLevel->fileBackground, m_currentLevel->fileBackgroundQuadtree);
 	}
 }

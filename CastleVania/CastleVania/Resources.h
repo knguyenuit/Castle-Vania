@@ -37,18 +37,22 @@
 #define WEAPON_AXE "..\\Resources\\image\\weapon\\Axe.png"
 #define WEAPON_BOOMERANG "..\\Resources\\image\\weapon\\Boomerang.png"
 #define WEAPON_DAGGER "..\\Resources\\image\\weapon\\Dagger.png"
-#define WEAPON_FIREBOMB2 "..\\Resources\\image\\weapon\\FireBomb2.png"
+#define WEAPON_FIREBOMB "..\\Resources\\image\\weapon\\FireBomb2.png"
 
 //Enemy
 #define ENEMY_ZOMBIE "..\\Resources\\image\\enemy\\Zombie.png"
 #define ENEMY_BLACKLEOPARD "..\\Resources\\image\\enemy\\BlackLeopard.png"
 #define ENEMY_VAMPIREBAT "..\\Resources\\image\\enemy\\VampireBat.png"
 #define ENEMY_AXEMAN "..\\Resources\\image\\enemy\\AxeMan.png"
+//BOSS
+#define BOSS_VAMPIREBAT "..\\Resources\\image\\boss\\0.png"
 
 //Banner
 #define BANNER "..\\Resources\\image\\Banner\\fullbanner.png"
 #define SIMON_HP "..\\Resources\\image\\Banner\\heathplayer.png"
 #define ENEMY_HP "..\\Resources\\image\\Banner\\heathenemy.png"
+
+
 
 //list object
 #define FILE_LIST_OBJECT "..\\Resources\\Object\\lv1GO.txt"
@@ -58,5 +62,13 @@
 
 //manager level
 #define MANAGE_LEVEL "..\\Resources\\Level\\ManageLevel.txt"
+
+//Quadtree background
+#define LIST_QTBG_LV1 "..\\Resources\\Map\\lv1QTBG.txt"
+#define LIST_QTBG_LV2 "..\\Resources\\Map\\lv2QTBG.txt"
+
+//quadtree object
+#define LIST_QTOBJ_lv1 "..\\Resources\\Object\\lv1QTGO.txt"
+#define LIST_QTOBJ_lv2 "..\\Resources\\Object\\lv2QTGO.txt"
 
 #endif // !__CRESOURCES_H__

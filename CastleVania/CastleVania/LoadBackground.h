@@ -5,9 +5,10 @@
 #include "Singleton.h"
 #include "Texture.h"
 #include "Sprite.h"
-
+#include "QuadTree.h"
 #include "Global.h"
 #include "FileUtil.h"
+#include "Resources.h"
 
 
 #define FILE_MAP "..\\Resources\\Map\\lv1BG.txt"
@@ -39,7 +40,9 @@ public:
 
 	CTexture* m_imageCurr; //Lay texture trong bo dem, can dung lop managertexture
 	CSprite* m_drawImg; //Dung de ve anh len man hinh, can dung lop managerSprite
+	CQuadTree* m_quadTree; // Luu quadtree hien tai
 
+	std::hash_map<int, std::string>* m_listQuadTree; //Su dung de luu danh sach quadtree
 	void LoadImageFromFile(std::string filePath);
 	bool InitMatrix();
 	void LoadMatrix(std::string filePath);
@@ -49,7 +52,7 @@ public:
 	std::vector<BackGroundItem> listBackground;
 
 public:
-	void LoadBackgroundFromFile(std::string filePath);
+	void LoadBackgroundFromFile(std::string filePath, std::string fileQuadtreeBG);
 	void Draw();
 };
 #endif

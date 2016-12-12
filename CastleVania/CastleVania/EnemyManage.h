@@ -5,10 +5,11 @@
 #include "Zombie.h"
 #include "BlackLeopard.h"
 #include "VampireBat.h"
+#include "BossVampireBat.h"
 #include "Resources.h"
 #include "OnCollision.h"
 #include "Simon.h"
-class CEnemyManage : public CSingleton<CEnemyManage> 
+class CEnemyManage : public CSingleton<CEnemyManage>
 {
 	friend class CSingleton<CEnemyManage>;
 public:

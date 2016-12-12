@@ -20,7 +20,7 @@ enum ENEMY_type
 	Ghost = 210,
 	FireBall = 211,
 	Bullet = 212,
-	BossLevel1 = 401,
+	BossVampireBat = 401,
 	BossLevel2 = 402
 };
 
@@ -28,7 +28,8 @@ enum class ENEMY_state {
 	IDLE = 1,
 	MOVE = 2,
 	JUMP = 3,
-	FREE  = 4
+	FREE = 4,
+	ATTACK = 5
 };
 
 class CEnemy : public CBaseGameObject, public CMove, public CAnimation
@@ -46,6 +47,7 @@ public:
 	void Init();
 	void InitAnimation();
 	void Update(float deltaTime);
+	void MoveTo(Vector2 point);
 	virtual void MoveUpdate(float deltaTime);
 	RECT* GetRectRS();
 	~CEnemy();

@@ -1,6 +1,6 @@
 #ifndef __CMOVE_H__
 #define __CMOVE_H__
-
+#include "BaseGameObject.h"
 class CMove
 {
 public:

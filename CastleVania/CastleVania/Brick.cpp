@@ -28,6 +28,7 @@ void CBrick::Init()
 	this->m_Id = 702;
 	this->m_Width = 32;
 	this->m_Height = 32;
+	m_isLive = true;
 }
 
 RECT * CBrick::GetRectRS()

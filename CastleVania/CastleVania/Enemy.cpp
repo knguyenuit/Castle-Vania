@@ -17,13 +17,13 @@ void CEnemy::Init()
 
 void CEnemy::InitAnimation()
 {
-	
+
 }
 
 void CEnemy::Update(float deltaTime)
 {
 	this->ChangeFrame(deltaTime);
-	if (this->m_Pos.x < CCamera::GetInstance()->m_pos.x+600)
+	if (this->m_Pos.x < CCamera::GetInstance()->m_pos.x + 600)
 	{
 		if (this->m_State == ENEMY_state::IDLE)
 		{
@@ -42,13 +42,18 @@ void CEnemy::Update(float deltaTime)
 				this->m_isRemove = true;
 			}
 		}
-		
+
 	}
 	if (this->m_State != ENEMY_state::IDLE)
 	{
 		this->MoveUpdate(deltaTime);
 	}
-	
+
+}
+
+void CEnemy::MoveTo(Vector2 point)
+{
+
 }
 
 void CEnemy::MoveUpdate(float deltaTime)
@@ -58,19 +63,19 @@ void CEnemy::MoveUpdate(float deltaTime)
 	//	this->m_IsActive = false;
 	//	MessageBox(NULL, "A", "b", true);
 	//}
-	
+
 	switch (this->m_State)
 	{
 	case ENEMY_state::MOVE:
 		if (this->m_Dir = LEFT)
 		{
 			this->m_Pos.x -= m_vx * deltaTime;
-		} 
-		else 
+		}
+		else
 		{
 			this->m_Pos.x += m_vx * deltaTime;
 		}
-		
+
 		break;
 	case ENEMY_state::FREE:
 		this->m_Pos.y -= m_vy*deltaTime;
@@ -78,7 +83,7 @@ void CEnemy::MoveUpdate(float deltaTime)
 	default:
 		break;
 	}
-	
+
 }
 void CEnemy::changeState(ENEMY_state state)
 {

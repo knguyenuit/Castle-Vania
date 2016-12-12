@@ -26,9 +26,9 @@ void CCamera::Update(float x, float y)
 RECT*& CCamera::GetBound()
 {
 	RECT* rect = new RECT();
-	rect->top = m_pos.y;//__SCREEN_HEIGHT;
+	rect->top = m_pos.y - 240;//__SCREEN_HEIGHT;
 	rect->left = m_pos.x;
-	rect->right = rect->left;//+ __SCREEN_WIDTH;
+	rect->right = rect->left + 600;// +__SCREEN_WIDTH;
 	rect->bottom = m_pos.y;
 	return rect;
 }

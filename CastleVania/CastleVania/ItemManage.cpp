@@ -41,7 +41,7 @@ void CItemManage::CreateItem(ITEM_name itemName, Vector2 pos)
 
 void CItemManage::CreateRandomItem(Vector2 pos)
 {
-	ITEM_name item_name_arr[10] = { 
+	ITEM_name item_name_arr[10] = {
 		ITEM_name::SmallHeart,
 		ITEM_name::LargeHeart,
 		ITEM_name::Axe,
@@ -52,9 +52,9 @@ void CItemManage::CreateRandomItem(Vector2 pos)
 		ITEM_name::Cross,
 		ITEM_name::MoneyBag,
 		ITEM_name::MorningStar
-		 };
+	};
 	int item_index = rand() % 10;
-	this->CreateItem(item_name_arr[item_index], Vector2(pos.x,pos.y));
+	this->CreateItem(item_name_arr[item_index], Vector2(pos.x, pos.y));
 }
 
 void CItemManage::Draw()
@@ -95,7 +95,7 @@ void CItemManage::DrawItem(CItem * obj)
 	case ITEM_name::MorningStar:
 		texture->LoadImageFromFile(ITEM_MORNING_STAR, D3DCOLOR_XRGB(255, 255, 255));
 		break;
-	//item weapon
+		//item weapon
 	case ITEM_name::Dagger:
 		texture->LoadImageFromFile(ITEM_DAGGER, D3DCOLOR_XRGB(255, 255, 255));
 		break;
@@ -123,7 +123,7 @@ void CItemManage::DrawItem(CItem * obj)
 
 void CItemManage::OnSimonCollision(float deltaTime)
 {
-	if (this->m_ListItem.size()!=0)
+	if (this->m_ListItem.size() != 0)
 	{
 		CSimon* simon = CSimon::GetInstance();
 		for (std::list<CItem*>::iterator it = this->m_ListItem.begin();
@@ -133,45 +133,45 @@ void CItemManage::OnSimonCollision(float deltaTime)
 			CItem* item = *it;
 			/*if (item->m_Id == 301 || item->m_Id == 302 || item->m_Id == 310 || item->m_Id == 312)
 			{*/
-				/*CDirection normalX;
-				CDirection normalY;
-				float timeCollision;
-				timeCollision = COnCollision::GetInstance()->SweepAABB(simon, item, normalX, normalX, deltaTime);
-				if (normalX == CDirection::ON_LEFT || normalX == CDirection::ON_RIGHT)
-				{*/
-				if (COnCollision::GetInstance()->AABBCheck(simon->GetBox(),item->GetBox()))
+			/*CDirection normalX;
+			CDirection normalY;
+			float timeCollision;
+			timeCollision = COnCollision::GetInstance()->SweepAABB(simon, item, normalX, normalX, deltaTime);
+			if (normalX == CDirection::ON_LEFT || normalX == CDirection::ON_RIGHT)
+			{*/
+			if (COnCollision::GetInstance()->AABBCheck(simon->GetBox(), item->GetBox()))
+			{
+				switch (item->itemName)
 				{
-					switch (item->itemName)
-					{
-					case ITEM_name::Axe:
-						simon->m_currentWeapon = WEAPON_name::Axe;
-						break;
-					case ITEM_name::Boomerang:
-						simon->m_currentWeapon = WEAPON_name::Boomerang;
-						break;
-					case ITEM_name::FireBomb:
-						simon->m_currentWeapon = WEAPON_name::FireBomb2;
-						break;
-					case ITEM_name::Dagger:
-						simon->m_currentWeapon = WEAPON_name::Dagger;
-						break;
-					default:
-						break;
-					}
-					this->m_ListItem.erase(it);//xoa item khoi list khi cham vao simon
-					if (simon->cane->m_State == caneState::default)
-					{
-						simon->cane->updateState(state2);
-					}
-					else
-					{
-						if (simon->cane->m_State == state2)
-						{
-							simon->cane->updateState(state3);
-						}
-					}
+				case ITEM_name::Axe:
+					simon->m_currentWeapon = WEAPON_name::Axe;
+					break;
+				case ITEM_name::Boomerang:
+					simon->m_currentWeapon = WEAPON_name::Boomerang;
+					break;
+				case ITEM_name::FireBomb:
+					simon->m_currentWeapon = WEAPON_name::FireBomb2;
+					break;
+				case ITEM_name::Dagger:
+					simon->m_currentWeapon = WEAPON_name::Dagger;
+					break;
+				default:
 					break;
 				}
+				this->m_ListItem.erase(it);//xoa item khoi list khi cham vao simon
+				if (simon->cane->m_State == caneState::default)
+				{
+					simon->cane->updateState(state2);
+				}
+				else
+				{
+					if (simon->cane->m_State == state2)
+					{
+						simon->cane->updateState(state3);
+					}
+				}
+				break;
+			}
 			/*}*/
 		}
 	}

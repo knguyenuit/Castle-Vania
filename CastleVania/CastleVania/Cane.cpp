@@ -124,6 +124,7 @@ Box CCane::GetBox()
 	return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width - 80, this->m_Height);
 }
 
+
 RECT * CCane::GetBound()
 {
 	return nullptr;

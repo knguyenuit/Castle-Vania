@@ -9,13 +9,17 @@ struct Level
 	std::string fileImageBackgroud;
 	std::string fileBackground;
 	std::string fileObject;
+	std::string fileBackgroundQuadtree;
+	std::string fileObjectQuadtree;
 
-	Level(int _level, std::string _fileImageBackgroud, std::string _fileBackground, std::string _fileObject)
+	Level(int _level, std::string _fileImageBackgroud, std::string _fileBackground, std::string _fileObject, std::string _fileBackgroundQuadtree, std::string _fileObjectQuadtree)
 	{
 		fileImageBackgroud = _fileImageBackgroud;
 		level = _level;
 		fileBackground = _fileBackground;
 		fileObject = _fileObject;
+		fileBackgroundQuadtree = _fileBackgroundQuadtree;
+		fileObjectQuadtree = _fileObjectQuadtree;
 	}
 	Level()
 	{
@@ -23,6 +27,8 @@ struct Level
 		fileImageBackgroud = "";
 		fileBackground = "";
 		fileObject = "";
+		fileBackgroundQuadtree = "";
+		fileObjectQuadtree = "";
 	}
 };
 class CLevel : public CSingleton<CLevel>

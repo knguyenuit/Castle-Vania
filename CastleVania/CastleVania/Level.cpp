@@ -31,8 +31,9 @@ void CLevel::readFileLevel(const std::string & filePath)
 				std::string fileImageBackgroud = item.at(1).c_str();
 				std::string fileBackground = item.at(2).c_str();
 				std::string fileObject = item.at(3).c_str();
-
-				Level* lv = new Level(idLevel, fileImageBackgroud, fileBackground, fileObject);
+				std::string fileBackgroundQuadtree = item.at(4).c_str();
+				std::string fileObjectQuadtree = item.at(5).c_str();
+				Level* lv = new Level(idLevel, fileImageBackgroud, fileBackground, fileObject, fileBackgroundQuadtree, fileObjectQuadtree);
 				this->listLevel.insert(Pair(idLevel, lv));
 
 			}

@@ -149,6 +149,7 @@
     <ClInclude Include="Banner.h" />
     <ClInclude Include="BaseGameObject.h" />
     <ClInclude Include="BlackLeopard.h" />
+    <ClInclude Include="BossVampireBat.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cane.h" />
@@ -174,6 +175,9 @@
     <ClInclude Include="Move.h" />
     <ClInclude Include="OnCollision.h" />
     <ClInclude Include="PoolObject.h" />
+    <ClInclude Include="QuadNode.h" />
+    <ClInclude Include="QuadObject.h" />
+    <ClInclude Include="QuadTree.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="Simon.h" />
     <ClInclude Include="Singleton.h" />
@@ -190,6 +194,7 @@
     <ClCompile Include="Banner.cpp" />
     <ClCompile Include="BaseGameObject.cpp" />
     <ClCompile Include="BlackLeopard.cpp" />
+    <ClCompile Include="BossVampireBat.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cane.cpp" />
@@ -215,6 +220,9 @@
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="OnCollision.cpp" />
     <ClCompile Include="PoolObject.cpp" />
+    <ClCompile Include="QuadNode.cpp" />
+    <ClCompile Include="QuadObject.cpp" />
+    <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="Simon.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Texture.cpp" />

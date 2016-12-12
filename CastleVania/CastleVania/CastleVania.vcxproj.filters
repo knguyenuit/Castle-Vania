@@ -64,6 +64,12 @@
     <Filter Include="Framework\Game Object\Weapon">
       <UniqueIdentifier>{4701b3e6-7852-4102-8069-2900fe8599eb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Quadtree">
+      <UniqueIdentifier>{eca04a75-49ce-4eba-9959-e10f3340fc54}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\Enemy\Boss VampireBat">
+      <UniqueIdentifier>{7de82a57-f6eb-411d-a0f5-6f63b766b4a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global.h">
@@ -172,7 +178,21 @@
     <ClInclude Include="WeaponManage.h">
       <Filter>Framework\Game Object\Weapon</Filter>
     </ClInclude>
-    <ClInclude Include="Brick.h" />
+    <ClInclude Include="QuadObject.h">
+      <Filter>Framework\Quadtree</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>Framework\Game Object</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadNode.h">
+      <Filter>Framework\Quadtree</Filter>
+    </ClInclude>
+    <ClInclude Include="QuadTree.h">
+      <Filter>Framework\Quadtree</Filter>
+    </ClInclude>
+    <ClInclude Include="BossVampireBat.h">
+      <Filter>Framework\Game Object\Enemy\Boss VampireBat</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture.cpp">
@@ -277,6 +297,20 @@
     <ClCompile Include="WeaponManage.cpp">
       <Filter>Framework\Game Object\Weapon</Filter>
     </ClCompile>
-    <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="QuadObject.cpp">
+      <Filter>Framework\Quadtree</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>Framework\Game Object</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadNode.cpp">
+      <Filter>Framework\Quadtree</Filter>
+    </ClCompile>
+    <ClCompile Include="QuadTree.cpp">
+      <Filter>Framework\Quadtree</Filter>
+    </ClCompile>
+    <ClCompile Include="BossVampireBat.cpp">
+      <Filter>Framework\Game Object\Enemy\Boss VampireBat</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

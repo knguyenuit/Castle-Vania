@@ -8,8 +8,8 @@ CLoadBackground::CLoadBackground()
 	this->m_drawImg = new CSprite();
 	this->m_cols = 0;
 	this->m_rows = 0;
-
-
+	this->m_listQuadTree = new std::hash_map<int, std::string>();
+	this->m_quadTree = new CQuadTree();
 
 
 
@@ -25,10 +25,10 @@ CLoadBackground::~CLoadBackground()
 }
 void CLoadBackground::Draw()
 {
+
 #pragma region KHONG CO QUADTREE
 
-	RECT *rectRS = new RECT();
-	D3DXVECTOR3 pos;
+	
 
 	//for (int i = 0; i < this->m_rows; i++)
 	//{
@@ -46,6 +46,8 @@ void CLoadBackground::Draw()
 	//		this->m_drawImg->Draw(this->m_imageCurr, rectRS, pos, D3DCOLOR_XRGB(255,255,255), false);
 	//	}
 	//}
+	/*RECT *rectRS = new RECT();
+	D3DXVECTOR3 pos;
 	for (std::vector<BackGroundItem>::iterator it = this->listBackground.begin();
 		it != this->listBackground.end();
 		++it)
@@ -59,19 +61,62 @@ void CLoadBackground::Draw()
 		pos.z = 0;
 		pos = CCamera::GetInstance()->GetPointTransform(pos.x, pos.y);
 		this->m_drawImg->Draw(this->m_imageCurr, rectRS, pos, D3DCOLOR_XRGB(255, 255, 255), true);
-	}
+	}*/
 
 #pragma endregion
 
+#pragma region CO QUADTREE
+	RECT* rectRS = new RECT();
+	D3DXVECTOR3 pos;
+	if (!this->listBackground.empty())
+	{
+		std::vector<int> listIDObj;
+		this->m_quadTree->GetListObjectOnScreen(CCamera::GetInstance()->GetBound(),
+			this->m_quadTree->GetRoot(),
+			listIDObj);
+		if (!listIDObj.empty())
+		{
+			int size = listIDObj.size();
+			//for (std::vector<BackGroundItem>::iterator it = this->listBackground.begin();
+			//	it != this->listBackground.end();
+			//	++it)
+			//{
+			for (int i = 0; i < size; i++)
+			{
+				int id = listIDObj[i];
+				BackGroundItem bgItem = listBackground[id];
+				rectRS->left = bgItem._posTitleSet.x;
+				rectRS->right = rectRS->left + bgItem._widthTitle;
+				rectRS->top = bgItem._posTitleSet.y;
+				rectRS->bottom = rectRS->top + bgItem._heighTitle;
+				pos.x = bgItem._pos.x;
+				pos.y = bgItem._pos.y;
+				pos.z = 0;
+				pos = CCamera::GetInstance()->GetPointTransform(pos.x, pos.y);
+				this->m_drawImg->Draw(this->m_imageCurr, rectRS, pos, D3DCOLOR_XRGB(255, 255, 255), true);
+				/*if (it->_id == listIDObj.at(i))
+				{
+;
+					}*/
+			}
+			//}
+			}
+		}
+#pragma endregion
+	}
 
-}
-void CLoadBackground::LoadBackgroundFromFile(std::string filePath)
+
+
+
+
+
+void CLoadBackground::LoadBackgroundFromFile(std::string filePath, std::string fileQuadtreeBG)
 {
 	//LoadMatrix(FILE_MAP);
 	LoadMatrixFromFile(filePath);
 	//this->m_tileCols = this->m_imageCurr->GetImageWidth() / this->m_tileWidth;
 	//this->m_tileRows = this->m_imageCurr->GetImageHeight() / this->m_tileHeight;
-
+	this->m_quadTree->ReBuildQuadTree(fileQuadtreeBG);
 }
 void CLoadBackground::LoadImageFromFile(std::string filePath)
 {
@@ -141,7 +186,11 @@ void CLoadBackground::Clear()
 {
 	if (this->m_matrix)
 		this->DeleteMatrix();
-
+	if (this->m_quadTree)
+	{
+		this->m_quadTree->Clear();
+		this->m_quadTree = nullptr;
+	}
 	if (this->m_imageCurr)
 	{
 		delete this->m_imageCurr;

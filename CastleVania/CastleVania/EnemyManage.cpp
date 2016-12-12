@@ -6,6 +6,7 @@ CEnemyManage::CEnemyManage()
 	CreateEnemy(BlackLeopard, Vector2(1000, 200));
 	CreateEnemy(Zombie, Vector2(1100, 60));
 	CreateEnemy(VampireBat, Vector2(1200, 80));
+	CreateEnemy(BossVampireBat, Vector2(600, 300));
 }
 CEnemyManage::~CEnemyManage()
 {
@@ -31,7 +32,7 @@ void CEnemyManage::Update(float deltaTime)
 			if (enemy->m_isRemove)
 			{
 				it = this->m_ListEnemy.erase(it);
-					break;
+				break;
 
 			}
 		}
@@ -47,53 +48,53 @@ void CEnemyManage::OnCaneCollision()
 			++it)
 		{
 			CEnemy* enemy = *it;
-				if (cane->getCurrentFrame() == 2 ||
-					cane->getCurrentFrame() == 6 ||
-					cane->getCurrentFrame() == 10)
+			if (cane->getCurrentFrame() == 2 ||
+				cane->getCurrentFrame() == 6 ||
+				cane->getCurrentFrame() == 10)
+			{
+				if (CCollision::GetInstance()->AABBCheck(cane->GetBox(), enemy->GetBox()))
 				{
-					if (CCollision::GetInstance()->AABBCheck(cane->GetBox(), enemy->GetBox()))
+					enemy->m_isRemove = true;
+					CItemManage::GetInstance()->CreateRandomItem(enemy->GetPos());
+					switch (enemy->enemyType)
 					{
-						enemy->m_isRemove = true;
-						CItemManage::GetInstance()->CreateRandomItem(enemy->GetPos());
-						switch (enemy->enemyType)
-						{
-						case ENEMY_type::Zombie:
+					case ENEMY_type::Zombie:
 
-							break;
-						case ENEMY_type::BlackLeopard:
-							enemy->changeState(ENEMY_state::FREE);
-							break;
-						default:
-							break;
-						}
+						break;
+					case ENEMY_type::BlackLeopard:
+						enemy->changeState(ENEMY_state::FREE);
+						break;
+					default:
+						break;
 					}
 				}
+			}
 		}
 	}
-		
+
 }
 void CEnemyManage::OnSimonCollision(float deltaTime)
 {
 	CSimon* simon = CSimon::GetInstance();
 	if (simon->isCollisionEnemy)
 	{
-		
+
 		simon->simon_Status = COLLISION_ENEMY;
 		if (simon->timeCollisionEnemy == 0)
 		{
 			simon->m_hpSimon -= 1;
 		}
 		simon->timeCollisionEnemy += deltaTime;
-		if (simon->timeCollisionEnemy>=1)
+		if (simon->timeCollisionEnemy >= 1)
 		{
 			simon->m_Dir = simon->m_Dir == LEFT ? RIGHT : LEFT;
 			simon->isCollisionEnemy = false;
 			simon->timeCollisionEnemy = 0;
 			simon->simon_Status = IDLE;
-			
+
 		}
 	}
-	else 
+	else
 	{
 		for (std::vector<CEnemy*>::iterator it = this->m_ListEnemy.begin();
 			it != this->m_ListEnemy.end();
@@ -120,7 +121,7 @@ void CEnemyManage::OnSimonCollision(float deltaTime)
 
 		}
 	}
-	
+
 }
 
 void CEnemyManage::CreateEnemy(ENEMY_type enemyType, Vector2 pos)
@@ -136,6 +137,9 @@ void CEnemyManage::CreateEnemy(ENEMY_type enemyType, Vector2 pos)
 		break;
 	case ENEMY_type::VampireBat:
 		enemy = new CVampireBat(pos);
+		break;
+	case ENEMY_type::BossVampireBat:
+		enemy = new CBossVampireBat(pos);
 		break;
 	default:
 		break;
@@ -176,7 +180,8 @@ void CEnemyManage::DrawEnemy(CEnemy* enemyObj)
 		break;
 	case Bullet:
 		break;
-	case BossLevel1:
+	case BossVampireBat:
+		Texture->LoadImageFromFile(BOSS_VAMPIREBAT, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 	case BossLevel2:
 		break;
@@ -199,6 +204,6 @@ void CEnemyManage::Draw()
 		CEnemy* enemy = *it;
 		DrawEnemy(enemy);
 	}
-	
+
 }
 

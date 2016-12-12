@@ -5,6 +5,8 @@
 #include "Singleton.h"
 #include "Collision.h"
 #include "Brick.h"
+#include "QuadTree.h"
+#include "Resources.h"
 
 
 
@@ -27,18 +29,34 @@ public:
 	// D/s tat ca cac duong link chua file map.
 	std::vector<CBaseGameObject*> m_listGameObject;
 
-	std::vector<int> m_listIdObject;
-	void LoadGameObjectFromFile(const std::string&);
+	
+
 
 	CBaseGameObject* CreateObject(int id, Vector2 pos);
-	std::hash_map<int, CBaseGameObject*> LoadGameObjectInfo(const std::string&);
+	
 
 	// TT
 	bool contains(std::vector<int> v, int x);
 
-	void readFile(const std::string&);
+	void readFile(const std::string&); // read file object .
+
+									   // list quadtree
+	std::hash_map<int, std::string>* m_listQuadTree;
+	// <stt map, quadtree cua map>
+
+	// List id cua doi tuong tren viewPort.
+	std::vector<int> m_listIdObject;
+
+	//Luu quad tree hien tai
+	CQuadTree* m_quadTree;
+
+	// d/s cac doi tuong cua map hien tai.
+	std::hash_map<int, CBaseGameObject*> m_listObjectCurr;
 
 	void Clear(); //clear object khi chuyen background
 
+	std::vector<CBaseGameObject*> GetListGameObjectOnScreen() { return this->m_listGameObject; };
+	void CreateObjectOnScreen();
+	void LoadReSourceFromFile(std::string fileOJ, std::string fileQTOJ);
 };
 

@@ -17,7 +17,7 @@ public:
 	Vector2 m_PosDefault; //vi tri ban dau
 	Direction m_Dir;//dang huong ve phia nao
 	bool m_isLive; // check xem doi tuong con song hay ko?
-	bool isLeft; // direction, default left
+	bool isLeft, isRight, isUp, isDown; // direction, default left // direction, default left
 
 	float m_Width;//chieu rong cua hinh
 	float m_Height;//chieu cao cua hinh
@@ -35,7 +35,7 @@ public:
 	~CBaseGameObject();
 	int GetID() { return this->m_Id; };
 	Direction GetDirection() { return this->m_Dir; };
-
+	bool IsLive() { return this->m_isLive; };
 	virtual void Update(float deltaTime);//ham Update chinh cua game
 
 	virtual void SetPos(Vector2 pos);

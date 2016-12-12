@@ -7,7 +7,7 @@ CBaseGameObject::CBaseGameObject()
 	
 	this->m_Dir = Direction::NONE_DIR;
 	this->m_Pos = Vector2(0, 0);
-
+	m_isLive = true;
 	this->m_Width = 0;
 	this->m_Height = 0;
 	this->m_RectRS = NULL;

@@ -29,7 +29,7 @@ void CSimon::InitAnimation()
 }
 void CSimon::InitMove()
 {
-	
+
 	this->m_vx = 10;
 	this->m_vy = 380;
 	this->m_vxDefault = this->m_vx;
@@ -54,7 +54,7 @@ CSimon::~CSimon()
 void CSimon::Update(float deltaTime)
 {
 	//SetFrame();
-	
+
 	ChangeFrame(deltaTime);
 	//this->m_Pos.x += m_vx * deltaTime;
 	MoveUpdate(deltaTime);
@@ -68,7 +68,7 @@ void CSimon::Update(float deltaTime)
 
 void CSimon::Gravity(float deltaTime)
 {
-	
+
 }
 
 
@@ -80,10 +80,10 @@ void CSimon::Jump(float deltaTime)
 	this->m_Pos.y = 60;
 	m_startFrame = 0;
 	m_endFrame = 0;*/
-	
+
 }
 
-void CSimon::UpdateStatus(float deltaTime,SIMON_status simon_status)
+void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
 {
 	if (this->cane->isChangeSimonStatus == true)
 	{
@@ -117,56 +117,56 @@ void CSimon::UpdateStatus(float deltaTime,SIMON_status simon_status)
 		this->m_Pos.y = 94;
 		m_startFrame = 0;
 		m_endFrame = 0;
-		
+
 		isMove = true;
 		canJump = true;
 		break;
 	case MOVE:
-		
-			if (isMove)
+
+		if (isMove)
+		{
+			if (this->m_Dir == Direction::LEFT)
 			{
-				if (this->m_Dir == Direction::LEFT)
-				{
-					this->m_startFrame = 0;
-					this->m_endFrame = 3;
-					this->m_ax = 30;
-					this->m_ax += this->m_ax * deltaTime;
-					m_Pos.x -= this->m_ax * this->m_vx * deltaTime;
-				}
-				if (this->m_Dir == Direction::RIGHT)
-				{
-					this->m_startFrame = 0;
-					this->m_endFrame = 3;
-					this->m_ax = 30;
-					this->m_ax += this->m_ax * deltaTime;
-					m_Pos.x += this->m_ax * this->m_vx * deltaTime;
-				}
+				this->m_startFrame = 0;
+				this->m_endFrame = 3;
+				this->m_ax = 30;
+				this->m_ax += this->m_ax * deltaTime;
+				m_Pos.x -= this->m_ax * this->m_vx * deltaTime;
 			}
-		
+			if (this->m_Dir == Direction::RIGHT)
+			{
+				this->m_startFrame = 0;
+				this->m_endFrame = 3;
+				this->m_ax = 30;
+				this->m_ax += this->m_ax * deltaTime;
+				m_Pos.x += this->m_ax * this->m_vx * deltaTime;
+			}
+		}
+
 		break;
 	case JUMP:
 
 		canJump = false;
-			this->m_vy += this->m_a * deltaTime;
-			this->m_Pos.y += this->m_vy * deltaTime;
-			
+		this->m_vy += this->m_a * deltaTime;
+		this->m_Pos.y += this->m_vy * deltaTime;
 
-			if (this->m_vy <= 0)
-			{
-				isFree = true;
-				simon_Status = SIMON_status::FALL;
-				this->canJump = false;
-				
-			}
-			this->m_startFrame = 4;
-			this->m_endFrame = 4;
-			/*if (m_Pos.y >= 150)
-			{
-				simon_Status = SIMON_status::FALL;
-				canJump = false;
-			}*/
-		
-		
+
+		if (this->m_vy <= 0)
+		{
+			isFree = true;
+			simon_Status = SIMON_status::FALL;
+			this->canJump = false;
+
+		}
+		this->m_startFrame = 4;
+		this->m_endFrame = 4;
+		/*if (m_Pos.y >= 150)
+		{
+		simon_Status = SIMON_status::FALL;
+		canJump = false;
+		}*/
+
+
 		break;
 	case SIT:
 		isMove = false;
@@ -178,8 +178,8 @@ void CSimon::UpdateStatus(float deltaTime,SIMON_status simon_status)
 			this->m_Pos.y = 85;
 		}
 		isSit = true;
-		
-		
+
+
 		break;
 	case FALL:
 		if (isFree)
@@ -192,8 +192,8 @@ void CSimon::UpdateStatus(float deltaTime,SIMON_status simon_status)
 		break;
 	case ACTACK:
 		if (isAttacking)
-		{	
-			
+		{
+
 			if (isSit)
 			{
 				this->m_startFrame = 15;
@@ -204,12 +204,12 @@ void CSimon::UpdateStatus(float deltaTime,SIMON_status simon_status)
 				this->cane->m_checkActive = true;
 			}
 			else
-			{				
+			{
 				this->m_startFrame = 5;
 				this->m_endFrame = 7;
 				this->cane->m_checkActive = true;
 			}
-			
+
 			this->cane->Use(this->m_Pos, isLeft);
 		}
 		break;
@@ -221,11 +221,11 @@ void CSimon::UpdateStatus(float deltaTime,SIMON_status simon_status)
 			this->m_Pos.x -= deltaTime * 100;
 			this->m_Pos.y += deltaTime * 100;
 		}
-		else 
+		else
 		{
 			this->m_Pos.y -= deltaTime * 100;
 		}
-		
+
 		break;
 
 	default:
@@ -233,7 +233,7 @@ void CSimon::UpdateStatus(float deltaTime,SIMON_status simon_status)
 	}
 	/*if (isChangeStatus)
 	{
-		
+
 
 	}*/
 }
@@ -244,10 +244,10 @@ void CSimon::MoveUpdate(float deltaTime)
 	OnKeyDown(deltaTime);
 	OnKeyUp(deltaTime);
 	UpdateStatus(deltaTime, simon_Status);
-	
+
 	//lay vi tri cua cay roi theo vi tri cua simon
-	
-	
+
+
 	//update camera
 	CCamera::GetInstance()->Update(this->m_Pos.x, this->m_Pos.y);
 }
@@ -277,11 +277,11 @@ void CSimon::OnCollision(float deltaTime, std::hash_map<int, Box> listBox)
 	std::hash_map<int, Box>::iterator it;
 	for (it = listBox.begin(); it != listBox.end(); it++)
 	{
-		
+
 		timeCollision = COnCollision::GetInstance()->SweepAABB(this->GetBox(), it->second, normalX, normalY, deltaTime);
 		if (normalY == CDirection::ON_DOWN)
 		{
-			
+
 			isFree = false;
 			canJump = true;
 		}
@@ -307,12 +307,12 @@ void CSimon::UpdateGround(float deltaTime, std::vector<CBaseGameObject*> listObj
 		if ((timeCollision > 0.0f && timeCollision < 1.0f) || timeCollision == 2)
 		{
 
-			if (normalX = 1)
-			{
+		if (normalX = 1)
+		{
 
-				this->m_vy = 0;
-				this->m_vx = 0;
-			}
+		this->m_vy = 0;
+		this->m_vx = 0;
+		}
 		}*/
 	}
 
@@ -379,7 +379,7 @@ void CSimon::OnKeyDown(float deltaTime)
 			this->simon_Status = SIMON_status::JUMP;
 			this->m_vy = m_vyDefault;
 		}
-			// start jump if is not "on-air"
+		// start jump if is not "on-air"
 		break;
 	case DIK_LEFT:
 		isLeft = true;
@@ -403,18 +403,18 @@ void CSimon::OnKeyDown(float deltaTime)
 	case DIK_Z:
 		/*if (isSit)
 		{
-			this->m_startFrame = 14;
-			this->m_endFrame = 16;
-			this->m_Height = 50;
-			this->m_Pos.y = 51;
-			this->cane->m_Pos.y = 40;
+		this->m_startFrame = 14;
+		this->m_endFrame = 16;
+		this->m_Height = 50;
+		this->m_Pos.y = 51;
+		this->cane->m_Pos.y = 40;
 		}
 		else*/
-		
+
 		isAttacking = true;
 		this->simon_Status = SIMON_status::ACTACK;
-		
-		
+
+
 		break;
 	case DIK_Q:
 		this->cane->updateState(state2);
@@ -435,34 +435,34 @@ void CSimon::OnKeyUp(float deltaTime)
 	switch (this->m_keyUp)
 	{
 	case DIK_SPACE:
-		
-		
+
+
 		break;
 
 	case DIK_LEFT:
 		simon_Status = SIMON_status::IDLE;
-		
+
 		this->m_ax = 0;
 		break;
 	case DIK_RIGHT:
 		simon_Status = SIMON_status::IDLE;
-		
+
 		this->m_ax = 0;
 		break;
 	case DIK_UP:
-		
+
 		break;
 	case DIK_DOWN:
 		simon_Status = SIMON_status::IDLE;
-		
-		
+
+
 		isSit = false;
 		break;
 	case DIK_Z:
-		
-		
-		
-		
+
+
+
+
 		break;
 	default:
 		break;
