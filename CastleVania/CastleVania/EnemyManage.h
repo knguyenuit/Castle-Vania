@@ -1,5 +1,5 @@
 #ifndef __ENEMYMANAGE_H__
-#define __EMEMYMANAGE_H__
+#define __ENEMYMANAGE_H__
 #include "Enemy.h"
 #include "Singleton.h"
 #include "Zombie.h"
@@ -22,7 +22,7 @@ public:
 public:
 	void OnCaneCollision();
 	void OnSimonCollision(float deltaTime);
-	void CreateEnemy(ENEMY_type enemyType, Vector2 pos);
+	CEnemy* CreateEnemy(ENEMY_type enemyType, Vector2 pos);
 	void DrawEnemy(CEnemy* enemyObj);
 	void Draw();
 	void Update(float deltaTime);

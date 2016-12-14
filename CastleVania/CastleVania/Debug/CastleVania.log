@@ -1,8 +1,242 @@
-﻿  PoolObject.cpp
+﻿  Animation.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\hinhvuong.h(22): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\hinhvuong.h(24): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-  CastleVania.vcxproj -> D:\Game CastleVania\Castle Vania\trunk\CastleVania\Debug\CastleVania.exe
-  CastleVania.vcxproj -> D:\Game CastleVania\Castle Vania\trunk\CastleVania\Debug\CastleVania.pdb (Full PDB)
+  Generating Code...
+d:\study\courses\game\cv\trunk\castlevania\castlevania\animation.cpp(39): warning C4172: returning address of local variable or temporary: rectRS
+  Compiling...
+  Zombie.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\zombie.cpp(36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  WeaponManage.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  Weapon.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\weapon.cpp(174): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  ViewWindows.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  VampireBat.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\vampirebat.cpp(39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\vampirebat.cpp(55): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+  Texture.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  Sprite.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\sprite.cpp(125): warning C4244: 'argument': conversion from 'LONG' to 'FLOAT', possible loss of data
+  Simon.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\simon.cpp(297): warning C4101: 'timeCollision': unreferenced local variable
+d:\study\courses\game\cv\trunk\castlevania\castlevania\simon.cpp(324): warning C4101: 'normalY': unreferenced local variable
+d:\study\courses\game\cv\trunk\castlevania\castlevania\simon.cpp(343): warning C4101: 'normalY': unreferenced local variable
+d:\study\courses\game\cv\trunk\castlevania\castlevania\simon.cpp(365): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  QuadTree.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\quadtree.cpp(68): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\quadtree.cpp(69): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\quadtree.cpp(70): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\quadtree.cpp(71): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  QuadObject.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  QuadNode.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\quadnode.cpp(37): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\quadnode.cpp(38): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\quadnode.cpp(39): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\quadnode.cpp(40): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\quadnode.cpp(93): warning C4018: '<': signed/unsigned mismatch
+  PoolObject.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\hinhvuong.h(22): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\hinhvuong.h(24): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  OnCollision.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  Move.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  Main.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  LoadObject.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadobject.cpp(167): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadobject.cpp(168): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadobject.cpp(170): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadobject.cpp(171): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadobject.cpp(212): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadobject.cpp(213): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadobject.cpp(214): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadobject.cpp(215): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadobject.cpp(352): warning C4018: '<': signed/unsigned mismatch
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadobject.cpp(372): warning C4018: '<': signed/unsigned mismatch
+  LoadBackground.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadbackground.cpp(88): warning C4244: '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadbackground.cpp(90): warning C4244: '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadbackground.cpp(142): warning C4018: '<': signed/unsigned mismatch
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadbackground.cpp(164): warning C4018: '<': signed/unsigned mismatch
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadbackground.cpp(219): warning C4018: '<': signed/unsigned mismatch
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadbackground.cpp(225): warning C4244: '=': conversion from 'int' to 'FLOAT', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadbackground.cpp(226): warning C4244: '=': conversion from 'int' to 'FLOAT', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadbackground.cpp(227): warning C4244: '=': conversion from 'int' to 'FLOAT', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadbackground.cpp(228): warning C4244: '=': conversion from 'int' to 'FLOAT', possible loss of data
+  Level.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\level.cpp(25): warning C4101: 'gameObj': unreferenced local variable
+  ItemManage.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  Item.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\item.cpp(99): warning C4244: '=': conversion from 'double' to 'FLOAT', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\item.cpp(115): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\item.cpp(117): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  Generating Code...
+d:\study\courses\game\cv\trunk\castlevania\castlevania\loadobject.cpp(145): warning C4715: 'CLoadObject::CreateObject': not all control paths return a value
+d:\study\courses\game\cv\trunk\castlevania\castlevania\quadtree.cpp(235): warning C4172: returning address of local variable or temporary: result
+  Compiling...
+  Input.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  HinhVuong.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\hinhvuong.h(22): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\hinhvuong.h(24): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  HinhChuNhat.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\hinhchunhat.cpp(37): warning C4244: '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\hinhchunhat.cpp(38): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\hinhchunhat.cpp(39): warning C4244: '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\hinhchunhat.cpp(40): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  Ground.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\ground.cpp(37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  GameManager.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\hinhvuong.h(22): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\hinhvuong.h(24): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  Game.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\hinhvuong.h(22): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\hinhvuong.h(24): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  FishMan.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\fishman.cpp(110): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  FireBall.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\fireball.cpp(73): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\fireball.cpp(75): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  FileUtil.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  EnemyManage.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  Enemy.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  DrawObject.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\drawobject.cpp(55): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\drawobject.cpp(57): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  Device.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  Collision.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\collision.cpp(169): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\collision.cpp(175): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  CastleVania.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  Cane.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\cane.cpp(135): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Camera.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\camera.cpp(29): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\camera.cpp(30): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\camera.cpp(32): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  Brick.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\brick.cpp(38): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\brick.cpp(40): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  BossVampireBat.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\bossvampirebat.cpp(127): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  BlackLeopard.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\blackleopard.cpp(81): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+d:\study\courses\game\cv\trunk\castlevania\castlevania\camera.cpp(33): warning C4172: returning address of local variable or temporary: rect
+d:\study\courses\game\cv\trunk\castlevania\castlevania\collision.cpp(466): warning C4715: 'CCollision::Collision': not all control paths return a value
+  Compiling...
+  BaseGameObject.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.cpp(55): warning C4244: '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.cpp(56): warning C4244: '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.cpp(57): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.cpp(58): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  Banner.cpp
+  c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(44): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\banner.cpp(35): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\banner.cpp(37): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\banner.cpp(56): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\banner.cpp(58): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  Generating Code...
+  CastleVania.vcxproj -> D:\STUDY\Courses\game\cv\trunk\CastleVania\Debug\CastleVania.exe

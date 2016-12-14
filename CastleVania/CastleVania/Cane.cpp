@@ -38,7 +38,7 @@ void CCane::Init()
 void CCane::Update(float deltaTime)
 {
 	
-	OnCollision(deltaTime, CLoadObject::GetInstance()->m_listGameObject);
+	/*OnCollision(deltaTime, CLoadObject::GetInstance()->m_listGameObject);*/
 	if (this->m_checkActive)
 	{
 		ChangeFrame(deltaTime);

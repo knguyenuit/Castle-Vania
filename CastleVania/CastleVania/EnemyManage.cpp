@@ -8,7 +8,7 @@ CEnemyManage::CEnemyManage()
 	//CreateEnemy(VampireBat, Vector2(1200, 80));
 	//CreateEnemy(BossVampireBat, Vector2(600, 300));
 	/*CreateEnemy(FishMan, Vector2(200, 50));*/
-	CreateEnemy(FishMan, Vector2(600, 50));
+	//CreateEnemy(FishMan, Vector2(600, 50));
 	/*CreateEnemy(FireBall, Vector2(300, 100));*/
 
 }
@@ -129,7 +129,7 @@ void CEnemyManage::OnSimonCollision(float deltaTime)
 
 }
 
-void CEnemyManage::CreateEnemy(ENEMY_type enemyType, Vector2 pos)
+CEnemy* CEnemyManage::CreateEnemy(ENEMY_type enemyType, Vector2 pos)
 {
 	CEnemy * enemy;
 	switch (enemyType)
@@ -156,6 +156,7 @@ void CEnemyManage::CreateEnemy(ENEMY_type enemyType, Vector2 pos)
 		break;
 	}
 	this->m_ListEnemy.push_back(enemy);
+	return enemy;
 }
 void CEnemyManage::DrawEnemy(CEnemy* enemyObj)
 {

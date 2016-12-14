@@ -43,4 +43,18 @@ RECT * CBrick::GetRectRS()
 
 void CBrick::Update(float deltaTime)
 {
+	this->OnSimonCollision(deltaTime);
+}
+
+void CBrick::OnSimonCollision(float deltaTime)
+{
+	CDirection normalX;
+	CDirection normalY;
+	float timeCollision;
+	timeCollision = COnCollision::GetInstance()->SweepAABB(this->simon->GetBox(), this->GetBox(), normalX, normalY, deltaTime);
+	if (normalY == CDirection::ON_DOWN)
+	{
+		simon->isFree = false;
+		simon->canJump = true;
+	}
 }

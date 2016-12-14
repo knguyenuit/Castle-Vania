@@ -58,10 +58,10 @@ void CSimon::Update(float deltaTime)
 	ChangeFrame(deltaTime);
 	//this->m_Pos.x += m_vx * deltaTime;
 	MoveUpdate(deltaTime);
-	OnCollision(deltaTime, CLoadObject::GetInstance()->listBox);
-	UpdateGround(deltaTime, CLoadObject::GetInstance()->m_listGameObject);
-	OnCollision(deltaTime, CLoadObject::GetInstance()->m_listGameObject);
-	OnCollision(deltaTime, hv);
+	//OnCollision(deltaTime, CLoadObject::GetInstance()->listBox);
+	//UpdateGround(deltaTime, CLoadObject::GetInstance()->m_listGameObject);
+	//OnCollision(deltaTime, CLoadObject::GetInstance()->m_listGameObject);
+	//OnCollision(deltaTime, hv);
 	this->cane->Update(deltaTime);
 }
 

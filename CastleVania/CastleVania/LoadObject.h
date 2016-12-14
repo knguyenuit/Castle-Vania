@@ -7,11 +7,10 @@
 #include "Brick.h"
 #include "QuadTree.h"
 #include "Resources.h"
-
-
-
-
-
+#include "EnemyManage.h"
+#include "FileUtil.h"
+#include "Camera.h"
+#include "DrawObject.h"
 
 
 class CLoadObject : public CSingleton<CLoadObject>
@@ -29,7 +28,7 @@ public:
 	std::hash_map<int, Box> listBox;
 	// D/s tat ca cac duong link chua file map.
 	std::vector<CBaseGameObject*> m_listGameObject;
-
+	std::vector<CBaseGameObject*> m_listEmemy;
 	
 	std::hash_map<int, CBaseGameObject*> LoadGameObjectInfo(const std::string&);
 

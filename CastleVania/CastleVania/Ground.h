@@ -2,10 +2,13 @@
 #define __CGROUND_H__
 #include "BaseGameObject.h"
 #include "Animation.h"
+#include "Simon.h"
+#include "ItemManage.h"
 
 class CGround : public CBaseGameObject, CAnimation
 {
 public:
+	CSimon* simon = CSimon::GetInstance();
 	CGround();
 	CGround(Vector2 pos);
 	~CGround();
@@ -17,6 +20,7 @@ public:
 	void Init();
 	void InitAnimation();
 	void Update(float deltaTime);
+	void OnCaneCollision(float deltaTime);
 };
 
 #endif // !__CGROUND_H__

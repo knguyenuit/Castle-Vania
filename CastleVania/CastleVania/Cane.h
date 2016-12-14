@@ -3,7 +3,7 @@
 
 #include "Animation.h"
 #include "BaseGameObject.h"
-#include "LoadObject.h"
+//#include "LoadObject.h"
 enum caneState {
 	default = 1,
 	state2 = 2,

@@ -68,4 +68,18 @@ void CGround::InitAnimation()
 void CGround::Update(float deltaTime)
 {
 	ChangeFrame(deltaTime);
+	OnCaneCollision(deltaTime);
+}
+
+void CGround::OnCaneCollision(float deltaTime)
+{
+	if (this->simon->cane->m_currentFrame == 2 || this->simon->cane->m_currentFrame == 6 || this->simon->cane->m_currentFrame == 10)
+	{
+		if (CCollision::GetInstance()->AABBCheck(this->GetBox(), this->simon->cane->GetBox()))
+		{
+			this->m_isRemove = true;
+			CItemManage::GetInstance()->CreateRandomItem(this->GetPos());
+
+		}
+	}
 }

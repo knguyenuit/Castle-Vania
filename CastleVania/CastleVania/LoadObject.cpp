@@ -1,8 +1,6 @@
 #include "LoadObject.h"
-#include "FileUtil.h"
-#include "Camera.h"
-#include "DrawObject.h"
-#include "EnemyManage.h"
+
+
 
 
 
@@ -43,6 +41,27 @@ void CLoadObject::Update(float deltaTime)
 			it++;
 		}
 	}
+	//update brick
+	/*for (std::vector<CBaseGameObject*>::iterator it = this->m_listBrick.begin();
+		it != this->m_listBrick.end();
+		)
+	{
+		CBaseGameObject* gameObj = *it;
+
+		if (gameObj != NULL && gameObj->m_isRemove == false)
+		{
+			gameObj->Update(deltaTime);
+		}
+
+		if (gameObj->m_isRemove)
+		{
+			it = this->m_listGameObject.erase(it);
+		}
+		else
+		{
+			it++;
+		}
+	}*/
 }
 
 void CLoadObject::Collision(float deltaTime, CBaseGameObject *gameObj)
@@ -103,19 +122,22 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
 		
 		return new CBrick(pos);
 	case 201:
-		return new CBrick(pos);
 	case 202:
-		return new CBrick(pos);
 	case 203:
-		return new CBrick(pos);
+		return CEnemyManage::GetInstance()->CreateEnemy(static_cast<ENEMY_type>(id), pos);
+		break;
 	case 401:
-		return new CBrick(pos);
+		return CEnemyManage::GetInstance()->CreateEnemy(BossVampireBat, pos);
+		break;
 	case 616:
 		return new CBrick(pos);
+		break;
 	case 704:
-		return new CBrick(pos);	
+		return new CBrick(pos);
+		break;
 	case 713:
 			return new CBrick(pos);
+			break;
 	default:
 		break;
 	}
@@ -148,19 +170,22 @@ std::hash_map<int, CBaseGameObject*> CLoadObject::LoadGameObjectInfo(const std::
 				float Width = atoi(item.at(4).c_str());
 				float Height = atoi(item.at(5).c_str());
 				Box b = Box(PosX, PosY, Width, Height);
-				if (iDObjectInMap == 702)
+				/*if (idItem == 702)
 				{
-					this->listBox.insert(Pair1(iDObjectInMap, b));
+					gameObj = this->CreateObject(idItem, pos);
+					this->m_listBrick.push_back(gameObj);
 				}
 				else
-				{
+				{*/
 					gameObj = this->CreateObject(idItem, pos);
 					listInfo.insert(Pair(iDObjectInMap, gameObj));
 				}
+
 			}
 
 		}
-	}
+
+	
 	return listInfo;
 }
 

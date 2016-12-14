@@ -73,6 +73,9 @@
     <Filter Include="Framework\Game Object\Enemy\Fish Man">
       <UniqueIdentifier>{0a76905d-9fb2-4e6a-a6ef-f1e6b2a82daa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Game Object\Big Light">
+      <UniqueIdentifier>{5575adfb-255a-4578-9ea3-0c73b1dc0539}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global.h">
@@ -145,9 +148,6 @@
     <ClInclude Include="LoadObject.h">
       <Filter>Framework\DrawObject</Filter>
     </ClInclude>
-    <ClInclude Include="Ground.h">
-      <Filter>Framework\Game Object</Filter>
-    </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>Framework\Game Object\Item</Filter>
     </ClInclude>
@@ -201,6 +201,9 @@
     </ClInclude>
     <ClInclude Include="FishMan.h">
       <Filter>Framework\Game Object\Enemy\Fish Man</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>Framework\Game Object\Big Light</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -267,9 +270,6 @@
     <ClCompile Include="LoadObject.cpp">
       <Filter>Framework\DrawObject</Filter>
     </ClCompile>
-    <ClCompile Include="Ground.cpp">
-      <Filter>Framework\Game Object</Filter>
-    </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>Framework\Game Object\Item</Filter>
     </ClCompile>
@@ -327,5 +327,11 @@
     <ClCompile Include="FishMan.cpp">
       <Filter>Framework\Game Object\Enemy\Fish Man</Filter>
     </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>Framework\Game Object\Big Light</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

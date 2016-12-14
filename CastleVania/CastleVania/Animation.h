@@ -8,7 +8,7 @@ class CAnimation
 public:
 	CAnimation();
 	~CAnimation();
-protected:
+public:
 	float m_elapseTimeChangeFrame;
 	float m_currentTime;
 	int m_increase;
