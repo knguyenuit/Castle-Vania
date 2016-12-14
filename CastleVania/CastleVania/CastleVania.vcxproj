@@ -160,6 +160,8 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyManage.h" />
     <ClInclude Include="FileUtil.h" />
+    <ClInclude Include="FireBall.h" />
+    <ClInclude Include="FishMan.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Global.h" />
@@ -205,6 +207,8 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyManage.cpp" />
     <ClCompile Include="FileUtil.cpp" />
+    <ClCompile Include="FireBall.cpp" />
+    <ClCompile Include="FishMan.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Ground.cpp" />

@@ -6,6 +6,7 @@
 #include "BlackLeopard.h"
 #include "VampireBat.h"
 #include "BossVampireBat.h"
+#include "FishMan.h"
 #include "Resources.h"
 #include "OnCollision.h"
 #include "Simon.h"

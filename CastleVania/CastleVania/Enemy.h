@@ -40,6 +40,8 @@ public:
 	ENEMY_type enemyType;
 public:
 	CDrawObject* drawEnemyManage;
+	bool check_arrive_x = false;
+	bool check_arrive_y = false;
 public:
 	void changeState(ENEMY_state state);
 public:
@@ -47,7 +49,7 @@ public:
 	void Init();
 	void InitAnimation();
 	void Update(float deltaTime);
-	void MoveTo(Vector2 point);
+	bool MoveTo(Vector2 point, float deltaTime);
 	virtual void MoveUpdate(float deltaTime);
 	RECT* GetRectRS();
 	~CEnemy();

@@ -13,6 +13,7 @@
 
 
 
+
 class CLoadObject : public CSingleton<CLoadObject>
 {
 	friend class CSingleton<CLoadObject>;
@@ -30,7 +31,7 @@ public:
 	std::vector<CBaseGameObject*> m_listGameObject;
 
 	
-
+	std::hash_map<int, CBaseGameObject*> LoadGameObjectInfo(const std::string&);
 
 	CBaseGameObject* CreateObject(int id, Vector2 pos);
 	

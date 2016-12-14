@@ -70,6 +70,9 @@
     <Filter Include="Framework\Game Object\Enemy\Boss VampireBat">
       <UniqueIdentifier>{7de82a57-f6eb-411d-a0f5-6f63b766b4a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Game Object\Enemy\Fish Man">
+      <UniqueIdentifier>{0a76905d-9fb2-4e6a-a6ef-f1e6b2a82daa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global.h">
@@ -193,6 +196,12 @@
     <ClInclude Include="BossVampireBat.h">
       <Filter>Framework\Game Object\Enemy\Boss VampireBat</Filter>
     </ClInclude>
+    <ClInclude Include="FireBall.h">
+      <Filter>Framework\Game Object\Enemy\Fish Man</Filter>
+    </ClInclude>
+    <ClInclude Include="FishMan.h">
+      <Filter>Framework\Game Object\Enemy\Fish Man</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture.cpp">
@@ -311,6 +320,12 @@
     </ClCompile>
     <ClCompile Include="BossVampireBat.cpp">
       <Filter>Framework\Game Object\Enemy\Boss VampireBat</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBall.cpp">
+      <Filter>Framework\Game Object\Enemy\Fish Man</Filter>
+    </ClCompile>
+    <ClCompile Include="FishMan.cpp">
+      <Filter>Framework\Game Object\Enemy\Fish Man</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

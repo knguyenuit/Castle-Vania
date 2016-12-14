@@ -44,6 +44,8 @@
 #define ENEMY_BLACKLEOPARD "..\\Resources\\image\\enemy\\BlackLeopard.png"
 #define ENEMY_VAMPIREBAT "..\\Resources\\image\\enemy\\VampireBat.png"
 #define ENEMY_AXEMAN "..\\Resources\\image\\enemy\\AxeMan.png"
+#define ENEMY_FISHMAN "..\\Resources\\image\\enemy\\FishMan.png"
+#define ENEMY_FIREBALL "..\\Resources\\image\\enemy\\fireball.png"
 //BOSS
 #define BOSS_VAMPIREBAT "..\\Resources\\image\\boss\\0.png"
 

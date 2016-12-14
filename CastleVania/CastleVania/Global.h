@@ -22,7 +22,7 @@ using namespace std;
 #define __FRAME_RATE 60
 #define __SCREEN_WIDTH  640
 #define __SCREEN_HEIGHT 480
-#define __CLASS_NAME "Mario"
+#define __CLASS_NAME "Castle Vania"
 #define __CLASS_NAME__(x) #x
 
 typedef unsigned long long __UINT64;

@@ -2,11 +2,15 @@
 #include "ItemManage.h"
 CEnemyManage::CEnemyManage()
 {
-	CreateEnemy(Zombie, Vector2(800, 60));
-	CreateEnemy(BlackLeopard, Vector2(1000, 200));
-	CreateEnemy(Zombie, Vector2(1100, 60));
-	CreateEnemy(VampireBat, Vector2(1200, 80));
-	CreateEnemy(BossVampireBat, Vector2(600, 300));
+	//CreateEnemy(Zombie, Vector2(800, 60));
+	//CreateEnemy(BlackLeopard, Vector2(1000, 200));
+	//CreateEnemy(Zombie, Vector2(1100, 60));
+	//CreateEnemy(VampireBat, Vector2(1200, 80));
+	//CreateEnemy(BossVampireBat, Vector2(600, 300));
+	/*CreateEnemy(FishMan, Vector2(200, 50));*/
+	CreateEnemy(FishMan, Vector2(600, 50));
+	/*CreateEnemy(FireBall, Vector2(300, 100));*/
+
 }
 CEnemyManage::~CEnemyManage()
 {
@@ -14,6 +18,7 @@ CEnemyManage::~CEnemyManage()
 
 void CEnemyManage::Update(float deltaTime)
 {
+
 	if (CSimon::GetInstance()->cane->m_checkActive)
 	{
 		CEnemyManage::OnCaneCollision();
@@ -141,6 +146,12 @@ void CEnemyManage::CreateEnemy(ENEMY_type enemyType, Vector2 pos)
 	case ENEMY_type::BossVampireBat:
 		enemy = new CBossVampireBat(pos);
 		break;
+	case ENEMY_type::FishMan:
+		enemy = new CFishMan(pos, this->m_ListEnemy);
+		break;
+	case ENEMY_type::FireBall:
+		enemy = new CFireBall(pos, LEFT);
+		break;
 	default:
 		break;
 	}
@@ -165,6 +176,7 @@ void CEnemyManage::DrawEnemy(CEnemy* enemyObj)
 	case Medusa:
 		break;
 	case FishMan:
+		Texture->LoadImageFromFile(ENEMY_FISHMAN, D3DCOLOR_XRGB(255, 255, 255));
 		break;
 	case AxeMan:
 		break;
@@ -177,6 +189,7 @@ void CEnemyManage::DrawEnemy(CEnemy* enemyObj)
 	case Ghost:
 		break;
 	case FireBall:
+		Texture->LoadImageFromFile(ENEMY_FIREBALL, D3DCOLOR_XRGB(255, 255, 255));
 		break;
 	case Bullet:
 		break;
@@ -199,6 +212,7 @@ void CEnemyManage::DrawEnemy(CEnemy* enemyObj)
 }
 void CEnemyManage::Draw()
 {
+
 	for (std::vector<CEnemy*>::iterator it = this->m_ListEnemy.begin(); it != this->m_ListEnemy.end(); ++it)
 	{
 		CEnemy* enemy = *it;
