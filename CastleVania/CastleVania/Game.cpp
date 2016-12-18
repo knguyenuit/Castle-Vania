@@ -54,7 +54,8 @@ namespace CastleVania
 					deltaTime = tickPerFrame;
 				this->ProcessInput();
 				//Render();
-				CGameManager::GetInstance()->Update(deltaTime);
+				//CGameManager::GetInstance()->Update(deltaTime);
+				CStateGameManager::GetInstance()->Update(false, deltaTime);
 			}
 		}
 		

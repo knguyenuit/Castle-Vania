@@ -25,7 +25,7 @@ void CQuadTree::ReBuildQuadTree(std::vector<CQuadObject*>& listQuadObj)
 			if (quadObj)
 			{
 				// Neu doi tuong k con Alive, xoa doi tuong khoi node.
-				if (!quadObj->GetGameObject()->IsLive())
+				if (quadObj->GetGameObject()->isRemove())
 				{
 					// Xoa khoi danh sach doi tuong cua node
 					this->m_nodeRoot->DeleteObjectFromQuadNode(quadObj);

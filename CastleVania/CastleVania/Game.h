@@ -1,5 +1,6 @@
 #ifndef __CGAME_H__
 #define __CGAME_H__
+#include "StateGameManager.h"
 
 namespace CastleVania
 {

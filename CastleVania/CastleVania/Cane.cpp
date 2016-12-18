@@ -30,7 +30,7 @@ void CCane::Init()
 	this->m_increase = 1;
 	this->m_totalFrame = 12;
 	this->m_column = 4;
-	this->m_Dir = Direction::LEFT;
+	this->m_Dir = Direction::RIGHT;
 	this->m_State = caneState::default;
 	
 }

@@ -4,7 +4,7 @@
 #include "Move.h"
 #include "DrawObject.h"
 #include "Animation.h"
-
+#include "Item.h"
 
 enum ENEMY_type
 {
@@ -21,7 +21,8 @@ enum ENEMY_type
 	FireBall = 211,
 	Bullet = 212,
 	BossVampireBat = 401,
-	BossLevel2 = 402
+	BossLevel2 = 402,
+	SmallLight = 600
 };
 
 enum class ENEMY_state {
@@ -38,6 +39,7 @@ public:
 	ENEMY_state m_State;
 	bool m_isRemove;
 	ENEMY_type enemyType;
+	ITEM_name enemyItem = ITEM_name::None;
 public:
 	CDrawObject* drawEnemyManage;
 	bool check_arrive_x = false;

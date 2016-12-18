@@ -36,6 +36,7 @@ public:
 	int GetID() { return this->m_Id; };
 	Direction GetDirection() { return this->m_Dir; };
 	bool IsLive() { return this->m_isLive; };
+	bool isRemove() { return this->m_isRemove; }
 	virtual void Update(float deltaTime);//ham Update chinh cua game
 
 	virtual void SetPos(Vector2 pos);

@@ -1,15 +1,19 @@
 #include "EnemyManage.h"
-#include "ItemManage.h"
 CEnemyManage::CEnemyManage()
 {
-	//CreateEnemy(Zombie, Vector2(800, 60));
+	/*CreateEnemy(VampireBat, Vector2(1250, 90));
+	CreateEnemy(VampireBat, Vector2(1376, 204));
+	CreateEnemy(VampireBat, Vector2(1440, 220));
+	CreateEnemy(VampireBat, Vector2(1504, 269));
+	CreateEnemy(VampireBat, Vector2(1808, 269));
+	CreateEnemy(VampireBat, Vector2(1887, 220));*/
 	//CreateEnemy(BlackLeopard, Vector2(1000, 200));
 	//CreateEnemy(Zombie, Vector2(1100, 60));
 	//CreateEnemy(VampireBat, Vector2(1200, 80));
 	//CreateEnemy(BossVampireBat, Vector2(600, 300));
 	/*CreateEnemy(FishMan, Vector2(200, 50));*/
 	//CreateEnemy(FishMan, Vector2(600, 50));
-	/*CreateEnemy(FireBall, Vector2(300, 100));*/
+	/*CreateEnemy(SmallLight, Vector2(300, 100));*/
 
 }
 CEnemyManage::~CEnemyManage()
@@ -32,7 +36,7 @@ void CEnemyManage::Update(float deltaTime)
 			CEnemy* enemy = *it;
 			if (enemy != NULL && enemy->m_isRemove == false)
 			{
-				enemy->Update(deltaTime);
+				//enemy->Update(deltaTime);
 			}
 			if (enemy->m_isRemove)
 			{
@@ -60,7 +64,15 @@ void CEnemyManage::OnCaneCollision()
 				if (CCollision::GetInstance()->AABBCheck(cane->GetBox(), enemy->GetBox()))
 				{
 					enemy->m_isRemove = true;
-					CItemManage::GetInstance()->CreateRandomItem(enemy->GetPos());
+					if (enemy->enemyItem != ITEM_name::None)
+					{
+						CItemManage::GetInstance()->CreateItem(enemy->enemyItem, enemy->GetPos());
+					}
+					else
+					{
+						CItemManage::GetInstance()->CreateRandomItem(enemy->GetPos());
+					}
+
 					switch (enemy->enemyType)
 					{
 					case ENEMY_type::Zombie:
@@ -152,12 +164,23 @@ CEnemy* CEnemyManage::CreateEnemy(ENEMY_type enemyType, Vector2 pos)
 	case ENEMY_type::FireBall:
 		enemy = new CFireBall(pos, LEFT);
 		break;
+	case ENEMY_type::SmallLight:
+		enemy = new CSmallLight(pos);
+		break;
 	default:
 		break;
 	}
 	this->m_ListEnemy.push_back(enemy);
 	return enemy;
 }
+
+CEnemy * CEnemyManage::CreateEnemy(ENEMY_type enemyType, Vector2 pos, ITEM_name itemName)
+{
+	CEnemy * enemy = CreateEnemy(enemyType, pos);
+	enemy->enemyItem = itemName;
+	return enemy;
+}
+
 void CEnemyManage::DrawEnemy(CEnemy* enemyObj)
 {
 	CTexture* Texture = new CTexture();
@@ -198,6 +221,10 @@ void CEnemyManage::DrawEnemy(CEnemy* enemyObj)
 		Texture->LoadImageFromFile(BOSS_VAMPIREBAT, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 	case BossLevel2:
+		break;
+		//object
+	case SmallLight:
+		Texture->LoadImageFromFile(OBJECT_SMALLLIGHT, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 	default:
 		break;

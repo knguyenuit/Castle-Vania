@@ -20,7 +20,14 @@ CBrick::~CBrick()
 
 Box CBrick::GetBox()
 {
-	return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width, this->m_Height);
+	if (!simon->isSit)
+	{
+		return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width, this->m_Height);
+	}
+	else
+	{
+		return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width, this->m_Height + 10);
+	}
 }
 
 void CBrick::Init()
@@ -54,7 +61,29 @@ void CBrick::OnSimonCollision(float deltaTime)
 	timeCollision = COnCollision::GetInstance()->SweepAABB(this->simon->GetBox(), this->GetBox(), normalX, normalY, deltaTime);
 	if (normalY == CDirection::ON_DOWN)
 	{
+		
+			simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
+		
 		simon->isFree = false;
 		simon->canJump = true;
+	}
+	if(COnCollision::GetInstance()->AABBCheck(this->simon->GetBox(), this->GetBox()))
+	{
+		if (simon->isSit)
+		{
+			if (simon->isAttacking)
+			{
+				simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 24;
+			}
+			else
+			{
+				simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
+			}
+		}
+		else
+		{
+			simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
+		}
+		
 	}
 }

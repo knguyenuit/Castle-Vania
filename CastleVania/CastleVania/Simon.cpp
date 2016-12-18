@@ -14,6 +14,9 @@ CSimon::CSimon()
 	this->cane->m_Pos = this->m_Pos;
 	this->hv = new CHinhChuNhat();
 	this->m_currentWeapon = WEAPON_name::Boomerang;
+	//init stair status
+	this->canUpStairLeft = this->canUpStairRight = this->canDownStairLeft = this->canDownStairRight = false;
+	this->isArrowKeyDown = this->isArrowKeyUp = false;
 }
 #pragma region Init
 void CSimon::InitAnimation()
@@ -32,13 +35,13 @@ void CSimon::InitMove()
 
 	this->m_vx = 10;
 	this->m_vy = 380;
-	this->m_vxDefault = this->m_vx;
+	this->m_vxDefault = 180;
 	this->m_vyDefault = 380;
 
 	this->m_a = -900;
 	this->m_aDefault = this->m_a;
 	this->m_ax = 0;
-	this->m_Pos = Vector2(300, 94);
+	this->m_Pos = Vector2(100, 90);
 	this->m_Width = 60;
 	this->m_Height = 68;
 	this->m_isJumping = false;
@@ -71,6 +74,87 @@ void CSimon::Gravity(float deltaTime)
 
 }
 
+bool CSimon::MoveTo(Vector2 point, float deltaTime)
+{
+	if (!this->isLeft && !this->isRight)
+	{
+
+		if (this->m_Pos.x > point.x) //kiem tra xem co phai qua ben trai
+		{
+			this->isLeft = true;
+		}
+		else
+		{
+			this->isRight = true;
+		}
+	}
+
+	if (this->isLeft) // neu isleft thi van toc x am
+	{
+		this->m_vx = (this->m_vx>0) ? -this->m_vx : this->m_vx;
+		this->m_Dir = Direction::LEFT;
+	}
+	else
+	{
+		this->m_vx = (this->m_vx<0) ? -this->m_vx : this->m_vx;
+		this->m_Dir = Direction::RIGHT;
+	}
+
+	//kiem tra xem co toi toa do X cua point chua
+	if ((this->isLeft && this->m_Pos.x <= point.x) || (this->isRight && this->m_Pos.x >= point.x))
+	{
+		this->check_arrive_x = true;
+		this->m_Pos.x = point.x;
+	}
+	if (!this->check_arrive_x)
+	{
+		this->m_Pos.x += this->m_vx * deltaTime; // thay doi pos.x cua Boss
+	}
+
+
+
+	if (!this->isDown && !this->isUp)
+	{
+		if (this->m_Pos.y > point.y) // kiem tra xem co phai di xuong duoi
+		{
+			this->isDown = true;
+		}
+		else
+		{
+			this->isUp = true;
+		}
+	}
+	if (this->isDown) // neu isdown thi van toc y am
+	{
+		this->m_vy = (this->m_vy > 0) ? -this->m_vy : this->m_vy;
+	}
+	else // neu isUp thi van toc y duong
+	{
+		this->m_vy = (this->m_vy < 0) ? -this->m_vy : this->m_vy;
+	}
+
+	//neu da toi point.y
+	if ((this->isDown && this->m_Pos.y <= point.y) || (this->isUp && this->m_Pos.y >= point.y))
+	{
+		this->check_arrive_y = true;
+		this->m_Pos.y = point.y;
+	}
+	if (!this->check_arrive_y)
+	{
+		this->m_Pos.y += this->m_vy * deltaTime;// Neu chua toi thi Thay doi pos.y
+	}
+	//Neu da toi point thi tra ve true
+	if (this->check_arrive_x && this->check_arrive_y)
+	{
+		this->check_arrive_x = this->check_arrive_y = false;
+		this->isLeft = this->isRight = this->isUp = this->isDown = false;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
 
 void CSimon::Jump(float deltaTime)
 {
@@ -92,7 +176,7 @@ void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
 			this->m_currentFrame = 0;
 			isAttacking = false;
 			this->m_Height = 68;
-			this->m_Pos.y = 94;
+			//this->m_Pos.y = 94;
 			m_startFrame = 0;
 			m_endFrame = 0;
 		}
@@ -102,7 +186,7 @@ void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
 			m_startFrame = 4;
 			m_endFrame = 4;
 			this->m_Height = 50;
-			this->m_Pos.y = 85;
+			//this->m_Pos.y = 85;
 			isAttacking = false;
 		}
 		this->cane->isChangeSimonStatus = false;
@@ -114,43 +198,82 @@ void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
 	case IDLE:
 		isAttacking = false;
 		this->m_Height = 68;
-		this->m_Pos.y = 94;
+		this->m_vy = 0;
 		m_startFrame = 0;
 		m_endFrame = 0;
-
 		isMove = true;
 		canJump = true;
+		isJumping = false;
+		isSit = false;
+		canSit = true;
 		break;
 	case MOVE:
 
-		if (isMove)
+		if (this->simon_Status != SIMON_status::ONSTAIR)
 		{
-			if (this->m_Dir == Direction::LEFT)
+			if (isMove)
 			{
-				this->m_startFrame = 0;
-				this->m_endFrame = 3;
-				this->m_ax = 30;
-				this->m_ax += this->m_ax * deltaTime;
-				m_Pos.x -= this->m_ax * this->m_vx * deltaTime;
+				if (this->m_Dir == Direction::LEFT)
+				{
+					this->m_startFrame = 0;
+					this->m_endFrame = 3;
+					
+					m_Pos.x -=  this->m_vxDefault * deltaTime;
+				}
+				if (this->m_Dir == Direction::RIGHT)
+				{
+					this->m_startFrame = 0;
+					this->m_endFrame = 3;
+					
+					m_Pos.x += this->m_vxDefault * deltaTime;
+				}
 			}
-			if (this->m_Dir == Direction::RIGHT)
+		}
+		break;
+
+		break;
+	case ONSTAIR:
+		this->canSit = false;
+		this->m_elapseTimeChangeFrame = 0.15f * 1.2f;
+		//Xet Frame 
+		if (this->isCancelStairMove == false)
+		{
+			if (this->isDownStair == true)
 			{
-				this->m_startFrame = 0;
-				this->m_endFrame = 3;
-				this->m_ax = 30;
-				this->m_ax += this->m_ax * deltaTime;
-				m_Pos.x += this->m_ax * this->m_vx * deltaTime;
+				this->m_startFrame = 10;
+				this->m_endFrame = 11;
+				break;
+			}
+			if (this->isUpStair == true)
+			{
+				this->m_startFrame = 12;
+				this->m_endFrame = 13;
+				break;
+			}
+		}
+		else
+		{
+			if (this->isDownStair == true)
+			{
+				this->m_startFrame = 10;
+				this->m_endFrame = 10;
+				break;
+			}
+			if (this->isUpStair == true)
+			{
+				this->m_startFrame = 12;
+				this->m_endFrame = 12;
+				break;
 			}
 		}
 
+
 		break;
 	case JUMP:
-
+		isJumping = true;
 		canJump = false;
 		this->m_vy += this->m_a * deltaTime;
 		this->m_Pos.y += this->m_vy * deltaTime;
-
-
 		if (this->m_vy <= 0)
 		{
 			isFree = true;
@@ -160,25 +283,22 @@ void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
 		}
 		this->m_startFrame = 4;
 		this->m_endFrame = 4;
-		/*if (m_Pos.y >= 150)
-		{
-		simon_Status = SIMON_status::FALL;
-		canJump = false;
-		}*/
-
 
 		break;
 	case SIT:
-		isMove = false;
-		if (!isAttacking)
+		if (canSit)
 		{
-			this->m_startFrame = 4;
-			this->m_endFrame = 4;
-			this->m_Height = 50;
-			this->m_Pos.y = 85;
-		}
-		isSit = true;
+			isSit = true;
+			isMove = false;
+			if (!isAttacking)
+			{
+				this->m_startFrame = 4;
+				this->m_endFrame = 4;
+				this->m_Height = 50;
+				//this->m_Pos.y = 85;
+			}
 
+		}
 
 		break;
 	case FALL:
@@ -198,15 +318,24 @@ void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
 			{
 				this->m_startFrame = 15;
 				this->m_endFrame = 17;
-				this->cane->m_Pos.y = 85;
+				this->cane->m_Pos.y = m_Pos.y + 9;
 				this->m_Height = 66;
-				this->m_Pos.y = 76;
+				//this->m_Pos.y = 50;
 				this->cane->m_checkActive = true;
 			}
 			else
 			{
-				this->m_startFrame = 5;
-				this->m_endFrame = 7;
+				if (isJumping)
+				{
+					this->m_startFrame = 15;
+					this->m_endFrame = 17;
+				}
+				else
+				{
+					this->m_startFrame = 5;
+					this->m_endFrame = 7;
+				}
+				
 				this->cane->m_checkActive = true;
 			}
 
@@ -396,8 +525,10 @@ void CSimon::OnKeyDown(float deltaTime)
 		this->simon_Status = SIMON_status::MOVE;
 		break;
 	case DIK_UP:
+		this->isArrowKeyUp = true;
 		break;
 	case DIK_DOWN:
+		this->isArrowKeyDown = true;
 		this->simon_Status = SIMON_status::SIT;
 		break;
 	case DIK_Z:
@@ -450,13 +581,18 @@ void CSimon::OnKeyUp(float deltaTime)
 		this->m_ax = 0;
 		break;
 	case DIK_UP:
-
+		this->isArrowKeyUp = false;
 		break;
 	case DIK_DOWN:
-		simon_Status = SIMON_status::IDLE;
-
-
-		isSit = false;
+		this->isArrowKeyDown = false;
+		if (isSit)
+		{
+			simon_Status = SIMON_status::IDLE;
+		}
+		/*if (isSit)
+		{
+			m_Pos.y = 90;
+		}*/
 		break;
 	case DIK_Z:
 

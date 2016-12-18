@@ -28,9 +28,6 @@
     <Filter Include="Framework\Game">
       <UniqueIdentifier>{f66210d5-3e0a-4e8a-982a-643e2d113b24}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\BaseObjectGame">
-      <UniqueIdentifier>{9c8cfa14-9a06-45d0-9749-7f759c5e6ecf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework\Player\Simon">
       <UniqueIdentifier>{6dd172e3-5081-4035-9b8d-a7703ff20a77}</UniqueIdentifier>
     </Filter>
@@ -76,6 +73,33 @@
     <Filter Include="Framework\Game Object\Big Light">
       <UniqueIdentifier>{5575adfb-255a-4578-9ea3-0c73b1dc0539}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Game Object\Hide Object">
+      <UniqueIdentifier>{733fad63-4369-4138-98d1-e18d95b49fd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\BaseObjectGame">
+      <UniqueIdentifier>{9c8cfa14-9a06-45d0-9749-7f759c5e6ecf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\StateGame">
+      <UniqueIdentifier>{9808470c-0200-4e31-9123-522802717c70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\StateGame\State Intro">
+      <UniqueIdentifier>{8b0f0fdc-7b97-46f8-9914-eec9da444474}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\StateGame\State Game Play">
+      <UniqueIdentifier>{0fd06459-d497-4c1b-a984-1c3e5f006798}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\StateGame\State Game Start">
+      <UniqueIdentifier>{9549de8a-a1f6-4b23-8817-ab4b758d78a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Device\Sound">
+      <UniqueIdentifier>{5af100cc-0ecb-4d24-a63c-a07ce8b93fec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\Hide Object\Stair">
+      <UniqueIdentifier>{494546c2-c2ec-426f-b27e-63d725c21a62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\Enemy\Small Light">
+      <UniqueIdentifier>{5226f007-4c19-4f68-b194-dd6330ce494a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global.h">
@@ -119,7 +143,7 @@
       <Filter>Framework\Game</Filter>
     </ClInclude>
     <ClInclude Include="BaseGameObject.h">
-      <Filter>Framework\BaseObjectGame</Filter>
+      <Filter>Framework\Game Object\BaseObjectGame</Filter>
     </ClInclude>
     <ClInclude Include="Move.h">
       <Filter>Framework\Player</Filter>
@@ -205,6 +229,42 @@
     <ClInclude Include="Ground.h">
       <Filter>Framework\Game Object\Big Light</Filter>
     </ClInclude>
+    <ClInclude Include="HideObject.h">
+      <Filter>Framework\Game Object\Hide Object</Filter>
+    </ClInclude>
+    <ClInclude Include="State.h">
+      <Filter>Framework\StateGame</Filter>
+    </ClInclude>
+    <ClInclude Include="StateGameManager.h">
+      <Filter>Framework\StateGame</Filter>
+    </ClInclude>
+    <ClInclude Include="StateGameIntro.h">
+      <Filter>Framework\StateGame\State Intro</Filter>
+    </ClInclude>
+    <ClInclude Include="StateGamePlay.h">
+      <Filter>Framework\StateGame\State Game Play</Filter>
+    </ClInclude>
+    <ClInclude Include="StateGameStart.h">
+      <Filter>Framework\StateGame\State Game Start</Filter>
+    </ClInclude>
+    <ClInclude Include="SimonIntro.h">
+      <Filter>Framework\StateGame\State Intro</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundUtil.h">
+      <Filter>Framework\Device\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="ManageAudio.h">
+      <Filter>Framework\Device\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="Stair.h">
+      <Filter>Framework\Game Object\Hide Object\Stair</Filter>
+    </ClInclude>
+    <ClInclude Include="SmallLight.h">
+      <Filter>Framework\Game Object\Enemy\Small Light</Filter>
+    </ClInclude>
+    <ClInclude Include="HideObjectManage.h">
+      <Filter>Framework\Game Object\Hide Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture.cpp">
@@ -245,7 +305,7 @@
       <Filter>Framework\Game</Filter>
     </ClCompile>
     <ClCompile Include="BaseGameObject.cpp">
-      <Filter>Framework\BaseObjectGame</Filter>
+      <Filter>Framework\Game Object\BaseObjectGame</Filter>
     </ClCompile>
     <ClCompile Include="Simon.cpp">
       <Filter>Framework\Player\Simon</Filter>
@@ -329,6 +389,42 @@
     </ClCompile>
     <ClCompile Include="Ground.cpp">
       <Filter>Framework\Game Object\Big Light</Filter>
+    </ClCompile>
+    <ClCompile Include="HideObject.cpp">
+      <Filter>Framework\Game Object\Hide Object</Filter>
+    </ClCompile>
+    <ClCompile Include="State.cpp">
+      <Filter>Framework\StateGame</Filter>
+    </ClCompile>
+    <ClCompile Include="StateGameManager.cpp">
+      <Filter>Framework\StateGame</Filter>
+    </ClCompile>
+    <ClCompile Include="StateGameIntro.cpp">
+      <Filter>Framework\StateGame\State Intro</Filter>
+    </ClCompile>
+    <ClCompile Include="StateGamePlay.cpp">
+      <Filter>Framework\StateGame\State Game Play</Filter>
+    </ClCompile>
+    <ClCompile Include="StateGameStart.cpp">
+      <Filter>Framework\StateGame\State Game Start</Filter>
+    </ClCompile>
+    <ClCompile Include="SimonIntro.cpp">
+      <Filter>Framework\StateGame\State Intro</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundUtil.cpp">
+      <Filter>Framework\Device\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="ManageAudio.cpp">
+      <Filter>Framework\Device\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Stair.cpp">
+      <Filter>Framework\Game Object\Hide Object\Stair</Filter>
+    </ClCompile>
+    <ClCompile Include="SmallLight.cpp">
+      <Filter>Framework\Game Object\Enemy\Small Light</Filter>
+    </ClCompile>
+    <ClCompile Include="HideObjectManage.cpp">
+      <Filter>Framework\Game Object\Hide Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

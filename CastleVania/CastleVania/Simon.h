@@ -21,7 +21,8 @@ enum SIMON_status
 	SIT = 5,
 	FALL = 6,
 	ACTACK = 7,
-	COLLISION_ENEMY = 8
+	COLLISION_ENEMY = 8,
+	ONSTAIR = 9
 };
 
 class CSimon : public CBaseGameObject, public CAnimation, public CMove, public CSingleton<CSimon>
@@ -57,6 +58,22 @@ public:
 	void ProcessInput(float deltaTime);
 	void MoveUpdate(float deltaTime);
 	//cac thong so ve Simon
+public: //xu li cau thang
+		//Input
+	bool isArrowKeyDown = false;
+	bool isArrowKeyUp = false;
+	//Xu ly cau thang
+	bool isUpStair = false, isDownStair = false;
+	bool isOnStair = false;
+	bool prepareUpStair = false, prepareDownStair = false;
+	bool canUpStairLeft, canUpStairRight, canDownStairLeft, canDownStairRight;
+	int currStairStep = 0;
+	Vector2 currStairPos = Vector2(0, 0);
+	Vector2 currSimonStairPos = Vector2(0, 0);
+	bool isCancelStairMove = false;
+	bool isCompleteStairMove = false;
+	//Xu ly di chuyen MoveTo
+	bool check_arrive_x = false, check_arrive_y = false;
 public:
 	int m_keyDown;
 	int m_keyUp;
@@ -65,6 +82,7 @@ public:
 	bool canJump = false;
 	bool isFree = false;
 	bool isSit = false;
+	bool canSit = false;
 	bool isMove = false;
 	bool isAttacking= false; //tan cong bang cane
 	bool isWeaponAttacking = false; //tan cong bang weapon
@@ -73,6 +91,7 @@ public:
 	bool isCheckChangeState = false;
 	bool isCollisionEnemy = false;
 	bool isUnAvailable = false;
+	bool isJumping = false; // xet xem simon co dang nhay hay ko
 	float timeCollisionEnemy = 0.0f;
 public:
 	int m_hpSimon;
@@ -85,7 +104,8 @@ private:
 public:
 	void UpdateStatus(float deltaTime, SIMON_status simon_status);
 	void Jump(float deltaTime);
-
+	//leo cau thang
+	bool MoveTo(Vector2 point, float deltaTime);
 };
 
 

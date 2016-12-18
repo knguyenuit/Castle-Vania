@@ -25,6 +25,8 @@ using namespace std;
 #define __CLASS_NAME "Castle Vania"
 #define __CLASS_NAME__(x) #x
 
+
+
 typedef unsigned long long __UINT64;
 typedef long long		   __INT64;
 typedef int 			   __INT32;

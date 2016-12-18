@@ -8,9 +8,9 @@
 CGameManager::CGameManager()
 {
 	Init();
-	CLevel::GetInstance()->readFileLevel(MANAGE_LEVEL);
+	//CLevel::GetInstance()->readFileLevel(MANAGE_LEVEL);
 
-	ChangeLevel(2);
+	//ChangeLevel(2);
 
 
 }
@@ -25,7 +25,9 @@ CGameManager::~CGameManager()
 void CGameManager::Init()
 {
 	CPoolObject::GetInstance()->Init();
-	m_Level = 1;
+	CLevel::GetInstance()->readFileLevel(MANAGE_LEVEL);
+
+	ChangeLevel(2);
 
 }
 
@@ -54,7 +56,7 @@ void CGameManager::Draw()
 
 		CLoadBackground::GetInstance()->Draw();
 		CPoolObject::GetInstance()->Draw();
-
+		CLoadObject::GetInstance()->Draw();
 		CDevice::s_spriteHandle->End();
 		CDevice::s_d3ddv->EndScene();
 	}

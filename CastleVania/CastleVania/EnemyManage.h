@@ -7,9 +7,11 @@
 #include "VampireBat.h"
 #include "BossVampireBat.h"
 #include "FishMan.h"
+#include "SmallLight.h"
 #include "Resources.h"
 #include "OnCollision.h"
 #include "Simon.h"
+#include "ItemManage.h"
 class CEnemyManage : public CSingleton<CEnemyManage>
 {
 	friend class CSingleton<CEnemyManage>;
@@ -23,6 +25,7 @@ public:
 	void OnCaneCollision();
 	void OnSimonCollision(float deltaTime);
 	CEnemy* CreateEnemy(ENEMY_type enemyType, Vector2 pos);
+	CEnemy* CreateEnemy(ENEMY_type enemyType, Vector2 pos, ITEM_name itemName);
 	void DrawEnemy(CEnemy* enemyObj);
 	void Draw();
 	void Update(float deltaTime);

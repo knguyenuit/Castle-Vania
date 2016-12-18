@@ -10,7 +10,7 @@
 #include "DrawObject.h"
 #include "Ground.h"
 #include "ItemManage.h"
-
+#include "HideObjectManage.h"
 #include "WeaponManage.h"
 #include "Banner.h"
 

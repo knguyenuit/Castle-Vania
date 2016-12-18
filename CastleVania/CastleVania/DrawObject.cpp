@@ -87,10 +87,21 @@ void CDrawObject::Draw(CBaseGameObject *obj)// quan li viec load va ve cac doi t
 			texture->LoadImageFromFile(ITEM_DAGGER, D3DCOLOR_XRGB(255, 255, 255));
 			this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 			break;
-		case 702:
+		/*case 702:
 			texture->LoadImageFromFile(BRICK, D3DCOLOR_XRGB(255, 255, 255));
 			this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
-			break;
+			break;*/
+		/*case 201:
+			texture->LoadImageFromFile(ENEMY_ZOMBIE, D3DCOLOR_XRGB(255, 255, 255));
+			if (obj->m_Dir == LEFT)
+			{
+				this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+			}
+			else
+			{
+				this->m_draw->DrawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+			}
+			break;*/
 		}
 	}
 }

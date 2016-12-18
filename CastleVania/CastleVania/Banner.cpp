@@ -8,19 +8,19 @@ void CBanner::Init()
 	this->m_Width = 510;
 	this->m_Height = 79;
 	this->m_Id = 100;
-	this->m_Pos = Vector2(255, 400);
+	this->m_Pos = Vector2(200, 425);
 	m_TextureBanner = new CTexture();
 	m_TextureBanner->LoadImageFromFile(BANNER, D3DCOLOR_XRGB(255, 0, 255));
 	m_textureHpPlayer = new CTexture();
 	m_textureHpPlayer->LoadImageFromFile(SIMON_HP, D3DCOLOR_XRGB(255, 0, 255));
-	this->posHpSimon = D3DXVECTOR3(176, 73, 0);
+	this->posHpSimon = D3DXVECTOR3(122, 48, 0);
 	this->m_hpSimon = CSimon::GetInstance()->m_hpSimon;
 }
 
 void CBanner::Update(float deltaTime)
 {
 	//ve banner theo camera
-		this->m_Pos.x = CCamera::GetInstance()->m_pos.x + 320;
+		this->m_Pos.x = CCamera::GetInstance()->m_pos.x + 265;
 		//cap nhat mau cua simon
 		this->m_hpSimon = CSimon::GetInstance()->m_hpSimon;
 	

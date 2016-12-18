@@ -11,7 +11,7 @@
 #include "FileUtil.h"
 #include "Camera.h"
 #include "DrawObject.h"
-
+#include "HideObjectManage.h"
 
 class CLoadObject : public CSingleton<CLoadObject>
 {

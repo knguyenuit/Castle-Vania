@@ -94,7 +94,7 @@
     <Link>
       <SubSystem>NotSet</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>d3d9.lib;d3dx9.lib;dxguid.lib;dxerr.lib;dinput8.lib;dsound.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>d3d9.lib;d3dx9.lib;dxguid.lib;dxerr.lib;dinput8.lib;dsound.lib;winmm.lib;legacy_stdio_definitions.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -166,6 +166,8 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="Ground.h" />
+    <ClInclude Include="HideObject.h" />
+    <ClInclude Include="HideObjectManage.h" />
     <ClInclude Include="HinhChuNhat.h" />
     <ClInclude Include="HinhVuong.h" />
     <ClInclude Include="Input.h" />
@@ -174,6 +176,7 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="LoadBackground.h" />
     <ClInclude Include="LoadObject.h" />
+    <ClInclude Include="ManageAudio.h" />
     <ClInclude Include="Move.h" />
     <ClInclude Include="OnCollision.h" />
     <ClInclude Include="PoolObject.h" />
@@ -182,8 +185,17 @@
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="Resources.h" />
     <ClInclude Include="Simon.h" />
+    <ClInclude Include="SimonIntro.h" />
     <ClInclude Include="Singleton.h" />
+    <ClInclude Include="SmallLight.h" />
+    <ClInclude Include="SoundUtil.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Stair.h" />
+    <ClInclude Include="State.h" />
+    <ClInclude Include="StateGameIntro.h" />
+    <ClInclude Include="StateGameManager.h" />
+    <ClInclude Include="StateGamePlay.h" />
+    <ClInclude Include="StateGameStart.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="VampireBat.h" />
     <ClInclude Include="ViewWindows.h" />
@@ -212,6 +224,8 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Ground.cpp" />
+    <ClCompile Include="HideObject.cpp" />
+    <ClCompile Include="HideObjectManage.cpp" />
     <ClCompile Include="HinhChuNhat.cpp" />
     <ClCompile Include="HinhVuong.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -221,6 +235,7 @@
     <ClCompile Include="LoadBackground.cpp" />
     <ClCompile Include="LoadObject.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="ManageAudio.cpp" />
     <ClCompile Include="Move.cpp" />
     <ClCompile Include="OnCollision.cpp" />
     <ClCompile Include="PoolObject.cpp" />
@@ -228,7 +243,16 @@
     <ClCompile Include="QuadObject.cpp" />
     <ClCompile Include="QuadTree.cpp" />
     <ClCompile Include="Simon.cpp" />
+    <ClCompile Include="SimonIntro.cpp" />
+    <ClCompile Include="SmallLight.cpp" />
+    <ClCompile Include="SoundUtil.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Stair.cpp" />
+    <ClCompile Include="State.cpp" />
+    <ClCompile Include="StateGameIntro.cpp" />
+    <ClCompile Include="StateGameManager.cpp" />
+    <ClCompile Include="StateGamePlay.cpp" />
+    <ClCompile Include="StateGameStart.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="VampireBat.cpp" />
     <ClCompile Include="ViewWindows.cpp" />

@@ -46,6 +46,7 @@
 #define ENEMY_AXEMAN "..\\Resources\\image\\enemy\\AxeMan.png"
 #define ENEMY_FISHMAN "..\\Resources\\image\\enemy\\FishMan.png"
 #define ENEMY_FIREBALL "..\\Resources\\image\\enemy\\fireball.png"
+#define OBJECT_SMALLLIGHT "..\\Resources\\image\\Light\\1.png"
 //BOSS
 #define BOSS_VAMPIREBAT "..\\Resources\\image\\boss\\0.png"
 
@@ -72,5 +73,11 @@
 //quadtree object
 #define LIST_QTOBJ_lv1 "..\\Resources\\Object\\lv1QTGO.txt"
 #define LIST_QTOBJ_lv2 "..\\Resources\\Object\\lv2QTGO.txt"
+
+//start scene
+#define START_SCREEN "..\\Resources\\image\\MenuGame\\mainmenu.png"
+
+//intro scene
+#define INTRO_SCREEN "..\\Resources\\image\\IntroGame\\intro.png"
 
 #endif // !__CRESOURCES_H__

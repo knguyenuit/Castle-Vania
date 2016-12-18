@@ -189,14 +189,16 @@ void CLoadBackground::Clear()
 	if (this->m_quadTree)
 	{
 		this->m_quadTree->Clear();
-		this->m_quadTree = nullptr;
+		//this->m_quadTree = nullptr;
+		//this->m_quadTree = new CQuadTree();
 	}
 	if (this->m_imageCurr)
 	{
 		delete this->m_imageCurr;
 		this->m_imageCurr = new CTexture();
 	}
-	if (listBackground.size() != 0)
+	listBackground.clear();
+	/*if (listBackground.size() != 0)
 	{
 		for (std::vector<BackGroundItem>::iterator it = this->listBackground.begin();
 			it != this->listBackground.end();
@@ -209,7 +211,7 @@ void CLoadBackground::Clear()
 				break;
 			}
 		}
-	}
+	}*/
 }
 
 void CLoadBackground::LoadMatrixFromFile(std::string filePath)
@@ -230,5 +232,5 @@ void CLoadBackground::LoadMatrixFromFile(std::string filePath)
 		item._heighTitle = std::atoi(result.at(7).c_str());
 		listBackground.push_back(item);
 	}
-
+	int count = value.size();
 }

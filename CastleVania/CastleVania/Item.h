@@ -15,7 +15,8 @@ enum class ITEM_name
 	Axe = 315,
 	Cross = 316,
 	Boomerang = 314,
-	FireBomb = 313
+	FireBomb = 313,
+	None = 0
 
 };
 

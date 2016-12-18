@@ -21,6 +21,7 @@ CLoadObject::~CLoadObject()
 void CLoadObject::Update(float deltaTime)
 {
 	CreateObjectOnScreen();
+
 	for (std::vector<CBaseGameObject*>::iterator it = this->m_listGameObject.begin();
 		it != this->m_listGameObject.end();
 		)
@@ -80,10 +81,9 @@ void CLoadObject::Draw()
 		++it)
 	{
 		CBaseGameObject* gameObj = *it;
-		if (gameObj->m_Id == 601 || gameObj->m_Id == 602 || gameObj->m_Id == 603)
-		{
-			CDrawObject::GetInstance()->Draw(gameObj);
-		}
+		
+		CDrawObject::GetInstance()->Draw(gameObj);
+		
 	}
 }
 
@@ -130,14 +130,23 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
 		return CEnemyManage::GetInstance()->CreateEnemy(BossVampireBat, pos);
 		break;
 	case 616:
-		return new CBrick(pos);
+		return CEnemyManage::GetInstance()->CreateEnemy(ENEMY_type::SmallLight, pos, ITEM_name::SmallHeart);
+		break;
+	case 617:
+		return CEnemyManage::GetInstance()->CreateEnemy(ENEMY_type::SmallLight, pos, ITEM_name::SmallHeart);
+		break;
+	case 703:
+		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::DownStairLeft, pos);
 		break;
 	case 704:
-		return new CBrick(pos);
+		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::UpStairLeft, pos);
 		break;
 	case 713:
-			return new CBrick(pos);
-			break;
+		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::DownStairRight, pos);
+		break;
+	case 714:
+		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::UpStairRight, pos);
+		break;
 	default:
 		break;
 	}
@@ -249,7 +258,10 @@ void CLoadObject::Clear()
 	}
 	}*/
 	m_listGameObject.clear();
+	m_listObjectCurr.clear();
+	m_listIdObject.clear();
 	listBox.clear();
+
 }
 //Xen trong quadtree va khoi tao doi tuong
 void CLoadObject::CreateObjectOnScreen()
@@ -382,6 +394,7 @@ void CLoadObject::CreateObjectOnScreen()
 
 					if (this->m_listObjectCurr.find(m_listIdObject.at(i)) != this->m_listObjectCurr.end())
 					{
+						
 						this->m_listGameObject.push_back(this->m_listObjectCurr.find(m_listIdObject.at(i))->second);
 					}
 					else
@@ -395,6 +408,7 @@ void CLoadObject::CreateObjectOnScreen()
 			}
 		}
 	}
+
 }
 
 void CLoadObject::LoadReSourceFromFile(std::string fileOJ, std::string fileQTOJ)
