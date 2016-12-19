@@ -52,7 +52,7 @@ void CStair::OnSimonCollision(float deltaTime)
 						//Init Move Simon
 						this->simon->m_startFrame = 0;
 						this->simon->m_endFrame = 3;
-						this->simon->m_vx = this->simon->m_vy = 150;
+						this->simon->m_vx = this->simon->m_vy = 60;
 						if (this->simon->MoveTo(this->simon->currSimonStairPos, deltaTime))
 						{
 
@@ -119,7 +119,7 @@ void CStair::OnSimonCollision(float deltaTime)
 						//Init Move Simon
 						this->simon->m_startFrame = 0;
 						this->simon->m_endFrame = 3;
-						this->simon->m_vx = this->simon->m_vy = 150;
+						this->simon->m_vx = this->simon->m_vy = 60;
 						if (this->simon->MoveTo(this->simon->currSimonStairPos, deltaTime))
 						{
 							if (this->simon->isArrowKeyDown == false)
@@ -160,7 +160,7 @@ void CStair::OnSimonCollision(float deltaTime)
 						//Init Move Simon
 						this->simon->m_startFrame = 0;
 						this->simon->m_endFrame = 3;
-						this->simon->m_vx = this->simon->m_vy = 150;
+						this->simon->m_vx = this->simon->m_vy = 60;
 						if (this->simon->MoveTo(this->simon->currSimonStairPos, deltaTime))
 						{
 
@@ -229,7 +229,7 @@ void CStair::OnSimonCollision(float deltaTime)
 						//Init Move Simon
 						this->simon->m_startFrame = 0;
 						this->simon->m_endFrame = 3;
-						this->simon->m_vx = this->simon->m_vy = 150;
+						this->simon->m_vx = this->simon->m_vy = 60;
 						if (this->simon->MoveTo(this->simon->currSimonStairPos, deltaTime))
 						{
 							if (this->simon->isArrowKeyDown == false)
@@ -302,6 +302,7 @@ void CStair::Update(float deltaTime)
 
 void CStair::SimonMove(float deltaTime)
 {
+	this->simon->m_vx = this->simon->m_vy = 7;
 	if (this->simon->isArrowKeyUp == true || this->simon->isArrowKeyDown == true)
 	{
 		this->simon->isCancelStairMove = false;

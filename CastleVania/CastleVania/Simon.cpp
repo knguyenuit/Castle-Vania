@@ -292,14 +292,14 @@ void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
 		canJump = false;
 		this->m_vy += this->m_a * deltaTime;
 		this->m_Pos.y += this->m_vy * deltaTime;
-		if (isMoveLeft)
+		/*if (isMoveLeft)
 		{
 			this->m_Pos.x -= this->m_vxDefault * deltaTime;
 		}
 		else
 		{
 			this->m_Pos.x += this->m_vxDefault * deltaTime;
-		}
+		}*/
 		if (this->m_vy <= 0)
 		{
 			isFree = true;
@@ -333,14 +333,14 @@ void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
 			this->m_vy += this->m_a * deltaTime * 2;
 			this->m_Pos.y += this->m_vy * deltaTime;
 		}
-		if (isMoveLeft)
+		/*if (isMoveLeft)
 		{
 			this->m_Pos.x -= this->m_vxDefault * deltaTime;
 		}
 		else
 		{
 			this->m_Pos.x += this->m_vxDefault * deltaTime;
-		}
+		}*/
 		this->m_startFrame = 0;
 		this->m_endFrame = 0;
 		break;
