@@ -55,5 +55,7 @@ void CStateGamePlay::ChangeLevel(int lv)
 		CLoadBackground::GetInstance()->LoadImageFromFile(m_currentLevel->fileImageBackgroud);
 		CLoadObject::GetInstance()->LoadReSourceFromFile(m_currentLevel->fileObject, m_currentLevel->fileObjectQuadtree);
 		CLoadBackground::GetInstance()->LoadBackgroundFromFile(m_currentLevel->fileBackground, m_currentLevel->fileBackgroundQuadtree);
+		CSimon::GetInstance()->m_Pos = CSimon::GetInstance()->m_PosDefault;
+		CCamera::GetInstance()->m_pos.x = CSimon::GetInstance()->m_Pos.x - 100;
 	}
 }

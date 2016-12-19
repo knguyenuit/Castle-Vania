@@ -51,21 +51,29 @@ void CWeaponManage::DrawWeapon(CWeapon * weapon)
 	switch (weaponName)
 	{
 	case WEAPON_name::Axe:
-		texture->LoadImageFromFile(WEAPON_AXE, D3DCOLOR_XRGB(255, 255, 255));
+		texture->LoadImageFromFile(WEAPON_AXE, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 	case WEAPON_name::Boomerang:
-		texture->LoadImageFromFile(WEAPON_BOOMERANG, D3DCOLOR_XRGB(255, 255, 255));
+		texture->LoadImageFromFile(WEAPON_BOOMERANG, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 	case WEAPON_name::Dagger:
-		texture->LoadImageFromFile(WEAPON_DAGGER, D3DCOLOR_XRGB(255, 255, 255));
+		texture->LoadImageFromFile(WEAPON_DAGGER, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 	case WEAPON_name::FireBomb:
-		texture->LoadImageFromFile(WEAPON_FIREBOMB, D3DCOLOR_XRGB(255, 255, 255));
+		texture->LoadImageFromFile(WEAPON_FIREBOMB, D3DCOLOR_XRGB(255, 0, 255));
 		break;
+		
 	default:
 		break;
 	}
-	CDrawObject::GetInstance()->m_draw->Draw(texture, weapon->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+	if (CSimon::GetInstance()->m_Dir == RIGHT)
+	{
+		CDrawObject::GetInstance()->m_draw->Draw(texture, weapon->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+	}
+	else
+	{
+		CDrawObject::GetInstance()->m_draw->DrawFlipX(texture, weapon->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+	}
 }
 
 void CWeaponManage::Draw()

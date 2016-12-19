@@ -81,39 +81,39 @@ void CItemManage::DrawItem(CItem * obj)
 	{
 
 	case ITEM_name::SmallHeart:
-		texture->LoadImageFromFile(ITEM_SMALL_HEART, D3DCOLOR_XRGB(255, 255, 255));
+		texture->LoadImageFromFile(ITEM_SMALL_HEART, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 
 	case ITEM_name::LargeHeart:
-		texture->LoadImageFromFile(ITEM_LARGE_HEART, D3DCOLOR_XRGB(255, 255, 255));
+		texture->LoadImageFromFile(ITEM_LARGE_HEART, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 
 	case ITEM_name::MoneyBag:
-		texture->LoadImageFromFile(ITEM_MONEY_BAG, D3DCOLOR_XRGB(255, 255, 255));
+		texture->LoadImageFromFile(ITEM_MONEY_BAG, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 
 	case ITEM_name::MorningStar:
-		texture->LoadImageFromFile(ITEM_MORNING_STAR, D3DCOLOR_XRGB(255, 255, 255));
+		texture->LoadImageFromFile(ITEM_MORNING_STAR, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 		//item weapon
 	case ITEM_name::Dagger:
-		texture->LoadImageFromFile(ITEM_DAGGER, D3DCOLOR_XRGB(255, 255, 255));
+		texture->LoadImageFromFile(ITEM_DAGGER, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 	case ITEM_name::Axe:
-		texture->LoadImageFromFile(ITEM_AXE, D3DCOLOR_XRGB(255, 255, 255));
+		texture->LoadImageFromFile(ITEM_AXE, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 	case ITEM_name::Boomerang:
-		texture->LoadImageFromFile(ITEM_BOOMERANG, D3DCOLOR_XRGB(255, 255, 255));
+		texture->LoadImageFromFile(ITEM_BOOMERANG, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 	case ITEM_name::FireBomb:
-		texture->LoadImageFromFile(ITEM_FIREBOMB, D3DCOLOR_XRGB(255, 255, 255));
+		texture->LoadImageFromFile(ITEM_FIREBOMB, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 
 	case ITEM_name::Cross:
-		texture->LoadImageFromFile(ITEM_CROSS, D3DCOLOR_XRGB(255, 255, 255));
+		texture->LoadImageFromFile(ITEM_CROSS, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 	case ITEM_name::PorkChop:
-		texture->LoadImageFromFile(ITEM_PORK_CHOP, D3DCOLOR_XRGB(255, 255, 255));
+		texture->LoadImageFromFile(ITEM_PORK_CHOP, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 
 	}

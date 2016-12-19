@@ -37,7 +37,7 @@ class CEnemy : public CBaseGameObject, public CMove, public CAnimation
 {
 public:
 	ENEMY_state m_State;
-	bool m_isRemove;
+	
 	ENEMY_type enemyType;
 	ITEM_name enemyItem = ITEM_name::None;
 public:
@@ -53,6 +53,8 @@ public:
 	void Update(float deltaTime);
 	bool MoveTo(Vector2 point, float deltaTime);
 	virtual void MoveUpdate(float deltaTime);
+	void OnSimonCollision(float deltaTime);
+	void OnCaneCollision();
 	RECT* GetRectRS();
 	~CEnemy();
 

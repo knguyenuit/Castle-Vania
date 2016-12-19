@@ -6,6 +6,12 @@ CCane::CCane()
 	Init();
 }
 
+CCane::CCane(Vector2 pos)
+{
+	Init();
+	this->m_Pos = pos;
+}
+
 
 CCane::~CCane()
 {

@@ -45,7 +45,7 @@ void CBlackLeopard::MoveUpdate(float deltaTime)
 		this->m_startFrame = 3;
 		this->m_endFrame = 3;
 		this->m_increase = 0;
-		if (this->m_Pos.y>48)
+		if (this->m_Pos.y>90)
 		{
 			this->m_Pos.x -= this->m_vx*deltaTime;
 			this->m_Pos.y -= this->m_vy*deltaTime;

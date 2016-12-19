@@ -11,9 +11,9 @@ CSimon::CSimon()
 	this->InitMove();
 	this->InitAnimation();
 	this->cane = new CCane();
-	this->cane->m_Pos = this->m_Pos;
+	//this->cane->m_Pos = 
 	this->hv = new CHinhChuNhat();
-	this->m_currentWeapon = WEAPON_name::Boomerang;
+	this->m_currentWeapon = WEAPON_name::Dagger;
 	//init stair status
 	this->canUpStairLeft = this->canUpStairRight = this->canDownStairLeft = this->canDownStairRight = false;
 	this->isArrowKeyDown = this->isArrowKeyUp = false;
@@ -41,7 +41,7 @@ void CSimon::InitMove()
 	this->m_a = -900;
 	this->m_aDefault = this->m_a;
 	this->m_ax = 0;
-	this->m_Pos = Vector2(100, 90);
+	this->m_Pos = this->m_PosDefault = Vector2(100, 90);
 	this->m_Width = 60;
 	this->m_Height = 68;
 	this->m_isJumping = false;
@@ -234,6 +234,8 @@ void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
 		break;
 	case ONSTAIR:
 		this->canSit = false;
+		this->m_vx = this->m_vy= 4;
+		
 		this->m_elapseTimeChangeFrame = 0.15f * 1.2f;
 		//Xet Frame 
 		if (this->isCancelStairMove == false)

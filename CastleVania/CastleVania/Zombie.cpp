@@ -37,6 +37,7 @@ RECT * CZombie::GetRectRS()
 }
 
 
+
 CZombie::~CZombie()
 {
 }

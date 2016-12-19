@@ -14,7 +14,7 @@ class CCane : public CBaseGameObject, public CAnimation
 
 public:
 	CCane();
-
+	CCane(Vector2 pos);
 	~CCane();
 public:
 	void Init();

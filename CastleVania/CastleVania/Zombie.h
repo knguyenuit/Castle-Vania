@@ -11,6 +11,7 @@ public:
 public:
 	void Init();
 	RECT* GetRectRS();
+	
 };
 
 #endif // !__ZOMBIE_H__

@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "Simon.h"
+#include "ItemManage.h"
 
 CEnemy::CEnemy()
 {
@@ -25,6 +26,11 @@ void CEnemy::InitAnimation()
 
 void CEnemy::Update(float deltaTime)
 {
+	OnSimonCollision(deltaTime);
+	if (CSimon::GetInstance()->cane->m_checkActive)
+	{
+		OnCaneCollision();
+	}
 	this->ChangeFrame(deltaTime);
 	if (this->m_Pos.x < CCamera::GetInstance()->m_pos.x + 600)
 	{
@@ -50,7 +56,7 @@ void CEnemy::Update(float deltaTime)
 	{
 		this->MoveUpdate(deltaTime);
 	}
-
+	
 }
 
 
@@ -178,3 +184,86 @@ RECT * CEnemy::GetRectRS()
 CEnemy::~CEnemy()
 {
 }
+
+void CEnemy::OnSimonCollision(float deltaTime)
+{
+	CSimon* simon = CSimon::GetInstance();
+	if (simon->isCollisionEnemy)
+	{
+
+		simon->simon_Status = COLLISION_ENEMY;
+		if (simon->timeCollisionEnemy == 0)
+		{
+			simon->m_hpSimon -= 1;
+		}
+		simon->timeCollisionEnemy += deltaTime;
+		if (simon->timeCollisionEnemy >= 1)
+		{
+			simon->m_Dir = simon->m_Dir == LEFT ? RIGHT : LEFT;
+			simon->isCollisionEnemy = false;
+			simon->timeCollisionEnemy = 0;
+			simon->simon_Status = IDLE;
+
+		}
+	}
+	else
+	{
+		
+			if (CCollision::GetInstance()->AABBCheck(simon->GetBox(), this->GetBox()))
+			{
+
+				if (this->enemyType == Zombie)
+				{
+
+					//CItemManage::GetInstance()->CreateRandomItem(obj->GetPos());
+					simon->cane->updateState(caneState::default);
+
+				}
+				if (this->enemyType == BlackLeopard)
+				{
+					simon->isCollisionEnemy = true;
+					simon->m_Dir = this->m_Dir;
+
+				}
+			}
+
+		}
+	}
+
+
+void CEnemy::OnCaneCollision()
+{
+	CCane* cane = CSimon::GetInstance()->cane;
+	if (cane->getCurrentFrame() == 2 ||
+		cane->getCurrentFrame() == 6 ||
+		cane->getCurrentFrame() == 10)
+	{
+		if (CCollision::GetInstance()->AABBCheck(cane->GetBox(), this->GetBox()))
+		{
+			this->m_isRemove = true;
+			if (this->enemyItem != ITEM_name::None)
+			{
+				CItemManage::GetInstance()->CreateItem(this->enemyItem, this->GetPos());
+			}
+			else
+			{
+				CItemManage::GetInstance()->CreateRandomItem(this->GetPos());
+			}
+
+			/*switch (this->enemyType)
+			{
+			case ENEMY_type::Zombie:
+
+				break;
+			case ENEMY_type::BlackLeopard:
+				this->changeState(ENEMY_state::FREE);
+				break;
+			default:
+				break;
+			}*/
+		}
+	}
+}
+		
+	
+

@@ -101,7 +101,7 @@ void CPoolObject::Draw()
 	}
 	CLoadObject::GetInstance()->Draw();
 	CItemManage::GetInstance()->Draw();
-	CEnemyManage::GetInstance()->Draw();
+	//CEnemyManage::GetInstance()->Draw();
 	CWeaponManage::GetInstance()->Draw();
 	//ve banner
 	banner->DrawBannerBG();

@@ -62,28 +62,32 @@ void CBrick::OnSimonCollision(float deltaTime)
 	if (normalY == CDirection::ON_DOWN)
 	{
 		
-			simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
+		simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
 		
 		simon->isFree = false;
 		simon->canJump = true;
 	}
-	if(COnCollision::GetInstance()->AABBCheck(this->simon->GetBox(), this->GetBox()))
+	if (simon->simon_Status != ONSTAIR)
 	{
-		if (simon->isSit)
+		if (COnCollision::GetInstance()->AABBCheck(this->simon->GetBox(), this->GetBox()))
 		{
-			if (simon->isAttacking)
+			if (simon->isSit)
 			{
-				simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 24;
+				if (simon->isAttacking)
+				{
+					simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 24;
+				}
+				else
+				{
+					simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
+				}
 			}
 			else
 			{
-				simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
+ 				simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
 			}
+
 		}
-		else
-		{
-			simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
-		}
-		
 	}
+	
 }
