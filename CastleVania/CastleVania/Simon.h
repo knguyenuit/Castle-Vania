@@ -93,6 +93,7 @@ public:
 	bool isUnAvailable = false;
 	bool isJumping = false; // xet xem simon co dang nhay hay ko
 	float timeCollisionEnemy = 0.0f;
+	bool isMoveLeft;
 public:
 	int m_hpSimon;
 	WEAPON_name m_currentWeapon;

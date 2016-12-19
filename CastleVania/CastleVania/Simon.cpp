@@ -17,6 +17,8 @@ CSimon::CSimon()
 	//init stair status
 	this->canUpStairLeft = this->canUpStairRight = this->canDownStairLeft = this->canDownStairRight = false;
 	this->isArrowKeyDown = this->isArrowKeyUp = false;
+	this->isCancelStairMove = true;
+	this->isMoveLeft = false;
 }
 #pragma region Init
 void CSimon::InitAnimation()
@@ -41,7 +43,7 @@ void CSimon::InitMove()
 	this->m_a = -900;
 	this->m_aDefault = this->m_a;
 	this->m_ax = 0;
-	this->m_Pos = this->m_PosDefault = Vector2(100, 90);
+	this->m_Pos = this->m_PosDefault = Vector2(1888, 220);
 	this->m_Width = 60;
 	this->m_Height = 68;
 	this->m_isJumping = false;
@@ -85,7 +87,16 @@ bool CSimon::MoveTo(Vector2 point, float deltaTime)
 		}
 		else
 		{
-			this->isRight = true;
+			if (this->m_Pos.x < point.x)
+			{
+				this->isRight = true;
+			}
+			else
+			{
+				this->isLeft = (this->m_Dir == LEFT) ? true : false;
+				this->isRight = (this->m_Dir == RIGHT) ? true : false;
+			}
+
 		}
 	}
 
@@ -202,31 +213,36 @@ void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
 		m_startFrame = 0;
 		m_endFrame = 0;
 		isMove = true;
-		canJump = true;
+ 		canJump = true;
 		isJumping = false;
 		isSit = false;
 		canSit = true;
+		
 		break;
 	case MOVE:
 
 		if (this->simon_Status != SIMON_status::ONSTAIR)
 		{
+			
 			if (isMove)
 			{
-				if (this->m_Dir == Direction::LEFT)
+				if (!isJumping)
 				{
 					this->m_startFrame = 0;
 					this->m_endFrame = 3;
 					
-					m_Pos.x -=  this->m_vxDefault * deltaTime;
+				}
+				
+				if (this->m_Dir == Direction::LEFT)
+				{
+					m_Pos.x -= this->m_vxDefault * deltaTime;
 				}
 				if (this->m_Dir == Direction::RIGHT)
 				{
-					this->m_startFrame = 0;
-					this->m_endFrame = 3;
-					
+
 					m_Pos.x += this->m_vxDefault * deltaTime;
 				}
+				
 			}
 		}
 		break;
@@ -276,6 +292,14 @@ void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
 		canJump = false;
 		this->m_vy += this->m_a * deltaTime;
 		this->m_Pos.y += this->m_vy * deltaTime;
+		if (isMoveLeft)
+		{
+			this->m_Pos.x -= this->m_vxDefault * deltaTime;
+		}
+		else
+		{
+			this->m_Pos.x += this->m_vxDefault * deltaTime;
+		}
 		if (this->m_vy <= 0)
 		{
 			isFree = true;
@@ -309,6 +333,14 @@ void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
 			this->m_vy += this->m_a * deltaTime * 2;
 			this->m_Pos.y += this->m_vy * deltaTime;
 		}
+		if (isMoveLeft)
+		{
+			this->m_Pos.x -= this->m_vxDefault * deltaTime;
+		}
+		else
+		{
+			this->m_Pos.x += this->m_vxDefault * deltaTime;
+		}
 		this->m_startFrame = 0;
 		this->m_endFrame = 0;
 		break;
@@ -327,21 +359,23 @@ void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
 			}
 			else
 			{
-				if (isJumping)
-				{
-					this->m_startFrame = 15;
-					this->m_endFrame = 17;
-				}
-				else
-				{
+				
 					this->m_startFrame = 5;
 					this->m_endFrame = 7;
-				}
+				
 				
 				this->cane->m_checkActive = true;
 			}
 
 			this->cane->Use(this->m_Pos, isLeft);
+			if (isJumping)
+			{
+				if (this->cane->m_currentFrame == 2)
+				{
+					isFree = true;
+					simon_Status = FALL;
+				}
+			}
 		}
 		break;
 	case COLLISION_ENEMY:
@@ -513,13 +547,18 @@ void CSimon::OnKeyDown(float deltaTime)
 		// start jump if is not "on-air"
 		break;
 	case DIK_LEFT:
+		isMoveLeft = true;
 		isLeft = true;
 		this->cane->isLeft = true;
 		this->m_Dir = Direction::LEFT;
 		this->cane->m_Dir = Direction::LEFT;
-		this->simon_Status = SIMON_status::MOVE;
+		if (!isJumping)
+		{
+			this->simon_Status = SIMON_status::MOVE;
+		}
 		break;
 	case DIK_RIGHT:
+		isMoveLeft = false;
 		isLeft = false;
 		this->cane->isLeft = false;
 		this->m_Dir = Direction::RIGHT;
@@ -527,10 +566,17 @@ void CSimon::OnKeyDown(float deltaTime)
 		this->simon_Status = SIMON_status::MOVE;
 		break;
 	case DIK_UP:
-		this->isArrowKeyUp = true;
+		if (this->isCancelStairMove == true)
+		{
+			this->isArrowKeyUp = true;
+		}
+
 		break;
 	case DIK_DOWN:
-		this->isArrowKeyDown = true;
+		if (this->isCancelStairMove == true)
+		{
+			this->isArrowKeyDown = true;
+		}
 		this->simon_Status = SIMON_status::SIT;
 		break;
 	case DIK_Z:
@@ -574,7 +620,7 @@ void CSimon::OnKeyUp(float deltaTime)
 
 	case DIK_LEFT:
 		simon_Status = SIMON_status::IDLE;
-
+		
 		this->m_ax = 0;
 		break;
 	case DIK_RIGHT:

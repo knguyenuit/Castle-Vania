@@ -66,6 +66,7 @@ void CBrick::OnSimonCollision(float deltaTime)
 		
 		simon->isFree = false;
 		simon->canJump = true;
+		
 	}
 	if (simon->simon_Status != ONSTAIR)
 	{
@@ -88,6 +89,8 @@ void CBrick::OnSimonCollision(float deltaTime)
 			}
 
 		}
+		
+		
 	}
 	
 }
