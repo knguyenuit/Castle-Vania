@@ -1,6 +1,7 @@
 #include "Enemy.h"
 #include "Simon.h"
 #include "ItemManage.h"
+#include "ManageAudio.h"
 
 CEnemy::CEnemy()
 {
@@ -241,6 +242,7 @@ void CEnemy::OnCaneCollision()
 		if (CCollision::GetInstance()->AABBCheck(cane->GetBox(), this->GetBox()))
 		{
 			this->m_isRemove = true;
+			ManageAudio::GetInstance()->playSound(TypeAudio::Hit);
 			if (this->enemyItem != ITEM_name::None)
 			{
 				CItemManage::GetInstance()->CreateItem(this->enemyItem, this->GetPos());

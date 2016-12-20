@@ -12,8 +12,9 @@ public:
 	~CSmallLight();
 public:
 	RECT * GetRectRS();
+
 public:
-	void Update(float deltaTime);
+	
 };
 
 #endif // !__SMALLLIGHT_H__

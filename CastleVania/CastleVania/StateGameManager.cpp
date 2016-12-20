@@ -15,7 +15,7 @@ void CStateGameManager::LoadScene()
 	this->gameStartScene = new CStateGameStart();
 	this->gameIntroScene = new CStateGameIntro();
 	gamePlayScene->Init();
-	m_pCurrent = gamePlayScene;
+	m_pCurrent = gameStartScene;
 	isStart = false;
 	timeDelay = 0;
 }
@@ -57,7 +57,7 @@ void CStateGameManager::Update(bool isUpdate, float deltaTime)
 	{
 		
 		isStart = true;
-		ManageAudio::GetInstance()->playSound(TypeAudio::Select);
+		ManageAudio::GetInstance()->playSound(TypeAudio::Game_Start_Prologue);
 		ChangeState(this->gameIntroScene);
 
 	}
@@ -80,6 +80,8 @@ void CStateGameManager::Update(bool isUpdate, float deltaTime)
 				isStart = false;
 			}*/
 			ChangeState(this->gamePlayScene);
+			ManageAudio::GetInstance()->stopSound(TypeAudio::Game_Start_Prologue);
+			ManageAudio::GetInstance()->playSound(TypeAudio::Stage_01_Vampire_Killer);
 		}
 	}
 

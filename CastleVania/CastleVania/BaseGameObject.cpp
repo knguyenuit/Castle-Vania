@@ -43,7 +43,7 @@ Vector2 CBaseGameObject::GetPos()
 
 
 
-//Dung de xet va cham + xen trong quad tree
+
 Box CBaseGameObject::GetBox()
 {
 	return Box(this->m_Pos, this->m_Width, this->m_Height, 0, 0);

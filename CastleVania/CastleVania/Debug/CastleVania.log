@@ -1,10 +1,18 @@
-﻿  Simon.cpp
+﻿  SmallLight.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
 d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
 d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(46): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\simon.cpp(462): warning C4101: 'timeCollision': unreferenced local variable
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\simon.cpp(489): warning C4101: 'normalY': unreferenced local variable
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\simon.cpp(508): warning C4101: 'normalY': unreferenced local variable
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\simon.cpp(530): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\smalllight.cpp(50): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  StateGamePlay.cpp
+  StateGameManager.cpp
+  PoolObject.cpp
+  Main.cpp
+  LoadObject.cpp
+  GameManager.cpp
+  Game.cpp
+  EnemyManage.cpp
+  CastleVania.cpp
   CastleVania.vcxproj -> D:\Game CastleVania\Castle Vania\trunk\CastleVania\Debug\CastleVania.exe
   CastleVania.vcxproj -> D:\Game CastleVania\Castle Vania\trunk\CastleVania\Debug\CastleVania.pdb (Full PDB)

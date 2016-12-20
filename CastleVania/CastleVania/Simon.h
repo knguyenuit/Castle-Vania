@@ -12,6 +12,7 @@
 #include "OnCollision.h"
 #include "HinhChuNhat.h"
 #include "Camera.h"
+#include "ManageAudio.h"
 enum SIMON_status
 {
 	NONE = 0,

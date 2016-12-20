@@ -43,7 +43,7 @@ void CSimon::InitMove()
 	this->m_a = -900;
 	this->m_aDefault = this->m_a;
 	this->m_ax = 0;
-	this->m_Pos = this->m_PosDefault = Vector2(1888, 220);
+	this->m_Pos = this->m_PosDefault = Vector2(100, 90);
 	this->m_Width = 60;
 	this->m_Height = 68;
 	this->m_isJumping = false;
@@ -347,7 +347,7 @@ void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
 	case ACTACK:
 		if (isAttacking)
 		{
-
+			//ManageAudio::GetInstance()->playSound(TypeAudio::Using_Whip);
 			if (isSit)
 			{
 				this->m_startFrame = 15;

@@ -24,7 +24,7 @@ CSmallLight::CSmallLight(Vector2 pos, ITEM_name enemyItem)
 void CSmallLight::Init()
 {
 	this->enemyType = ENEMY_type::SmallLight;
-	this->m_Id = this->enemyType;
+	this->m_Id = 600;
 	this->m_Width = 16;
 	this->m_Height = 32;
 
@@ -50,7 +50,4 @@ RECT * CSmallLight::GetRectRS()
 	return UpdateRectResource(this->m_Height, this->m_Width);
 }
 
-void CSmallLight::Update(float deltaTime)
-{
-	ChangeFrame(deltaTime);
-}
+
