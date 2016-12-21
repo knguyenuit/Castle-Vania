@@ -8,7 +8,8 @@ CStateGameStart::CStateGameStart()
 	this->m_imageCurr = new CTexture();
 	this->m_drawImg = new CSprite();
 	this->m_imageCurr->LoadImageFromFile(START_SCREEN, D3DCOLOR_XRGB(255, 255, 255));
-	_font = NULL;
+	_font = new CDrawFont();
+	/*_font = NULL;
 	D3DXCreateFont(
 		CDevice::s_d3ddv,
 		25,
@@ -21,7 +22,7 @@ CStateGameStart::CStateGameStart()
 		ANTIALIASED_QUALITY,
 		FF_DONTCARE,
 		"Lucida Console",
-		&_font);
+		&_font);*/
 	
 }
 
@@ -73,9 +74,18 @@ void CStateGameStart::Render()
 		rectRS_font->top = 300;
 		rectRS_font->right = 500;
 		rectRS_font->bottom = 400;
-		_font->DrawTextA(CDevice::s_spriteHandle, "PUSH ENTER TO START", -1, rectRS_font, DT_LEFT, D3DCOLOR_XRGB(255, 255, 255));
+
+		_font->DrawString("PUSH ENTER TO START", rectRS_font);
 		
-		
+		/*RECT *rectRS1_font = new RECT();
+		rectRS1_font->left = 0;
+		rectRS1_font->top = 100;
+		rectRS1_font->right = 100;
+		rectRS1_font->bottom = 200;
+		int c = 42;
+		std::string info_core;
+		info_core = std::to_string(c);
+		_font->DrawNumber(10, rectRS1_font);*/
 	}
 }
 

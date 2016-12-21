@@ -2,6 +2,8 @@
 #include "BaseGameObject.h"
 #include "OnCollision.h"
 #include "Simon.h"
+#include "ItemManage.h"
+#include "EnemyManage.h"
 class CBrick : public CBaseGameObject
 {
 
@@ -18,5 +20,7 @@ public:
 	void Update(float deltaTime);
 public:
 	void OnSimonCollision(float deltaTime);
+	void OnItemCollision(float deltaTime, std::vector<CItem*> listItem);
+	void OnEnemyCollision(float deltaTime, std::vector<CEnemy*> listEnemy);
 };
 

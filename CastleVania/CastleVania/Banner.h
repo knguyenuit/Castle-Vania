@@ -4,6 +4,7 @@
 #include "Sprite.h"
 #include "Singleton.h"
 #include "Simon.h"
+#include "DrawFont.h"
 
 
 class CBanner : public CBaseGameObject
@@ -18,13 +19,29 @@ public:
 	CBanner();
 	~CBanner();
 public:
+	CDrawFont* m_font;
 	CSprite* m_Draw;
 	CTexture* m_TextureBanner;
 	CTexture* m_textureHpPlayer;
+	CTexture* m_textureWeapon;
+	int m_Point;
+	int m_countTime = 0;
+	float m_deepTime = 0;
 
 public:
 	D3DXVECTOR3 posHpSimon;
+	D3DXVECTOR3 posWeapon;
+	D3DXVECTOR3 posPoint;
+
+
+	//rect
+	RECT* m_rectPoint;
+	RECT* m_rectTime;
+	RECT* m_rectState;
+	
+	//property
 	int m_hpSimon;
+	WEAPON_name m_typeWeapon;
 };
 
 #endif // !__CBANNER_H__

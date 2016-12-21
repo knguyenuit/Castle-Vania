@@ -63,7 +63,7 @@ void CWeapon::Init() {
 		this->m_vxDefault = this->m_vx = 250;
 		this->m_vyDefault = this->m_vy = 400;
 		this->m_a = 1000.0f;
-		this->InitAnimate(1, 1, 0, 0);
+		this->InitAnimate(3, 3, 0, 2);
 		break;
 	default:
 		break;
@@ -71,10 +71,33 @@ void CWeapon::Init() {
 
 
 }
+float timeRemove = 0;
 void CWeapon::Update(float deltaTime)
 {
 	this->MoveUpdate(deltaTime);
-	this->ChangeFrame(deltaTime);
+	if (this->m_WeaponName == WEAPON_name::FireBomb)
+	{
+		if (this->m_Pos.y < 70)
+		{
+			this->m_Pos.y = 70;
+			this->m_vy = this->m_vx =this->m_vxDefault = this->m_vyDefault = 0;
+			ChangeFrame(deltaTime);
+			if (m_currentFrame == 2)
+			{
+				timeRemove += deltaTime;
+				if (timeRemove > 0.1)
+				{
+					this->m_isRemove = true;
+					timeRemove = 0;
+				}
+			}
+		}
+	}
+	else
+	{
+		this->ChangeFrame(deltaTime);
+	}
+	
 	this->m_time_life += deltaTime;
 	if (this->m_time_life >= 10.0f)
 	{
@@ -173,6 +196,8 @@ RECT * CWeapon::GetRectRS()
 	return rec;*/
 	return this->UpdateRectResource(m_Height, m_Width);
 }
+
+
 
 
 CWeapon::~CWeapon()

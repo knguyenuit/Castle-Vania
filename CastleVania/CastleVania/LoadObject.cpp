@@ -7,7 +7,7 @@
 CLoadObject::CLoadObject()
 {
 	this->m_listGameObject = std::vector<CBaseGameObject*>();
-	this->m_listQuadTree = new std::hash_map<int, std::string>();
+	
 	
 	this->m_quadTree = new CQuadTree();
 
@@ -43,27 +43,7 @@ void CLoadObject::Update(float deltaTime)
 		}
 
 	}
-	//update brick
-	/*for (std::vector<CBaseGameObject*>::iterator it = this->m_listBrick.begin();
-		it != this->m_listBrick.end();
-		)
-	{
-		CBaseGameObject* gameObj = *it;
-
-		if (gameObj != NULL && gameObj->m_isRemove == false)
-		{
-			gameObj->Update(deltaTime);
-		}
-
-		if (gameObj->m_isRemove)
-		{
-			it = this->m_listGameObject.erase(it);
-		}
-		else
-		{
-			it++;
-		}
-	}*/
+	
 }
 
 void CLoadObject::Collision(float deltaTime, CBaseGameObject *gameObj)
@@ -133,6 +113,16 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
 	case 401:
 		return CEnemyManage::GetInstance()->CreateEnemy(BossVampireBat, pos);
 		break;
+	case 612:
+		return CEnemyManage::GetInstance()->CreateEnemy(ENEMY_type::SmallLight, pos, ITEM_name::Boomerang);
+		break;
+	case 613:
+	case 611:
+		return CEnemyManage::GetInstance()->CreateEnemy(ENEMY_type::SmallLight, pos, ITEM_name::Axe);
+		break;
+	case 615:
+		return CEnemyManage::GetInstance()->CreateEnemy(ENEMY_type::SmallLight, pos, ITEM_name::FireBomb);
+		break;
 	case 616:
 	case 614:
 		return CEnemyManage::GetInstance()->CreateEnemy(ENEMY_type::SmallLight, pos, ITEM_name::SmallHeart);
@@ -148,6 +138,9 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
 		break;
 	case 713:
 		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::DownStairRight, pos);
+		break;
+	case 712:
+		return new CBrick(pos);
 		break;
 	case 714:
 		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::UpStairRight, pos);
@@ -184,86 +177,19 @@ std::hash_map<int, CBaseGameObject*> CLoadObject::LoadGameObjectInfo(const std::
 				float Width = atoi(item.at(4).c_str());
 				float Height = atoi(item.at(5).c_str());
 				Box b = Box(PosX, PosY, Width, Height);
-				/*if (idItem == 702)
-				{
-					gameObj = this->CreateObject(idItem, pos);
-					this->m_listBrick.push_back(gameObj);
-				}
-				else
-				{*/
-				
-					gameObj = this->CreateObject(idItem, pos);
-					listInfo.insert(Pair(iDObjectInMap, gameObj));
-				
-				}
-
-			}
-
-		}
-
-	
-	return listInfo;
-}
-
-
-void CLoadObject::readFile(const std::string &filePath)
-{
-	std::vector<std::string> data = CFileUtil::GetInstance()->LoadFromFile(filePath);
-	std::vector<std::string> item;
-
-	typedef pair<int, Box> Pair;
-	if (!data.empty())
-	{
-		int size = data.size();
-		int iDObjectInMap;
-		for (int i = 0; i < size; i++)
-		{
-			CBaseGameObject* gameObj;
-			std::vector<int> info;
-			item = CFileUtil::GetInstance()->Split(data.at(i).c_str(), '\t');
-			if (!item.empty())
-			{
-				iDObjectInMap = atoi(item.at(0).c_str());
-				int idItem = atoi(item.at(1).c_str());
-				float PosX = atoi(item.at(2).c_str());
-				float PosY = atoi(item.at(3).c_str());
-				float Width = atoi(item.at(4).c_str());
-				float Height = atoi(item.at(5).c_str());
-				Box b = Box(PosX, PosY, Width, Height);
-				this->listBox.insert(Pair(iDObjectInMap, b));
-				if (idItem == 601 || idItem == 602 || idItem == 603 )
-				{
-					Vector2 pos = Vector2(PosX, PosY);
-					gameObj = this->CreateObject(idItem, pos);
-					this->m_listGameObject.push_back(gameObj);
-				}
-
+				gameObj = this->CreateObject(idItem, pos);
+				listInfo.insert(Pair(iDObjectInMap, gameObj));
 			}
 		}
 
-	}
-	else
-	{
-		MessageBox(NULL, "aaaaaaa", "aaaaaa", MB_OK);
+		return listInfo;
 	}
 }
+
 
 void CLoadObject::Clear()
 {
-	/*if (m_listGameObject.size() != 0)
-	{
-	for (std::vector<CBaseGameObject*>::iterator it = this->m_listGameObject.begin();
-	it != this->m_listGameObject.end();
-	++it)
-	{
-
-	it = this->m_listGameObject.erase(it);
-	if (m_listGameObject.empty())
-	{
-	break;
-	}
-	}
-	}*/
+	
 	m_listGameObject.clear();
 	m_listObjectCurr.clear();
 	m_listIdObject.clear();

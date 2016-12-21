@@ -19,7 +19,7 @@ void CItemManage::Update(float deltaTime)
 	CItemManage::OnSimonCollision(deltaTime);
 	if (!this->m_ListItem.empty())
 	{
-		for (std::list<CItem*>::iterator em = m_ListItem.begin(); em != m_ListItem.end(); ++em)
+		for (std::vector<CItem*>::iterator em = m_ListItem.begin(); em != m_ListItem.end(); ++em)
 		{
 			CItem* Item = *em;
 			Item->Update(deltaTime);
@@ -62,7 +62,7 @@ void CItemManage::Draw()
 
 	if (!this->m_ListItem.empty())
 	{
-		for (std::list<CItem*>::iterator em = m_ListItem.begin(); em != m_ListItem.end(); ++em)
+		for (std::vector<CItem*>::iterator em = m_ListItem.begin(); em != m_ListItem.end(); ++em)
 		{
 			CItem* Item = *em;
 			this->DrawItem(Item);
@@ -126,19 +126,12 @@ void CItemManage::OnSimonCollision(float deltaTime)
 	if (this->m_ListItem.size() != 0)
 	{
 		CSimon* simon = CSimon::GetInstance();
-		for (std::list<CItem*>::iterator it = this->m_ListItem.begin();
+		for (std::vector<CItem*>::iterator it = this->m_ListItem.begin();
 			it != this->m_ListItem.end();
 			++it)
 		{
 			CItem* item = *it;
-			/*if (item->m_Id == 301 || item->m_Id == 302 || item->m_Id == 310 || item->m_Id == 312)
-			{*/
-			/*CDirection normalX;
-			CDirection normalY;
-			float timeCollision;
-			timeCollision = COnCollision::GetInstance()->SweepAABB(simon, item, normalX, normalX, deltaTime);
-			if (normalX == CDirection::ON_LEFT || normalX == CDirection::ON_RIGHT)
-			{*/
+			
 			if (COnCollision::GetInstance()->AABBCheck(simon->GetBox(), item->GetBox()))
 			{
 				switch (item->itemName)
@@ -150,7 +143,7 @@ void CItemManage::OnSimonCollision(float deltaTime)
 					simon->m_currentWeapon = WEAPON_name::Boomerang;
 					break;
 				case ITEM_name::FireBomb:
-					simon->m_currentWeapon = WEAPON_name::FireBomb2;
+					simon->m_currentWeapon = WEAPON_name::FireBomb;
 					break;
 				case ITEM_name::Dagger:
 					simon->m_currentWeapon = WEAPON_name::Dagger;

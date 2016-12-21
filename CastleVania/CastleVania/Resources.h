@@ -54,6 +54,10 @@
 #define BANNER "..\\Resources\\image\\Banner\\fullbanner.png"
 #define SIMON_HP "..\\Resources\\image\\Banner\\heathplayer.png"
 #define ENEMY_HP "..\\Resources\\image\\Banner\\heathenemy.png"
+#define AXE_BANNER "..\\Resources\\image\\item\\Axe.png"
+#define BOOMERANG_BANNER "..\\Resources\\image\\item\\Boomerang.png"
+#define FIRE_BOMB_BANNER "..\\Resources\\image\\item\\FireBomb.png"
+#define CROSS_BANNER "..\\Resources\\image\\item\\Cross.png"
 
 
 

@@ -32,6 +32,7 @@ void CEnemy::Update(float deltaTime)
 	{
 		OnCaneCollision();
 	}
+	OnWeaponCollision(deltaTime, CWeaponManage::GetInstance()->m_weaponList);
 	this->ChangeFrame(deltaTime);
 	if (this->m_Pos.x < CCamera::GetInstance()->m_pos.x + 600)
 	{
@@ -263,6 +264,24 @@ void CEnemy::OnCaneCollision()
 			default:
 				break;
 			}*/
+		}
+	}
+}
+
+void CEnemy::OnWeaponCollision(float deltaTime, std::vector<CWeapon*> listWeapon)
+{
+	CDirection normalX;
+	CDirection normalY;
+	float timeCollision;
+	for (std::vector<CWeapon*>::iterator it = listWeapon.begin(); it != listWeapon.end(); it++)
+	{
+		CWeapon* weapon = *it;
+		timeCollision = COnCollision::GetInstance()->SweepAABB(weapon->GetBox(), this->GetBox(), normalX, normalY, deltaTime);
+		if (normalX == ON_LEFT || normalX == ON_RIGHT)
+		{
+			m_isRemove = true;
+			weapon->m_isRemove = true;
+			ManageAudio::GetInstance()->playSound(TypeAudio::Hit);
 		}
 	}
 }

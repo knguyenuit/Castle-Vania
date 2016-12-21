@@ -45,7 +45,7 @@ void CWeaponManage::Update(float deltaTime)
 void CWeaponManage::DrawWeapon(CWeapon * weapon)
 {
 	WEAPON_name weaponName = weapon->m_WeaponName;
-	CTexture* texture = new CTexture();
+     CTexture* texture = new CTexture();
 	Vector3 pos = Vector3();
 	pos = CCamera::GetInstance()->GetPointTransform(weapon->GetPos().x, weapon->GetPos().y);
 	switch (weaponName)
@@ -87,3 +87,4 @@ void CWeaponManage::Draw()
 		}
 	}
 }
+

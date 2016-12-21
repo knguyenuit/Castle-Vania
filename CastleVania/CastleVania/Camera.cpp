@@ -43,7 +43,7 @@ RECT*& CCamera::GetBound()
 	RECT* rect = new RECT();
 	rect->top = m_pos.y - 480;//__SCREEN_HEIGHT;
 	rect->left = m_pos.x;
-	rect->right = rect->left + 500;// +__SCREEN_WIDTH;
+	rect->right = rect->left + 400;// +__SCREEN_WIDTH;
 	rect->bottom = m_pos.y;
 	return rect;
 }

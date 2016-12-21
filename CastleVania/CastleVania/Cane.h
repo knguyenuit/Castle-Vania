@@ -19,13 +19,13 @@ public:
 public:
 	void Init();
 	caneState m_State;
-	void Update(float deltaTime);//ham Update chinh cua game
+	void Update(Vector2 simonPos, Direction simonDir, float deltaTime);//ham Update chinh cua game
 	Vector2 GetPos();
 	void OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObject);
 	Box GetBox();
 	RECT* GetBound();
 	RECT* GetRectRS();
-	void Use(D3DXVECTOR2 m_posSimon, bool isLeft);
+	bool Use();
 	//cac ham ke thua tu Animation
 public:
 	void SetFrame();		// ham chuyen frame.
@@ -33,6 +33,7 @@ public:
 	void updateState(caneState state);
 public:
 	bool m_checkActive = false; //xet xem co' danh' roi hay ko
+	bool m_checkDone = false; //Xet xem danh xong chua
 	bool isChangeSimonStatus = false;
 };
 

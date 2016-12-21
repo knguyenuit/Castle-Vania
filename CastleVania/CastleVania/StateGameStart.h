@@ -4,6 +4,7 @@
 #include "Sprite.h"
 #include "Resources.h"
 #include "Input.h"
+#include "DrawFont.h"
 
 class CStateGameStart: public CState
 {
@@ -12,7 +13,8 @@ public:
 	~CStateGameStart();
 public:
 	CTexture* m_imageCurr;
-	CSprite* m_drawImg; 
+	CSprite* m_drawImg;
+	CDrawFont* _font;
 	void Init();
 	void Update(float deltaTime);
 	void Render();
@@ -23,7 +25,7 @@ public:
 	Vector2 m_Pos;//vi tri
 
 public:
-	ID3DXFont* _font;
+	//ID3DXFont* _font;
 	float timeDrawString = 0;
 	bool canDrawString = false;
 	float timeAnimation = 0;

@@ -23,7 +23,10 @@ enum SIMON_status
 	FALL = 6,
 	ACTACK = 7,
 	COLLISION_ENEMY = 8,
-	ONSTAIR = 9
+	ONSTAIR = 9,
+	MOVE_JUMP = 10,
+	MOVE_JUMP_ATTACK = 11,
+	SIT_ATTACK = 12
 };
 
 class CSimon : public CBaseGameObject, public CAnimation, public CMove, public CSingleton<CSimon>
@@ -57,13 +60,18 @@ public:
 	void OnKeyDown(float deltaTime);
 	void OnKeyUp(float deltaTime);
 	void ProcessInput(float deltaTime);
-	void MoveUpdate(float deltaTime);
-	//cac thong so ve Simon
-public: //xu li cau thang
-		//Input
+#pragma region Input Flag
 	bool isArrowKeyDown = false;
 	bool isArrowKeyUp = false;
-	//Xu ly cau thang
+	bool isArrowKeyLeft = false;
+	bool isArrowKeyRight = false;
+	bool isKey_Z = false;
+	bool isKey_X = false;
+#pragma endregion
+
+	//cac thong so ve Simon
+public: //xu li cau thang
+		//Xu ly cau thang
 	bool isUpStair = false, isDownStair = false;
 	bool isOnStair = false;
 	bool prepareUpStair = false, prepareDownStair = false;
@@ -81,18 +89,30 @@ public:
 	float m_timeCountFrame;
 	bool isInput;
 	bool canJump = false;
-	bool isFree = false;
+	bool isJump = false;
+
+	bool isFall = false;
+	bool canFall = false;
+
 	bool isSit = false;
 	bool canSit = false;
+
 	bool isMove = false;
-	bool isAttacking= false; //tan cong bang cane
+	bool canMove = false;
+	bool isMoveJump = false;
+
+	bool isAttack = false; //tan cong bang cane
+	bool canAttack = false;
+
 	bool isWeaponAttacking = false; //tan cong bang weapon
+	bool canWeaponAttacking = false;
+
 	bool isChangeStatus = false;
 	bool canChangeStatus = false;
+
 	bool isCheckChangeState = false;
 	bool isCollisionEnemy = false;
 	bool isUnAvailable = false;
-	bool isJumping = false; // xet xem simon co dang nhay hay ko
 	float timeCollisionEnemy = 0.0f;
 	bool isMoveLeft;
 public:
@@ -102,9 +122,16 @@ private:
 	void InitAnimation();//khoi tao cac thong so cua Simon
 	void InitMove();//khoi tao cac thong so chuyen dong cua Simon
 	void Gravity(float deltaTime);
-	
+
 public:
-	void UpdateStatus(float deltaTime, SIMON_status simon_status);
+	//Xy ly hanh dong
+	void UpdateStatus(float deltaTime);
+	void ActionUpdate(float deltaTime);
+	void MoveUpdate(float deltaTime);
+	void JumpUpdate(float deltaTime);
+	void SitUpdate(float deltaTime);
+	void AttackUpdate(float deltaTime);
+	void FallUpdate(float deltaTime);
 	void Jump(float deltaTime);
 	//leo cau thang
 	bool MoveTo(Vector2 point, float deltaTime);

@@ -4,6 +4,7 @@
 #include "Weapon.h"
 #include "Simon.h"
 #include "DrawObject.h"
+
 class CWeaponManage:
 	public CSingleton<CWeaponManage>
 {
@@ -19,6 +20,7 @@ public: //cac phuong thuc update weapon
 	void Update(float deltaTime);
 	void DrawWeapon(CWeapon * weapon); //ve ra 1 weapon
 	void Draw(); //ve ra m_weaponList
+	
 };
 
 #endif // !__WEAPONMANAGE_H__

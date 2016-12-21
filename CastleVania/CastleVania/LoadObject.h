@@ -25,7 +25,7 @@ public:
 	void Collision(float deltaTime, CBaseGameObject* gameObj);
 	void Draw();
 public:
-	std::hash_map<int, Box> listBox;
+	std::vector<Box> listBox;
 	// D/s tat ca cac duong link chua file map.
 	std::vector<CBaseGameObject*> m_listGameObject;
 	std::vector<CBaseGameObject*> m_listEmemy;
@@ -40,8 +40,6 @@ public:
 
 	void readFile(const std::string&); // read file object .
 
-									   // list quadtree
-	std::hash_map<int, std::string>* m_listQuadTree;
 	// <stt map, quadtree cua map>
 
 	// List id cua doi tuong tren viewPort.

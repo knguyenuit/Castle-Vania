@@ -94,10 +94,14 @@ void CItem::MoveUpdate(float deltaTime)
 
 	if (this->itemName == ITEM_name::SmallHeart || this->itemName == ITEM_name::LargeHeart)
 	{
-		if (this->m_Pos.y > 48) {
+		if (this->m_Pos.y > 70) {
 			this->m_Pos.y -= this->m_vyDefault * deltaTime;
 			this->m_Pos.x = this->m_PosDefault.x + std::sin((this->m_Pos.y - this->m_PosDefault.y) / 50 * PI) * 30;
 		}
+	}
+	else
+	{
+		this->m_Pos.y -= this->m_vyDefault * deltaTime;
 	}
 
 	

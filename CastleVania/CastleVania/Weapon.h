@@ -5,6 +5,7 @@
 #include "Animation.h"
 #include "Move.h"
 #include "Simon.h"
+
 class CWeapon :
 	public CBaseGameObject,
 	public CAnimation,
@@ -25,6 +26,7 @@ public:
 	virtual void MoveUpdate(float deltaTime);
 	Box GetBox();
 	RECT* GetRectRS();
+	
 };
 #endif // !__WEAPON_H__
 

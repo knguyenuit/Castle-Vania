@@ -16,7 +16,7 @@ void CStateGamePlay::Init()
 	CPoolObject::GetInstance()->Init();
 	CLevel::GetInstance()->readFileLevel(MANAGE_LEVEL);
 
-	ChangeLevel(1);
+	ChangeLevel(2);
 }
 
 void CStateGamePlay::Update(float deltaTime)

@@ -265,6 +265,7 @@
     <ClInclude Include="HideObjectManage.h">
       <Filter>Framework\Game Object\Hide Object</Filter>
     </ClInclude>
+    <ClInclude Include="DrawFont.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture.cpp">
@@ -426,6 +427,7 @@
     <ClCompile Include="HideObjectManage.cpp">
       <Filter>Framework\Game Object\Hide Object</Filter>
     </ClCompile>
+    <ClCompile Include="DrawFont.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

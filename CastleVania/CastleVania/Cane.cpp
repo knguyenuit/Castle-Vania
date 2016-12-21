@@ -38,37 +38,40 @@ void CCane::Init()
 	this->m_column = 4;
 	this->m_Dir = Direction::RIGHT;
 	this->m_State = caneState::default;
-	
+
 }
 
-void CCane::Update(float deltaTime)
+void CCane::Update(Vector2 simonPos, Direction simonDir, float deltaTime)
 {
-	
-	/*OnCollision(deltaTime, CLoadObject::GetInstance()->m_listGameObject);*/
-	if (this->m_checkActive)
+	if (this->m_checkActive == true)
 	{
-		ChangeFrame(deltaTime);
+		this->m_Dir = simonDir;
+		this->m_Pos = simonPos;
+		int dir = (this->m_Dir == Direction::LEFT) ? 1 : -1;
+		this->m_Pos.x -= 28 * dir;
+		this->ChangeFrame(deltaTime);
+		if (this->m_currentFrame == this->m_endFrame)
+		{
+			this->m_checkActive = false;
+			this->m_checkDone = true;
+			switch (this->m_State)
+			{
+			case caneState::default:
+				this->m_currentFrame = 0;
+				break;
+			case caneState::state2:
+				this->m_currentFrame = 4;
+				break;
+			case caneState::state3:
+				this->m_currentFrame = 8;
+				break;
+			default:
+				break;
+			}
+		}
 
 	}
-	if (this->m_currentFrame == this->m_endFrame)
-	{
-		this->m_checkActive = false;
-		this->isChangeSimonStatus = true;
-		if (m_State == caneState::default)
-		{
-			this->m_currentFrame = 0;
-		}
-		if (m_State == caneState::state2)
-		{
-			this->m_currentFrame = 4;
-		}
-		if (m_State == caneState::state3)
-		{
-			this->m_currentFrame = 8;
-		}
 
-	}
-	
 }
 
 Vector2 CCane::GetPos()
@@ -92,42 +95,49 @@ void CCane::OnCollision(float deltaTime, std::vector<CBaseGameObject*> listObjec
 			//float timeCollision;
 			if (m_currentFrame == 2 || m_currentFrame == 6 || m_currentFrame == 10)
 			{
-				
+
 				/*timeCollision = COnCollision::GetInstance()->SweepAABB(this->GetBox(), obj->GetBox(), normalX, normalY, deltaTime);
 
 
 				if (normalX == CDirection::ON_LEFT || normalX == CDirection::ON_RIGHT)
 				{
-					MessageBox(NULL, "Danh trung Ground", "BG", MB_OK);
+				MessageBox(NULL, "Danh trung Ground", "BG", MB_OK);
 				}*/
 				if (CCollision::GetInstance()->AABBCheck(this->GetBox(), obj->GetBox()))
 				{
 					obj->m_isRemove = true;
 					CItemManage::GetInstance()->CreateRandomItem(obj->GetPos());
-					
+
 				}
 
 			}
 		}
 
 	}
-	
+
 }
 
 
 Box CCane::GetBox()
 {
-	/*if (this->isLeft)
+	int width = 0;
+	float posx = 0;
+	posx = (this->m_Dir == LEFT) ? this->m_Pos.x - 17 : this->m_Pos.x + 17; //tranh va cham khi dung ngay canh object
+	switch (this->m_State)
 	{
-		return Box(this->m_Pos.x - this->m_realWidth / 2, this->m_Pos.y + this->m_realHeight / 2,
-			this->m_realWidth, this->m_realHeight);
+	case caneState::default:
+		width = this->m_Width - 107;
+		break;
+	case caneState::state2:
+		width = this->m_Width - 117;
+		break;
+	case caneState::state3:
+		width = this->m_Width - 67;
+		break;
+	default:
+		break;
 	}
-	else
-	{
-		return Box(this->m_Pos.x + this->m_realWidth / 2, this->m_Pos.y + this->m_realHeight / 2,
-			this->m_realWidth, this->m_realHeight);
-	}*/
-	return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width - 80, this->m_Height);
+	return Box(posx, this->m_Pos.y, width, this->m_Height - 50);
 }
 
 
@@ -138,15 +148,22 @@ RECT * CCane::GetBound()
 
 RECT * CCane::GetRectRS()
 {
-	return this->UpdateRectResource(m_Height, m_Width);	
+	return this->UpdateRectResource(m_Height, m_Width);
 }
 
-void CCane::Use(D3DXVECTOR2 m_posSimon, bool isLeft)
+bool CCane::Use()
 {
-	this->m_Pos = m_posSimon;
-
-	int dir = isLeft ? 1 : -1;
-	this->m_Pos.x -= 28 * dir;
+	this->m_checkActive = true;
+	if (this->m_checkDone == true)
+	{
+		this->m_checkActive = false;
+		this->m_checkDone = false;
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 void CCane::SetFrame()

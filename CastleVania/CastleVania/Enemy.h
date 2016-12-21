@@ -5,6 +5,8 @@
 #include "DrawObject.h"
 #include "Animation.h"
 #include "Item.h"
+#include "WeaponManage.h"
+#include "ManageAudio.h"
 
 enum ENEMY_type
 {
@@ -55,6 +57,7 @@ public:
 	virtual void MoveUpdate(float deltaTime);
 	void OnSimonCollision(float deltaTime);
 	void OnCaneCollision();
+	void OnWeaponCollision(float deltaTime, std::vector<CWeapon*> listWeapon);
 	RECT* GetRectRS();
 	~CEnemy();
 

@@ -156,6 +156,7 @@
     <ClInclude Include="CastleVania.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Device.h" />
+    <ClInclude Include="DrawFont.h" />
     <ClInclude Include="DrawObject.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyManage.h" />
@@ -215,6 +216,7 @@
     <ClCompile Include="CastleVania.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Device.cpp" />
+    <ClCompile Include="DrawFont.cpp" />
     <ClCompile Include="DrawObject.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyManage.cpp" />

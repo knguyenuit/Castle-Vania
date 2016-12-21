@@ -19,7 +19,7 @@ public:
 	CItem* m_item;
 	void Draw();
 	void DrawItem(CItem* item);
-	std::list<CItem*> m_ListItem;
+	std::vector<CItem*> m_ListItem;
 	void OnSimonCollision(float deltaTime);
 public:
 	CSprite* m_draw; //quan ly viec ve

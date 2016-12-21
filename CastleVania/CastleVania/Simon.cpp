@@ -11,7 +11,7 @@ CSimon::CSimon()
 	this->InitMove();
 	this->InitAnimation();
 	this->cane = new CCane();
-	//this->cane->m_Pos = 
+
 	this->hv = new CHinhChuNhat();
 	this->m_currentWeapon = WEAPON_name::Dagger;
 	//init stair status
@@ -40,7 +40,7 @@ void CSimon::InitMove()
 	this->m_vxDefault = 180;
 	this->m_vyDefault = 380;
 
-	this->m_a = -900;
+	this->m_a = -1070;
 	this->m_aDefault = this->m_a;
 	this->m_ax = 0;
 	this->m_Pos = this->m_PosDefault = Vector2(100, 90);
@@ -59,15 +59,13 @@ CSimon::~CSimon()
 void CSimon::Update(float deltaTime)
 {
 	//SetFrame();
-
-	ChangeFrame(deltaTime);
 	//this->m_Pos.x += m_vx * deltaTime;
-	MoveUpdate(deltaTime);
+	ActionUpdate(deltaTime);
 	//OnCollision(deltaTime, CLoadObject::GetInstance()->listBox);
 	//UpdateGround(deltaTime, CLoadObject::GetInstance()->m_listGameObject);
 	//OnCollision(deltaTime, CLoadObject::GetInstance()->m_listGameObject);
 	//OnCollision(deltaTime, hv);
-	this->cane->Update(deltaTime);
+	this->cane->Update(this->m_Pos, this->m_Dir, deltaTime);
 }
 
 
@@ -178,80 +176,121 @@ void CSimon::Jump(float deltaTime)
 
 }
 
-void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
+void CSimon::UpdateStatus(float deltaTime)
 {
-	if (this->cane->isChangeSimonStatus == true)
+	ChangeFrame(deltaTime);
+	//Vx direction
+	this->isLeft = (this->m_Dir == Direction::LEFT) ? true : false;
+	if (this->isLeft)
 	{
-		if (!isSit)
-		{
-			this->m_currentFrame = 0;
-			isAttacking = false;
-			this->m_Height = 68;
-			//this->m_Pos.y = 94;
-			m_startFrame = 0;
-			m_endFrame = 0;
-		}
-		else
-		{
-			this->m_currentFrame = 4;
-			m_startFrame = 4;
-			m_endFrame = 4;
-			this->m_Height = 50;
-			//this->m_Pos.y = 85;
-			isAttacking = false;
-		}
-		this->cane->isChangeSimonStatus = false;
+		this->m_vx = (this->m_vx > 0) ? -this->m_vx : this->m_vx;
 	}
-	switch (simon_status)
+	else
+	{
+		this->m_vx = (this->m_vx < 0) ? -this->m_vx : this->m_vx;
+	}
+	switch (this->simon_Status)
 	{
 	case NONE:
 		break;
 	case IDLE:
-		isAttacking = false;
-		this->m_Height = 68;
-		this->m_vy = 0;
+
+		//Init Animation
 		m_startFrame = 0;
 		m_endFrame = 0;
-		isMove = true;
- 		canJump = true;
-		isJumping = false;
-		isSit = false;
+		this->m_Height = 68;
+		this->m_vx = this->m_vxDefault;
+		this->m_vy = this->m_vyDefault;
+		//Init Can
+		canAttack = true;
+		canMove = true;
+		canJump = true;
 		canSit = true;
-		
+		//Init Is
+		this->isMoveJump = this->isMove = this->isJump = this->isAttack = this->isSit = this->isOnStair = this->isFall = false;
 		break;
 	case MOVE:
-
-		if (this->simon_Status != SIMON_status::ONSTAIR)
+		this->isMove = true;
+		//Init Animation
+		this->m_startFrame = 0;
+		this->m_endFrame = 3;
+		//Init Can Action
+		canJump = true;
+		canAttack = true;
+		canMove = true;
+		canSit = false;
+		if (this->isKey_X == true)
 		{
-			
-			if (isMove)
-			{
-				if (!isJumping)
-				{
-					this->m_startFrame = 0;
-					this->m_endFrame = 3;
-					
-				}
-				
-				if (this->m_Dir == Direction::LEFT)
-				{
-					m_Pos.x -= this->m_vxDefault * deltaTime;
-				}
-				if (this->m_Dir == Direction::RIGHT)
-				{
-
-					m_Pos.x += this->m_vxDefault * deltaTime;
-				}
-				
-			}
+			this->simon_Status = SIMON_status::MOVE_JUMP;
+			this->UpdateStatus(deltaTime);
+		}
+		if (this->isKey_Z == true)
+		{
+			this->isAttack = true;
+			this->canMove = false;
+			this->isMove = false;
 		}
 		break;
+	case MOVE_JUMP:
+		//Init is Can
+		this->isMove = false;
+		this->isMoveJump = true;
+		this->canMove = false;
+		this->canJump = false;
+		//Init Animation
+		if (this->isLeft == true)
+		{
+			this->m_vx = -180;
+		}
+		else
+		{
+			this->m_vx = 180;
+		}
+		if (this->isKey_Z == true)
+		{
+			this->isAttack = true;
+		}
+		if (this->isAttack == true)
+		{
+			this->m_startFrame = 5;
+			this->m_endFrame = 7;
+			this->m_Height = 64;
+			if (this->cane->Use())
+			{
+				this->isAttack = false;
+			}
+		}
+		else
+		{
+			if (this->m_vy>0)
+			{
+				this->m_startFrame = 4;
+				this->m_endFrame = 4;
+				this->m_Height = 50;
+			}
+			else
+			{
+				this->m_startFrame = 0;
+				this->m_endFrame = 0;
+				this->m_Height = 64;
+			}
+		}
 
+		break;
+	case MOVE_JUMP_ATTACK:
+		//Init is Can
+		this->isMove = false;
+		this->isMoveJump = false;
+		this->canMove = false;
+		this->canJump = false;
 		break;
 	case ONSTAIR:
 		this->canSit = false;
-		this->m_vx = this->m_vy= 4;
-		
+		this->canJump = false;
+		this->canMove = false;
+		this->canAttack = true;
+		this->m_vx = this->m_vy = 4;
+
 		this->m_elapseTimeChangeFrame = 0.15f * 1.2f;
 		//Xet Frame 
 		if (this->isCancelStairMove == false)
@@ -288,108 +327,85 @@ void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
 
 		break;
 	case JUMP:
-		isJumping = true;
-		canJump = false;
-		this->m_vy += this->m_a * deltaTime;
-		this->m_Pos.y += this->m_vy * deltaTime;
-		/*if (isMoveLeft)
+		//Init Is Can
+		this->isJump = true;
+		this->canJump = false;
+		this->canMove = false;
+		this->canSit = false;
+		this->canAttack = true;
+		//Init Animation
+		if (this->isKey_Z == true)
 		{
-			this->m_Pos.x -= this->m_vxDefault * deltaTime;
+			this->isAttack = true;
+		}
+		if (this->isAttack == true)
+		{
+			this->m_startFrame = 5;
+			this->m_endFrame = 7;
+			this->m_Height = 64;
 		}
 		else
 		{
-			this->m_Pos.x += this->m_vxDefault * deltaTime;
-		}*/
-		if (this->m_vy <= 0)
-		{
-			isFree = true;
-			simon_Status = SIMON_status::FALL;
-			this->canJump = false;
-
+			this->m_startFrame = 4;
+			this->m_endFrame = 4;
+			this->m_Height = 50;
 		}
-		this->m_startFrame = 4;
-		this->m_endFrame = 4;
 
 		break;
+
 	case SIT:
-		if (canSit)
+		this->isSit = true;
+		this->canJump = false;
+		this->canAttack = true;
+		this->canMove = false;
+		this->canSit = false;
+		if (this->isKey_Z == true)
 		{
-			isSit = true;
-			isMove = false;
-			if (!isAttacking)
-			{
-				this->m_startFrame = 4;
-				this->m_endFrame = 4;
-				this->m_Height = 50;
-				//this->m_Pos.y = 85;
-			}
-
+			this->isAttack = true;
 		}
-
+		if (this->isAttack == false)
+		{
+			this->m_startFrame = 4;
+			this->m_endFrame = 4;
+			this->m_Height = 66;
+			//this->m_Pos.y = 85;
+		}
+		else
+		{
+			/*this->m_Pos.y += 9;*/
+			this->m_startFrame = 15;
+			this->m_endFrame = 17;
+			this->m_Height = 66;
+		}
 		break;
 	case FALL:
-		if (isFree)
-		{
-			this->m_vy += this->m_a * deltaTime * 2;
-			this->m_Pos.y += this->m_vy * deltaTime;
-		}
-		/*if (isMoveLeft)
-		{
-			this->m_Pos.x -= this->m_vxDefault * deltaTime;
-		}
-		else
-		{
-			this->m_Pos.x += this->m_vxDefault * deltaTime;
-		}*/
+		canMove = canAttack = canJump = canSit = false;
+		/*this->m_vy += this->m_a * deltaTime * 1.2;
+		this->m_Pos.y += this->m_vy * deltaTime;
 		this->m_startFrame = 0;
-		this->m_endFrame = 0;
+		this->m_endFrame = 0;*/
 		break;
 	case ACTACK:
-		if (isAttacking)
-		{
-			//ManageAudio::GetInstance()->playSound(TypeAudio::Using_Whip);
-			if (isSit)
-			{
-				this->m_startFrame = 15;
-				this->m_endFrame = 17;
-				this->cane->m_Pos.y = m_Pos.y + 9;
-				this->m_Height = 66;
-				//this->m_Pos.y = 50;
-				this->cane->m_checkActive = true;
-			}
-			else
-			{
-				
-					this->m_startFrame = 5;
-					this->m_endFrame = 7;
-				
-				
-				this->cane->m_checkActive = true;
-			}
-
-			this->cane->Use(this->m_Pos, isLeft);
-			if (isJumping)
-			{
-				if (this->cane->m_currentFrame == 2)
-				{
-					isFree = true;
-					simon_Status = FALL;
-				}
-			}
-		}
+		this->isAttack = true;
+		this->canMove = this->canJump = this->canSit = this->canAttack = false;
+		//ManageAudio::GetInstance()->playSound(TypeAudio::Using_Whip);
+		this->m_startFrame = 5;
+		this->m_endFrame = 7;
 		break;
 	case COLLISION_ENEMY:
+		this->canAttack = this->canMove = this->canSit = false;
+		this->canFall = false;
 		this->m_startFrame = 8;
 		this->m_endFrame = 8;
-		if (this->timeCollisionEnemy<0.6)
+		/*if (this->timeCollisionEnemy<0.6)
 		{
-			this->m_Pos.x -= deltaTime * 100;
-			this->m_Pos.y += deltaTime * 100;
+		this->m_Pos.x -= deltaTime * 100;
+		this->m_Pos.y += deltaTime * 100;
 		}
 		else
 		{
-			this->m_Pos.y -= deltaTime * 100;
-		}
+		this->m_Pos.y -= deltaTime * 100;
+		}*/
 
 		break;
 
@@ -403,18 +419,149 @@ void CSimon::UpdateStatus(float deltaTime, SIMON_status simon_status)
 	}*/
 }
 
-void CSimon::MoveUpdate(float deltaTime)
+void CSimon::ActionUpdate(float deltaTime)
 {
-	Gravity(deltaTime);
-	OnKeyDown(deltaTime);
-	OnKeyUp(deltaTime);
-	UpdateStatus(deltaTime, simon_Status);
-
-	//lay vi tri cua cay roi theo vi tri cua simon
-
-
+	this->OnKeyDown(deltaTime);
+	this->OnKeyUp(deltaTime);
+	this->UpdateStatus(deltaTime);
 	//update camera
 	CCamera::GetInstance()->Update(this->m_Pos.x, this->m_Pos.y);
+#pragma region On Event Key_X (JUMP)
+	if (this->canJump == true)
+	{
+		if (this->isKey_X == true)
+		{
+			this->simon_Status = SIMON_status::JUMP;
+		}
+	}
+	if (this->isJump == true)
+	{
+		if (this->isAttack == true)
+		{
+			if (this->cane->Use())
+			{
+
+				this->isAttack = false;
+				this->isKey_Z = false;
+				this->m_startFrame = 0;
+				this->m_endFrame = 0;
+				this->m_Height = 68;
+			}
+		}
+		this->JumpUpdate(deltaTime);
+		return;
+	}
+
+#pragma endregion
+#pragma region On Event Move
+	if (this->canMove == true)
+	{
+		if (this->isArrowKeyLeft == true)
+		{
+			this->m_Dir = Direction::LEFT;
+			this->simon_Status = SIMON_status::MOVE;
+		}
+		else
+		{
+			if (this->isArrowKeyRight == true)
+			{
+				this->m_Dir = Direction::RIGHT;
+				this->simon_Status = SIMON_status::MOVE;
+			}
+		}
+	}
+	if (this->isMove == true)
+	{
+		if ((this->isArrowKeyLeft == false && this->m_Dir == LEFT) || (this->isArrowKeyRight == false && this->m_Dir == RIGHT))
+		{
+			this->isMove = false;
+			this->simon_Status = SIMON_status::IDLE;
+		}
+		this->MoveUpdate(deltaTime);
+		return;
+	}
+#pragma endregion
+#pragma region On Event Move Jump
+	if (this->isMoveJump == true)
+	{
+		this->m_Pos.x += this->m_vx * deltaTime;
+		this->m_Pos.y += this->m_vy * deltaTime;
+		this->m_vy += this->m_a * deltaTime;
+		return;
+	}
+#pragma endregion
+#pragma region On Event Attack
+	if (this->canAttack = true)
+	{
+		if (this->isKey_Z == true && this->isSit == false && this->isMove == false)
+		{
+			this->simon_Status = SIMON_status::ACTACK;
+		}
+	}
+	if (this->isAttack == true && this->isSit == false && this->isMoveJump == false)
+	{
+		this->AttackUpdate(deltaTime);
+		return;
+	}
+#pragma endregion
+#pragma region On Event Sit
+	if (this->canSit == true)
+	{
+		if (this->isArrowKeyDown == true)
+		{
+			this->simon_Status = SIMON_status::SIT;
+			return;
+		}
+	}
+	if (this->isSit == true)
+	{
+		if (this->isAttack == true)
+		{
+			if (this->cane->Use())
+			{
+				this->isAttack = false;
+				this->isKey_Z = false; // tranh viec giu~ phim Z thi danh lien tuc
+			}
+		}
+	}
+#pragma endregion
+}
+
+void CSimon::MoveUpdate(float deltaTime)
+{
+	this->m_Pos.x += this->m_vx * deltaTime;
+	if (this->isJump == true)
+	{
+		this->m_Pos.y += this->m_vy * deltaTime;
+		this->m_vy += this->m_a * deltaTime;
+	}
+}
+
+void CSimon::JumpUpdate(float deltaTime)
+{
+	this->m_vy += this->m_a * deltaTime;
+	this->m_Pos.y += this->m_vy * deltaTime;
+	if (this->m_vy <= 0)
+	{
+		simon_Status = SIMON_status::FALL;
+	}
+}
+
+void CSimon::SitUpdate(float deltaTime)
+{
+}
+
+void CSimon::AttackUpdate(float deltaTime)
+{
+	if (this->cane->Use())
+	{
+		this->simon_Status = SIMON_status::IDLE;
+		this->isKey_Z = false; // tranh viec giu~ phim Z
+	}
+}
+
+void CSimon::FallUpdate(float deltaTime)
+{
 }
 
 //thay doi Frame
@@ -447,7 +594,7 @@ void CSimon::OnCollision(float deltaTime, std::hash_map<int, Box> listBox)
 		if (normalY == CDirection::ON_DOWN)
 		{
 
-			isFree = false;
+
 			canJump = true;
 		}
 	}
@@ -539,31 +686,33 @@ void CSimon::OnKeyDown(float deltaTime)
 	switch (this->m_keyDown)
 	{
 	case DIK_SPACE:
-		if (canJump)
+		/*if (canJump)
 		{
-			this->simon_Status = SIMON_status::JUMP;
-			this->m_vy = m_vyDefault;
-		}
-		// start jump if is not "on-air"
+		this->isJump = true;
+		this->simon_Status = SIMON_status::JUMP;
+		this->m_vy = m_vyDefault;
+		}*/
 		break;
 	case DIK_LEFT:
+		this->isArrowKeyLeft = true;
+		/*if (this->canMove)
+		{
 		isMoveLeft = true;
 		isLeft = true;
 		this->cane->isLeft = true;
 		this->m_Dir = Direction::LEFT;
 		this->cane->m_Dir = Direction::LEFT;
-		if (!isJumping)
-		{
-			this->simon_Status = SIMON_status::MOVE;
-		}
+		this->simon_Status = SIMON_status::MOVE;
+		}*/
 		break;
 	case DIK_RIGHT:
-		isMoveLeft = false;
+		this->isArrowKeyRight = true;
+		/*isMoveLeft = false;
 		isLeft = false;
 		this->cane->isLeft = false;
 		this->m_Dir = Direction::RIGHT;
 		this->cane->m_Dir = Direction::RIGHT;
-		this->simon_Status = SIMON_status::MOVE;
+		this->simon_Status = SIMON_status::MOVE;*/
 		break;
 	case DIK_UP:
 		if (this->isCancelStairMove == true)
@@ -577,24 +726,23 @@ void CSimon::OnKeyDown(float deltaTime)
 		{
 			this->isArrowKeyDown = true;
 		}
-		this->simon_Status = SIMON_status::SIT;
+		//if (this->canSit == true)
+		//{
+		//	this->isSit = true;
+		//	this->simon_Status = SIMON_status::SIT;
+		//	this->canMove = false;
+		//	this->canJump = false;
+		//}
 		break;
+
+	case DIK_X:
+		this->isKey_X = true;
+		break;
+
 	case DIK_Z:
-		/*if (isSit)
-		{
-		this->m_startFrame = 14;
-		this->m_endFrame = 16;
-		this->m_Height = 50;
-		this->m_Pos.y = 51;
-		this->cane->m_Pos.y = 40;
-		}
-		else*/
-
-		isAttacking = true;
-		this->simon_Status = SIMON_status::ACTACK;
-
-
+		this->isKey_Z = true;
 		break;
+
 	case DIK_Q:
 		this->cane->updateState(state2);
 		break;
@@ -619,34 +767,26 @@ void CSimon::OnKeyUp(float deltaTime)
 		break;
 
 	case DIK_LEFT:
-		simon_Status = SIMON_status::IDLE;
-		
-		this->m_ax = 0;
+		this->isArrowKeyLeft = false;
 		break;
 	case DIK_RIGHT:
-		simon_Status = SIMON_status::IDLE;
-
-		this->m_ax = 0;
+		this->isArrowKeyRight = false;
 		break;
 	case DIK_UP:
 		this->isArrowKeyUp = false;
 		break;
 	case DIK_DOWN:
 		this->isArrowKeyDown = false;
-		if (isSit)
+		if (this->isSit == true)
 		{
 			simon_Status = SIMON_status::IDLE;
 		}
-		/*if (isSit)
-		{
-			m_Pos.y = 90;
-		}*/
+		break;
+	case DIK_X:
+		this->isKey_X = false;
 		break;
 	case DIK_Z:
-
-
-
-
+		this->isKey_Z = false;
 		break;
 	default:
 		break;
