@@ -32,6 +32,8 @@
 #define ITEM_PORK_CHOP "..\\Resources\\image\\item\\PorkChop.png"
 #define ITEM_DOUBLE_SHOT "..\\Resources\\image\\item\\DoubleShot.png"
 #define ITEM_DOUBLE_SHOT_2 "..\\Resources\\image\\item\\DoubleShot-2.png"
+//BOSS ITEM
+#define ITEM_MAGICALCRYSTAL "..\\Resources\\image\\item\\MagicalCrystal.png"
 #pragma endregion
 
 //Weapon

@@ -115,6 +115,9 @@ void CItemManage::DrawItem(CItem * obj)
 	case ITEM_name::PorkChop:
 		texture->LoadImageFromFile(ITEM_PORK_CHOP, D3DCOLOR_XRGB(255, 0, 255));
 		break;
+	case ITEM_name::MagicalCrystal:
+		texture->LoadImageFromFile(ITEM_MAGICALCRYSTAL, D3DCOLOR_XRGB(255, 0, 255));
+		break;
 
 	}
 
