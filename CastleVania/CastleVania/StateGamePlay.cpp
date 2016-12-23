@@ -15,17 +15,17 @@ void CStateGamePlay::Init()
 {
 	CPoolObject::GetInstance()->Init();
 	CLevel::GetInstance()->readFileLevel(MANAGE_LEVEL);
-
-	ChangeLevel(2);
+	m_Level = 1;
+	ChangeLevel(m_Level);
 }
 
 void CStateGamePlay::Update(float deltaTime)
 {
 	if (CSimon::GetInstance()->isCheckChangeState)
 	{
+		CSimon::GetInstance()->m_currentLevel += 1;
 		isCheck = true;
-
-		ChangeLevel(2);
+		ChangeLevel(CSimon::GetInstance()->m_currentLevel);
 		CSimon::GetInstance()->isCheckChangeState = false;
 	}
 	CPoolObject::GetInstance()->Update(deltaTime);
@@ -45,12 +45,14 @@ void CStateGamePlay::Destroy()
 void CStateGamePlay::ChangeLevel(int lv)
 {
 	m_currentLevel = CLevel::GetInstance()->listLevel[lv];
+
 	if (m_currentLevel != NULL)
 	{
 		if (isCheck)
 		{
 			CLoadBackground::GetInstance()->Clear();
 			CLoadObject::GetInstance()->Clear();
+			isCheck = false;
 		}
 		CLoadBackground::GetInstance()->LoadImageFromFile(m_currentLevel->fileImageBackgroud);
 		CLoadObject::GetInstance()->LoadReSourceFromFile(m_currentLevel->fileObject, m_currentLevel->fileObjectQuadtree);

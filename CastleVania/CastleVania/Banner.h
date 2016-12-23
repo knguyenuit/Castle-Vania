@@ -38,9 +38,12 @@ public:
 	RECT* m_rectPoint;
 	RECT* m_rectTime;
 	RECT* m_rectState;
+	RECT* m_rectCountHeart;
 	
 	//property
 	int m_hpSimon;
+	int m_countHeart;
+	int m_curState;
 	WEAPON_name m_typeWeapon;
 };
 

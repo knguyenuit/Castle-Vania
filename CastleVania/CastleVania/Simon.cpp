@@ -11,7 +11,7 @@ CSimon::CSimon()
 	this->InitMove();
 	this->InitAnimation();
 	this->cane = new CCane();
-
+	this->m_currentLevel = 1;
 	this->hv = new CHinhChuNhat();
 	this->m_currentWeapon = WEAPON_name::Dagger;
 	//init stair status
@@ -47,6 +47,7 @@ void CSimon::InitMove()
 	this->m_Width = 60;
 	this->m_Height = 68;
 	this->m_isJumping = false;
+	this->isMoveToLeft = this->isMoveToRight = this->isMoveToUp = this->isMoveToDown = false;
 }
 
 #pragma endregion
@@ -76,29 +77,29 @@ void CSimon::Gravity(float deltaTime)
 
 bool CSimon::MoveTo(Vector2 point, float deltaTime)
 {
-	if (!this->isLeft && !this->isRight)
+	if (!this->isMoveToLeft && !this->isMoveToRight)
 	{
-
 		if (this->m_Pos.x > point.x) //kiem tra xem co phai qua ben trai
 		{
-			this->isLeft = true;
+			this->isMoveToLeft = true;
 		}
 		else
 		{
 			if (this->m_Pos.x < point.x)
 			{
-				this->isRight = true;
+				this->isMoveToRight = true;
 			}
 			else
 			{
-				this->isLeft = (this->m_Dir == LEFT) ? true : false;
-				this->isRight = (this->m_Dir == RIGHT) ? true : false;
+				this->isMoveToLeft = (this->m_Dir == LEFT) ? true : false;
+				this->isMoveToRight = (this->m_Dir == RIGHT) ? true : false;
 			}
 
 		}
+		this->isLeft = this->isMoveToLeft;
 	}
 
-	if (this->isLeft) // neu isleft thi van toc x am
+	if (this->isMoveToLeft) // neu isleft thi van toc x am
 	{
 		this->m_vx = (this->m_vx>0) ? -this->m_vx : this->m_vx;
 		this->m_Dir = Direction::LEFT;
@@ -110,7 +111,7 @@ bool CSimon::MoveTo(Vector2 point, float deltaTime)
 	}
 
 	//kiem tra xem co toi toa do X cua point chua
-	if ((this->isLeft && this->m_Pos.x <= point.x) || (this->isRight && this->m_Pos.x >= point.x))
+	if ((this->isMoveToLeft && this->m_Pos.x <= point.x) || (this->isMoveToRight && this->m_Pos.x >= point.x))
 	{
 		this->check_arrive_x = true;
 		this->m_Pos.x = point.x;
@@ -122,18 +123,18 @@ bool CSimon::MoveTo(Vector2 point, float deltaTime)
 
 
 
-	if (!this->isDown && !this->isUp)
+	if (!this->isMoveToDown && !this->isMoveToUp)
 	{
 		if (this->m_Pos.y > point.y) // kiem tra xem co phai di xuong duoi
 		{
-			this->isDown = true;
+			this->isMoveToDown = true;
 		}
 		else
 		{
-			this->isUp = true;
+			this->isMoveToUp = true;
 		}
 	}
-	if (this->isDown) // neu isdown thi van toc y am
+	if (this->isMoveToDown) // neu isdown thi van toc y am
 	{
 		this->m_vy = (this->m_vy > 0) ? -this->m_vy : this->m_vy;
 	}
@@ -143,7 +144,7 @@ bool CSimon::MoveTo(Vector2 point, float deltaTime)
 	}
 
 	//neu da toi point.y
-	if ((this->isDown && this->m_Pos.y <= point.y) || (this->isUp && this->m_Pos.y >= point.y))
+	if ((this->isMoveToDown && this->m_Pos.y <= point.y) || (this->isMoveToUp && this->m_Pos.y >= point.y))
 	{
 		this->check_arrive_y = true;
 		this->m_Pos.y = point.y;
@@ -156,7 +157,7 @@ bool CSimon::MoveTo(Vector2 point, float deltaTime)
 	if (this->check_arrive_x && this->check_arrive_y)
 	{
 		this->check_arrive_x = this->check_arrive_y = false;
-		this->isLeft = this->isRight = this->isUp = this->isDown = false;
+		this->isMoveToLeft = this->isMoveToRight = this->isMoveToUp = this->isMoveToDown = false;
 		return true;
 	}
 	else
@@ -288,10 +289,35 @@ void CSimon::UpdateStatus(float deltaTime)
 		this->canSit = false;
 		this->canJump = false;
 		this->canMove = false;
-		this->canAttack = true;
-		this->m_vx = this->m_vy = 4;
+		this->canAttack = false;
+		this->m_vx = this->m_vy = 20;
 
 		this->m_elapseTimeChangeFrame = 0.15f * 1.2f;
+		//Dung cane
+		if (this->isKey_Z == true)
+		{
+			this->isAttack = true;
+		}
+		if (this->isAttack == true)
+		{
+			if (this->isDownStair == true)
+			{
+				this->m_startFrame = 18;
+				this->m_endFrame = 20;
+			}
+			else
+			{
+				this->m_startFrame = 21;
+				this->m_endFrame = 23;
+			}
+			this->m_Height = 66;
+			if (this->cane->Use())
+			{
+				this->isAttack = false;
+				this->isKey_Z = false;
+			}
+			break;
+		}
 		//Xet Frame 
 		if (this->isCancelStairMove == false)
 		{
@@ -493,12 +519,12 @@ void CSimon::ActionUpdate(float deltaTime)
 #pragma region On Event Attack
 	if (this->canAttack = true)
 	{
-		if (this->isKey_Z == true && this->isSit == false && this->isMove == false)
+		if (this->isKey_Z == true && this->isSit == false && this->isMove == false && this->isOnStair == false)
 		{
 			this->simon_Status = SIMON_status::ACTACK;
 		}
 	}
-	if (this->isAttack == true && this->isSit == false && this->isMoveJump == false)
+	if (this->isAttack == true && this->isSit == false && this->isMoveJump == false && this->isOnStair == false)
 	{
 		this->AttackUpdate(deltaTime);
 		return;
@@ -694,7 +720,11 @@ void CSimon::OnKeyDown(float deltaTime)
 		}*/
 		break;
 	case DIK_LEFT:
-		this->isArrowKeyLeft = true;
+		if (this->isCancelStairMove == true)
+		{
+			this->isArrowKeyLeft = true;
+		}
+
 		/*if (this->canMove)
 		{
 		isMoveLeft = true;
@@ -706,7 +736,11 @@ void CSimon::OnKeyDown(float deltaTime)
 		}*/
 		break;
 	case DIK_RIGHT:
-		this->isArrowKeyRight = true;
+		if (this->isCancelStairMove == true)
+		{
+			this->isArrowKeyRight = true;
+		}
+
 		/*isMoveLeft = false;
 		isLeft = false;
 		this->cane->isLeft = false;
@@ -741,6 +775,10 @@ void CSimon::OnKeyDown(float deltaTime)
 
 	case DIK_Z:
 		this->isKey_Z = true;
+		if (!this->isAttackEnemy)
+		{
+			ManageAudio::GetInstance()->playSound(TypeAudio::Using_Whip);
+		}
 		break;
 
 	case DIK_Q:
@@ -751,6 +789,7 @@ void CSimon::OnKeyDown(float deltaTime)
 		break;
 	case DIK_E:
 		this->isWeaponAttacking = true;
+		ManageAudio::GetInstance()->playSound(TypeAudio::Using_Whip);
 		break;
 	default:
 		break;

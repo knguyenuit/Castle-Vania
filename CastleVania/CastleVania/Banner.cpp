@@ -40,10 +40,17 @@ void CBanner::Init()
 	
 	//rect state
 	m_rectState = new RECT();
-	m_rectState->left = 500;
-	m_rectState->right = 530;
+	m_rectState->left = 470;
+	m_rectState->right = 500;
 	m_rectState->top = 14;
-	m_rectState->bottom = 60;
+	m_rectState->bottom = 35;
+
+	//rect count heart
+	m_rectCountHeart = new RECT();
+	m_rectCountHeart->left = 480;
+	m_rectCountHeart->right = 510;
+	m_rectCountHeart->top = 40;
+	m_rectCountHeart->bottom = 60;
 }
 
 void CBanner::Update(float deltaTime)
@@ -54,6 +61,8 @@ void CBanner::Update(float deltaTime)
 		this->m_Pos.x = CCamera::GetInstance()->m_pos.x + 265;
 		//cap nhat mau cua simon
 		this->m_hpSimon = CSimon::GetInstance()->m_hpSimon;
+		this->m_countHeart = CSimon::GetInstance()->m_countHeart;
+		this->m_curState = CSimon::GetInstance()->m_currentLevel;
 		this->m_typeWeapon = CSimon::GetInstance()->m_currentWeapon;
 		switch (this->m_typeWeapon)
 		{
@@ -106,7 +115,9 @@ void CBanner::DrawBannerProperty()
 	//time
 	m_font->DrawNumber(m_countTime, m_rectTime);
 	//state
-	m_font->DrawNumber(1, m_rectState);
+	m_font->DrawNumber(m_curState, m_rectState);
+	//count heart
+	m_font->DrawNumber(m_countHeart, m_rectCountHeart);
 }
 
 RECT * CBanner::GetRectRS()

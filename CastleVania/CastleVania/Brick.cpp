@@ -57,32 +57,35 @@ void CBrick::Update(float deltaTime)
 
 void CBrick::OnSimonCollision(float deltaTime)
 {
-	CDirection normalX;
-	CDirection normalY;
-	float timeCollision;
-	timeCollision = COnCollision::GetInstance()->SweepAABB(this->simon->GetBox(), this->GetBox(), normalX, normalY, deltaTime);
-	if (normalY == CDirection::ON_DOWN)
+	if (this->simon->simon_Status != SIMON_status::ONSTAIR)
 	{
-		simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
-		this->simon->simon_Status = SIMON_status::IDLE;
-		this->simon->isKey_X = false;
-		/*this->simon->isMoveJump = false;*/
-	}
-	if (simon->simon_Status != ONSTAIR && simon->canUpStairRight == false)
-	{
-		if (COnCollision::GetInstance()->AABBCheck(this->simon->GetBox(), this->GetBox()))
+		CDirection normalX;
+		CDirection normalY;
+		float timeCollision;
+		timeCollision = COnCollision::GetInstance()->SweepAABB(this->simon->GetBox(), this->GetBox(), normalX, normalY, deltaTime);
+		if (normalY == CDirection::ON_DOWN && this->simon->isOnStair == false && this->simon->isMoveToStair == false)
 		{
-			if (this->simon->isSit == true && (this->simon->m_currentFrame == 4 || this->simon->m_currentFrame == 15 || this->simon->m_currentFrame == 16 || this->simon->m_currentFrame == 17))
+			simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
+			this->simon->simon_Status = SIMON_status::IDLE;
+			this->simon->isKey_X = false;
+			/*this->simon->isMoveJump = false;*/
+		}
+		if (this->simon->isMoveToStair == false && this->simon->isOnStair == false && this->simon->isDownStair == false && this->simon->prepareOnStair == false)
+		{
+			if (COnCollision::GetInstance()->AABBCheck(this->simon->GetBox(), this->GetBox()))
 			{
-				simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 24;
-			}
-			else
-			{
-				simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
+
+				if (this->simon->isSit == true && (this->simon->m_currentFrame == 4 || this->simon->m_currentFrame == 15 || this->simon->m_currentFrame == 16 || this->simon->m_currentFrame == 17))
+				{
+					simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 24;
+				}
+				else
+				{
+					simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
+				}
 			}
 		}
 	}
-
 }
 
 void CBrick::OnItemCollision(float deltaTime, std::vector<CItem*> listItem)

@@ -134,35 +134,52 @@ void CItemManage::OnSimonCollision(float deltaTime)
 			
 			if (COnCollision::GetInstance()->AABBCheck(simon->GetBox(), item->GetBox()))
 			{
+				//ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
 				switch (item->itemName)
 				{
 				case ITEM_name::Axe:
 					simon->m_currentWeapon = WEAPON_name::Axe;
+					ManageAudio::GetInstance()->playSound(TypeAudio::CollectWeapon);
 					break;
 				case ITEM_name::Boomerang:
 					simon->m_currentWeapon = WEAPON_name::Boomerang;
+					ManageAudio::GetInstance()->playSound(TypeAudio::CollectWeapon);
 					break;
 				case ITEM_name::FireBomb:
 					simon->m_currentWeapon = WEAPON_name::FireBomb;
+					ManageAudio::GetInstance()->playSound(TypeAudio::CollectWeapon);
 					break;
 				case ITEM_name::Dagger:
 					simon->m_currentWeapon = WEAPON_name::Dagger;
+					ManageAudio::GetInstance()->playSound(TypeAudio::CollectWeapon);
+					break;
+				case ITEM_name::MorningStar:
+					ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
+					if (simon->cane->m_State == caneState::default)
+					{
+						simon->cane->updateState(state2);
+					}
+					else
+					{
+						if (simon->cane->m_State == state2)
+						{
+							simon->cane->updateState(state3);
+						}
+					}
+					break;
+				case ITEM_name::Cross:
+					ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
+					break;
+				case ITEM_name::LargeHeart:
+				case ITEM_name::SmallHeart:
+					ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
+					simon->m_countHeart += 1;
 					break;
 				default:
 					break;
 				}
 				this->m_ListItem.erase(it);//xoa item khoi list khi cham vao simon
-				if (simon->cane->m_State == caneState::default)
-				{
-					simon->cane->updateState(state2);
-				}
-				else
-				{
-					if (simon->cane->m_State == state2)
-					{
-						simon->cane->updateState(state3);
-					}
-				}
+				
 				break;
 			}
 			/*}*/

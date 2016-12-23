@@ -21,20 +21,25 @@ void CHideObject::Init()
 
 void CHideObject::Update(float deltaTime)
 {
-	this->OnSimonCollision();
+
+
 }
 
 void CHideObject::OnSimonCollision()
 {
-
+	if (abs(this->simon->m_Pos.x - this->m_Pos.x) < 30
+		&& abs(this->simon->m_Pos.y - this->m_Pos.y) < 50)
+	{
+		this->isSimonCollision = true;
+	}
+	else
+	{
+		this->isSimonCollision = false;
+	}
 }
-
-void CHideObject::OnKeyDown()
+void CHideObject::SimonMove(float deltaTime)
 {
-	this->m_keyDown = CInput::GetInstance()->GetKeyDown();
 }
-
-
 CHideObject::~CHideObject()
 {
 }

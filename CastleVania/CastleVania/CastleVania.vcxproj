@@ -154,8 +154,11 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cane.h" />
     <ClInclude Include="CastleVania.h" />
+    <ClInclude Include="ChangeScreen.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Device.h" />
+    <ClInclude Include="DownStairLeft.h" />
+    <ClInclude Include="DownStairRight.h" />
     <ClInclude Include="DrawFont.h" />
     <ClInclude Include="DrawObject.h" />
     <ClInclude Include="Enemy.h" />
@@ -198,6 +201,8 @@
     <ClInclude Include="StateGamePlay.h" />
     <ClInclude Include="StateGameStart.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="UpStairLeft.h" />
+    <ClInclude Include="UpStairRight.h" />
     <ClInclude Include="VampireBat.h" />
     <ClInclude Include="ViewWindows.h" />
     <ClInclude Include="Weapon.h" />
@@ -214,8 +219,11 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cane.cpp" />
     <ClCompile Include="CastleVania.cpp" />
+    <ClCompile Include="ChangeScreen.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Device.cpp" />
+    <ClCompile Include="DownStairLeft.cpp" />
+    <ClCompile Include="DownStairRight.cpp" />
     <ClCompile Include="DrawFont.cpp" />
     <ClCompile Include="DrawObject.cpp" />
     <ClCompile Include="Enemy.cpp" />
@@ -256,6 +264,8 @@
     <ClCompile Include="StateGamePlay.cpp" />
     <ClCompile Include="StateGameStart.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="UpStairLeft.cpp" />
+    <ClCompile Include="UpStairRight.cpp" />
     <ClCompile Include="VampireBat.cpp" />
     <ClCompile Include="ViewWindows.cpp" />
     <ClCompile Include="Weapon.cpp" />

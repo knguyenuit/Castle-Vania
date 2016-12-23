@@ -37,21 +37,22 @@ CHideObject * CHideObjectManage::CreateHideObject(HideObject_TYPE type, Vector2 
 	case StopScrollScene:
 		break;
 	case ChangeScene:
+		obj = new CChangeScreen(HideObject_TYPE::ChangeScene, pos);
 		break;
 	case Free:
 		break;
 		//cau thang
 	case DownStairLeft:
-		obj = new CStair(HideObject_TYPE::DownStairLeft, pos);
+		obj = new CDownStairLeft(pos);
 		break;
 	case UpStairLeft:
-		obj = new CStair(HideObject_TYPE::UpStairLeft, pos);
+		obj = new CUpStairLeft(pos);
 		break;
 	case DownStairRight:
-		obj = new CStair(HideObject_TYPE::DownStairRight, pos);
+		obj = new CDownStairRight(pos);
 		break;
 	case UpStairRight:
-		obj = new CStair(HideObject_TYPE::UpStairRight, pos);
+		obj = new CUpStairRight(pos);
 		break;
 
 	case ChangeTop:

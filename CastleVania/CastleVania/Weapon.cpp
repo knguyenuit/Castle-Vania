@@ -82,6 +82,7 @@ void CWeapon::Update(float deltaTime)
 			this->m_Pos.y = 70;
 			this->m_vy = this->m_vx =this->m_vxDefault = this->m_vyDefault = 0;
 			ChangeFrame(deltaTime);
+			ManageAudio::GetInstance()->playSound(TypeAudio::Hit_Cannon);
 			if (m_currentFrame == 2)
 			{
 				timeRemove += deltaTime;

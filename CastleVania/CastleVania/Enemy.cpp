@@ -218,7 +218,9 @@ void CEnemy::OnSimonCollision(float deltaTime)
 				{
 
 					//CItemManage::GetInstance()->CreateRandomItem(obj->GetPos());
-					simon->cane->updateState(caneState::default);
+					//simon->cane->updateState(caneState::default);
+					simon->isCollisionEnemy = true;
+					simon->m_Dir = this->m_Dir;
 
 				}
 				if (this->enemyType == BlackLeopard)
@@ -243,7 +245,12 @@ void CEnemy::OnCaneCollision()
 		if (CCollision::GetInstance()->AABBCheck(cane->GetBox(), this->GetBox()))
 		{
 			this->m_isRemove = true;
+			CSimon::GetInstance()->isAttackEnemy = true;
+			if(CSimon::GetInstance()->isAttackEnemy)
+			{ 
 			ManageAudio::GetInstance()->playSound(TypeAudio::Hit);
+			CSimon::GetInstance()->isAttackEnemy = false;
+			}
 			if (this->enemyItem != ITEM_name::None)
 			{
 				CItemManage::GetInstance()->CreateItem(this->enemyItem, this->GetPos());
@@ -265,6 +272,7 @@ void CEnemy::OnCaneCollision()
 				break;
 			}*/
 		}
+		
 	}
 }
 

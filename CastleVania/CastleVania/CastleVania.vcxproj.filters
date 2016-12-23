@@ -100,6 +100,9 @@
     <Filter Include="Framework\Game Object\Enemy\Small Light">
       <UniqueIdentifier>{5226f007-4c19-4f68-b194-dd6330ce494a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Game Object\Hide Object\Change Screen">
+      <UniqueIdentifier>{2b0da1d9-47ea-4518-95d7-50f0dc242b2b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global.h">
@@ -266,6 +269,21 @@
       <Filter>Framework\Game Object\Hide Object</Filter>
     </ClInclude>
     <ClInclude Include="DrawFont.h" />
+    <ClInclude Include="ChangeScreen.h">
+      <Filter>Framework\Game Object\Hide Object\Change Screen</Filter>
+    </ClInclude>
+    <ClInclude Include="UpStairRight.h">
+      <Filter>Framework\Game Object\Hide Object\Stair</Filter>
+    </ClInclude>
+    <ClInclude Include="UpStairLeft.h">
+      <Filter>Framework\Game Object\Hide Object\Stair</Filter>
+    </ClInclude>
+    <ClInclude Include="DownStairRight.h">
+      <Filter>Framework\Game Object\Hide Object\Stair</Filter>
+    </ClInclude>
+    <ClInclude Include="DownStairLeft.h">
+      <Filter>Framework\Game Object\Hide Object\Stair</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture.cpp">
@@ -428,6 +446,21 @@
       <Filter>Framework\Game Object\Hide Object</Filter>
     </ClCompile>
     <ClCompile Include="DrawFont.cpp" />
+    <ClCompile Include="ChangeScreen.cpp">
+      <Filter>Framework\Game Object\Hide Object\Change Screen</Filter>
+    </ClCompile>
+    <ClCompile Include="UpStairRight.cpp">
+      <Filter>Framework\Game Object\Hide Object\Stair</Filter>
+    </ClCompile>
+    <ClCompile Include="UpStairLeft.cpp">
+      <Filter>Framework\Game Object\Hide Object\Stair</Filter>
+    </ClCompile>
+    <ClCompile Include="DownStairRight.cpp">
+      <Filter>Framework\Game Object\Hide Object\Stair</Filter>
+    </ClCompile>
+    <ClCompile Include="DownStairLeft.cpp">
+      <Filter>Framework\Game Object\Hide Object\Stair</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

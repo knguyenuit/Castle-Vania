@@ -100,8 +100,11 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
 		return new CGround(pos);
 		break;
 	case 702:
-	case 705:
 		return new CBrick(pos);
+		break;
+	case 705:
+		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::ChangeScene, pos);
+		
 		break;
 	case 201:
 		return CEnemyManage::GetInstance()->CreateEnemy(ENEMY_type::Zombie, pos);
@@ -109,6 +112,9 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
 	case 202:
 	case 203:
 		return CEnemyManage::GetInstance()->CreateEnemy(static_cast<ENEMY_type>(id), pos);
+		break;
+	case 205:
+		return CEnemyManage::GetInstance()->CreateEnemy(ENEMY_type::FishMan, pos);
 		break;
 	case 401:
 		return CEnemyManage::GetInstance()->CreateEnemy(BossVampireBat, pos);

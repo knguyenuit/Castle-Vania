@@ -1,10 +1,9 @@
 #pragma once
-#include "BaseGameObject.h"
-#include "OnCollision.h"
-#include "Simon.h"
+#include "HideObject.h"
 #include "ItemManage.h"
 #include "EnemyManage.h"
-class CBrick : public CBaseGameObject
+class CBrick :
+	public CHideObject
 {
 
 

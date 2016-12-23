@@ -74,14 +74,16 @@ public: //xu li cau thang
 		//Xu ly cau thang
 	bool isUpStair = false, isDownStair = false;
 	bool isOnStair = false;
-	bool prepareUpStair = false, prepareDownStair = false;
+	bool prepareOnStair = false, prepareOutStair = false;
 	bool canUpStairLeft, canUpStairRight, canDownStairLeft, canDownStairRight;
 	int currStairStep = 0;
 	Vector2 currStairPos = Vector2(0, 0);
 	Vector2 currSimonStairPos = Vector2(0, 0);
-	bool isCancelStairMove = false;
-	bool isCompleteStairMove = false;
+	bool isMoveToStair = false;
+	bool isCancelStairMove = true;
+	bool isFirstStairStep = false;
 	//Xu ly di chuyen MoveTo
+	bool isMoveToLeft, isMoveToRight, isMoveToUp, isMoveToDown; // direction, default left // direction, default left
 	bool check_arrive_x = false, check_arrive_y = false;
 public:
 	int m_keyDown;
@@ -115,8 +117,15 @@ public:
 	bool isUnAvailable = false;
 	float timeCollisionEnemy = 0.0f;
 	bool isMoveLeft;
+	//set co danh trung enemy ko
+	bool isAttackEnemy = false;
 public:
+	//mau simon
 	int m_hpSimon;
+	//level hien tai
+	int m_currentLevel;
+	//so trai tim
+	int m_countHeart = 0;
 	WEAPON_name m_currentWeapon;
 private:
 	void InitAnimation();//khoi tao cac thong so cua Simon

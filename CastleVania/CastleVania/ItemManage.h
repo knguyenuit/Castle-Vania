@@ -5,6 +5,7 @@
 #include "DrawObject.h"
 #include "Simon.h"
 #include "OnCollision.h"
+#include "ManageAudio.h"
 class CItemManage : public CSingleton<CItemManage>
 {
 	friend class CSingleton<CItemManage>;

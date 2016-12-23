@@ -2,7 +2,6 @@
 #define __HIDEOBJECT_H__
 #include "BaseGameObject.h"
 #include "Simon.h"
-#include "Input.h"
 #include "OnCollision.h"
 enum HideObject_TYPE
 {
@@ -29,11 +28,11 @@ public:
 	~CHideObject();
 public:
 	CSimon * simon = CSimon::GetInstance();
-	int m_keyDown = NULL;
+	bool isSimonCollision = false;
 public:
 	void Update(float deltaTime);
 	void OnSimonCollision();
-	void OnKeyDown();
+	void SimonMove(float deltaTime);
 };
 
 #endif // !__HIDEOBJECT_H__
