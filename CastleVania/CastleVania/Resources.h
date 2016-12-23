@@ -4,6 +4,7 @@
 #pragma region linkImage
 //simon
 #define SIMON_RES "..\\Resources\\image\\simon.png"
+#define SIMON_DIE "..\\Resources\\image\\simondeath.png"
 //cane
 #define CANE_RES "..\\Resources\\image\\cane.png"
 

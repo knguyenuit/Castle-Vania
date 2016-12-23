@@ -20,8 +20,9 @@ public:
 	bool isLeft, isRight, isUp, isDown; // direction, default left // direction, default left
 	float m_Width;//chieu rong cua hinh
 	float m_Height;//chieu cao cua hinh
-
-				   //do dai that de xet va cham
+	//check xem simon con song hay khong
+	bool isDie = false;
+	//do dai that de xet va cham
 	float m_realWidth;
 	float m_realHeight;
 

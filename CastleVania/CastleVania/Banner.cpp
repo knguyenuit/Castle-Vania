@@ -51,6 +51,13 @@ void CBanner::Init()
 	m_rectCountHeart->right = 510;
 	m_rectCountHeart->top = 40;
 	m_rectCountHeart->bottom = 60;
+
+	//rect count life
+	m_rectCountLife = new RECT();
+	m_rectCountLife->left = 480;
+	m_rectCountLife->right = 510;
+	m_rectCountLife->top = 70;
+	m_rectCountLife->bottom = 90;
 }
 
 void CBanner::Update(float deltaTime)
@@ -63,7 +70,9 @@ void CBanner::Update(float deltaTime)
 		this->m_hpSimon = CSimon::GetInstance()->m_hpSimon;
 		this->m_countHeart = CSimon::GetInstance()->m_countHeart;
 		this->m_curState = CSimon::GetInstance()->m_currentLevel;
+		this->m_countLife = CSimon::GetInstance()->m_countLife;
 		this->m_typeWeapon = CSimon::GetInstance()->m_currentWeapon;
+
 		switch (this->m_typeWeapon)
 		{
 		case WEAPON_name::Axe:
@@ -118,6 +127,8 @@ void CBanner::DrawBannerProperty()
 	m_font->DrawNumber(m_curState, m_rectState);
 	//count heart
 	m_font->DrawNumber(m_countHeart, m_rectCountHeart);
+	//count life
+	m_font->DrawNumber(m_countLife, m_rectCountLife);
 }
 
 RECT * CBanner::GetRectRS()

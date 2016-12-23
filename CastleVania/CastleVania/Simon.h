@@ -119,6 +119,7 @@ public:
 	bool isMoveLeft;
 	//set co danh trung enemy ko
 	bool isAttackEnemy = false;
+	
 public:
 	//mau simon
 	int m_hpSimon;
@@ -126,6 +127,8 @@ public:
 	int m_currentLevel;
 	//so trai tim
 	int m_countHeart = 0;
+	//so mang
+	int m_countLife = 3;
 	WEAPON_name m_currentWeapon;
 private:
 	void InitAnimation();//khoi tao cac thong so cua Simon
@@ -144,6 +147,8 @@ public:
 	void Jump(float deltaTime);
 	//leo cau thang
 	bool MoveTo(Vector2 point, float deltaTime);
+	//reset gia tri cua simon khi chet
+	void ResetSimon();
 };
 
 

@@ -56,16 +56,24 @@ CSimon::~CSimon()
 {
 	delete this;
 }
-
+float countTime = 0;
 void CSimon::Update(float deltaTime)
 {
-	//SetFrame();
-	//this->m_Pos.x += m_vx * deltaTime;
+	if (this->m_hpSimon <= 0)
+	{
+		this->m_isLive = false;
+		ManageAudio::GetInstance()->stopSound(TypeAudio::Stage_01_Vampire_Killer);
+		ManageAudio::GetInstance()->playSound(TypeAudio::Life_Lost);
+		countTime += deltaTime;
+		if (countTime >= 1)
+		{
+			m_countLife -= 1;
+			isDie = true;
+		}
+		
+	}
 	ActionUpdate(deltaTime);
-	//OnCollision(deltaTime, CLoadObject::GetInstance()->listBox);
-	//UpdateGround(deltaTime, CLoadObject::GetInstance()->m_listGameObject);
-	//OnCollision(deltaTime, CLoadObject::GetInstance()->m_listGameObject);
-	//OnCollision(deltaTime, hv);
+	
 	this->cane->Update(this->m_Pos, this->m_Dir, deltaTime);
 }
 
@@ -164,6 +172,18 @@ bool CSimon::MoveTo(Vector2 point, float deltaTime)
 	{
 		return false;
 	}
+}
+
+void CSimon::ResetSimon()
+{
+	
+	m_Pos = CSimon::GetInstance()->m_PosDefault;
+	simon_Status = SIMON_status::IDLE;
+	m_hpSimon = 16;
+	m_isLive = true;
+	CCamera::GetInstance()->m_pos.x = m_Pos.x - 100;
+	ManageAudio::GetInstance()->stopSound(TypeAudio::Life_Lost);
+	ManageAudio::GetInstance()->playSound(TypeAudio::Stage_01_Vampire_Killer);
 }
 
 void CSimon::Jump(float deltaTime)
@@ -785,7 +805,7 @@ void CSimon::OnKeyDown(float deltaTime)
 		this->cane->updateState(state2);
 		break;
 	case DIK_C: //test change status
-		isCheckChangeState = true;
+		this->m_hpSimon -= 1;
 		break;
 	case DIK_E:
 		this->isWeaponAttacking = true;
