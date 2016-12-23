@@ -1,9 +1,9 @@
 #ifndef __BOSSVAMPIREBAT__H_
 #define __BOSSVAMPIREBAT__H_
 #include "Enemy.h"
-#include "Simon.h"
-class CBossVampireBat : public CEnemy
+class CBossVampireBat : public CEnemy, public CSingleton<CBossVampireBat>
 {
+	friend class CSingleton<CBossVampireBat>;
 public:
 	void Init();
 	CBossVampireBat();
@@ -19,10 +19,12 @@ public:
 	float m_pos_y_prepare_attack[5] = { 100,110,120,130,140 };
 	float time_delay_step = 1.0f;
 public:
-	bool MoveTo(Vector2 point, float deltaTime);
 	RECT* GetRectRS();
 	void Update(float deltaTime);
 	virtual void MoveUpdate(float deltaTime);
+	void OnSimonCollision(float deltaTime);
+	void OnCaneCollision(float deltaTime);
+	void OnWeaponCollision(float deltaTime, std::vector<CWeapon*> listWeapon);
 };
 #endif //! __BOSSVAMPIREBAT__H_
 

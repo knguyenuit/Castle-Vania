@@ -5,6 +5,7 @@
 #include "Singleton.h"
 #include "Simon.h"
 #include "DrawFont.h"
+#include "BossVampireBat.h"
 
 
 class CBanner : public CBaseGameObject
@@ -23,6 +24,7 @@ public:
 	CSprite* m_Draw;
 	CTexture* m_TextureBanner;
 	CTexture* m_textureHpPlayer;
+	CTexture* m_textureHpEnemy;
 	CTexture* m_textureWeapon;
 	int m_Point;
 	int m_countTime = 0;
@@ -30,12 +32,14 @@ public:
 
 public:
 	D3DXVECTOR3 posHpSimon;
+	D3DXVECTOR3 posHpEnemy;
 	D3DXVECTOR3 posWeapon;
 	D3DXVECTOR3 posPoint;
 
 
 	//rect
 	RECT* m_rectPoint;
+	RECT* m_rectEnemyHP;
 	RECT* m_rectTime;
 	RECT* m_rectState;
 	RECT* m_rectCountHeart;
@@ -43,9 +47,11 @@ public:
 	
 	//property
 	int m_hpSimon;
+	int m_enemyHP;
 	int m_countHeart;
 	int m_curState;
 	int m_countLife;
+	int m_Score;
 	WEAPON_name m_typeWeapon;
 };
 

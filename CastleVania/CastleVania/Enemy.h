@@ -7,7 +7,8 @@
 #include "Item.h"
 #include "WeaponManage.h"
 #include "ManageAudio.h"
-
+#include "ItemManage.h"
+#include "Simon.h"
 enum ENEMY_type
 {
 	Zombie = 201,
@@ -32,20 +33,23 @@ enum class ENEMY_state {
 	MOVE = 2,
 	JUMP = 3,
 	FREE = 4,
-	ATTACK = 5
+	ATTACK = 5,
+	DIE
 };
 
 class CEnemy : public CBaseGameObject, public CMove, public CAnimation
 {
 public:
 	ENEMY_state m_State;
-	
+	CSimon * simon = CSimon::GetInstance();
 	ENEMY_type enemyType;
 	ITEM_name enemyItem = ITEM_name::None;
 public:
 	CDrawObject* drawEnemyManage;
 	bool check_arrive_x = false;
 	bool check_arrive_y = false;
+	bool isSimonCollision = false;
+	int m_enemyHP = 1;
 public:
 	void changeState(ENEMY_state state);
 public:

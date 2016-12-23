@@ -19,7 +19,7 @@ void CCastleVania::Init()
 	CInput::GetInstance()->InitKeyboard(CViewWindows::m_hwndWindow);
 
 	CStateGameManager::GetInstance()->LoadScene();
-	CStateGameManager::GetInstance()->ChangeState(new CStateGameStart());
+	CStateGameManager::GetInstance()->ChangeState(new CStateGamePlay());
 
 	////Audio
 	ManageAudio::GetInstance()->init_DirectSound(CViewWindows::m_hwndWindow);

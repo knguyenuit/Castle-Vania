@@ -63,28 +63,32 @@ void CBrick::OnSimonCollision(float deltaTime)
 		CDirection normalY;
 		float timeCollision;
 		timeCollision = COnCollision::GetInstance()->SweepAABB(this->simon->GetBox(), this->GetBox(), normalX, normalY, deltaTime);
-		if (normalY == CDirection::ON_DOWN && this->simon->isOnStair == false && this->simon->isMoveToStair == false)
+		if (normalY == CDirection::ON_DOWN && this->simon->isOnStair == false && this->simon->isMoveToStair == false && this->simon->isCollisionEnemy == false)
 		{
 			simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
 			this->simon->simon_Status = SIMON_status::IDLE;
 			this->simon->isKey_X = false;
 			/*this->simon->isMoveJump = false;*/
 		}
-		if (this->simon->isMoveToStair == false && this->simon->isOnStair == false && this->simon->isDownStair == false && this->simon->prepareOnStair == false)
+		if (this->simon->isCollisionEnemy == false)
 		{
-			if (COnCollision::GetInstance()->AABBCheck(this->simon->GetBox(), this->GetBox()))
+			if (this->simon->isMoveToStair == false && this->simon->isOnStair == false && this->simon->isDownStair == false && this->simon->prepareOnStair == false)
 			{
+				if (COnCollision::GetInstance()->AABBCheck(this->simon->GetBox(), this->GetBox()))
+				{
 
-				if (this->simon->isSit == true && (this->simon->m_currentFrame == 4 || this->simon->m_currentFrame == 15 || this->simon->m_currentFrame == 16 || this->simon->m_currentFrame == 17))
-				{
-					simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 24;
-				}
-				else
-				{
-					simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
+					if (this->simon->isSit == true && (this->simon->m_currentFrame == 4 || this->simon->m_currentFrame == 15 || this->simon->m_currentFrame == 16 || this->simon->m_currentFrame == 17))
+					{
+						simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 24;
+					}
+					else
+					{
+						simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
+					}
 				}
 			}
 		}
+
 	}
 }
 

@@ -67,6 +67,11 @@ void CItem::Init()
 		this->m_Width = 32;
 		this->m_Height = 26;
 		break;
+		//BOSS ITEM
+	case ITEM_name::MagicalCrystal:
+		this->m_Width = 28;
+		this->m_Height = 32;
+		break;
 	default:
 		break;
 	}

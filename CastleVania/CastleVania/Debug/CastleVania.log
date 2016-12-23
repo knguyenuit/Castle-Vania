@@ -1,8 +1,10 @@
-﻿  Camera.cpp
+﻿  Simon.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\camera.cpp(44): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\camera.cpp(45): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\camera.cpp(47): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\camera.cpp(48): warning C4172: returning address of local variable or temporary: rect
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(45): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(46): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\simon.cpp(682): warning C4101: 'timeCollision': unreferenced local variable
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\simon.cpp(709): warning C4101: 'normalY': unreferenced local variable
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\simon.cpp(728): warning C4101: 'normalY': unreferenced local variable
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\simon.cpp(750): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   CastleVania.vcxproj -> D:\Game CastleVania\Castle Vania\trunk\CastleVania\Debug\CastleVania.exe
   CastleVania.vcxproj -> D:\Game CastleVania\Castle Vania\trunk\CastleVania\Debug\CastleVania.pdb (Full PDB)

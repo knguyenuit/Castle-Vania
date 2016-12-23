@@ -43,7 +43,7 @@ void CSimon::InitMove()
 	this->m_a = -1070;
 	this->m_aDefault = this->m_a;
 	this->m_ax = 0;
-	this->m_Pos = this->m_PosDefault = Vector2(100, 90);
+	this->m_Pos = this->m_PosDefault = Vector2(5000, 90);
 	this->m_Width = 60;
 	this->m_Height = 68;
 	this->m_isJumping = false;
@@ -176,9 +176,16 @@ bool CSimon::MoveTo(Vector2 point, float deltaTime)
 
 void CSimon::ResetSimon()
 {
-	
-	m_Pos = CSimon::GetInstance()->m_PosDefault;
-	simon_Status = SIMON_status::IDLE;
+	if (m_currentLevel == 3)
+	{
+		m_Pos = Vector2(100, 224);
+		simon_Status = SIMON_status::IDLE;
+	}
+	else
+	{
+		m_Pos = CSimon::GetInstance()->m_PosDefault;
+		simon_Status = SIMON_status::IDLE;
+	}
 	m_hpSimon = 16;
 	m_isLive = true;
 	CCamera::GetInstance()->m_pos.x = m_Pos.x - 100;
@@ -441,18 +448,9 @@ void CSimon::UpdateStatus(float deltaTime)
 	case COLLISION_ENEMY:
 		this->canAttack = this->canMove = this->canSit = false;
 		this->canFall = false;
+		this->canJump = false;
 		this->m_startFrame = 8;
 		this->m_endFrame = 8;
-		/*if (this->timeCollisionEnemy<0.6)
-		{
-		this->m_Pos.x -= deltaTime * 100;
-		this->m_Pos.y += deltaTime * 100;
-		}
-		else
-		{
-		this->m_Pos.y -= deltaTime * 100;
-		}*/
-
 		break;
 
 	default:
@@ -571,6 +569,13 @@ void CSimon::ActionUpdate(float deltaTime)
 		}
 	}
 #pragma endregion
+#pragma region On Event Enemy Collision
+	if (this->simon_Status == SIMON_status::COLLISION_ENEMY && this->isCollisionEnemy == true)
+	{
+		this->EnemyCollisionUpdate(deltaTime);
+		return;
+	}
+#pragma endregion
 }
 
 void CSimon::MoveUpdate(float deltaTime)
@@ -603,6 +608,28 @@ void CSimon::AttackUpdate(float deltaTime)
 	{
 		this->simon_Status = SIMON_status::IDLE;
 		this->isKey_Z = false; // tranh viec giu~ phim Z
+	}
+}
+
+void CSimon::EnemyCollisionUpdate(float deltaTime)
+{
+	this->timeCollisionEnemy += deltaTime;
+	if (this->timeCollisionEnemy >= 1)
+	{
+		this->isCollisionEnemy = false;
+		this->timeCollisionEnemy = 0;
+		this->simon_Status = SIMON_status::IDLE;
+		this->UpdateStatus(deltaTime);
+		return;
+	}
+	if (this->timeCollisionEnemy<0.5)
+	{
+		this->m_Pos.x -= deltaTime * 100;
+		this->m_Pos.y += deltaTime * 100;
+	}
+	else
+	{
+		this->m_Pos.y -= deltaTime * 100;
 	}
 }
 
@@ -806,6 +833,9 @@ void CSimon::OnKeyDown(float deltaTime)
 		break;
 	case DIK_C: //test change status
 		this->m_hpSimon -= 1;
+		break;
+	case DIK_V: //test change status
+		this->isCheckChangeState = true;
 		break;
 	case DIK_E:
 		this->isWeaponAttacking = true;

@@ -1,7 +1,4 @@
 #include "Enemy.h"
-#include "Simon.h"
-#include "ItemManage.h"
-#include "ManageAudio.h"
 
 CEnemy::CEnemy()
 {
@@ -58,7 +55,7 @@ void CEnemy::Update(float deltaTime)
 	{
 		this->MoveUpdate(deltaTime);
 	}
-	
+
 }
 
 
@@ -168,6 +165,9 @@ void CEnemy::MoveUpdate(float deltaTime)
 	case ENEMY_state::FREE:
 		this->m_Pos.y -= m_vy*deltaTime;
 		break;
+	case ENEMY_state::DIE:
+		this->m_isRemove = true;
+		break;
 	default:
 		break;
 	}
@@ -189,67 +189,41 @@ CEnemy::~CEnemy()
 
 void CEnemy::OnSimonCollision(float deltaTime)
 {
-	CSimon* simon = CSimon::GetInstance();
-	if (simon->isCollisionEnemy)
+	if (CCollision::GetInstance()->AABBCheck(this->simon->GetBox(), this->GetBox()))
 	{
-
-		simon->simon_Status = COLLISION_ENEMY;
-		if (simon->timeCollisionEnemy == 0)
+		if (this->enemyType == ENEMY_type::SmallLight)
 		{
-			simon->m_hpSimon -= 1;
+			return;
 		}
-		simon->timeCollisionEnemy += deltaTime;
-		if (simon->timeCollisionEnemy >= 1)
+		else
 		{
-			simon->m_Dir = simon->m_Dir == LEFT ? RIGHT : LEFT;
-			simon->isCollisionEnemy = false;
-			simon->timeCollisionEnemy = 0;
-			simon->simon_Status = IDLE;
+			this->simon->m_hpSimon -= 1;
+			this->simon->isArrowKeyLeft = this->simon->isArrowKeyRight = false;
+			this->simon->simon_Status = COLLISION_ENEMY;
+			this->isSimonCollision = true;
+			this->simon->isCollisionEnemy = true;
+			this->changeState(ENEMY_state::DIE);
 
 		}
 	}
-	else
-	{
-		
-			if (CCollision::GetInstance()->AABBCheck(simon->GetBox(), this->GetBox()))
-			{
-
-				if (this->enemyType == Zombie)
-				{
-
-					//CItemManage::GetInstance()->CreateRandomItem(obj->GetPos());
-					//simon->cane->updateState(caneState::default);
-					simon->isCollisionEnemy = true;
-					simon->m_Dir = this->m_Dir;
-
-				}
-				if (this->enemyType == BlackLeopard)
-				{
-					simon->isCollisionEnemy = true;
-					simon->m_Dir = this->m_Dir;
-
-				}
-			}
-
-		}
-	}
+}
 
 
 void CEnemy::OnCaneCollision()
 {
-	CCane* cane = CSimon::GetInstance()->cane;
-	if (cane->getCurrentFrame() == 2 ||
-		cane->getCurrentFrame() == 6 ||
-		cane->getCurrentFrame() == 10)
+	if (this->simon->cane->getCurrentFrame() == 2 ||
+		this->simon->cane->getCurrentFrame() == 6 ||
+		this->simon->cane->getCurrentFrame() == 10)
 	{
-		if (CCollision::GetInstance()->AABBCheck(cane->GetBox(), this->GetBox()))
+		if (CCollision::GetInstance()->AABBCheck(this->simon->cane->GetBox(), this->GetBox()))
 		{
+			this->simon->m_Score += 10;
 			this->m_isRemove = true;
 			CSimon::GetInstance()->isAttackEnemy = true;
-			if(CSimon::GetInstance()->isAttackEnemy)
-			{ 
-			ManageAudio::GetInstance()->playSound(TypeAudio::Hit);
-			CSimon::GetInstance()->isAttackEnemy = false;
+			if (CSimon::GetInstance()->isAttackEnemy)
+			{
+				ManageAudio::GetInstance()->playSound(TypeAudio::Hit);
+				CSimon::GetInstance()->isAttackEnemy = false;
 			}
 			if (this->enemyItem != ITEM_name::None)
 			{
@@ -264,15 +238,15 @@ void CEnemy::OnCaneCollision()
 			{
 			case ENEMY_type::Zombie:
 
-				break;
+			break;
 			case ENEMY_type::BlackLeopard:
-				this->changeState(ENEMY_state::FREE);
-				break;
+			this->changeState(ENEMY_state::FREE);
+			break;
 			default:
-				break;
+			break;
 			}*/
 		}
-		
+
 	}
 }
 
@@ -285,14 +259,17 @@ void CEnemy::OnWeaponCollision(float deltaTime, std::vector<CWeapon*> listWeapon
 	{
 		CWeapon* weapon = *it;
 		timeCollision = COnCollision::GetInstance()->SweepAABB(weapon->GetBox(), this->GetBox(), normalX, normalY, deltaTime);
-		if (normalX == ON_LEFT || normalX == ON_RIGHT)
+		if (normalX == ON_LEFT || normalX == ON_RIGHT || normalY == ON_UP || normalY == ON_DOWN)
 		{
+
 			m_isRemove = true;
+			this->simon->m_Score += 10;
 			weapon->m_isRemove = true;
+			CItemManage::GetInstance()->CreateRandomItem(this->GetPos());
 			ManageAudio::GetInstance()->playSound(TypeAudio::Hit);
 		}
 	}
 }
-		
-	
+
+
 

@@ -26,6 +26,7 @@ public:
 	RECT* GetBound();
 	RECT* GetRectRS();
 	bool Use();
+	float m_timeCollisionEnemy = 0.0f;
 	//cac ham ke thua tu Animation
 public:
 	void SetFrame();		// ham chuyen frame.

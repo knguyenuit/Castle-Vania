@@ -16,8 +16,10 @@ void CBanner::Init()
 	m_textureHpPlayer = new CTexture();
 	m_textureWeapon = new CTexture();
 	m_textureHpPlayer->LoadImageFromFile(SIMON_HP, D3DCOLOR_XRGB(255, 0, 255));
-
+	m_textureHpEnemy = new CTexture();
+	m_textureHpEnemy->LoadImageFromFile(ENEMY_HP, D3DCOLOR_XRGB(255, 0, 255));
 	this->posHpSimon = D3DXVECTOR3(122, 48, 0);
+	this->posHpEnemy = D3DXVECTOR3(122, 70, 0);
 	this->posWeapon = D3DXVECTOR3(300, 55, 0);
 	this->posPoint = D3DXVECTOR3(122, 30, 0);
 
@@ -30,6 +32,13 @@ void CBanner::Init()
 	m_rectPoint->right = 192;
 	m_rectPoint->top = 14;
 	m_rectPoint->bottom = 60;
+
+	//rect enemy hp
+	m_rectEnemyHP = new RECT();
+	m_rectEnemyHP->left = 122;
+	m_rectEnemyHP->right = 192;
+	m_rectEnemyHP->top = 70;
+	m_rectEnemyHP->bottom = 100;
 
 	//rect time
 	m_rectTime = new RECT();
@@ -58,6 +67,8 @@ void CBanner::Init()
 	m_rectCountLife->right = 510;
 	m_rectCountLife->top = 70;
 	m_rectCountLife->bottom = 90;
+
+	//m_enemyHP = 16;
 }
 
 void CBanner::Update(float deltaTime)
@@ -68,9 +79,11 @@ void CBanner::Update(float deltaTime)
 		this->m_Pos.x = CCamera::GetInstance()->m_pos.x + 265;
 		//cap nhat mau cua simon
 		this->m_hpSimon = CSimon::GetInstance()->m_hpSimon;
+		this->m_enemyHP = CSimon::GetInstance()->m_BossVampireBatHP;
 		this->m_countHeart = CSimon::GetInstance()->m_countHeart;
 		this->m_curState = CSimon::GetInstance()->m_currentLevel;
 		this->m_countLife = CSimon::GetInstance()->m_countLife;
+		this->m_Score = CSimon::GetInstance()->m_Score;
 		this->m_typeWeapon = CSimon::GetInstance()->m_currentWeapon;
 
 		switch (this->m_typeWeapon)
@@ -112,15 +125,20 @@ void CBanner::DrawBannerBG()
 void CBanner::DrawBannerProperty()
 {
 	D3DXVECTOR3 positionHpSimon = this->posHpSimon;
+	D3DXVECTOR3 positionHpEnemy = this->posHpEnemy;
 	for (int i = 0; i < this->m_hpSimon; i++)
 	{
 		this->m_Draw->Draw(this->m_textureHpPlayer, NULL, positionHpSimon);
 		positionHpSimon.x += 8;
 	}
-	
+	for (int i = 0; i < this->m_enemyHP; i++)
+	{
+		this->m_Draw->Draw(this->m_textureHpEnemy, NULL, positionHpEnemy);
+		positionHpEnemy.x += 8;
+	}
 	this->m_Draw->Draw(this->m_textureWeapon, NULL, posWeapon);
 	//score
-	m_font->DrawNumber(1000, m_rectPoint);
+	m_font->DrawNumber(m_Score, m_rectPoint);
 	//time
 	m_font->DrawNumber(m_countTime, m_rectTime);
 	//state

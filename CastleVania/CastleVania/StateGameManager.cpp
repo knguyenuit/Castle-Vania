@@ -15,7 +15,7 @@ void CStateGameManager::LoadScene()
 	this->gameStartScene = new CStateGameStart();
 	this->gameIntroScene = new CStateGameIntro();
 	gamePlayScene->Init();
-	m_pCurrent = gameStartScene;
+	m_pCurrent = gamePlayScene;
 	isStart = false;
 	timeDelay = 0;
 }

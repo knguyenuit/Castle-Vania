@@ -128,7 +128,11 @@ public:
 	//so trai tim
 	int m_countHeart = 0;
 	//so mang
-	int m_countLife = 3;
+	int m_countLife = 2;
+	//diem
+	int m_Score = 0;
+	// mau  boss enemy (choi lay)
+	int m_BossVampireBatHP = 16;
 	WEAPON_name m_currentWeapon;
 private:
 	void InitAnimation();//khoi tao cac thong so cua Simon
@@ -143,6 +147,7 @@ public:
 	void JumpUpdate(float deltaTime);
 	void SitUpdate(float deltaTime);
 	void AttackUpdate(float deltaTime);
+	void EnemyCollisionUpdate(float deltaTime);
 	void FallUpdate(float deltaTime);
 	void Jump(float deltaTime);
 	//leo cau thang

@@ -8,6 +8,7 @@ enum class ITEM_name
 {
 	SmallHeart = 301,
 	LargeHeart = 302,
+	MagicalCrystal = 303,
 	MoneyBag = 305,
 	PorkChop = 309,
 	MorningStar = 310,
