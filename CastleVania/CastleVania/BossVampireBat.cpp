@@ -12,6 +12,7 @@ void CBossVampireBat::Init()
 	//Init Life
 	this->m_enemyHP = 16;
 	this->m_Dir = Direction::RIGHT;
+	this->enemyItem = ITEM_name::MagicalCrystal;
 	//init animation
 	this->m_startFrame = 0;
 	this->m_endFrame = 2;
@@ -169,7 +170,7 @@ void CBossVampireBat::OnCaneCollision(float deltaTime)
 		{
 			if (this->simon->cane->m_timeCollisionEnemy == 0)
 			{
-				this->m_enemyHP -= 8;
+				this->m_enemyHP -= 2;
 				this->simon->cane->m_timeCollisionEnemy += deltaTime;
 			}
 			this->simon->isAttackEnemy = true;
@@ -178,7 +179,7 @@ void CBossVampireBat::OnCaneCollision(float deltaTime)
 				ManageAudio::GetInstance()->playSound(TypeAudio::Hit);
 				CSimon::GetInstance()->isAttackEnemy = false;
 			}
-			if (this->m_enemyHP <= 0)
+			if (this->m_enemyHP < 0)
 			{
 				this->m_isRemove = true;
 				CItemManage::GetInstance()->CreateItem(this->enemyItem, this->m_PosDefault + Vector2(0, -200));
@@ -205,9 +206,14 @@ void CBossVampireBat::OnWeaponCollision(float deltaTime, std::vector<CWeapon*> l
 			this->m_enemyHP -= 2;
 			weapon->m_isRemove = true;
 			ManageAudio::GetInstance()->playSound(TypeAudio::Hit);
-			if (this->m_enemyHP <= 0)
+			if (this->m_enemyHP < 0)
 			{
 				this->m_isRemove = true;
+				CItemManage::GetInstance()->CreateItem(this->enemyItem, this->m_PosDefault + Vector2(0, -200));
+			}
+			else
+			{
+				return;
 			}
 		}
 	}
