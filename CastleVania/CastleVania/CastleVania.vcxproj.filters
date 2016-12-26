@@ -103,6 +103,18 @@
     <Filter Include="Framework\Game Object\Hide Object\Change Screen">
       <UniqueIdentifier>{2b0da1d9-47ea-4518-95d7-50f0dc242b2b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Game Object\Brick">
+      <UniqueIdentifier>{25970abd-1347-421e-8ec3-b08e7ca0e63d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\AnimationObject">
+      <UniqueIdentifier>{0d454d82-5cce-4b19-b25e-a0769c944980}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\AnimationObject\FireOn">
+      <UniqueIdentifier>{de536db8-1424-4b94-9c4f-23f20e2b9bac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\AnimationObject\RockFall">
+      <UniqueIdentifier>{70c2542d-6504-4784-80c3-02754077ce1c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global.h">
@@ -211,9 +223,6 @@
     <ClInclude Include="QuadObject.h">
       <Filter>Framework\Quadtree</Filter>
     </ClInclude>
-    <ClInclude Include="Brick.h">
-      <Filter>Framework\Game Object</Filter>
-    </ClInclude>
     <ClInclude Include="QuadNode.h">
       <Filter>Framework\Quadtree</Filter>
     </ClInclude>
@@ -283,6 +292,21 @@
     </ClInclude>
     <ClInclude Include="DownStairLeft.h">
       <Filter>Framework\Game Object\Hide Object\Stair</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>Framework\Game Object\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationObject.h">
+      <Filter>Framework\Game Object\AnimationObject</Filter>
+    </ClInclude>
+    <ClInclude Include="AnimationObjectManage.h">
+      <Filter>Framework\Game Object\AnimationObject</Filter>
+    </ClInclude>
+    <ClInclude Include="FireOnAnimate.h">
+      <Filter>Framework\Game Object\AnimationObject\FireOn</Filter>
+    </ClInclude>
+    <ClInclude Include="RockFallAnimate.h">
+      <Filter>Framework\Game Object\AnimationObject\RockFall</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -388,9 +412,6 @@
     <ClCompile Include="QuadObject.cpp">
       <Filter>Framework\Quadtree</Filter>
     </ClCompile>
-    <ClCompile Include="Brick.cpp">
-      <Filter>Framework\Game Object</Filter>
-    </ClCompile>
     <ClCompile Include="QuadNode.cpp">
       <Filter>Framework\Quadtree</Filter>
     </ClCompile>
@@ -460,6 +481,21 @@
     </ClCompile>
     <ClCompile Include="DownStairLeft.cpp">
       <Filter>Framework\Game Object\Hide Object\Stair</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>Framework\Game Object\Brick</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationObject.cpp">
+      <Filter>Framework\Game Object\AnimationObject</Filter>
+    </ClCompile>
+    <ClCompile Include="AnimationObjectManage.cpp">
+      <Filter>Framework\Game Object\AnimationObject</Filter>
+    </ClCompile>
+    <ClCompile Include="FireOnAnimate.cpp">
+      <Filter>Framework\Game Object\AnimationObject\FireOn</Filter>
+    </ClCompile>
+    <ClCompile Include="RockFallAnimate.cpp">
+      <Filter>Framework\Game Object\AnimationObject\RockFall</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

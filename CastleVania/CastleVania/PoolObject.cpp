@@ -31,12 +31,26 @@ void CPoolObject::Init()
 
 void CPoolObject::Update(float deltaTime)
 {
-	CSimon::GetInstance()->Update(deltaTime);
+	if (this->simon->isPickUpMorningStar == false)
+	{
+		CSimon::GetInstance()->Update(deltaTime);
+		CLoadObject::GetInstance()->Update(deltaTime);
+	}
+	else
+	{
+		this->simon->timePickUpMorningStar += deltaTime;
+		if (this->simon->timePickUpMorningStar >= 0.6f)
+		{
+			this->simon->isPickUpMorningStar = false;
+			this->simon->timePickUpMorningStar = 0.0f;
+		}
+	}
+	
 	CItemManage::GetInstance()->Update(deltaTime);
 	//CEnemyManage::GetInstance()->Update(deltaTime);
 	CWeaponManage::GetInstance()->Update(deltaTime);
-	CLoadObject::GetInstance()->Update(deltaTime);
-	CHideObjectManage::GetInstance()->Update(deltaTime);
+	CAnimationObjectManage::GetInstance()->Update(deltaTime);
+	//CHideObjectManage::GetInstance()->Update(deltaTime);
 	banner->Update(deltaTime);
 	//this->ground->Update(deltaTime);
 	//CLoadObject::GetInstance()->Collision(deltaTime, this->simon);
@@ -94,14 +108,11 @@ void CPoolObject::OnCollision(float deltaTime)
 //ham` quan li ve, ve cai gi thi truyen truc tiep o day, nhieu doi tuong thi dung for
 void CPoolObject::Draw()
 {
-	this->drawManager->Draw(this->simon);
-	if (this->simon->cane->m_checkActive == true)
-	{
-		this->drawManager->Draw(this->simon->cane);
-	}
+	this->simon->Draw();
 	CLoadObject::GetInstance()->Draw();
 	CItemManage::GetInstance()->Draw();
-	//CEnemyManage::GetInstance()->Draw();
+	/*CEnemyManage::GetInstance()->Draw();*/
+	CAnimationObjectManage::GetInstance()->Draw();
 	CWeaponManage::GetInstance()->Draw();
 	//ve banner
 	banner->DrawBannerBG();

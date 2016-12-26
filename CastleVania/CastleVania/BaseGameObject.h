@@ -2,6 +2,12 @@
 #define __CBASEGAMEOBJECT__H__
 #include "Global.h"
 
+enum class DrawFlip {
+	NONE = 0,
+	X = 1,
+	Y = 2,
+	XY = 3
+};
 enum Direction
 {
 	NONE_DIR = 0,
@@ -17,6 +23,7 @@ public:
 	Vector2 m_PosDefault; //vi tri ban dau
 	Direction m_Dir;//dang huong ve phia nao
 	bool m_isLive; // check xem doi tuong con song hay ko?
+	DrawFlip m_DrawFlip = DrawFlip::NONE;
 	bool isLeft, isRight, isUp, isDown; // direction, default left // direction, default left
 	float m_Width;//chieu rong cua hinh
 	float m_Height;//chieu cao cua hinh

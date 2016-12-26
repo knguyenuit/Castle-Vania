@@ -183,6 +183,16 @@ void CSprite::DrawFlipX(CTexture* image, RECT *RectRS, D3DXVECTOR3 pos, D3DCOLOR
 	D3DXVECTOR2 scaling = D3DXVECTOR2(-1, 1);
 	this->Draw(image, RectRS, pos, scaling, transcolor, isCenter);
 }
+void CSprite::DrawFlipY(CTexture* image, RECT *RectRS, D3DXVECTOR3 pos, D3DCOLOR transcolor, bool isCenter)
+{
+	D3DXVECTOR2 scaling = D3DXVECTOR2(1, -1);
+	this->Draw(image, RectRS, pos, scaling, transcolor, isCenter);
+}
+void CSprite::DrawFlipXY(CTexture* image, RECT *RectRS, D3DXVECTOR3 pos, D3DCOLOR transcolor, bool isCenter)
+{
+	D3DXVECTOR2 scaling = D3DXVECTOR2(-1, -1);
+	this->Draw(image, RectRS, pos, scaling, transcolor, isCenter);
+}
 CSprite::~CSprite()
 {
 }

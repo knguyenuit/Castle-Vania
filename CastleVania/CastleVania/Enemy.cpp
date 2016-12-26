@@ -9,22 +9,26 @@ void CEnemy::Init()
 {
 	this->m_State = ENEMY_state::IDLE;
 	this->m_isRemove = false;
-	this->m_vx = 100;
-	this->m_vy = 200;
-	this->m_Dir = Direction::LEFT;
 	//init Direction (for MoveTo() )
 	this->check_arrive_x = this->check_arrive_y = false;
 	this->isLeft = this->isRight = this->isUp = this->isDown = false;
+	this->InitAnimation();
 }
 
 void CEnemy::InitAnimation()
 {
-
+	this->m_vx = 100;
+	this->m_vy = 200;
+	this->m_Dir = Direction::LEFT;
 }
 
 void CEnemy::Update(float deltaTime)
 {
-	OnSimonCollision(deltaTime);
+	if (this->simon->isUnAvailable == false)
+	{
+		OnSimonCollision(deltaTime);
+	}
+	
 	if (CSimon::GetInstance()->cane->m_checkActive)
 	{
 		OnCaneCollision();
@@ -197,12 +201,23 @@ void CEnemy::OnSimonCollision(float deltaTime)
 		}
 		else
 		{
-			this->simon->m_hpSimon -= 1;
-			this->simon->isArrowKeyLeft = this->simon->isArrowKeyRight = false;
-			this->simon->simon_Status = COLLISION_ENEMY;
-			this->isSimonCollision = true;
-			this->simon->isCollisionEnemy = true;
-			this->changeState(ENEMY_state::DIE);
+			if (this->simon->timeCollisionEnemy == 0)
+			{
+				this->simon->simon_Status = SIMON_status::IDLE;
+				this->simon->UpdateStatus(deltaTime);
+				this->simon->timeCollisionEnemy += deltaTime;
+				this->simon->m_hpSimon -= 1;
+				this->simon->isArrowKeyLeft = this->simon->isArrowKeyRight = false;
+				this->simon->simon_Status = COLLISION_ENEMY;
+				this->isSimonCollision = true;
+				this->simon->UpdateStatus(deltaTime);
+				if (this->simon->m_hpSimon <= 1)
+				{
+					this->changeState(ENEMY_state::DIE);
+				}
+				
+			}
+			
 
 		}
 	}
@@ -217,6 +232,7 @@ void CEnemy::OnCaneCollision()
 	{
 		if (CCollision::GetInstance()->AABBCheck(this->simon->cane->GetBox(), this->GetBox()))
 		{
+			CAnimationObjectManage::GetInstance()->CreateAnimation(Animation_object::FireOn, this->m_Pos);
 			this->simon->m_Score += 10;
 			this->m_isRemove = true;
 			CSimon::GetInstance()->isAttackEnemy = true;

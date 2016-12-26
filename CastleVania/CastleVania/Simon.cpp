@@ -27,7 +27,7 @@ void CSimon::InitAnimation()
 	this->m_endFrame = 0;
 	this->m_currentTime = 0;
 	this->m_currentFrame = 0;
-	this->m_elapseTimeChangeFrame = 0.15f;
+	this->m_elapseTimeChangeFrame = 0.1f;
 	this->m_increase = 1;
 	this->m_totalFrame = 24;
 	this->m_column = 8;
@@ -36,14 +36,14 @@ void CSimon::InitMove()
 {
 
 	this->m_vx = 10;
-	this->m_vy = 380;
+	this->m_vy = 450;
 	this->m_vxDefault = 180;
-	this->m_vyDefault = 380;
-
-	this->m_a = -1070;
+	this->m_vyDefault = 450;
+	this->m_weight = 35;
+	this->m_a = -1300;
 	this->m_aDefault = this->m_a;
 	this->m_ax = 0;
-	this->m_Pos = this->m_PosDefault = Vector2(5000, 90);
+	this->m_Pos = this->m_PosDefault = Vector2(100, 204);
 	this->m_Width = 60;
 	this->m_Height = 68;
 	this->m_isJumping = false;
@@ -73,14 +73,20 @@ void CSimon::Update(float deltaTime)
 		
 	}
 	ActionUpdate(deltaTime);
-	
-	this->cane->Update(this->m_Pos, this->m_Dir, deltaTime);
+	if (this->cane->m_checkActive == true)
+	{
+		this->cane->Update(this->m_Pos, this->m_Dir, deltaTime);
+	}
+	this->Gravity(deltaTime);
 }
 
 
 void CSimon::Gravity(float deltaTime)
 {
-
+	if (this->isOnStair == false && this->isMoveToStair == false)
+	{
+		this->m_Pos.y -= this->m_weight * 10 * deltaTime;
+	}
 }
 
 bool CSimon::MoveTo(Vector2 point, float deltaTime)
@@ -176,9 +182,9 @@ bool CSimon::MoveTo(Vector2 point, float deltaTime)
 
 void CSimon::ResetSimon()
 {
-	if (m_currentLevel == 3)
+	if (m_currentLevel == 2)
 	{
-		m_Pos = Vector2(100, 224);
+		m_Pos = Vector2(3500, 500);
 		simon_Status = SIMON_status::IDLE;
 	}
 	else
@@ -202,6 +208,78 @@ void CSimon::Jump(float deltaTime)
 	m_startFrame = 0;
 	m_endFrame = 0;*/
 
+}
+
+void CSimon::Draw()
+{
+	//draw cane
+	this->posDraw = CCamera::GetInstance()->GetPointTransform(this->cane->GetPos().x, this->cane->GetPos().y);
+	if (this->cane->m_checkActive == true)
+	{
+		this->texture->LoadImageFromFile(CANE_RES, D3DCOLOR_XRGB(255, 0, 255));
+		if (this->GetDirection() == Direction::LEFT)
+		{
+			this->m_draw->Draw(texture, this->cane->GetRectRS(), this->posDraw, D3DCOLOR_XRGB(255, 255, 255), true);
+		}
+		else
+		{
+			this->m_draw->DrawFlipX(texture, this->cane->GetRectRS(), this->posDraw, D3DCOLOR_XRGB(255, 255, 255), true);
+		}
+	}
+	//draw simon
+	this->posDraw = CCamera::GetInstance()->GetPointTransform(this->GetPos().x, this->GetPos().y);
+	if (this->m_isLive == true)
+	{
+		if (this->isUnAvailable == true) //Neu vua bi enemy tan cong
+		{
+			this->isUnAvailableDraw = !this->isUnAvailableDraw;
+			if (this->isUnAvailableDraw == true) //ve tranparency
+			{
+				texture->LoadImageFromFile(SIMON_UNAVAILABLE, D3DCOLOR_XRGB(255, 0, 255));
+			}
+			else
+			{
+				texture->LoadImageFromFile(SIMON_RES, D3DCOLOR_XRGB(255, 0, 255));
+			}
+		}
+		else
+		{
+			if (this->isPickUpMorningStar == true)
+			{
+				int r = rand() % 100 + 100;
+				int g = rand() % 50 + 50;
+				int b = rand() % 50;
+				D3DCOLOR transcolor = D3DCOLOR_XRGB(r, g, b);
+				texture->LoadImageFromFile(SIMON_RES, D3DCOLOR_XRGB(255, 0, 255));
+				if (this->GetDirection() == Direction::LEFT)
+				{
+					this->m_draw->Draw(this->texture, this->GetRectRS(), this->posDraw, transcolor, true);
+				}
+				else
+				{
+					this->m_draw->DrawFlipX(this->texture, this->GetRectRS(), this->posDraw, transcolor, true);
+				}
+				return;
+			}
+			else // Ve binh thuong
+			{
+				texture->LoadImageFromFile(SIMON_RES, D3DCOLOR_XRGB(255, 0, 255));
+			}
+			
+		}
+	}
+	else //Neu con si mon chet
+	{
+		texture->LoadImageFromFile(SIMON_DIE, D3DCOLOR_XRGB(255, 0, 255));
+	}
+	if (this->GetDirection() == Direction::LEFT)
+	{
+		this->m_draw->Draw(this->texture, this->GetRectRS(), this->posDraw, D3DCOLOR_XRGB(255, 255, 255), true);
+	}
+	else
+	{
+		this->m_draw->DrawFlipX(this->texture, this->GetRectRS(), this->posDraw, D3DCOLOR_XRGB(255, 255, 255), true);
+	}
 }
 
 void CSimon::UpdateStatus(float deltaTime)
@@ -238,6 +316,7 @@ void CSimon::UpdateStatus(float deltaTime)
 		this->isMoveJump = this->isMove = this->isJump = this->isAttack = this->isSit = this->isOnStair = this->isFall = false;
 		break;
 	case MOVE:
+		this->m_elapseTimeChangeFrame = 0.1f;
 		this->isMove = true;
 		//Init Animation
 		this->m_startFrame = 0;
@@ -254,12 +333,16 @@ void CSimon::UpdateStatus(float deltaTime)
 		}
 		if (this->isKey_Z == true)
 		{
-			this->isAttack = true;
-			this->canMove = false;
-			this->isMove = false;
+			this->simon_Status = SIMON_status::ACTACK;
+			this->UpdateStatus(deltaTime);
 		}
 		break;
 	case MOVE_JUMP:
+		this->isKey_X = false;
+		if (this->isMoveJump == false)
+		{
+			this->m_vy *= 2;
+		}
 		//Init is Can
 		this->isMove = false;
 		this->isMoveJump = true;
@@ -268,11 +351,17 @@ void CSimon::UpdateStatus(float deltaTime)
 		//Init Animation
 		if (this->isLeft == true)
 		{
-			this->m_vx = -180;
+			if (this->m_vx != 0)
+			{
+				this->m_vx = -180;
+			}
 		}
 		else
 		{
-			this->m_vx = 180;
+			if (this->m_vx != 0)
+			{
+				this->m_vx = 180;
+			}
 		}
 		if (this->isKey_Z == true)
 		{
@@ -290,7 +379,7 @@ void CSimon::UpdateStatus(float deltaTime)
 		}
 		else
 		{
-			if (this->m_vy>0)
+			if (this->m_vy>this->m_weight * 10)
 			{
 				this->m_startFrame = 4;
 				this->m_endFrame = 4;
@@ -298,9 +387,20 @@ void CSimon::UpdateStatus(float deltaTime)
 			}
 			else
 			{
-				this->m_startFrame = 0;
-				this->m_endFrame = 0;
-				this->m_Height = 64;
+				if (this->m_vy < -300)
+				{
+					this->simon_Status = IDLE;
+					this->UpdateStatus(deltaTime);
+					break;
+				}
+				if (this->m_vy < 0)
+				{
+					this->m_startFrame = 0;
+					this->m_endFrame = 0;
+					this->m_Height = 68;
+					break;
+				}
+				
 			}
 		}
 
@@ -317,9 +417,8 @@ void CSimon::UpdateStatus(float deltaTime)
 		this->canJump = false;
 		this->canMove = false;
 		this->canAttack = false;
-		this->m_vx = this->m_vy = 20;
-
-		this->m_elapseTimeChangeFrame = 0.15f * 1.2f;
+		this->m_vx = this->m_vy = 80;
+		this->m_elapseTimeChangeFrame = 0.1f;
 		//Dung cane
 		if (this->isKey_Z == true)
 		{
@@ -380,6 +479,11 @@ void CSimon::UpdateStatus(float deltaTime)
 
 		break;
 	case JUMP:
+		this->isKey_X = false;
+		if (this->isJump == false)
+		{
+			this->m_vy = this->m_vyDefault + this->m_weight * 10;
+		}
 		//Init Is Can
 		this->isJump = true;
 		this->canJump = false;
@@ -396,6 +500,10 @@ void CSimon::UpdateStatus(float deltaTime)
 			this->m_startFrame = 5;
 			this->m_endFrame = 7;
 			this->m_Height = 64;
+			if (this->cane->Use())
+			{
+				this->isAttack = false;
+			}
 		}
 		else
 		{
@@ -441,16 +549,36 @@ void CSimon::UpdateStatus(float deltaTime)
 	case ACTACK:
 		this->isAttack = true;
 		this->canMove = this->canJump = this->canSit = this->canAttack = false;
+		this->isMove = this->isJump = false;
 		//ManageAudio::GetInstance()->playSound(TypeAudio::Using_Whip);
 		this->m_startFrame = 5;
 		this->m_endFrame = 7;
 		break;
+	case WEAPON_ATTACK:
+		this->canMove = this->canJump = this->canSit = this->canAttack = false;
+		this->isMove = this->isJump = false;
+		//ManageAudio::GetInstance()->playSound(TypeAudio::Using_Whip);
+		if (this->isSit == false)
+		{
+			this->m_startFrame = 5;
+			this->m_endFrame = 7;
+		}
+		else
+		{
+			this->m_startFrame = 15;
+			this->m_endFrame = 17;
+		}
+		
+		break;
 	case COLLISION_ENEMY:
+		this->isUnAvailable = true;
+		this->isCollisionEnemy = true;
 		this->canAttack = this->canMove = this->canSit = false;
 		this->canFall = false;
 		this->canJump = false;
 		this->m_startFrame = 8;
 		this->m_endFrame = 8;
+		this->m_Height = 68;
 		break;
 
 	default:
@@ -470,12 +598,40 @@ void CSimon::ActionUpdate(float deltaTime)
 	this->UpdateStatus(deltaTime);
 	//update camera
 	CCamera::GetInstance()->Update(this->m_Pos.x, this->m_Pos.y);
+#pragma region On UnAvailable
+	if (this->isUnAvailable == true)
+	{
+		this->timeUnAvailable += deltaTime;
+		if (this->timeUnAvailable >= 2.0f)
+		{
+			this->isUnAvailable = false;
+			this->isUnAvailableDraw = false;
+			this->timeUnAvailable = 0.0f;
+		}
+	}
+#pragma endregion
+#pragma region On Event Weapon Attack
+	if (this->isWeaponAttacking == true || (this->timeDelayWeaponAttacking<0.3f && this->timeDelayWeaponAttacking >=0))
+	{
+		if (this->isSit == true)
+		{
+			this->m_startFrame = 15;
+			this->m_endFrame = 17;
+		}
+		else
+		{
+			this->m_startFrame = 5;
+			this->m_endFrame = 7;
+		}
+	}
+#pragma endregion
 #pragma region On Event Key_X (JUMP)
 	if (this->canJump == true)
 	{
 		if (this->isKey_X == true)
 		{
 			this->simon_Status = SIMON_status::JUMP;
+			this->UpdateStatus(deltaTime);
 		}
 	}
 	if (this->isJump == true)
@@ -500,18 +656,14 @@ void CSimon::ActionUpdate(float deltaTime)
 #pragma region On Event Move
 	if (this->canMove == true)
 	{
-		if (this->isArrowKeyLeft == true)
+		if (this->isArrowKeyLeft == true || this->isArrowKeyRight == true)
 		{
-			this->m_Dir = Direction::LEFT;
+			this->m_Dir = (this->isArrowKeyLeft) ? Direction::LEFT:Direction::RIGHT;
 			this->simon_Status = SIMON_status::MOVE;
 		}
 		else
 		{
-			if (this->isArrowKeyRight == true)
-			{
-				this->m_Dir = Direction::RIGHT;
-				this->simon_Status = SIMON_status::MOVE;
-			}
+			this->simon_Status = SIMON_status::IDLE;
 		}
 	}
 	if (this->isMove == true)
@@ -521,28 +673,40 @@ void CSimon::ActionUpdate(float deltaTime)
 			this->isMove = false;
 			this->simon_Status = SIMON_status::IDLE;
 		}
-		this->MoveUpdate(deltaTime);
+		else
+		{
+			this->MoveUpdate(deltaTime);
+		}
+		
 		return;
 	}
 #pragma endregion
 #pragma region On Event Move Jump
 	if (this->isMoveJump == true)
 	{
-		this->m_Pos.x += this->m_vx * deltaTime;
 		this->m_Pos.y += this->m_vy * deltaTime;
-		this->m_vy += this->m_a * deltaTime;
+		this->m_vy += (this->m_a - 700) * deltaTime;
+		this->m_Pos.x += this->m_vx * deltaTime;
+		if (!(this->m_vy <= this->m_weight * 10))
+		{
+			if (this->m_vx != 0)
+			{
+				this->m_vx = 50;
+			}
+			
+		}
 		return;
 	}
 #pragma endregion
 #pragma region On Event Attack
 	if (this->canAttack = true)
 	{
-		if (this->isKey_Z == true && this->isSit == false && this->isMove == false && this->isOnStair == false)
+		if (this->isKey_Z == true && this->isSit == false && this->isMove == false && this->isOnStair == false && this->isCollisionEnemy == false)
 		{
 			this->simon_Status = SIMON_status::ACTACK;
 		}
 	}
-	if (this->isAttack == true && this->isSit == false && this->isMoveJump == false && this->isOnStair == false)
+	if (this->isAttack == true && this->isSit == false && this->isMoveJump == false && this->isOnStair == false && this->isCollisionEnemy == false)
 	{
 		this->AttackUpdate(deltaTime);
 		return;
@@ -570,7 +734,7 @@ void CSimon::ActionUpdate(float deltaTime)
 	}
 #pragma endregion
 #pragma region On Event Enemy Collision
-	if (this->simon_Status == SIMON_status::COLLISION_ENEMY && this->isCollisionEnemy == true)
+	if (this->simon_Status == SIMON_status::COLLISION_ENEMY)
 	{
 		this->EnemyCollisionUpdate(deltaTime);
 		return;
@@ -586,15 +750,23 @@ void CSimon::MoveUpdate(float deltaTime)
 		this->m_Pos.y += this->m_vy * deltaTime;
 		this->m_vy += this->m_a * deltaTime;
 	}
+
 }
 
 void CSimon::JumpUpdate(float deltaTime)
 {
 	this->m_vy += this->m_a * deltaTime;
 	this->m_Pos.y += this->m_vy * deltaTime;
+	if (this->m_vy <= this->m_weight * 10)
+	{
+		this->m_startFrame = 0;
+		this->m_endFrame = 0;
+		this->m_Height = 68;
+	}
 	if (this->m_vy <= 0)
 	{
-		simon_Status = SIMON_status::FALL;
+		this->simon_Status = SIMON_status::IDLE;
+		this->UpdateStatus(deltaTime);
 	}
 }
 
@@ -614,7 +786,7 @@ void CSimon::AttackUpdate(float deltaTime)
 void CSimon::EnemyCollisionUpdate(float deltaTime)
 {
 	this->timeCollisionEnemy += deltaTime;
-	if (this->timeCollisionEnemy >= 1)
+	if (this->timeCollisionEnemy >= 0.5)
 	{
 		this->isCollisionEnemy = false;
 		this->timeCollisionEnemy = 0;
@@ -625,11 +797,7 @@ void CSimon::EnemyCollisionUpdate(float deltaTime)
 	if (this->timeCollisionEnemy<0.5)
 	{
 		this->m_Pos.x -= deltaTime * 100;
-		this->m_Pos.y += deltaTime * 100;
-	}
-	else
-	{
-		this->m_Pos.y -= deltaTime * 100;
+		this->m_Pos.y += deltaTime * (100 + this->m_weight * 10);
 	}
 }
 
@@ -758,6 +926,9 @@ void CSimon::OnKeyDown(float deltaTime)
 	this->m_keyDown = CInput::GetInstance()->GetKeyDown();
 	switch (this->m_keyDown)
 	{
+	case DIK_L:
+		this->isKey_L = true;
+		break;
 	case DIK_SPACE:
 		/*if (canJump)
 		{
@@ -817,15 +988,14 @@ void CSimon::OnKeyDown(float deltaTime)
 		break;
 
 	case DIK_X:
-		this->isKey_X = true;
+		if (this->canJump == true)
+		{
+			this->isKey_X = true;
+		}
 		break;
 
 	case DIK_Z:
 		this->isKey_Z = true;
-		if (!this->isAttackEnemy)
-		{
-			ManageAudio::GetInstance()->playSound(TypeAudio::Using_Whip);
-		}
 		break;
 
 	case DIK_Q:
@@ -839,7 +1009,6 @@ void CSimon::OnKeyDown(float deltaTime)
 		break;
 	case DIK_E:
 		this->isWeaponAttacking = true;
-		ManageAudio::GetInstance()->playSound(TypeAudio::Using_Whip);
 		break;
 	default:
 		break;

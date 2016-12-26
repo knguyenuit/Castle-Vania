@@ -70,22 +70,30 @@ void CBrick::OnSimonCollision(float deltaTime)
 			this->simon->isKey_X = false;
 			/*this->simon->isMoveJump = false;*/
 		}
+		if ( (normalX == CDirection::ON_LEFT || normalX == CDirection::ON_RIGHT) && this->simon->isMoveJump == true)
+		{
+			this->simon->m_vx = 0;
+		}
 		if (this->simon->isCollisionEnemy == false)
 		{
-			if (this->simon->isMoveToStair == false && this->simon->isOnStair == false && this->simon->isDownStair == false && this->simon->prepareOnStair == false)
+			if (this->simon->isMoveToStair == false && this->simon->isOnStair == false && this->simon->isDownStair == false && this->simon->prepareOnStair == false && this->simon->isJump == false)
 			{
-				if (COnCollision::GetInstance()->AABBCheck(this->simon->GetBox(), this->GetBox()))
+				if (this->simon->m_Pos.y > this->m_Pos.y)
 				{
+					if (COnCollision::GetInstance()->AABBCheck(this->simon->GetBox(), this->GetBox()))
+					{
 
-					if (this->simon->isSit == true && (this->simon->m_currentFrame == 4 || this->simon->m_currentFrame == 15 || this->simon->m_currentFrame == 16 || this->simon->m_currentFrame == 17))
-					{
-						simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 24;
-					}
-					else
-					{
-						simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
+						if (this->simon->isSit == true && (this->simon->m_currentFrame == 4 || this->simon->m_currentFrame == 15 || this->simon->m_currentFrame == 16 || this->simon->m_currentFrame == 17))
+						{
+							simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 24;
+						}
+						else
+						{
+							simon->m_Pos.y = this->m_Pos.y + this->m_Height / 2 + simon->m_Height / 2 - 8;
+						}
 					}
 				}
+				
 			}
 		}
 
@@ -94,18 +102,22 @@ void CBrick::OnSimonCollision(float deltaTime)
 
 void CBrick::OnItemCollision(float deltaTime, std::vector<CItem*> listItem)
 {
-	CDirection normalX;
-	CDirection normalY;
-	float timeCollision;
-	for (std::vector<CItem*>::iterator it = listItem.begin(); it != listItem.end(); it++)
+	if (listItem.size() != 0)
 	{
-		CItem* item = *it;
-		timeCollision = COnCollision::GetInstance()->SweepAABB(item->GetBox(), this->GetBox(), normalX, normalY, deltaTime);
-		if (normalY == ON_DOWN)
+		CDirection normalX;
+		CDirection normalY;
+		float timeCollision;
+		for (std::vector<CItem*>::iterator it = listItem.begin(); it != listItem.end(); it++)
 		{
-			item->m_vyDefault = 0;
+			CItem* item = *it;
+			if (COnCollision::GetInstance()->AABBCheck(item->GetBox(), this->GetBox()))
+			{
+				item->m_Pos.y = this->m_Pos.y + this->m_Height/2 + 10;
+				item->m_vyDefault = 0;
+			}
 		}
 	}
+	
 }
 
 void CBrick::OnEnemyCollision(float deltaTime, std::vector<CEnemy*> listEnemy)

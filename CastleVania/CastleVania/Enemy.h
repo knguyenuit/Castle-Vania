@@ -9,6 +9,7 @@
 #include "ManageAudio.h"
 #include "ItemManage.h"
 #include "Simon.h"
+#include "AnimationObjectManage.h"
 enum ENEMY_type
 {
 	Zombie = 201,

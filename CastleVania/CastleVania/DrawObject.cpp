@@ -22,44 +22,6 @@ void CDrawObject::Draw(CBaseGameObject *obj)// quan li viec load va ve cac doi t
 
 		switch (id)
 		{
-		case 1:
-			if (obj->m_isLive)
-			{
-				texture->LoadImageFromFile(SIMON_RES, D3DCOLOR_XRGB(255, 0, 255));
-				if (obj->GetDirection() == Direction::LEFT)
-				{
-					this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
-				}
-				else
-				{
-					this->m_draw->DrawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
-				}
-			}
-			else
-			{
-				texture->LoadImageFromFile(SIMON_DIE, D3DCOLOR_XRGB(255, 0, 255));
-				if (obj->GetDirection() == Direction::LEFT)
-				{
-					this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
-				}
-				else
-				{
-					this->m_draw->DrawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
-				}
-			}
-			break;
-		case 12:
-			texture->LoadImageFromFile(CANE_RES, D3DCOLOR_XRGB(255, 0, 255));
-			if (obj->GetDirection() == Direction::LEFT)
-			{
-				this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
-			}
-			else
-			{
-				this->m_draw->DrawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
-			}
-			
-			break;
 		case 2:
 
 			texture->LoadImageFromFile("..\\Resources\\image\\enemy\\AxeMan.png", D3DCOLOR_XRGB(255, 255, 255));

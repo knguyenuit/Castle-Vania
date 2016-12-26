@@ -18,7 +18,7 @@ void CZombie::Init() {
 	this->m_Width = 34;
 	this->m_Height = 64;
 	
-	this->m_vx = 50;
+	this->m_vx = 200;
 
 	//init animation
 	this->m_startFrame = 0;
@@ -40,4 +40,5 @@ RECT * CZombie::GetRectRS()
 
 CZombie::~CZombie()
 {
+	delete this;
 }

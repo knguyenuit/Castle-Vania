@@ -3,13 +3,24 @@
 #define __CITEM_H__
 #include "BaseGameObject.h"
 #include "Move.h"
+#include "Animation.h"
 
 enum class ITEM_name
 {
 	SmallHeart = 301,
 	LargeHeart = 302,
 	MagicalCrystal = 303,
+	//MoneyBag
 	MoneyBag = 305,
+	MoneyBagBlue = 351,
+	MoneyBagRed = 352,
+	MoneyBagWhite = 353,
+
+	MoneyBagPoint = 3050,
+	MoneyBagPointRed = 3051,
+	MoneyBagPointWhite = 3052,
+	MoneyBagPointBlue = 3053,
+	//!MoneyBag
 	PorkChop = 309,
 	MorningStar = 310,
 	Dagger = 312,
@@ -20,8 +31,7 @@ enum class ITEM_name
 	None = 0
 
 };
-
-class CItem : public CBaseGameObject, public CMove
+class CItem : public CBaseGameObject, public CMove, public CAnimation
 {
 public:
 	CItem();

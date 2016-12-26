@@ -1,12 +1,12 @@
 #include "EnemyManage.h"
 CEnemyManage::CEnemyManage()
 {
-	/*CreateEnemy(VampireBat, Vector2(1250, 90));
+	CreateEnemy(VampireBat, Vector2(1250, 90));
 	CreateEnemy(VampireBat, Vector2(1376, 204));
 	CreateEnemy(VampireBat, Vector2(1440, 220));
 	CreateEnemy(VampireBat, Vector2(1504, 269));
 	CreateEnemy(VampireBat, Vector2(1808, 269));
-	CreateEnemy(VampireBat, Vector2(1887, 220));*/
+	CreateEnemy(VampireBat, Vector2(1887, 220));
 	//CreateEnemy(BlackLeopard, Vector2(1000, 200));
 	//CreateEnemy(Zombie, Vector2(1100, 60));
 	//CreateEnemy(VampireBat, Vector2(1200, 80));

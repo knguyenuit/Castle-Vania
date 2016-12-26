@@ -18,6 +18,7 @@ public:
 	void CreateItem(ITEM_name name, Vector2 pos);
 	void CreateRandomItem(Vector2 pos);
 	CItem* m_item;
+	CSimon* simon = CSimon::GetInstance();
 	void Draw();
 	void DrawItem(CItem* item);
 	std::vector<CItem*> m_ListItem;

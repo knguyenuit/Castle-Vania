@@ -12,6 +12,7 @@
 #include "ItemManage.h"
 #include "HideObjectManage.h"
 #include "WeaponManage.h"
+#include "AnimationObjectManage.h"
 #include "Banner.h"
 
 class CPoolObject : public CSingleton<CPoolObject>

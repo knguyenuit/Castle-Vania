@@ -13,6 +13,9 @@
 #include "HinhChuNhat.h"
 #include "Camera.h"
 #include "ManageAudio.h"
+#include "Sprite.h"
+#include "Resources.h"
+#include "DrawObject.h"
 enum SIMON_status
 {
 	NONE = 0,
@@ -26,7 +29,8 @@ enum SIMON_status
 	ONSTAIR = 9,
 	MOVE_JUMP = 10,
 	MOVE_JUMP_ATTACK = 11,
-	SIT_ATTACK = 12
+	SIT_ATTACK = 12,
+	WEAPON_ATTACK = 13
 };
 
 class CSimon : public CBaseGameObject, public CAnimation, public CMove, public CSingleton<CSimon>
@@ -51,10 +55,13 @@ public:
 	Box GetBox();
 	RECT* GetBound();
 	RECT* GetRectRS();
+	CSprite * m_draw;
 	//cac ham ke thua tu Animation
 public:
 	void SetFrame();		// ham chuyen frame.
-
+public://Collect item
+	bool isPickUpMorningStar = false;
+	float timePickUpMorningStar = 0.0f;
 public:
 	//xu ly Input
 	void OnKeyDown(float deltaTime);
@@ -67,11 +74,11 @@ public:
 	bool isArrowKeyRight = false;
 	bool isKey_Z = false;
 	bool isKey_X = false;
+	bool isKey_L = false;
 #pragma endregion
 
 	//cac thong so ve Simon
 public: //xu li cau thang
-		//Xu ly cau thang
 	bool isUpStair = false, isDownStair = false;
 	bool isOnStair = false;
 	bool prepareOnStair = false, prepareOutStair = false;
@@ -107,6 +114,7 @@ public:
 	bool canAttack = false;
 
 	bool isWeaponAttacking = false; //tan cong bang weapon
+	float timeDelayWeaponAttacking = 0.3f;
 	bool canWeaponAttacking = false;
 
 	bool isChangeStatus = false;
@@ -115,12 +123,16 @@ public:
 	bool isCheckChangeState = false;
 	bool isCollisionEnemy = false;
 	bool isUnAvailable = false;
+	bool isUnAvailableDraw = false;
+	float timeUnAvailable = 0.0f;
 	float timeCollisionEnemy = 0.0f;
 	bool isMoveLeft;
 	//set co danh trung enemy ko
 	bool isAttackEnemy = false;
 	
 public:
+	//khoi luong cua simon
+	int m_weight;
 	//mau simon
 	int m_hpSimon;
 	//level hien tai
@@ -140,6 +152,11 @@ private:
 	void Gravity(float deltaTime);
 
 public:
+	//ve draw
+	Vector3 posDraw = Vector3();
+	CTexture* texture = new CTexture();
+	CDrawObject *drawManager;
+	void Draw();
 	//Xy ly hanh dong
 	void UpdateStatus(float deltaTime);
 	void ActionUpdate(float deltaTime);

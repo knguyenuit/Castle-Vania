@@ -51,7 +51,18 @@ RECT * CBossVampireBat::GetRectRS()
 
 void CBossVampireBat::Update(float deltaTime)
 {
+	if (this->simon->isKey_L == true)
+	{
+		this->simon->isKey_L = false;
+		this->m_enemyHP -= 1;
+	}
 	this->simon->m_BossVampireBatHP = this->m_enemyHP;
+	if (this->m_enemyHP <= 0)
+	{
+		this->m_isRemove = true;
+		CItemManage::GetInstance()->CreateItem(this->enemyItem, this->m_PosDefault + Vector2(0, -200));
+	}
+	
 	if (this->m_Pos.x <= CSimon::GetInstance()->m_Pos.x&&this->m_State == ENEMY_state::IDLE)
 	{
 		this->m_State = ENEMY_state::MOVE;
@@ -63,7 +74,11 @@ void CBossVampireBat::Update(float deltaTime)
 		ChangeFrame(deltaTime);
 		this->MoveUpdate(deltaTime);
 	}
-	this->OnSimonCollision(deltaTime);
+	if (this->simon->isUnAvailable == false)
+	{
+		this->OnSimonCollision(deltaTime);
+	}
+	
 	this->OnWeaponCollision(deltaTime, CWeaponManage::GetInstance()->m_weaponList);
 	if (this->simon->cane->m_checkActive == true)
 	{
@@ -144,18 +159,26 @@ void CBossVampireBat::MoveUpdate(float deltaTime)
 
 void CBossVampireBat::OnSimonCollision(float deltaTime)
 {
-	CDirection normalX;
-	CDirection normalY;
-	float timeCollision;
-	timeCollision = COnCollision::GetInstance()->SweepAABB(this->simon->GetBox(), this->GetBox(), normalX, normalY, deltaTime);
-	if (normalY == CDirection::ON_DOWN || normalY == CDirection::ON_UP || normalX == CDirection::ON_LEFT || normalX == CDirection::ON_RIGHT)
+	//CDirection normalX;
+	//CDirection normalY;
+	//float timeCollision;
+	//timeCollision = COnCollision::GetInstance()->SweepAABB(this->simon->GetBox(), this->GetBox(), normalX, normalY, deltaTime);
+	if (CCollision::GetInstance()->AABBCheck(this->simon->GetBox(), this->GetBox()))
 	{
 		if (this->simon->timeCollisionEnemy == 0)
 		{
+			this->simon->simon_Status = SIMON_status::IDLE;
+			this->simon->UpdateStatus(deltaTime);
+			this->simon->timeCollisionEnemy += deltaTime;
 			this->simon->m_hpSimon -= 1;
 			this->simon->isArrowKeyLeft = this->simon->isArrowKeyRight = false;
 			this->simon->simon_Status = COLLISION_ENEMY;
+			this->simon->UpdateStatus(deltaTime);
 			this->simon->isCollisionEnemy = true;
+			if (this->simon->m_hpSimon <= 1)
+			{
+				this->changeState(ENEMY_state::DIE);
+			}
 		}
 	}
 }
@@ -179,15 +202,6 @@ void CBossVampireBat::OnCaneCollision(float deltaTime)
 				ManageAudio::GetInstance()->playSound(TypeAudio::Hit);
 				CSimon::GetInstance()->isAttackEnemy = false;
 			}
-			if (this->m_enemyHP < 0)
-			{
-				this->m_isRemove = true;
-				CItemManage::GetInstance()->CreateItem(this->enemyItem, this->m_PosDefault + Vector2(0, -200));
-			}
-			else
-			{
-				return;
-			}
 		}
 	}
 }
@@ -206,15 +220,6 @@ void CBossVampireBat::OnWeaponCollision(float deltaTime, std::vector<CWeapon*> l
 			this->m_enemyHP -= 2;
 			weapon->m_isRemove = true;
 			ManageAudio::GetInstance()->playSound(TypeAudio::Hit);
-			if (this->m_enemyHP < 0)
-			{
-				this->m_isRemove = true;
-				CItemManage::GetInstance()->CreateItem(this->enemyItem, this->m_PosDefault + Vector2(0, -200));
-			}
-			else
-			{
-				return;
-			}
 		}
 	}
 }

@@ -11,7 +11,7 @@ CItemManage::~CItemManage()
 
 void CItemManage::Init()
 {
-
+	/*this->CreateItem(ITEM_name::MoneyBagPoint, this->simon->m_Pos);*/
 }
 
 void CItemManage::Update(float deltaTime)
@@ -65,6 +65,10 @@ void CItemManage::Draw()
 		for (std::vector<CItem*>::iterator em = m_ListItem.begin(); em != m_ListItem.end(); ++em)
 		{
 			CItem* Item = *em;
+			if (Item->itemName == ITEM_name::MoneyBagPoint)
+			{
+				int a = 1;
+			}
 			this->DrawItem(Item);
 		}
 	}
@@ -91,7 +95,21 @@ void CItemManage::DrawItem(CItem * obj)
 	case ITEM_name::MoneyBag:
 		texture->LoadImageFromFile(ITEM_MONEY_BAG, D3DCOLOR_XRGB(255, 0, 255));
 		break;
-
+	case ITEM_name::MoneyBagRed:
+		texture->LoadImageFromFile(ITEM_MONEY_BAG_RED, D3DCOLOR_XRGB(255, 0, 255));
+		break;
+	case ITEM_name::MoneyBagWhite:
+		texture->LoadImageFromFile(ITEM_MONEY_BAG_WHITE, D3DCOLOR_XRGB(255, 0, 255));
+		break;
+	case ITEM_name::MoneyBagBlue:
+		texture->LoadImageFromFile(ITEM_MONEY_BAG_BLUE, D3DCOLOR_XRGB(255, 0, 255));
+		break;
+	case ITEM_name::MoneyBagPoint:
+	case ITEM_name::MoneyBagPointRed:
+	case ITEM_name::MoneyBagPointWhite:
+	case ITEM_name::MoneyBagPointBlue:
+		texture->LoadImageFromFile(ITEM_MONEY_BAG_POINT, D3DCOLOR_XRGB(255, 0, 255));
+		break;
 	case ITEM_name::MorningStar:
 		texture->LoadImageFromFile(ITEM_MORNING_STAR, D3DCOLOR_XRGB(255, 0, 255));
 		break;
@@ -128,7 +146,6 @@ void CItemManage::OnSimonCollision(float deltaTime)
 {
 	if (this->m_ListItem.size() != 0)
 	{
-		CSimon* simon = CSimon::GetInstance();
 		for (std::vector<CItem*>::iterator it = this->m_ListItem.begin();
 			it != this->m_ListItem.end();
 			++it)
@@ -157,6 +174,7 @@ void CItemManage::OnSimonCollision(float deltaTime)
 					ManageAudio::GetInstance()->playSound(TypeAudio::CollectWeapon);
 					break;
 				case ITEM_name::MorningStar:
+					this->simon->isPickUpMorningStar = true;
 					ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
 					if (simon->cane->m_State == caneState::default)
 					{
@@ -168,22 +186,68 @@ void CItemManage::OnSimonCollision(float deltaTime)
 						{
 							simon->cane->updateState(state3);
 						}
+						else
+						{
+							break;
+						}
 					}
+					break;
+				case ITEM_name::PorkChop:
+					ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
 					break;
 				case ITEM_name::Cross:
 					ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
 					break;
 				case ITEM_name::LargeHeart:
+					ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
+					simon->m_countHeart += 5;
+					break;
 				case ITEM_name::SmallHeart:
 					ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
 					simon->m_countHeart += 1;
 					break;
+				case ITEM_name::MoneyBagBlue:
+					this->simon->m_Score += 400;
+					ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
+					this->m_ListItem.erase(it);//xoa item khoi list khi cham vao simon
+					this->CreateItem(ITEM_name::MoneyBagPointBlue, item->m_Pos);
+					return;
+					break;
+				case ITEM_name::MoneyBagWhite:
+					this->simon->m_Score += 700;
+					this->CreateItem(ITEM_name::MoneyBagPointWhite, item->m_Pos);
+					ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
+					break;
+				case ITEM_name::MoneyBagRed:
+					this->simon->m_Score += 100;
+					this->CreateItem(ITEM_name::MoneyBagPointRed, item->m_Pos);
+					ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
+					break;
+				case ITEM_name::MoneyBag:
+					this->m_ListItem.erase(it);//xoa item khoi list khi cham vao simon
+					this->CreateItem(ITEM_name::MoneyBagPoint, item->m_Pos);
+					ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
+					this->simon->m_Score += 1000;
+					return;
+					break;
 				default:
+					return;
 					break;
 				}
-				this->m_ListItem.erase(it);//xoa item khoi list khi cham vao simon
-				
-				break;
+				//Chi xoa item khi no ko phai la point
+				switch (item->itemName)
+				{
+				case ITEM_name::MoneyBagPoint:
+				case ITEM_name::MoneyBagPointBlue:
+				case ITEM_name::MoneyBagPointRed:
+				case ITEM_name::MoneyBagPointWhite:
+					return;
+					break;
+				default:
+					it = this->m_ListItem.erase(it);
+					return;
+					break;
+				}
 			}
 			/*}*/
 		}

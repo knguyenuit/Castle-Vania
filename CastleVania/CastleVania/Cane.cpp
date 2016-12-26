@@ -32,7 +32,7 @@ void CCane::Init()
 	this->m_endFrame = 3;
 	this->m_currentTime = 0;
 	this->m_currentFrame = 0;
-	this->m_elapseTimeChangeFrame = 0.15f;
+	this->m_elapseTimeChangeFrame = 0.1f;
 	this->m_increase = 1;
 	this->m_totalFrame = 12;
 	this->m_column = 4;
@@ -156,6 +156,7 @@ bool CCane::Use()
 	this->m_checkActive = true;
 	if (this->m_checkDone == true)
 	{
+		ManageAudio::GetInstance()->playSound(TypeAudio::Using_Whip);
 		this->m_checkActive = false;
 		this->m_checkDone = false;
 		return true;

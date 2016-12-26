@@ -14,6 +14,7 @@ public:
 	~CWeaponManage();
 public:
 	std::vector<CWeapon*> m_weaponList; //danh sach weapon da duoc danh ra
+	CSimon * simon = CSimon::GetInstance();
 public: //cac phuong thuc tao weapon
 	void CreateWeapon(WEAPON_name weaponName);
 public: //cac phuong thuc update weapon

@@ -4,7 +4,8 @@
 #include "Animation.h"
 #include "Simon.h"
 #include "ItemManage.h"
-
+#include "ManageAudio.h"
+#include "AnimationObjectManage.h"
 class CGround : public CBaseGameObject, CAnimation
 {
 public:

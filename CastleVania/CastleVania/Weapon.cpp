@@ -22,14 +22,14 @@ void CWeapon::InitAnimate(int totalFrame, int column, int startFrame, int endFra
 	this->m_increase = 1;
 	this->m_currentTime = 0;
 	this->m_currentFrame = 0;
-	this->m_elapseTimeChangeFrame = 0.15f;
+	this->m_elapseTimeChangeFrame = 0.1f;
 }
 void CWeapon::Init() {
 	this->m_time_life = 0.0f;
 	this->m_isRemove = false;
 	this->m_Id = static_cast<int>(this->m_WeaponName);
 	this->m_Dir = CSimon::GetInstance()->m_Dir;
-	this->m_vxDefault = this->m_vx = 200;
+	this->m_vxDefault = this->m_vx = 300;
 	switch (this->m_WeaponName)
 	{
 
@@ -44,6 +44,7 @@ void CWeapon::Init() {
 		this->InitAnimate(4, 4, 0, 3);
 		break;
 	case WEAPON_name::Boomerang:
+		this->m_vx = this->m_vxDefault = 400;
 		this->m_Width = 26;
 		this->m_Height = 28;
 		//move
@@ -52,6 +53,7 @@ void CWeapon::Init() {
 		this->InitAnimate(3, 3, 0, 2);
 		break;
 	case WEAPON_name::Dagger:
+		this->m_vxDefault = this->m_vx = 450;
 		this->m_Width = 32;
 		this->m_Height = 18;
 		this->InitAnimate(1, 1, 0, 0);
@@ -184,7 +186,7 @@ void CWeapon::MoveUpdate(float deltaTime)
 
 Box CWeapon::GetBox()
 {
-	return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width - 2, this->m_Height - 2);
+	return Box(this->m_Pos.x + 1, this->m_Pos.y - 3, this->m_Width + 3, this->m_Height + 3);
 }
 
 RECT * CWeapon::GetRectRS()
@@ -203,4 +205,5 @@ RECT * CWeapon::GetRectRS()
 
 CWeapon::~CWeapon()
 {
+	
 }

@@ -75,7 +75,7 @@ void CUpStairRight::Update(float deltaTime)
 					}
 				} //End press Down
 			}
-			if (this->simon->m_Pos != this->simon->currStairPos + Vector2(0, 16) && this->simon->isFirstStairStep == false) // Neu simon khong dung dung cho len cau thang
+			if (this->simon->m_Pos != this->simon->currStairPos + Vector2(0, 16) && this->simon->isFirstStairStep == false && this->simon->isOnStair == false) // Neu simon khong dung dung cho len cau thang
 			{
 				this->simon->prepareOnStair = false;
 			}
@@ -115,8 +115,9 @@ void CUpStairRight::Update(float deltaTime)
 		{
 			if (this->simon->isCancelStairMove == false)
 			{
-				if (this->SimonMoveOnStair(deltaTime) == true) //Neu da di xong buoc 1
+				if (this->simon->MoveTo(this->simon->currStairPos + Vector2(5, 11), deltaTime) == true) //Neu da di xong buoc 1
 				{
+					this->simon->currSimonStairPos = this->simon->m_Pos;
 					this->simon->prepareOnStair = false; //Tat chuan bi len cau thang
 					this->simon->isFirstStairStep = false; //Tat buoc dau tien len cau thang
 					if (this->simon->isArrowKeyUp == false)
@@ -192,7 +193,7 @@ bool CUpStairRight::SimonMoveOnStair(float deltaTime)
 bool CUpStairRight::SimonMoveToStair(float deltaTime)
 {
 	//Init Animation
-	this->simon->m_vx = this->simon->m_vy = 40;
+	this->simon->m_vx = this->simon->m_vy = 100;
 	this->simon->m_startFrame = 0;
 	this->simon->m_endFrame = 3;
 	if (this->simon->MoveTo(this->simon->currStairPos + Vector2(0, 16), deltaTime))

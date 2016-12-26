@@ -24,7 +24,9 @@ public:
 
 	//va lap theo chieu ngang
 	void DrawFlipX(CTexture* image, RECT *RectRS, D3DXVECTOR3 pos, D3DCOLOR transcolor = 0xFFFFFFFF, bool isCenter = true);
-
+	//va lat theo chieu doc
+	void DrawFlipY(CTexture* image, RECT *RectRS, D3DXVECTOR3 pos, D3DCOLOR transcolor = 0xFFFFFFFF, bool isCenter = true);
+	void DrawFlipXY(CTexture* image, RECT *RectRS, D3DXVECTOR3 pos, D3DCOLOR transcolor = 0xFFFFFFFF, bool isCenter = true);
 	~CSprite();
 };
 

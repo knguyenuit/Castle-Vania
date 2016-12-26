@@ -5,6 +5,7 @@
 //simon
 #define SIMON_RES "..\\Resources\\image\\simon.png"
 #define SIMON_DIE "..\\Resources\\image\\simondeath.png"
+#define SIMON_UNAVAILABLE "..\\Resources\\image\\simonUnAvailable.png"
 //cane
 #define CANE_RES "..\\Resources\\image\\cane.png"
 
@@ -25,6 +26,10 @@
 #define ITEM_MORNING_STAR "..\\Resources\\image\\item\\MorningStar.png"
 #define ITEM_DAGGER "..\\Resources\\image\\item\\Dagger.png"
 #define ITEM_MONEY_BAG "..\\Resources\\image\\item\\MoneyBag.png"
+#define ITEM_MONEY_BAG_RED "..\\Resources\\image\\item\\MoneyBagRed.png"
+#define ITEM_MONEY_BAG_BLUE "..\\Resources\\image\\item\\MoneyBagBlue.png"
+#define ITEM_MONEY_BAG_WHITE "..\\Resources\\image\\item\\MoneyBagWhite.png"
+#define ITEM_MONEY_BAG_POINT "..\\Resources\\image\\item\\MoneyBagPoint.png"
 #define ITEM_CROSS "..\\Resources\\image\\item\\Cross.png"
 #define ITEM_AXE "..\\Resources\\image\\item\\Axe.png"
 #define ITEM_BOOMERANG "..\\Resources\\image\\item\\Boomerang.png"
@@ -62,7 +67,9 @@
 #define FIRE_BOMB_BANNER "..\\Resources\\image\\item\\FireBomb.png"
 #define CROSS_BANNER "..\\Resources\\image\\item\\Cross.png"
 
-
+//ANIMATION
+#define ANIMATION_FIREON "..\\Resources\\image\\animation\\FireOn.png"
+#define ANIMATION_ROCKFALL "..\\Resources\\image\\animation\\RockFall.png"
 
 //list object
 #define FILE_LIST_OBJECT "..\\Resources\\Object\\lv1GO.txt"

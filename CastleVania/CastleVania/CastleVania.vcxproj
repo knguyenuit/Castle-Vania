@@ -146,6 +146,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="AnimationObject.h" />
+    <ClInclude Include="AnimationObjectManage.h" />
     <ClInclude Include="Banner.h" />
     <ClInclude Include="BaseGameObject.h" />
     <ClInclude Include="BlackLeopard.h" />
@@ -165,6 +167,7 @@
     <ClInclude Include="EnemyManage.h" />
     <ClInclude Include="FileUtil.h" />
     <ClInclude Include="FireBall.h" />
+    <ClInclude Include="FireOnAnimate.h" />
     <ClInclude Include="FishMan.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameManager.h" />
@@ -188,6 +191,7 @@
     <ClInclude Include="QuadObject.h" />
     <ClInclude Include="QuadTree.h" />
     <ClInclude Include="Resources.h" />
+    <ClInclude Include="RockFallAnimate.h" />
     <ClInclude Include="Simon.h" />
     <ClInclude Include="SimonIntro.h" />
     <ClInclude Include="Singleton.h" />
@@ -211,6 +215,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="AnimationObject.cpp" />
+    <ClCompile Include="AnimationObjectManage.cpp" />
     <ClCompile Include="Banner.cpp" />
     <ClCompile Include="BaseGameObject.cpp" />
     <ClCompile Include="BlackLeopard.cpp" />
@@ -230,6 +236,7 @@
     <ClCompile Include="EnemyManage.cpp" />
     <ClCompile Include="FileUtil.cpp" />
     <ClCompile Include="FireBall.cpp" />
+    <ClCompile Include="FireOnAnimate.cpp" />
     <ClCompile Include="FishMan.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -252,6 +259,7 @@
     <ClCompile Include="QuadNode.cpp" />
     <ClCompile Include="QuadObject.cpp" />
     <ClCompile Include="QuadTree.cpp" />
+    <ClCompile Include="RockFallAnimate.cpp" />
     <ClCompile Include="Simon.cpp" />
     <ClCompile Include="SimonIntro.cpp" />
     <ClCompile Include="SmallLight.cpp" />

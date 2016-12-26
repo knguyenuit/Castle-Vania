@@ -13,17 +13,44 @@ CWeaponManage::~CWeaponManage()
 
 void CWeaponManage::CreateWeapon(WEAPON_name weaponName)
 {
-	CWeapon* weapon = new CWeapon(weaponName, CSimon::GetInstance()->m_Pos);
+	CWeapon* weapon = new CWeapon(weaponName, CSimon::GetInstance()->m_Pos + Vector2(5, 12));
 	this->m_weaponList.push_back(weapon);
 }
 
 void CWeaponManage::Update(float deltaTime)
 {
-	CSimon* simon = CSimon::GetInstance();
-	if (simon->isWeaponAttacking)
+	if (this->simon->timeDelayWeaponAttacking < 0.3f)
 	{
-		this->CreateWeapon(simon->m_currentWeapon);
-		simon->isWeaponAttacking = false;
+		this->simon->timeDelayWeaponAttacking -= deltaTime;
+		if (this->simon->timeDelayWeaponAttacking <= 0)
+		{
+			this->simon->timeDelayWeaponAttacking = 0.3f;
+			if (this->simon->isSit == true)
+			{
+				this->simon->simon_Status = SIMON_status::SIT;
+			}
+			else
+			{
+				this->simon->simon_Status = SIMON_status::IDLE;
+			}
+			
+			this->simon->UpdateStatus(deltaTime);
+		}
+	}
+	if (this->simon->isWeaponAttacking == true)
+	{
+		if (this->simon->timeDelayWeaponAttacking == 0.3f)
+		{
+			this->CreateWeapon(simon->m_currentWeapon);
+			ManageAudio::GetInstance()->playSound(TypeAudio::Using_Whip);
+		}
+		this->simon->timeDelayWeaponAttacking -= deltaTime;
+		this->simon->isWeaponAttacking = false;
+		if (this->simon->isMoveJump == false)
+		{
+			this->simon->simon_Status = SIMON_status::WEAPON_ATTACK;
+			this->simon->UpdateStatus(deltaTime);
+		}
 	}
 	if (!this->m_weaponList.empty())
 	{

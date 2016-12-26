@@ -38,6 +38,7 @@ void CDownStairLeft::Update(float deltaTime)
 					}
 					else //Neu o trang thai chuan bi len cau thang
 					{
+						this->simon->isOnStair = true;
 						this->simon->isUpStair = false;
 						this->simon->isDownStair = true;
 						this->simon->simon_Status = SIMON_status::ONSTAIR;
@@ -74,7 +75,7 @@ void CDownStairLeft::Update(float deltaTime)
 					}
 				} //End press Up
 			}
-			if (this->simon->m_Pos != this->simon->currStairPos + Vector2(0, 16) && this->simon->isFirstStairStep == false) // Neu simon khong dung dung cho len cau thang
+			if (this->simon->m_Pos != this->simon->currStairPos + Vector2(0, 16) && this->simon->isFirstStairStep == false && this->simon->isOnStair == false) // Neu simon khong dung dung cho len cau thang
 			{
 				this->simon->prepareOnStair = false;
 			}
@@ -112,11 +113,15 @@ void CDownStairLeft::Update(float deltaTime)
 		//Di chuyen len tren cau thang buoc 1
 		if (this->simon->prepareOnStair == true)
 		{
+			if (this->simon->isArrowKeyDown == true)
+			{
+				this->simon->isOnStair = true;//Dat trang thai con simon la dang o tren cau thang
+				this->simon->isMoveToStair = false;
+			}
 			if (this->simon->isCancelStairMove == false)
 			{
 				if (this->SimonMoveOnStair(deltaTime) == true) //Neu da di xong buoc 1
 				{
-					this->simon->isOnStair = true;//Dat trang thai con simon la dang o tren cau thang
 					this->simon->prepareOnStair = false; //Tat chuan bi len cau thang
 					this->simon->isFirstStairStep = false; //Tat buoc dau tien len cau thang
 					if (this->simon->isArrowKeyUp == false)
@@ -125,7 +130,6 @@ void CDownStairLeft::Update(float deltaTime)
 					}
 				}
 			}
-
 			return;
 		}
 		//Di chuyen tren cau thang cac buoc khac
@@ -193,7 +197,7 @@ bool CDownStairLeft::SimonMoveOnStair(float deltaTime)
 bool CDownStairLeft::SimonMoveToStair(float deltaTime)
 {
 	//Init Animation
-	this->simon->m_vx = this->simon->m_vy = 40;
+	this->simon->m_vx = this->simon->m_vy = 100;
 	this->simon->m_startFrame = 0;
 	this->simon->m_endFrame = 3;
 	if (this->simon->MoveTo(this->simon->currStairPos + Vector2(0, 16), deltaTime))

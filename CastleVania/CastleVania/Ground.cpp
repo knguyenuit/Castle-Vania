@@ -1,5 +1,5 @@
 ﻿#include "Ground.h"
-#include "ManageAudio.h"
+
 
 
 
@@ -80,6 +80,7 @@ void CGround::OnCaneCollision(float deltaTime)
 		{
 			this->m_isRemove = true;
 			ManageAudio::GetInstance()->playSound(TypeAudio::Hit);
+			CAnimationObjectManage::GetInstance()->CreateAnimation(Animation_object::FireOn,this->m_Pos);
 			CItemManage::GetInstance()->CreateRandomItem(this->GetPos());
 
 		}
