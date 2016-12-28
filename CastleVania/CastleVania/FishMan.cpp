@@ -36,6 +36,7 @@ void CFishMan::Init()
 	this->m_currentFrame = 2;
 	this->m_increase = 1;
 	this->m_totalFrame = 3;
+	this->m_Dir = Direction::RIGHT;
 }
 
 void CFishMan::Update(float deltaTime)

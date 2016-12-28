@@ -16,7 +16,7 @@ CHideObject::CHideObject(HideObject_TYPE type, Vector2 pos)
 
 void CHideObject::Init()
 {
-	this->m_Width = this->m_Height = 32;
+	
 }
 
 void CHideObject::Update(float deltaTime)

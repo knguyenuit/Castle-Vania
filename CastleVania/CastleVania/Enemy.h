@@ -51,6 +51,7 @@ public:
 	bool check_arrive_y = false;
 	bool isSimonCollision = false;
 	int m_enemyHP = 1;
+	bool isChangeDir = false;
 public:
 	void changeState(ENEMY_state state);
 public:

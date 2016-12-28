@@ -84,7 +84,7 @@ bool CLoadObject::contains(std::vector<int> v, int x)
 }
 
 
-CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
+CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos, int width, int height)
 {
 
 	switch (id)
@@ -100,7 +100,7 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
 		return new CGround(pos);
 		break;
 	case 702:
-		return new CBrick(pos);
+		return new CBrick(pos, width, height);
 		break;
 	case 705:
 		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::ChangeScene, pos);
@@ -115,6 +115,12 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
 		break;
 	case 205:
 		return CEnemyManage::GetInstance()->CreateEnemy(ENEMY_type::FishMan, pos);
+		break;
+	case 208:
+		return CEnemyManage::GetInstance()->CreateEnemy(ENEMY_type::BlackKnight, pos);
+		break;
+	case 207:
+		return CEnemyManage::GetInstance()->CreateEnemy(ENEMY_type::DragonSkullCanon, pos);
 		break;
 	case 401:
 		return CEnemyManage::GetInstance()->CreateEnemy(BossVampireBat, pos);
@@ -142,14 +148,18 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos)
 	case 704:
 		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::UpStairLeft, pos);
 		break;
+	case 712:
+		return new CBrickVertical(pos, width, height);
+		break;
 	case 713:
 		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::DownStairRight, pos);
 		break;
-	case 712:
-		return new CBrick(pos);
-		break;
+	
 	case 714:
 		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::UpStairRight, pos);
+		break;
+	case 653:
+		return CGroundMovingManage::GetInstance()->CreateGroundMovingPlatform(pos);
 		break;
 	default:
 		break;
@@ -183,7 +193,7 @@ std::hash_map<int, CBaseGameObject*> CLoadObject::LoadGameObjectInfo(const std::
 				float Width = atoi(item.at(4).c_str());
 				float Height = atoi(item.at(5).c_str());
 				Box b = Box(PosX, PosY, Width, Height);
-				gameObj = this->CreateObject(idItem, pos);
+				gameObj = this->CreateObject(idItem, pos, Width, Height);
 				listInfo.insert(Pair(iDObjectInMap, gameObj));
 			}
 		}
@@ -195,7 +205,12 @@ std::hash_map<int, CBaseGameObject*> CLoadObject::LoadGameObjectInfo(const std::
 
 void CLoadObject::Clear()
 {
-	
+	if (this->m_quadTree)
+	{
+		this->m_quadTree->Clear();
+		this->m_quadTree = nullptr;
+		this->m_quadTree = new CQuadTree();
+	}
 	m_listGameObject.clear();
 	m_listObjectCurr.clear();
 	m_listIdObject.clear();

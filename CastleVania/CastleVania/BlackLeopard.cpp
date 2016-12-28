@@ -29,6 +29,8 @@ void CBlackLeopard::Init()
 		this->m_increase = 0;
 		this->m_totalFrame = 4;
 		this->m_column = 4;
+
+		this->m_Dir = Direction::LEFT;
 	
 }
 

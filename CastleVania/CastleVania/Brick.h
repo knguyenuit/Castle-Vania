@@ -2,6 +2,7 @@
 #include "HideObject.h"
 #include "ItemManage.h"
 #include "EnemyManage.h"
+#include "GroundMovingManage.h"
 class CBrick :
 	public CHideObject
 {
@@ -9,7 +10,7 @@ class CBrick :
 
 public:
 	CBrick();
-	CBrick(Vector2 pos);
+	CBrick(Vector2 pos, int m_Width, int m_Height);
 	~CBrick();
 public:
 	CSimon* simon = CSimon::GetInstance();
@@ -21,5 +22,6 @@ public:
 	void OnSimonCollision(float deltaTime);
 	void OnItemCollision(float deltaTime, std::vector<CItem*> listItem);
 	void OnEnemyCollision(float deltaTime, std::vector<CEnemy*> listEnemy);
+	
 };
 

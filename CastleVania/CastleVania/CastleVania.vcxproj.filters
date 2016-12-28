@@ -103,9 +103,6 @@
     <Filter Include="Framework\Game Object\Hide Object\Change Screen">
       <UniqueIdentifier>{2b0da1d9-47ea-4518-95d7-50f0dc242b2b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Game Object\Brick">
-      <UniqueIdentifier>{25970abd-1347-421e-8ec3-b08e7ca0e63d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework\Game Object\AnimationObject">
       <UniqueIdentifier>{0d454d82-5cce-4b19-b25e-a0769c944980}</UniqueIdentifier>
     </Filter>
@@ -114,6 +111,21 @@
     </Filter>
     <Filter Include="Framework\Game Object\AnimationObject\RockFall">
       <UniqueIdentifier>{70c2542d-6504-4784-80c3-02754077ce1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\Enemy\Black Knight">
+      <UniqueIdentifier>{8b063c9b-4bfa-4fcd-bdac-2c954bde4e4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\Hide Object\Brick">
+      <UniqueIdentifier>{25970abd-1347-421e-8ec3-b08e7ca0e63d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\Ground Moving Platform">
+      <UniqueIdentifier>{df691e5b-1d46-4755-bd47-635e0b1b7088}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\Enemy\Medusa">
+      <UniqueIdentifier>{a17c3a80-488f-4b36-9f21-ff18ffdc10ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\Enemy\DragonSkullCannon">
+      <UniqueIdentifier>{dc9900f1-406d-46e5-9164-9e2686ed8c3e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -294,7 +306,7 @@
       <Filter>Framework\Game Object\Hide Object\Stair</Filter>
     </ClInclude>
     <ClInclude Include="Brick.h">
-      <Filter>Framework\Game Object\Brick</Filter>
+      <Filter>Framework\Game Object\Hide Object\Brick</Filter>
     </ClInclude>
     <ClInclude Include="AnimationObject.h">
       <Filter>Framework\Game Object\AnimationObject</Filter>
@@ -307,6 +319,25 @@
     </ClInclude>
     <ClInclude Include="RockFallAnimate.h">
       <Filter>Framework\Game Object\AnimationObject\RockFall</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackKnight.h">
+      <Filter>Framework\Game Object\Enemy\Black Knight</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickVertical.h">
+      <Filter>Framework\Game Object\Hide Object\Brick</Filter>
+    </ClInclude>
+    <ClInclude Include="GroundMovingPlatform.h">
+      <Filter>Framework\Game Object\Ground Moving Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="GroundMovingManage.h">
+      <Filter>Framework\Game Object\Ground Moving Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Medusa.h">
+      <Filter>Framework\Game Object\Enemy\Medusa</Filter>
+    </ClInclude>
+    <ClInclude Include="FireBallManage.h" />
+    <ClInclude Include="DragonSkullCannon.h">
+      <Filter>Framework\Game Object\Enemy\DragonSkullCannon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -483,7 +514,7 @@
       <Filter>Framework\Game Object\Hide Object\Stair</Filter>
     </ClCompile>
     <ClCompile Include="Brick.cpp">
-      <Filter>Framework\Game Object\Brick</Filter>
+      <Filter>Framework\Game Object\Hide Object\Brick</Filter>
     </ClCompile>
     <ClCompile Include="AnimationObject.cpp">
       <Filter>Framework\Game Object\AnimationObject</Filter>
@@ -496,6 +527,25 @@
     </ClCompile>
     <ClCompile Include="RockFallAnimate.cpp">
       <Filter>Framework\Game Object\AnimationObject\RockFall</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackKnight.cpp">
+      <Filter>Framework\Game Object\Enemy\Black Knight</Filter>
+    </ClCompile>
+    <ClCompile Include="BrickVertical.cpp">
+      <Filter>Framework\Game Object\Hide Object\Brick</Filter>
+    </ClCompile>
+    <ClCompile Include="GroundMovingPlatform.cpp">
+      <Filter>Framework\Game Object\Ground Moving Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="GroundMovingManage.cpp">
+      <Filter>Framework\Game Object\Ground Moving Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="Medusa.cpp">
+      <Filter>Framework\Game Object\Enemy\Medusa</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBallManage.cpp" />
+    <ClCompile Include="DragonSkullCannon.cpp">
+      <Filter>Framework\Game Object\Enemy\DragonSkullCannon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

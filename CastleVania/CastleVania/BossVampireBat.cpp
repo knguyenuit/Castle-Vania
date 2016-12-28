@@ -25,6 +25,8 @@ void CBossVampireBat::Init()
 	//init Direction
 	this->check_arrive_x = this->check_arrive_y = false;
 	this->isLeft = this->isRight = this->isUp = this->isDown = false;
+
+	this->m_Dir = Direction::LEFT;
 }
 
 CBossVampireBat::CBossVampireBat()

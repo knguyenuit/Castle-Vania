@@ -1,3 +1,6 @@
 1	..\\Resources\\Map\\lv1TS.PNG	..\\Resources\\Map\\lv1BG.txt	..\\Resources\\Object\\lv1GO.txt	..\\Resources\\Map\\lv1QTBG.txt	..\\Resources\\Object\\lv1QTGO.txt
-3	..\\Resources\\Map\\lv3TS.PNG	..\\Resources\\Map\\lv3BG.txt	..\\Resources\\Object\\lv3GO.txt	..\\Resources\\Map\\lv3QTBG.txt	..\\Resources\\Object\\lv3QTGO.txt
 2	..\\Resources\\Map\\lv2TS.PNG	..\\Resources\\Map\\lv2BG.txt	..\\Resources\\Object\\lv2GO.txt	..\\Resources\\Map\\lv2QTBG.txt	..\\Resources\\Object\\lv2QTGO.txt
+3	..\\Resources\\Map\\lv3TS.PNG	..\\Resources\\Map\\lv3BG.txt	..\\Resources\\Object\\lv3GO.txt	..\\Resources\\Map\\lv3QTBG.txt	..\\Resources\\Object\\lv3QTGO.txt
+4	..\\Resources\\Map\\lv4TS.PNG	..\\Resources\\Map\\lv4BG.txt	..\\Resources\\Object\\lv4GO.txt	..\\Resources\\Map\\lv4QTBG.txt	..\\Resources\\Object\\lv4QTGO.txt
+5	..\\Resources\\Map\\lv5TS.PNG	..\\Resources\\Map\\lv5BG.txt	..\\Resources\\Object\\lv5GO.txt	..\\Resources\\Map\\lv5QTBG.txt	..\\Resources\\Object\\lv5QTGO.txt
+6	..\\Resources\\Map\\lv6TS.PNG	..\\Resources\\Map\\lv6BG.txt	..\\Resources\\Object\\lv6GO.txt	..\\Resources\\Map\\lv6QTBG.txt	..\\Resources\\Object\\lv6QTGO.txt

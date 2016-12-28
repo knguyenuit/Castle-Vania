@@ -19,7 +19,7 @@ void CEnemy::InitAnimation()
 {
 	this->m_vx = 100;
 	this->m_vy = 200;
-	this->m_Dir = Direction::LEFT;
+	
 }
 
 void CEnemy::Update(float deltaTime)
@@ -156,7 +156,20 @@ void CEnemy::MoveUpdate(float deltaTime)
 	switch (this->m_State)
 	{
 	case ENEMY_state::MOVE:
-		if (this->m_Dir = LEFT)
+		if (isChangeDir)
+		{
+			if (m_Dir == Direction::LEFT)
+			{
+				m_Dir = Direction::RIGHT;
+				isChangeDir = false;
+			}
+			else
+			{
+				m_Dir = Direction::LEFT;
+				isChangeDir = false;
+			}
+		}
+		if (this->m_Dir == LEFT)
 		{
 			this->m_Pos.x -= m_vx * deltaTime;
 		}

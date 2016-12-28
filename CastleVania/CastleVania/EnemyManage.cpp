@@ -1,12 +1,12 @@
 #include "EnemyManage.h"
 CEnemyManage::CEnemyManage()
 {
-	CreateEnemy(VampireBat, Vector2(1250, 90));
+	/*CreateEnemy(VampireBat, Vector2(1250, 90));
 	CreateEnemy(VampireBat, Vector2(1376, 204));
 	CreateEnemy(VampireBat, Vector2(1440, 220));
 	CreateEnemy(VampireBat, Vector2(1504, 269));
 	CreateEnemy(VampireBat, Vector2(1808, 269));
-	CreateEnemy(VampireBat, Vector2(1887, 220));
+	CreateEnemy(VampireBat, Vector2(1887, 220));*/
 	//CreateEnemy(BlackLeopard, Vector2(1000, 200));
 	//CreateEnemy(Zombie, Vector2(1100, 60));
 	//CreateEnemy(VampireBat, Vector2(1200, 80));
@@ -14,7 +14,8 @@ CEnemyManage::CEnemyManage()
 	/*CreateEnemy(FishMan, Vector2(200, 50));*/
 	//CreateEnemy(FishMan, Vector2(600, 50));
 	/*CreateEnemy(SmallLight, Vector2(300, 100));*/
-
+	CreateEnemy(Medusa, Vector2(800, 250));
+	CreateEnemy(DragonSkullCanon, Vector2(1100, 300));
 }
 CEnemyManage::~CEnemyManage()
 {
@@ -36,7 +37,7 @@ void CEnemyManage::Update(float deltaTime)
 			CEnemy* enemy = *it;
 			if (enemy != NULL && enemy->m_isRemove == false)
 			{
-				//enemy->Update(deltaTime);
+				enemy->Update(deltaTime);
 			}
 			if (enemy->m_isRemove)
 			{
@@ -158,6 +159,9 @@ CEnemy* CEnemyManage::CreateEnemy(ENEMY_type enemyType, Vector2 pos)
 	case ENEMY_type::BossVampireBat:
 		enemy = new CBossVampireBat(pos);
 		break;
+	case ENEMY_type::Medusa:
+		enemy = new CMedusa(pos);
+		break;
 	case ENEMY_type::FishMan:
 		enemy = new CFishMan(pos, this->m_ListEnemy);
 		break;
@@ -166,6 +170,12 @@ CEnemy* CEnemyManage::CreateEnemy(ENEMY_type enemyType, Vector2 pos)
 		break;
 	case ENEMY_type::SmallLight:
 		enemy = new CSmallLight(pos);
+		break;
+	case ENEMY_type::BlackKnight:
+		enemy = new CBlackKnight(pos);
+		break;
+	case ENEMY_type::DragonSkullCanon:
+		enemy = new CDragonSkullCannon(pos);
 		break;
 	default:
 		break;
@@ -198,6 +208,7 @@ void CEnemyManage::DrawEnemy(CEnemy* enemyObj)
 		Texture->LoadImageFromFile(ENEMY_VAMPIREBAT, D3DCOLOR_XRGB(255, 255, 255));
 		break;
 	case Medusa:
+		Texture->LoadImageFromFile(ENEMY_MEDUSA, D3DCOLOR_XRGB(255, 255, 255));
 		break;
 	case FishMan:
 		Texture->LoadImageFromFile(ENEMY_FISHMAN, D3DCOLOR_XRGB(255, 255, 255));
@@ -205,6 +216,7 @@ void CEnemyManage::DrawEnemy(CEnemy* enemyObj)
 	case AxeMan:
 		break;
 	case DragonSkullCanon:
+		Texture->LoadImageFromFile(ENEMY_DRAGON_SKULL, D3DCOLOR_XRGB(255, 255, 255));
 		break;
 	case BlackKnight:
 		break;

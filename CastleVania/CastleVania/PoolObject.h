@@ -14,6 +14,7 @@
 #include "WeaponManage.h"
 #include "AnimationObjectManage.h"
 #include "Banner.h"
+#include "FireBallManage.h"
 
 class CPoolObject : public CSingleton<CPoolObject>
 {

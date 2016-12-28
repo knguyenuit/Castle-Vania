@@ -189,8 +189,8 @@ void CLoadBackground::Clear()
 	if (this->m_quadTree)
 	{
 		this->m_quadTree->Clear();
-		//this->m_quadTree = nullptr;
-		//this->m_quadTree = new CQuadTree();
+		this->m_quadTree = nullptr;
+		this->m_quadTree = new CQuadTree();
 	}
 	if (this->m_imageCurr)
 	{

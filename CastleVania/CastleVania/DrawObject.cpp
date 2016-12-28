@@ -79,6 +79,28 @@ void CDrawObject::Draw(CBaseGameObject *obj)// quan li viec load va ve cac doi t
 				this->m_draw->DrawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 			}
 			break;
+		case 208:
+			texture->LoadImageFromFile(ENEMY_BLACKKNIGHT, D3DCOLOR_XRGB(255, 0, 255));
+			if (obj->m_Dir == LEFT)
+			{
+				this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+			}
+			else
+			{
+				this->m_draw->DrawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+			}
+			break;
+		case 207:
+			texture->LoadImageFromFile(ENEMY_DRAGON_SKULL, D3DCOLOR_XRGB(255, 0, 255));
+			if (obj->m_Dir == LEFT)
+			{
+				this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+			}
+			else
+			{
+				this->m_draw->DrawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+			}
+			break;
 		case 600:
 			texture->LoadImageFromFile(OBJECT_SMALLLIGHT, D3DCOLOR_XRGB(255, 0, 255));
 			this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
@@ -93,6 +115,10 @@ void CDrawObject::Draw(CBaseGameObject *obj)// quan li viec load va ve cac doi t
 			break;
 		case 203:
 			texture->LoadImageFromFile(ENEMY_VAMPIREBAT, D3DCOLOR_XRGB(255, 0, 255));
+			this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+			break;
+		case 653:
+			texture->LoadImageFromFile(GROUND_MOVING_PLATFORM, D3DCOLOR_XRGB(255, 0, 255));
 			this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 			break;
 			

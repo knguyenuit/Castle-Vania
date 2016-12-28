@@ -7,9 +7,11 @@ CBrick::CBrick()
 	Init();
 }
 
-CBrick::CBrick(Vector2 pos)
+CBrick::CBrick(Vector2 pos, int m_Width, int m_Height)
 {
 	Init();
+	this->m_Width = m_Width;
+	this->m_Height = m_Height;
 	this->m_Pos = pos;
 }
 
@@ -22,7 +24,7 @@ Box CBrick::GetBox()
 {
 	if (!simon->isSit)
 	{
-		return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width, this->m_Height);
+		return Box(this->m_Pos.x, this->m_Pos.y, this->m_Width - 40, this->m_Height);
 	}
 	else
 	{
@@ -33,8 +35,7 @@ Box CBrick::GetBox()
 void CBrick::Init()
 {
 	this->m_Id = 702;
-	this->m_Width = 32;
-	this->m_Height = 32;
+	
 	m_isLive = true;
 }
 
@@ -53,6 +54,7 @@ void CBrick::Update(float deltaTime)
 	this->OnSimonCollision(deltaTime);
 	OnItemCollision(deltaTime, CItemManage::GetInstance()->m_ListItem);
 	OnEnemyCollision(deltaTime, CEnemyManage::GetInstance()->m_ListEnemy);
+	//OnGroundMovingCollision(deltaTime, CGroundMovingManage::GetInstance()->m_ListGroundMovingPlatform);
 }
 
 void CBrick::OnSimonCollision(float deltaTime)
@@ -138,3 +140,5 @@ void CBrick::OnEnemyCollision(float deltaTime, std::vector<CEnemy*> listEnemy)
 		}
 	}
 }
+
+

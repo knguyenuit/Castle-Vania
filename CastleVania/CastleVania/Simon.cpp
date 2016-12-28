@@ -11,7 +11,7 @@ CSimon::CSimon()
 	this->InitMove();
 	this->InitAnimation();
 	this->cane = new CCane();
-	this->m_currentLevel = 1;
+	this->m_currentLevel = 4;
 	this->hv = new CHinhChuNhat();
 	this->m_currentWeapon = WEAPON_name::Dagger;
 	//init stair status
@@ -43,7 +43,7 @@ void CSimon::InitMove()
 	this->m_a = -1300;
 	this->m_aDefault = this->m_a;
 	this->m_ax = 0;
-	this->m_Pos = this->m_PosDefault = Vector2(100, 204);
+	this->m_Pos = this->m_PosDefault = Vector2(100, 90);
 	this->m_Width = 60;
 	this->m_Height = 68;
 	this->m_isJumping = false;
@@ -182,15 +182,24 @@ bool CSimon::MoveTo(Vector2 point, float deltaTime)
 
 void CSimon::ResetSimon()
 {
-	if (m_currentLevel == 2)
+	if (m_currentLevel == 3)
 	{
-		m_Pos = Vector2(3500, 500);
+		m_Pos = Vector2(100, 40);
 		simon_Status = SIMON_status::IDLE;
 	}
 	else
 	{
-		m_Pos = CSimon::GetInstance()->m_PosDefault;
-		simon_Status = SIMON_status::IDLE;
+		if (m_currentLevel == 4)
+		{
+			m_Pos = Vector2(1000, 250);
+			simon_Status = SIMON_status::IDLE;
+		}
+		else
+		{
+			m_Pos = CSimon::GetInstance()->m_PosDefault;
+			simon_Status = SIMON_status::IDLE;
+		}
+		
 	}
 	m_hpSimon = 16;
 	m_isLive = true;

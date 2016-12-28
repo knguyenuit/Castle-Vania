@@ -51,6 +51,7 @@ void CPoolObject::Update(float deltaTime)
 	CWeaponManage::GetInstance()->Update(deltaTime);
 	CAnimationObjectManage::GetInstance()->Update(deltaTime);
 	//CHideObjectManage::GetInstance()->Update(deltaTime);
+	
 	banner->Update(deltaTime);
 	//this->ground->Update(deltaTime);
 	//CLoadObject::GetInstance()->Collision(deltaTime, this->simon);
@@ -111,9 +112,10 @@ void CPoolObject::Draw()
 	this->simon->Draw();
 	CLoadObject::GetInstance()->Draw();
 	CItemManage::GetInstance()->Draw();
-	/*CEnemyManage::GetInstance()->Draw();*/
+	//CEnemyManage::GetInstance()->Draw();
 	CAnimationObjectManage::GetInstance()->Draw();
 	CWeaponManage::GetInstance()->Draw();
+	CFireBallManage::GetInstance()->Draw();
 	//ve banner
 	banner->DrawBannerBG();
 	banner->DrawBannerProperty();

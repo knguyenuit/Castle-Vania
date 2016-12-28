@@ -33,12 +33,15 @@ CHideObject * CHideObjectManage::CreateHideObject(HideObject_TYPE type, Vector2 
 	case GroundHorizontal:
 		break;
 	case GroundVertical:
+		obj = new CChangeScreen(HideObject_TYPE::GroundVertical, pos);
+		break;
 		break;
 	case StopScrollScene:
 		break;
 	case ChangeScene:
 		obj = new CChangeScreen(HideObject_TYPE::ChangeScene, pos);
 		break;
+
 	case Free:
 		break;
 		//cau thang

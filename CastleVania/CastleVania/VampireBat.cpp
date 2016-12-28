@@ -32,6 +32,7 @@ void CVampireBat::Init()
 	this->m_increase = 1;
 	this->m_totalFrame = 4;
 	this->m_column = 4;
+	this->m_Dir = Direction::RIGHT;
 }
 
 RECT * CVampireBat::GetRectRS()

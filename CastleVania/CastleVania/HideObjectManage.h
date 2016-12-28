@@ -6,6 +6,8 @@
 #include "UpStairLeft.h"
 #include "UpStairRight.h"
 #include "ChangeScreen.h"
+#include "BrickVertical.h"
+
 class CHideObjectManage :
 	public CSingleton<CHideObjectManage>
 {

@@ -19,6 +19,7 @@
 #define GROUND1 "..\\Resources\\image\\601.png"
 #define TEST "..\\Resources\\image\\fireball.png"
 #define BRICK "..\\Resources\\image\\Light\\2.png"
+#define GROUND_MOVING_PLATFORM "..\\Resources\\image\\ground\\MovingPlatform.png"
 
 //item
 #define ITEM_LARGE_HEART "..\\Resources\\image\\item\\LargeHeart.png"
@@ -55,6 +56,9 @@
 #define ENEMY_FISHMAN "..\\Resources\\image\\enemy\\FishMan.png"
 #define ENEMY_FIREBALL "..\\Resources\\image\\enemy\\fireball.png"
 #define OBJECT_SMALLLIGHT "..\\Resources\\image\\Light\\1.png"
+#define ENEMY_BLACKKNIGHT "..\\Resources\\image\\enemy\\BlackKnight.png"
+#define ENEMY_MEDUSA "..\\Resources\\image\\enemy\\Medusa.png"
+#define ENEMY_DRAGON_SKULL "..\\Resources\\image\\enemy\\DragonSkullCannon.png"
 //BOSS
 #define BOSS_VAMPIREBAT "..\\Resources\\image\\boss\\0.png"
 

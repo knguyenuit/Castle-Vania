@@ -12,6 +12,9 @@
 #include "OnCollision.h"
 #include "Simon.h"
 #include "ItemManage.h"
+#include "BlackKnight.h"
+#include "Medusa.h"
+#include "DragonSkullCannon.h"
 class CEnemyManage : public CSingleton<CEnemyManage>
 {
 	friend class CSingleton<CEnemyManage>;

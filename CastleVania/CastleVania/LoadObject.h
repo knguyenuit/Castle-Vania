@@ -12,6 +12,7 @@
 #include "Camera.h"
 #include "DrawObject.h"
 #include "HideObjectManage.h"
+#include "GroundMovingManage.h"
 
 class CLoadObject : public CSingleton<CLoadObject>
 {
@@ -32,7 +33,7 @@ public:
 	
 	std::hash_map<int, CBaseGameObject*> LoadGameObjectInfo(const std::string&);
 
-	CBaseGameObject* CreateObject(int id, Vector2 pos);
+	CBaseGameObject* CreateObject(int id, Vector2 pos, int width, int height);
 	
 
 	// TT

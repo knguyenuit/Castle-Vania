@@ -14,7 +14,7 @@ CFireBall::CFireBall(Vector2 pos, Direction dir)
 {
 	this->m_PosDefault = this->m_Pos = pos;
 	this->m_Dir = dir;
-	this->m_vxDefault = this->m_vx = 300;
+	this->m_vxDefault = this->m_vx = 100;
 	this->m_vyDefault = this->m_vx = 300;
 	this->Init();
 }
@@ -59,11 +59,21 @@ void CFireBall::Draw()
 
 void CFireBall::Update(float deltaTime)
 {
-	this->Draw();
+	//this->Draw();
+	MoveUpdate(deltaTime);
 }
 
 void CFireBall::MoveUpdate(float deltaTime)
 {
+	if (this->m_Dir == LEFT)
+	{
+		this->m_Pos.x -= this->m_vx * deltaTime;
+	}
+	else
+	{
+		this->m_Pos.x += this->m_vx * deltaTime;
+	}
+
 }
 
 RECT * CFireBall::GetRectRS()
