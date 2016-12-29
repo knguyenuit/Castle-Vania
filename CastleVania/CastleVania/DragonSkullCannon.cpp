@@ -27,6 +27,8 @@ void CDragonSkullCannon::Init()
 	this->m_Height = 64;
 	this->m_vx = 0;
 	this->m_vy = 0;
+	posIntanceFireBall1 = Vector2(this->m_Pos.x, this->m_Pos.y);
+	posIntanceFireBall2 = Vector2(this->m_Pos.x, this->m_Pos.y + 20);
 }
 
 void CDragonSkullCannon::Update(float deltaTime)
@@ -34,7 +36,10 @@ void CDragonSkullCannon::Update(float deltaTime)
 	timeCountIntanceFireBall += deltaTime;
 	if (timeCountIntanceFireBall >= 1)
 	{
-		CFireBallManage::GetInstance()->CreateFireBall(this -> m_Pos, this->m_Dir);
+		posIntanceFireBall1 = Vector2(this->m_Pos.x, this->m_Pos.y);
+		posIntanceFireBall2 = Vector2(this->m_Pos.x, this->m_Pos.y - 50);
+		CFireBallManage::GetInstance()->CreateFireBall(posIntanceFireBall1, RIGHT);
+		CFireBallManage::GetInstance()->CreateFireBall(posIntanceFireBall2, LEFT);
 		timeCountIntanceFireBall = 0;
 	}
 	CFireBallManage::GetInstance()->Update(deltaTime);

@@ -61,6 +61,12 @@ void CFireBall::Update(float deltaTime)
 {
 	//this->Draw();
 	MoveUpdate(deltaTime);
+	m_currentTimeLife += deltaTime;
+	if (m_currentTimeLife >= 3)
+	{
+		this->m_isRemove = true;
+		m_currentTimeLife = 0;
+	}
 }
 
 void CFireBall::MoveUpdate(float deltaTime)

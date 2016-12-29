@@ -16,6 +16,7 @@ public:
 	void Draw();
 	void Update(float deltaTime);
 	void MoveUpdate(float deltaTime);
+	float m_currentTimeLife = 0;
 	RECT * GetRectRS();
 	CSprite * m_draw;
 };

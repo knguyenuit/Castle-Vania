@@ -15,7 +15,7 @@ CEnemyManage::CEnemyManage()
 	//CreateEnemy(FishMan, Vector2(600, 50));
 	/*CreateEnemy(SmallLight, Vector2(300, 100));*/
 	CreateEnemy(Medusa, Vector2(800, 250));
-	CreateEnemy(DragonSkullCanon, Vector2(1100, 300));
+	CreateEnemy(DragonSkullCanon, Vector2(900, 300));
 }
 CEnemyManage::~CEnemyManage()
 {
