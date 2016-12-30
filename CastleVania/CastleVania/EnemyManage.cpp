@@ -164,7 +164,7 @@ CEnemy* CEnemyManage::CreateEnemy(ENEMY_type enemyType, Vector2 pos)
 		enemy = new CMedusa(pos);
 		break;
 	case ENEMY_type::FishMan:
-		enemy = new CFishMan(pos, this->m_ListEnemy);
+		enemy = new CFishMan(pos);
 		break;
 	case ENEMY_type::FireBall:
 		enemy = new CFireBall(pos, LEFT);

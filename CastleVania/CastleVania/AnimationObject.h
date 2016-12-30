@@ -11,6 +11,8 @@ enum class Animation_object {
 	FireOn = 1,
 	RockFall = 2,
 	MoneyBagPoint = 3,
+	BrickItemLv1 = 4,
+	BrickItemLv2 = 5,
 	None = 0
 };
 class CAnimationObject :

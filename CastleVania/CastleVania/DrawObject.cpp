@@ -115,6 +115,17 @@ void CDrawObject::Draw(CBaseGameObject *obj)// quan li viec load va ve cac doi t
 			break;
 		case 205:
 			texture->LoadImageFromFile(ENEMY_FISHMAN, D3DCOLOR_XRGB(255, 0, 255));
+			if (obj->m_Dir == LEFT)
+			{
+				this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+			}
+			else
+			{
+				this->m_draw->DrawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+			}
+			break;
+		case 204:
+			texture->LoadImageFromFile(ENEMY_MEDUSA, D3DCOLOR_XRGB(255, 0, 255));
 			this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 			break;
 		case 203:
@@ -123,6 +134,10 @@ void CDrawObject::Draw(CBaseGameObject *obj)// quan li viec load va ve cac doi t
 			break;
 		case 653:
 			texture->LoadImageFromFile(GROUND_MOVING_PLATFORM, D3DCOLOR_XRGB(255, 0, 255));
+			this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+			break;
+		case 402:
+			texture->LoadImageFromFile(BOSS_MEDUSA, D3DCOLOR_XRGB(255, 0, 255));
 			this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 			break;
 			

@@ -33,6 +33,7 @@ void CCheckSimonDie::OnSimonCollision(float deltaTime)
 	if (normalY == CDirection::ON_UP || normalY == CDirection::ON_DOWN)
 	{
 		CSimon::GetInstance()->isDie = true;
+		CSimon::GetInstance()->isSimonDie = true;
 		CSimon::GetInstance()->m_countLife -= 1;
 	}
 }

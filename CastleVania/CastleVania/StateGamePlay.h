@@ -6,6 +6,7 @@
 #include "Level.h"
 #include "State.h"
 #include "LoadObject.h"
+#include "AnimationObjectManage.h"
 
 class CStateGamePlay : public CState
 {

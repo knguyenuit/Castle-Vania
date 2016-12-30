@@ -35,6 +35,10 @@ void CStateGamePlay::Update(float deltaTime)
 		CSimon::GetInstance()->isDie = false;
 	}
 	CPoolObject::GetInstance()->Update(deltaTime);
+	if (CSimon::GetInstance()->m_countLife < 0)
+	{
+		isChangeState = true;
+	}
 }
 
 void CStateGamePlay::Render()
@@ -58,11 +62,13 @@ void CStateGamePlay::ChangeLevel(int lv)
 		{
 			CLoadBackground::GetInstance()->Clear();
 			CLoadObject::GetInstance()->Clear();
+			CAnimationObjectManage::GetInstance()->m_listAnimationObject.clear();
 			isCheck = false;
 		}
 		CLoadBackground::GetInstance()->LoadImageFromFile(m_currentLevel->fileImageBackgroud);
 		CLoadObject::GetInstance()->LoadReSourceFromFile(m_currentLevel->fileObject, m_currentLevel->fileObjectQuadtree);
 		CLoadBackground::GetInstance()->LoadBackgroundFromFile(m_currentLevel->fileBackground, m_currentLevel->fileBackgroundQuadtree);
+		CAnimationObjectManage::GetInstance()->CreateAnimationObject(lv);
 		CSimon::GetInstance()->ResetSimon();
 
 	}

@@ -9,18 +9,18 @@ class CFishMan :
 {
 public:
 	CFishMan();
-	CFishMan(Vector2 pos, std::vector<CEnemy*> &ListEnemy);
+	CFishMan(Vector2 pos);
 	~CFishMan();
 public:
 	void Init();
-	void Update(float deltaTime);
-	virtual void MoveUpdate(float deltaTime);
+	//void Update(float deltaTime);
+	/*virtual void MoveUpdate(float deltaTime);*/
 	RECT * GetRectRS();
 public:
-	float time_delay_attack = 1.0f;
+	/*float time_delay_attack = 1.0f;
 	CFireBall *m_FireBall = NULL;
 	Sprite *m_draw;
-	std::vector<CEnemy*> listEnemy;
+	std::vector<CEnemy*> listEnemy;*/
 };
 
 #endif // !__FISHMAN_H__

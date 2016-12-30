@@ -1,7 +1,7 @@
 #ifndef __SNAKE_H__
 #define __SNAKE_H__
 #include "Enemy.h"
-class CSnake:
+class CSnake :
 	public CEnemy
 {
 public:

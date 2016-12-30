@@ -4,9 +4,8 @@
 
 CAnimationObjectManage::CAnimationObjectManage()
 {
-	this->CreateAnimation(Animation_object::RockFall,Vector2(3598, 126))->m_DrawFlip = DrawFlip::NONE;
-	this->CreateAnimation(Animation_object::RockFall, Vector2(3598, 110))->m_DrawFlip = DrawFlip::NONE;
-	this->CreateAnimation(Animation_object::RockFall, Vector2(3598, 78), ITEM_name::PorkChop)->m_DrawFlip = DrawFlip::NONE;
+	
+	
 }
 
 
@@ -46,6 +45,12 @@ CAnimationObject * CAnimationObjectManage::CreateAnimation(Animation_object anim
 	case Animation_object::RockFall:
 		obj = new CRockFallAnimate(pos);
 		break;
+	case Animation_object::BrickItemLv1:
+		obj = new CBrickWithItem(pos);
+		break;
+	case Animation_object::BrickItemLv2:
+		obj = new CBrickWithItemLv2(pos);
+		break;
 	case Animation_object::None:
 		return nullptr;
 		break;
@@ -75,6 +80,12 @@ void CAnimationObjectManage::DrawAnimationObject(CAnimationObject * animationObj
 	case Animation_object::RockFall:
 		this->Texture->LoadImageFromFile(ANIMATION_ROCKFALL, D3DCOLOR_XRGB(255, 0, 255));
 		break;
+	case Animation_object::BrickItemLv1:
+		this->Texture->LoadImageFromFile(BRICK_LV1, D3DCOLOR_XRGB(255, 0, 255));
+		break;
+	case Animation_object::BrickItemLv2:
+		this->Texture->LoadImageFromFile(BRICK_LV2, D3DCOLOR_XRGB(255, 0, 255));
+		break;
 	case Animation_object::None:
 		return;
 		break;
@@ -99,6 +110,31 @@ void CAnimationObjectManage::DrawAnimationObject(CAnimationObject * animationObj
 	default:
 		this->m_draw->Draw(this->Texture, animationObj->GetRectRS(), this->posDraw, D3DCOLOR_XRGB(255, 255, 255), true);
 		break;
+	}
+}
+
+void CAnimationObjectManage::CreateAnimationObject(int lv)
+{
+	if (lv == 2)
+	{
+		this->CreateAnimation(Animation_object::RockFall, Vector2(3598, 126))->m_DrawFlip = DrawFlip::NONE;
+		this->CreateAnimation(Animation_object::RockFall, Vector2(3598, 110))->m_DrawFlip = DrawFlip::NONE;
+		this->CreateAnimation(Animation_object::RockFall, Vector2(3598, 78), ITEM_name::PorkChop)->m_DrawFlip = DrawFlip::NONE;
+		
+		//this->CreateAnimation(Animation_object::BrickItemLv2, Vector2(250, 90), ITEM_name::Axe);
+	}
+	if (lv == 4)
+	{
+		this->CreateAnimation(Animation_object::BrickItemLv1, Vector2(1904, 108), ITEM_name::PorkChop);
+	}
+	if (lv == 6)
+	{
+		this->CreateAnimation(Animation_object::BrickItemLv2, Vector2(2258,207), ITEM_name::Axe);
+	}
+	if (lv == 7)
+	{
+		this->CreateAnimation(Animation_object::BrickItemLv2, Vector2(1423, 142), ITEM_name::PorkChop);
+		this->CreateAnimation(Animation_object::BrickItemLv2, Vector2(274, 109), ITEM_name::Axe);
 	}
 }
 

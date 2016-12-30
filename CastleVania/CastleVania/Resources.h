@@ -76,7 +76,9 @@
 //ANIMATION
 #define ANIMATION_FIREON "..\\Resources\\image\\animation\\FireOn.png"
 #define ANIMATION_ROCKFALL "..\\Resources\\image\\animation\\RockFall.png"
-
+//BRICK
+#define BRICK_LV1 "..\\Resources\\image\\Light\\Brick.png"
+#define BRICK_LV2 "..\\Resources\\image\\Light\\2-3.png"
 //list object
 #define FILE_LIST_OBJECT "..\\Resources\\Object\\lv1GO.txt"
 #define FILE_LIST_OBJECT_lv2 "..\\Resources\\Object\\lv2GO.txt"
@@ -99,5 +101,8 @@
 
 //intro scene
 #define INTRO_SCREEN "..\\Resources\\image\\IntroGame\\intro.png"
+
+//end scene
+#define END_SCREEN "..\\Resources\\image\\EndState\\EndBG.png"
 
 #endif // !__CRESOURCES_H__

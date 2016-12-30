@@ -4,3 +4,5 @@
 4	..\\Resources\\Map\\lv4TS.PNG	..\\Resources\\Map\\lv4BG.txt	..\\Resources\\Object\\lv4GO.txt	..\\Resources\\Map\\lv4QTBG.txt	..\\Resources\\Object\\lv4QTGO.txt
 5	..\\Resources\\Map\\lv5TS.PNG	..\\Resources\\Map\\lv5BG.txt	..\\Resources\\Object\\lv5GO.txt	..\\Resources\\Map\\lv5QTBG.txt	..\\Resources\\Object\\lv5QTGO.txt
 6	..\\Resources\\Map\\lv6TS.PNG	..\\Resources\\Map\\lv6BG.txt	..\\Resources\\Object\\lv6GO.txt	..\\Resources\\Map\\lv6QTBG.txt	..\\Resources\\Object\\lv6QTGO.txt
+7	..\\Resources\\Map\\lv7TS.PNG	..\\Resources\\Map\\lv7BG.txt	..\\Resources\\Object\\lv7GO.txt	..\\Resources\\Map\\lv7QTBG.txt	..\\Resources\\Object\\lv7QTGO.txt
+8	..\\Resources\\Map\\lv8TS.PNG	..\\Resources\\Map\\lv8BG.txt	..\\Resources\\Object\\lv8GO.txt	..\\Resources\\Map\\lv8QTBG.txt	..\\Resources\\Object\\lv8QTGO.txt

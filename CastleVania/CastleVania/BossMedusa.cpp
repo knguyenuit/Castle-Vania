@@ -103,13 +103,13 @@ void CBossMedusa::MoveUpdate(float deltaTime)
 			{
 				if (this->m_Step % 2 == 0)
 				{
-					CSnakeManage::GetInstance()->CreateSnake(this->m_Pos + Vector2(0,-32), this->m_Dir);
+					CSnakeManage::GetInstance()->CreateSnake(this->m_Pos + Vector2(0, -32), this->m_Dir);
 				}
 				else
 				{
 					CSnakeManage::GetInstance()->CreateSnake(this->m_Pos + Vector2(0, -16), this->m_Dir);
 				}
-				
+
 			}
 
 			this->m_Step += 1;
@@ -123,6 +123,7 @@ void CBossMedusa::MoveUpdate(float deltaTime)
 
 void CBossMedusa::Update(float deltaTime)
 {
+	
 	if (this->simon->isKey_L == true)
 	{
 		this->simon->isKey_L = false;
@@ -164,7 +165,7 @@ void CBossMedusa::Update(float deltaTime)
 			this->simon->cane->m_timeCollisionEnemy = 0;
 		}
 	}
-	
+
 }
 
 void CBossMedusa::OnSimonCollision(float deltaTime)

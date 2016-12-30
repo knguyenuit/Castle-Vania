@@ -56,7 +56,7 @@ void CBrickVertical::OnEnemyCollision(float deltaTime, std::vector<CEnemy*> list
 	for (std::vector<CEnemy*>::iterator it = listEnemy.begin(); it != listEnemy.end(); it++)
 	{
 		CEnemy* enemy = *it;
-		if (enemy->m_Id == 208)
+		if (enemy->m_Id == 208 || enemy->m_Id == 205 )
 		{
 
 			timeCollision = COnCollision::GetInstance()->SweepAABB(enemy->GetBox(), this->GetBox(), normalX, normalY, deltaTime);

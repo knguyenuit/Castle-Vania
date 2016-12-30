@@ -115,6 +115,7 @@ void CPoolObject::Draw()
 	//CEnemyManage::GetInstance()->Draw();
 	CAnimationObjectManage::GetInstance()->Draw();
 	CWeaponManage::GetInstance()->Draw();
+	CSnakeManage::GetInstance()->Draw();
 	CFireBallManage::GetInstance()->Draw();
 	//ve banner
 	banner->DrawBannerBG();

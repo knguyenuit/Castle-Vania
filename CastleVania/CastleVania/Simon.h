@@ -129,7 +129,8 @@ public:
 	bool isMoveLeft;
 	//set co danh trung enemy ko
 	bool isAttackEnemy = false;
-	
+	//Check xem simon chet' de reload lai simon o pos moi
+	bool isSimonDie = false;
 public:
 	//khoi luong cua simon
 	int m_weight;

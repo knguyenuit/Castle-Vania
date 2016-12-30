@@ -116,6 +116,9 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos, int width, int h
 	case 205:
 		return CEnemyManage::GetInstance()->CreateEnemy(ENEMY_type::FishMan, pos);
 		break;
+	case 204:
+		return CEnemyManage::GetInstance()->CreateEnemy(ENEMY_type::Medusa, pos);
+		break;
 	case 208:
 		return CEnemyManage::GetInstance()->CreateEnemy(ENEMY_type::BlackKnight, pos);
 		break;
@@ -164,12 +167,14 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos, int width, int h
 	case 714:
 		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::UpStairRight, pos);
 		break;
-	case 888:
+	case 715:
 		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::CheckSimonDie, pos);
 		break;
 	case 653:
 		return CGroundMovingManage::GetInstance()->CreateGroundMovingPlatform(pos);
 		break;
+	case 402:
+		return CEnemyManage::GetInstance()->CreateEnemy(ENEMY_type::BossMedusa, pos);
 	default:
 		break;
 	}

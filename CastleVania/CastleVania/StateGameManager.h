@@ -9,6 +9,7 @@
 #include "StateGameIntro.h"
 #include "Global.h"
 #include "ManageAudio.h"
+#include "StateGameOver.h"
 
 enum StateScene
 {
@@ -37,6 +38,7 @@ public:
 	CStateGamePlay *gamePlayScene;
 	CStateGameStart *gameStartScene;
 	CStateGameIntro *gameIntroScene;
+	CStateGameOver *gameOverScene;
 	bool isStart;
 protected:
 	CStateGameManager() : m_pNext(0), m_pCurrent(0) {}

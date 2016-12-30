@@ -51,10 +51,10 @@ void CEnemy::Update(float deltaTime)
 		}
 	}
 	//Neu con enemy di qua phia ben trai man hinh thi remove ra khoi list
-	if (CCamera::GetInstance()->m_pos.x>this->m_Pos.x)
+	/*if (CCamera::GetInstance()->m_pos.x>this->m_Pos.x)
 	{
 		this->m_isRemove = true;
-	}
+	}*/
 	if (this->m_State != ENEMY_state::IDLE)
 	{
 		this->MoveUpdate(deltaTime);

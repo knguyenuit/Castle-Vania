@@ -14,9 +14,9 @@ enum HideObject_TYPE
 	UpStairLeft = 704,// 32 - 32        
 	DownStairRight = 713, // 32 - 32
 	UpStairRight = 714, // 32 - 32
-	ChangeTop = 715, // 32 - 32
+	ChangeTop = 888, // 32 - 32
 	ChangeDown = 716, // 32 - 32
-	CheckSimonDie = 888
+	CheckSimonDie = 715
 };
 
 class CHideObject : public CBaseGameObject

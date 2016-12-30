@@ -11,7 +11,7 @@ CSimon::CSimon()
 	this->InitMove();
 	this->InitAnimation();
 	this->cane = new CCane();
-	this->m_currentLevel = 5;
+	this->m_currentLevel = 3;
 	this->hv = new CHinhChuNhat();
 	this->m_currentWeapon = WEAPON_name::Dagger;
 	//init stair status
@@ -43,7 +43,7 @@ void CSimon::InitMove()
 	this->m_a = -1300;
 	this->m_aDefault = this->m_a;
 	this->m_ax = 0;
-	this->m_Pos = this->m_PosDefault = Vector2(3000, 90);
+	this->m_Pos = this->m_PosDefault = Vector2(100, 90);
 	this->m_Width = 60;
 	this->m_Height = 68;
 	this->m_isJumping = false;
@@ -69,6 +69,7 @@ void CSimon::Update(float deltaTime)
 		{
 			m_countLife -= 1;
 			isDie = true;
+			isSimonDie = true;
 		}
 		
 	}
@@ -218,30 +219,64 @@ void CSimon::ResetSimon()
 	case 1:
 		m_Pos = CSimon::GetInstance()->m_PosDefault;
 		simon_Status = SIMON_status::IDLE;
+		isSimonDie = false;
 		break;
 	case 2:
 		m_Pos = CSimon::GetInstance()->m_PosDefault;
 		simon_Status = SIMON_status::IDLE;
+		isSimonDie = false;
 		break;
 	case 3:
 		this->m_Pos = Vector2(129, 300);
-
+		isSimonDie = false;
 		break;
 	case 4:
 		m_Pos = Vector2(200, 90);
 		simon_Status = SIMON_status::IDLE;
 		this->isOnStair = false;
 		this->isCancelStairMove = true;
+		isSimonDie = false;
 		break;
 	case 5:
 		m_Pos = Vector2(100, 40);
 		simon_Status = SIMON_status::IDLE;
+		isSimonDie = false;
 		break;
 	case 6:
+		if (isSimonDie == true)
+		{
+			m_Pos = Vector2(2353, 300);
+		}
+		else
+		{
+			m_Pos = Vector2(2353, 63);
+		}
+		isSimonDie = false;
+		simon_Status = SIMON_status::IDLE;
 		break;
 	case 7: 
+		if (isSimonDie == true)
+		{
+			m_Pos = Vector2(1740, 200);
+		}
+		else
+		{
+			m_Pos = Vector2(1680, 30);
+		}
+		isSimonDie = false;
+		simon_Status = SIMON_status::IDLE;
 		break;
 	case 8:
+		if (isSimonDie == true)
+		{
+			m_Pos = Vector2(1320, 200);
+		}
+		else
+		{
+			m_Pos = Vector2(1360, 200);
+		}
+		isSimonDie = false;
+		simon_Status = SIMON_status::IDLE;
 		break;
 	case 9:
 		break;

@@ -24,7 +24,7 @@ void CGroundMovingPlatform::Init()
 	this->m_Width = 64;
 	this->m_Height = 16;
 
-	this->m_vx = 20;
+	this->m_vx = 40;
 	this->m_vy = 0;
 	this->m_Dir = LEFT;
 }
@@ -38,7 +38,8 @@ void CGroundMovingPlatform::Update(float deltaTime)
 
 void CGroundMovingPlatform::MoveUpdate(float deltaTime)
 {
-	
+	if (CSimon::GetInstance()->m_currentLevel == 6)
+	{
 		if (isChangeDir)
 		{
 			if (m_Dir == Direction::LEFT)
@@ -66,9 +67,42 @@ void CGroundMovingPlatform::MoveUpdate(float deltaTime)
 		{
 			float a = distanceX;
 			isChangeDir = true;
-			distanceX = 0;
+			distanceX = -32;
 		}
-		
+	}
+	else
+	{
+		this->m_vx = 60;
+		if (isChangeDir)
+		{
+			if (m_Dir == Direction::LEFT)
+			{
+				m_Dir = Direction::RIGHT;
+				isChangeDir = false;
+			}
+			else
+			{
+				m_Dir = Direction::LEFT;
+				isChangeDir = false;
+			}
+		}
+		if (this->m_Dir == LEFT)
+		{
+			this->m_Pos.x -= this->m_vx * deltaTime;
+			distanceX += this->m_vx * deltaTime;
+		}
+		else
+		{
+			this->m_Pos.x += this->m_vx * deltaTime;
+			distanceX += this->m_vx * deltaTime;
+		}
+		if (distanceX > 64)
+		{
+			float a = distanceX;
+			isChangeDir = true;
+			distanceX = -64;
+		}
+	}
 }
 
 

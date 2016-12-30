@@ -43,4 +43,10 @@ void CDragonSkullCannon::Update(float deltaTime)
 		timeCountIntanceFireBall = 0;
 	}
 	CFireBallManage::GetInstance()->Update(deltaTime);
+	if (CSimon::GetInstance()->cane->m_checkActive)
+	{
+		OnCaneCollision();
+	}
+	CFireBallManage::GetInstance()->Draw();
+	OnWeaponCollision(deltaTime, CWeaponManage::GetInstance()->m_weaponList);
 }

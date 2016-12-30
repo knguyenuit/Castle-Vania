@@ -5,12 +5,11 @@ CFishMan::CFishMan()
 	Init();
 }
 
-CFishMan::CFishMan(Vector2 pos, std::vector<CEnemy*> &ListEnemy)
+CFishMan::CFishMan(Vector2 pos)
 {
 	Init();
-	this->m_PosDefault = this->m_Pos = pos;
-	this->m_FireBall = new CFireBall(this->m_Pos, LEFT);
-	ListEnemy.push_back(this->m_FireBall);
+	SetPos(pos);
+
 }
 
 
@@ -39,72 +38,72 @@ void CFishMan::Init()
 	this->m_Dir = Direction::RIGHT;
 }
 
-void CFishMan::Update(float deltaTime)
-{
-	//this->m_FireBall->Update(deltaTime);
-
-	if ((this->m_Pos.x<CSimon::GetInstance()->m_Pos.x - 100 || this->m_Pos.x>CSimon::GetInstance()->m_Pos.x + 100)
-		&& this->m_State == ENEMY_state::IDLE)
-	{
-		this->m_State = ENEMY_state::JUMP;
-
-	}
-	if (this->m_State != ENEMY_state::IDLE)
-	{
-		this->MoveUpdate(deltaTime);
-
-	}
-}
-
-
-void CFishMan::MoveUpdate(float deltaTime)
-{
-
-	switch (this->m_State)
-	{
-	case ENEMY_state::JUMP:
-		this->m_Pos.y = this->m_FireBall->m_Pos.y += this->m_vy * deltaTime;
-		if (this->m_Pos.y >= 150)
-		{
-			this->m_State = ENEMY_state::MOVE;
-			this->m_startFrame = 1;
-			this->m_endFrame = 2;
-		}
-		break;
-
-	case ENEMY_state::MOVE:
-		if (this->MoveTo(Vector2(CSimon::GetInstance()->m_Pos.x + ((this->m_Dir == LEFT) ? 100 : -100), CSimon::GetInstance()->m_Pos.y), deltaTime) == true)
-		{
-			this->m_State = ENEMY_state::ATTACK;
-		}
-		this->m_FireBall->m_Pos = Vector2(this->m_Pos.x, this->m_Pos.y + 20);
-		this->ChangeFrame(deltaTime);
-
-		break;
-	case ENEMY_state::ATTACK:
-		/*	if (this->m_FireBall==NULL)
-		{
-
-		}*/
-		if (this->time_delay_attack <= 0)
-		{
-			this->m_State = ENEMY_state::MOVE;
-			this->time_delay_attack = 3.0f;
-		}
-		else
-		{
-			this->time_delay_attack -= deltaTime;
-		}
-		if (this->m_FireBall->MoveTo(Vector2(this->m_Pos.x + ((this->m_Dir == LEFT) ? -600 : 600), this->m_Pos.y + 20), deltaTime))
-		{
-
-		}
-		break;
-	default:
-		break;
-	}
-
-}
+//void CFishMan::Update(float deltaTime)
+//{
+//	//this->m_FireBall->Update(deltaTime);
+//
+//	if ((this->m_Pos.x<CSimon::GetInstance()->m_Pos.x - 100 || this->m_Pos.x>CSimon::GetInstance()->m_Pos.x + 100)
+//		&& this->m_State == ENEMY_state::IDLE)
+//	{
+//		this->m_State = ENEMY_state::JUMP;
+//
+//	}
+//	if (this->m_State != ENEMY_state::IDLE)
+//	{
+//		this->MoveUpdate(deltaTime);
+//
+//	}
+//}
+//
+//
+//void CFishMan::MoveUpdate(float deltaTime)
+//{
+//
+//	switch (this->m_State)
+//	{
+//	case ENEMY_state::JUMP:
+//		this->m_Pos.y = this->m_FireBall->m_Pos.y += this->m_vy * deltaTime;
+//		if (this->m_Pos.y >= 150)
+//		{
+//			this->m_State = ENEMY_state::MOVE;
+//			this->m_startFrame = 1;
+//			this->m_endFrame = 2;
+//		}
+//		break;
+//
+//	case ENEMY_state::MOVE:
+//		if (this->MoveTo(Vector2(CSimon::GetInstance()->m_Pos.x + ((this->m_Dir == LEFT) ? 100 : -100), CSimon::GetInstance()->m_Pos.y), deltaTime) == true)
+//		{
+//			this->m_State = ENEMY_state::ATTACK;
+//		}
+//		this->m_FireBall->m_Pos = Vector2(this->m_Pos.x, this->m_Pos.y + 20);
+//		this->ChangeFrame(deltaTime);
+//
+//		break;
+//	case ENEMY_state::ATTACK:
+//		/*	if (this->m_FireBall==NULL)
+//		{
+//
+//		}*/
+//		if (this->time_delay_attack <= 0)
+//		{
+//			this->m_State = ENEMY_state::MOVE;
+//			this->time_delay_attack = 3.0f;
+//		}
+//		else
+//		{
+//			this->time_delay_attack -= deltaTime;
+//		}
+//		if (this->m_FireBall->MoveTo(Vector2(this->m_Pos.x + ((this->m_Dir == LEFT) ? -600 : 600), this->m_Pos.y + 20), deltaTime))
+//		{
+//
+//		}
+//		break;
+//	default:
+//		break;
+//	}
+//
+//}
 
 RECT * CFishMan::GetRectRS()
 {

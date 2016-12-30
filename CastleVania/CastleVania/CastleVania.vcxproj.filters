@@ -139,6 +139,18 @@
     <Filter Include="Framework\Game Object\Hide Object\Check Simon Die">
       <UniqueIdentifier>{6f72326f-3bce-49a0-a7d1-f922845038a7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Game Object\Enemy\Boss Medusa">
+      <UniqueIdentifier>{494d6548-a384-4654-8769-23719b20e08d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\Enemy\Snake">
+      <UniqueIdentifier>{27734f8f-7778-41a0-8a88-621975457cee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\StateGame\State Game Over">
+      <UniqueIdentifier>{db857561-8ae5-4820-a812-a309337857a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\AnimationObject\Brick With Item">
+      <UniqueIdentifier>{b53e861e-3437-4a5d-9808-a75aa5e8b91d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global.h">
@@ -362,6 +374,24 @@
     <ClInclude Include="CheckSimonDie.h">
       <Filter>Framework\Game Object\Hide Object\Check Simon Die</Filter>
     </ClInclude>
+    <ClInclude Include="BossMedusa.h">
+      <Filter>Framework\Game Object\Enemy\Boss Medusa</Filter>
+    </ClInclude>
+    <ClInclude Include="SnakeManage.h">
+      <Filter>Framework\Game Object\Enemy\Snake</Filter>
+    </ClInclude>
+    <ClInclude Include="Snake.h">
+      <Filter>Framework\Game Object\Enemy\Snake</Filter>
+    </ClInclude>
+    <ClInclude Include="StateGameOver.h">
+      <Filter>Framework\StateGame\State Game Over</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickWithItem.h">
+      <Filter>Framework\Game Object\AnimationObject\Brick With Item</Filter>
+    </ClInclude>
+    <ClInclude Include="BrickWithItemLv2.h">
+      <Filter>Framework\Game Object\AnimationObject\Brick With Item</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture.cpp">
@@ -580,6 +610,24 @@
     </ClCompile>
     <ClCompile Include="CheckSimonDie.cpp">
       <Filter>Framework\Game Object\Hide Object\Check Simon Die</Filter>
+    </ClCompile>
+    <ClCompile Include="BossMedusa.cpp">
+      <Filter>Framework\Game Object\Enemy\Boss Medusa</Filter>
+    </ClCompile>
+    <ClCompile Include="SnakeManage.cpp">
+      <Filter>Framework\Game Object\Enemy\Snake</Filter>
+    </ClCompile>
+    <ClCompile Include="Snake.cpp">
+      <Filter>Framework\Game Object\Enemy\Snake</Filter>
+    </ClCompile>
+    <ClCompile Include="StateGameOver.cpp">
+      <Filter>Framework\StateGame\State Game Over</Filter>
+    </ClCompile>
+    <ClCompile Include="BrickWithItem.cpp">
+      <Filter>Framework\Game Object\AnimationObject\Brick With Item</Filter>
+    </ClCompile>
+    <ClCompile Include="BrickWithItemLv2.cpp">
+      <Filter>Framework\Game Object\AnimationObject\Brick With Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

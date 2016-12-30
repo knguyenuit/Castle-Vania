@@ -1,43 +1,93 @@
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\vc140.pdb
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\vc140.idb
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\game.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\gamemanager.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\ground.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\hinhchunhat.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\hinhvuong.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\input.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\item.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\itemmanage.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\loadbackground.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\loadobject.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\main.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\move.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\oncollision.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\poolobject.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\simon.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\sprite.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\texture.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\viewwindows.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\animation.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\basegameobject.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\camera.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\cane.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\castlevania.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\collision.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\device.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\drawobject.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\fileutil.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\blackleopard.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\enemy.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\enemymanage.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\vampirebat.obj
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\zombie.obj
-d:\study\courses\game\cv\trunk\castlevania\debug\castlevania.ilk
-d:\study\courses\game\cv\trunk\castlevania\debug\castlevania.exe
-d:\study\courses\game\cv\trunk\castlevania\debug\castlevania.pdb
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\castlevania.tlog\cl.command.1.tlog
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\castlevania.tlog\cl.read.1.tlog
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\castlevania.tlog\cl.write.1.tlog
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\castlevania.tlog\link.command.1.tlog
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\castlevania.tlog\link.read.1.tlog
-d:\study\courses\game\cv\trunk\castlevania\castlevania\debug\castlevania.tlog\link.write.1.tlog
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\vc140.pdb
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\vc140.idb
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\rockfallanimate.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\simon.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\simonintro.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\smalllight.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\soundutil.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\sprite.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\stair.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\state.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\stategameintro.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\stategamemanager.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\stategameplay.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\stategamestart.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\texture.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\upstairleft.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\upstairright.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\vampirebat.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\viewwindows.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\weapon.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\weaponmanage.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\zombie.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\gamemanager.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\ground.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\hideobject.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\hideobjectmanage.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\hinhchunhat.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\hinhvuong.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\input.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\item.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\itemmanage.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\level.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\loadbackground.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\loadobject.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\main.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\manageaudio.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\move.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\oncollision.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\poolobject.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\quadnode.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\quadobject.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\quadtree.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\blackleopard.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\bossvampirebat.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\brick.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\camera.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\cane.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\castlevania.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\changescreen.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\collision.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\device.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\downstairleft.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\downstairright.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\drawfont.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\drawobject.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\enemy.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\enemymanage.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\fileutil.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\fireball.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\fireonanimate.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\fishman.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\game.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\animation.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\animationobject.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\animationobjectmanage.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\banner.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\basegameobject.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\blackknight.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\brickvertical.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\groundmovingplatform.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\groundmovingmanage.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\medusa.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\fireballmanage.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\dragonskullcannon.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\stopscrollcamera.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\changedown.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\checksimondie.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\bossmedusa.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\snake.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\snakemanage.obj
+d:\game castlevania\castle vania\trunk\castlevania\debug\castlevania.ilk
+d:\game castlevania\castle vania\trunk\castlevania\debug\castlevania.exe
+d:\game castlevania\castle vania\trunk\castlevania\debug\castlevania.pdb
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\moneybagpoint.obj
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\brick.obj.enc
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\enemy.obj.enc
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\simon.obj.enc
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\castlevania.tlog\cl.command.1.tlog
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\castlevania.tlog\cl.read.1.tlog
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\castlevania.tlog\cl.write.1.tlog
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\castlevania.tlog\link.command.1.tlog
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\castlevania.tlog\link.read.1.tlog
+d:\game castlevania\castle vania\trunk\castlevania\castlevania\debug\castlevania.tlog\link.write.1.tlog
