@@ -32,7 +32,7 @@ void CChangeScreen::OnSimonCollision(float deltaTime)
 	CDirection normalY;
 	float timeCollision;
 	timeCollision = COnCollision::GetInstance()->SweepAABB(this->simon->GetBox(), this->GetBox(), normalX, normalY, deltaTime);
-	if (normalX == CDirection::ON_LEFT || normalX == CDirection::ON_RIGHT)
+	if (normalX == CDirection::ON_LEFT || normalX == CDirection::ON_RIGHT || normalY == ON_UP || normalY == ON_DOWN)
 	{
 		
 		this->simon->isCheckChangeState = true;

@@ -11,7 +11,7 @@ CSimon::CSimon()
 	this->InitMove();
 	this->InitAnimation();
 	this->cane = new CCane();
-	this->m_currentLevel = 4;
+	this->m_currentLevel = 5;
 	this->hv = new CHinhChuNhat();
 	this->m_currentWeapon = WEAPON_name::Dagger;
 	//init stair status
@@ -43,7 +43,7 @@ void CSimon::InitMove()
 	this->m_a = -1300;
 	this->m_aDefault = this->m_a;
 	this->m_ax = 0;
-	this->m_Pos = this->m_PosDefault = Vector2(100, 90);
+	this->m_Pos = this->m_PosDefault = Vector2(3000, 90);
 	this->m_Width = 60;
 	this->m_Height = 68;
 	this->m_isJumping = false;
@@ -83,7 +83,7 @@ void CSimon::Update(float deltaTime)
 
 void CSimon::Gravity(float deltaTime)
 {
-	if (this->isOnStair == false && this->isMoveToStair == false)
+	if (this->isOnStair == false && this->isMoveToStair == false && isWeaponAttacking == false)
 	{
 		this->m_Pos.y -= this->m_weight * 10 * deltaTime;
 	}
@@ -182,28 +182,78 @@ bool CSimon::MoveTo(Vector2 point, float deltaTime)
 
 void CSimon::ResetSimon()
 {
-	if (m_currentLevel == 3)
+	//if (m_currentLevel == 3)
+	//{
+	//	//m_Pos = Vector2(100, 40);
+	//	m_Pos = Vector2(129,300);
+	//	//simon_Status = SIMON_status::ONSTAIR;
+	//	//this->isOnStair = true;
+	//}
+	//else
+	//{
+	//	if (m_currentLevel == 4)
+	//	{
+	//		m_Pos = Vector2(200, 90);
+	//		simon_Status = SIMON_status::IDLE;
+	//		this->isOnStair = false;
+	//		this->isCancelStairMove = true;
+	//	}
+	//	else
+	//	{
+	//		if (m_currentLevel == 5)
+	//		{
+	//			m_Pos = Vector2(100, 40);
+	//			simon_Status = SIMON_status::IDLE;
+	//		}
+	//		else
+	//		{
+	//			m_Pos = CSimon::GetInstance()->m_PosDefault;
+	//			simon_Status = SIMON_status::IDLE;
+	//		}
+	//	}
+	//	
+	//}
+	switch (m_currentLevel)
 	{
+	case 1:
+		m_Pos = CSimon::GetInstance()->m_PosDefault;
+		simon_Status = SIMON_status::IDLE;
+		break;
+	case 2:
+		m_Pos = CSimon::GetInstance()->m_PosDefault;
+		simon_Status = SIMON_status::IDLE;
+		break;
+	case 3:
+		this->m_Pos = Vector2(129, 300);
+
+		break;
+	case 4:
+		m_Pos = Vector2(200, 90);
+		simon_Status = SIMON_status::IDLE;
+		this->isOnStair = false;
+		this->isCancelStairMove = true;
+		break;
+	case 5:
 		m_Pos = Vector2(100, 40);
 		simon_Status = SIMON_status::IDLE;
-	}
-	else
-	{
-		if (m_currentLevel == 4)
-		{
-			m_Pos = Vector2(1000, 250);
-			simon_Status = SIMON_status::IDLE;
-		}
-		else
-		{
-			m_Pos = CSimon::GetInstance()->m_PosDefault;
-			simon_Status = SIMON_status::IDLE;
-		}
-		
+		break;
+	case 6:
+		break;
+	case 7: 
+		break;
+	case 8:
+		break;
+	case 9:
+		break;
+	default:
+		break;
 	}
 	m_hpSimon = 16;
 	m_isLive = true;
+	canChangeDown = false;
+	isChangeDown = false;
 	CCamera::GetInstance()->m_pos.x = m_Pos.x - 100;
+	CCamera::GetInstance()->isStopScrollCamera = false;
 	ManageAudio::GetInstance()->stopSound(TypeAudio::Life_Lost);
 	ManageAudio::GetInstance()->playSound(TypeAudio::Stage_01_Vampire_Killer);
 }
@@ -986,6 +1036,11 @@ void CSimon::OnKeyDown(float deltaTime)
 		if (this->isCancelStairMove == true)
 		{
 			this->isArrowKeyDown = true;
+		}
+		if (this->canChangeDown)
+		{
+			isChangeDown = true;
+			isCheckChangeState = true;
 		}
 		//if (this->canSit == true)
 		//{

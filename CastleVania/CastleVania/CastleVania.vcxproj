@@ -158,7 +158,9 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Cane.h" />
     <ClInclude Include="CastleVania.h" />
+    <ClInclude Include="ChangeDown.h" />
     <ClInclude Include="ChangeScreen.h" />
+    <ClInclude Include="CheckSimonDie.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="Device.h" />
     <ClInclude Include="DownStairLeft.h" />
@@ -211,6 +213,7 @@
     <ClInclude Include="StateGameManager.h" />
     <ClInclude Include="StateGamePlay.h" />
     <ClInclude Include="StateGameStart.h" />
+    <ClInclude Include="StopScrollCamera.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="UpStairLeft.h" />
     <ClInclude Include="UpStairRight.h" />
@@ -234,7 +237,9 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Cane.cpp" />
     <ClCompile Include="CastleVania.cpp" />
+    <ClCompile Include="ChangeDown.cpp" />
     <ClCompile Include="ChangeScreen.cpp" />
+    <ClCompile Include="CheckSimonDie.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Device.cpp" />
     <ClCompile Include="DownStairLeft.cpp" />
@@ -285,6 +290,7 @@
     <ClCompile Include="StateGameManager.cpp" />
     <ClCompile Include="StateGamePlay.cpp" />
     <ClCompile Include="StateGameStart.cpp" />
+    <ClCompile Include="StopScrollCamera.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="UpStairLeft.cpp" />
     <ClCompile Include="UpStairRight.cpp" />

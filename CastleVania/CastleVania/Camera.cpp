@@ -16,11 +16,14 @@ CCamera::~CCamera()
 }
 void CCamera::Update(float x, float y)
 {
-	if (x>320)
+	if (!isStopScrollCamera)
 	{
-		m_pos.x = x - 320;
+		if (x > 320)
+		{
+			m_pos.x = x - 320;
+		}
+		m_pos.y = __SCREEN_HEIGHT;
 	}
-	m_pos.y = __SCREEN_HEIGHT;
 	/*f (m_pos.x < x)
 	{
 		m_pos.x = x;

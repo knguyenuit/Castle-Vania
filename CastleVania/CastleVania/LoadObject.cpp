@@ -148,6 +148,12 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos, int width, int h
 	case 704:
 		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::UpStairLeft, pos);
 		break;
+	case 706:
+		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::StopScrollScene, pos);
+		break;
+	case 716:
+		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::ChangeDown, pos);
+		break;
 	case 712:
 		return new CBrickVertical(pos, width, height);
 		break;
@@ -157,6 +163,9 @@ CBaseGameObject* CLoadObject::CreateObject(int id, Vector2 pos, int width, int h
 	
 	case 714:
 		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::UpStairRight, pos);
+		break;
+	case 888:
+		return CHideObjectManage::GetInstance()->CreateHideObject(HideObject_TYPE::CheckSimonDie, pos);
 		break;
 	case 653:
 		return CGroundMovingManage::GetInstance()->CreateGroundMovingPlatform(pos);

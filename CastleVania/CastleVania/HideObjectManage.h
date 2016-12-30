@@ -7,6 +7,9 @@
 #include "UpStairRight.h"
 #include "ChangeScreen.h"
 #include "BrickVertical.h"
+#include "StopScrollCamera.h"
+#include "ChangeDown.h"
+#include "CheckSimonDie.h"
 
 class CHideObjectManage :
 	public CSingleton<CHideObjectManage>

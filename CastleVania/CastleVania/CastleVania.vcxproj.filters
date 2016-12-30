@@ -127,6 +127,18 @@
     <Filter Include="Framework\Game Object\Enemy\DragonSkullCannon">
       <UniqueIdentifier>{dc9900f1-406d-46e5-9164-9e2686ed8c3e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Game Object\Hide Object\Stop Scroll Camera">
+      <UniqueIdentifier>{60a9c864-5f39-4761-86c4-36c5489b5b4a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\Hide Object\Change Down">
+      <UniqueIdentifier>{02f2f727-32bc-4f53-8ecd-f81c678b07fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\Enemy\Fire Ball">
+      <UniqueIdentifier>{8cdd3475-04b7-4592-9cf8-020204db9f27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Game Object\Hide Object\Check Simon Die">
+      <UniqueIdentifier>{6f72326f-3bce-49a0-a7d1-f922845038a7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global.h">
@@ -244,9 +256,6 @@
     <ClInclude Include="BossVampireBat.h">
       <Filter>Framework\Game Object\Enemy\Boss VampireBat</Filter>
     </ClInclude>
-    <ClInclude Include="FireBall.h">
-      <Filter>Framework\Game Object\Enemy\Fish Man</Filter>
-    </ClInclude>
     <ClInclude Include="FishMan.h">
       <Filter>Framework\Game Object\Enemy\Fish Man</Filter>
     </ClInclude>
@@ -335,9 +344,23 @@
     <ClInclude Include="Medusa.h">
       <Filter>Framework\Game Object\Enemy\Medusa</Filter>
     </ClInclude>
-    <ClInclude Include="FireBallManage.h" />
     <ClInclude Include="DragonSkullCannon.h">
       <Filter>Framework\Game Object\Enemy\DragonSkullCannon</Filter>
+    </ClInclude>
+    <ClInclude Include="StopScrollCamera.h">
+      <Filter>Framework\Game Object\Hide Object\Stop Scroll Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="ChangeDown.h">
+      <Filter>Framework\Game Object\Hide Object\Change Down</Filter>
+    </ClInclude>
+    <ClInclude Include="FireBallManage.h">
+      <Filter>Framework\Game Object\Enemy\Fire Ball</Filter>
+    </ClInclude>
+    <ClInclude Include="FireBall.h">
+      <Filter>Framework\Game Object\Enemy\Fire Ball</Filter>
+    </ClInclude>
+    <ClInclude Include="CheckSimonDie.h">
+      <Filter>Framework\Game Object\Hide Object\Check Simon Die</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -452,9 +475,6 @@
     <ClCompile Include="BossVampireBat.cpp">
       <Filter>Framework\Game Object\Enemy\Boss VampireBat</Filter>
     </ClCompile>
-    <ClCompile Include="FireBall.cpp">
-      <Filter>Framework\Game Object\Enemy\Fish Man</Filter>
-    </ClCompile>
     <ClCompile Include="FishMan.cpp">
       <Filter>Framework\Game Object\Enemy\Fish Man</Filter>
     </ClCompile>
@@ -543,9 +563,23 @@
     <ClCompile Include="Medusa.cpp">
       <Filter>Framework\Game Object\Enemy\Medusa</Filter>
     </ClCompile>
-    <ClCompile Include="FireBallManage.cpp" />
     <ClCompile Include="DragonSkullCannon.cpp">
       <Filter>Framework\Game Object\Enemy\DragonSkullCannon</Filter>
+    </ClCompile>
+    <ClCompile Include="StopScrollCamera.cpp">
+      <Filter>Framework\Game Object\Hide Object\Stop Scroll Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="ChangeDown.cpp">
+      <Filter>Framework\Game Object\Hide Object\Change Down</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBall.cpp">
+      <Filter>Framework\Game Object\Enemy\Fire Ball</Filter>
+    </ClCompile>
+    <ClCompile Include="FireBallManage.cpp">
+      <Filter>Framework\Game Object\Enemy\Fire Ball</Filter>
+    </ClCompile>
+    <ClCompile Include="CheckSimonDie.cpp">
+      <Filter>Framework\Game Object\Hide Object\Check Simon Die</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

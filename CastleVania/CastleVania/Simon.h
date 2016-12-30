@@ -146,6 +146,10 @@ public:
 	// mau  boss enemy (choi lay)
 	int m_BossVampireBatHP = 16;
 	WEAPON_name m_currentWeapon;
+public: // change screeen down
+	bool canChangeDown = false;
+	bool isChangeDown = false;
+
 private:
 	void InitAnimation();//khoi tao cac thong so cua Simon
 	void InitMove();//khoi tao cac thong so chuyen dong cua Simon

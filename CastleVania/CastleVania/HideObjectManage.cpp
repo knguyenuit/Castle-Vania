@@ -37,6 +37,7 @@ CHideObject * CHideObjectManage::CreateHideObject(HideObject_TYPE type, Vector2 
 		break;
 		break;
 	case StopScrollScene:
+		obj = new CStopScrollCamera(HideObject_TYPE::StopScrollScene, pos);
 		break;
 	case ChangeScene:
 		obj = new CChangeScreen(HideObject_TYPE::ChangeScene, pos);
@@ -61,6 +62,10 @@ CHideObject * CHideObjectManage::CreateHideObject(HideObject_TYPE type, Vector2 
 	case ChangeTop:
 		break;
 	case ChangeDown:
+		obj = new CChangeDown(HideObject_TYPE::ChangeDown, pos);
+		break;
+	case CheckSimonDie:
+		obj = new CCheckSimonDie(HideObject_TYPE::CheckSimonDie, pos);
 		break;
 	default:
 		break;

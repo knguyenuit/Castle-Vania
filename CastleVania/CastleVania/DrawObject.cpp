@@ -113,6 +113,10 @@ void CDrawObject::Draw(CBaseGameObject *obj)// quan li viec load va ve cac doi t
 			texture->LoadImageFromFile(ENEMY_BLACKLEOPARD, D3DCOLOR_XRGB(255, 0, 255));
 			this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 			break;
+		case 205:
+			texture->LoadImageFromFile(ENEMY_FISHMAN, D3DCOLOR_XRGB(255, 0, 255));
+			this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+			break;
 		case 203:
 			texture->LoadImageFromFile(ENEMY_VAMPIREBAT, D3DCOLOR_XRGB(255, 0, 255));
 			this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);

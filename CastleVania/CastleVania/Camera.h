@@ -15,6 +15,7 @@ public:
 	Vector3 GetPointTransform(float x, float y); // Tra ve vi tri da transform
 	Vector3 m_pos;
 	Matrix m_matrixTransform;
+	bool isStopScrollCamera = false;
 public:
 	Vector3 GetCameraPos();
 	void SetPos(Vector3);
