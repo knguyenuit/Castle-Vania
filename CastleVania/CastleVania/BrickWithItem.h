@@ -16,6 +16,7 @@ public:
 	void OnCaneCollision(float deltaTime);
 	void OnSimonCollision(float deltaTime);
 	float isCaneCollision = false;
+	RECT * GetRectRS();
 };
 
 #endif // !__BRICKWITHITEM_H__

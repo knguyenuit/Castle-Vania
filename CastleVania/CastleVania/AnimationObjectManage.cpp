@@ -125,7 +125,7 @@ void CAnimationObjectManage::CreateAnimationObject(int lv)
 	}
 	if (lv == 4)
 	{
-		this->CreateAnimation(Animation_object::BrickItemLv1, Vector2(1904, 108), ITEM_name::PorkChop);
+		this->CreateAnimation(Animation_object::BrickItemLv1, Vector2(1904, 105), ITEM_name::PorkChop)->m_DrawFlip = DrawFlip::X;
 	}
 	if (lv == 6)
 	{
