@@ -28,6 +28,9 @@ public:
 	void OnSimonCollision(float deltaTime);
 	void OnCaneCollision(float deltaTime);
 	void OnWeaponCollision(float deltaTime, std::vector<CWeapon*> listWeapon);
+
+	//time count
+	float timeCount = 0;
 };
 
 #endif // !__BOSSMEDUSA_H__

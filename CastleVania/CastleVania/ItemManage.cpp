@@ -230,6 +230,13 @@ void CItemManage::OnSimonCollision(float deltaTime)
 					this->simon->m_Score += 1000;
 					return;
 					break;
+				case ITEM_name::MagicalCrystal:
+					this->m_ListItem.erase(it);//xoa item khoi list khi cham vao simon
+					ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
+					this->simon->m_hpSimon = 16;
+					this->simon->m_Score += 2000;
+					return;
+					break;
 				default:
 					return;
 					break;

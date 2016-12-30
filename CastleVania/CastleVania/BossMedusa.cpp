@@ -36,7 +36,7 @@ void CBossMedusa::Init()
 	this->m_startFrame = 4;
 	this->m_endFrame = 4;
 	this->m_currentTime = 0;
-	this->m_currentFrame = 0;
+	this->m_currentFrame = 4;
 	this->m_elapseTimeChangeFrame = 0.3f;
 	this->m_increase = 1;
 	this->m_totalFrame = 5;
@@ -59,20 +59,7 @@ void CBossMedusa::MoveUpdate(float deltaTime)
 	float cameraPosX = camera->m_pos.x, cameraPosY = camera->m_pos.y;
 	if (this->time_delay_step == 0.3f)
 	{
-		if (this->m_Pos.x > this->simon->m_Pos.x)
-		{
-			this->m_Dir = LEFT;
-			if (this->m_Step % 2 == 0)
-			{
-				this->next_step_pos = this->current_step_pos + Vector2(-64, 16);
-			}
-			else
-			{
-				this->next_step_pos = this->current_step_pos + Vector2(-64, -16);
-			}
-
-		}
-		else
+		if (this->m_Pos.x < this->simon->m_Pos.x && this->m_Pos.x < 300)
 		{
 			this->m_Dir = RIGHT;
 			if (this->m_Step % 2 == 0)
@@ -82,6 +69,18 @@ void CBossMedusa::MoveUpdate(float deltaTime)
 			else
 			{
 				this->next_step_pos = this->current_step_pos + Vector2(64, -16);
+			}
+		}
+		else
+		{
+			this->m_Dir = LEFT;
+			if (this->m_Step % 2 == 0)
+			{
+				this->next_step_pos = this->current_step_pos + Vector2(-64, 16);
+			}
+			else
+			{
+				this->next_step_pos = this->current_step_pos + Vector2(-64, -16);
 			}
 		}
 	}
@@ -132,11 +131,14 @@ void CBossMedusa::Update(float deltaTime)
 	this->simon->m_BossVampireBatHP = this->m_enemyHP;
 	if (this->m_enemyHP <= 0)
 	{
+		
+			CSimon::GetInstance()->m_countLife = -1;
+		
 		this->m_isRemove = true;
 		CItemManage::GetInstance()->CreateItem(this->enemyItem, this->m_PosDefault + Vector2(0, -200));
 	}
 
-	if (this->m_Pos.x <= CSimon::GetInstance()->m_Pos.x&&this->m_State == ENEMY_state::IDLE)
+	if (this->m_Pos.x >= CSimon::GetInstance()->m_Pos.x&&this->m_State == ENEMY_state::IDLE)
 	{
 		this->m_State = ENEMY_state::MOVE;
 	}

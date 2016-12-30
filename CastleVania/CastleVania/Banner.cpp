@@ -104,7 +104,7 @@ void CBanner::Update(float deltaTime)
 			this->m_textureWeapon->LoadImageFromFile(FIRE_BOMB_BANNER, D3DCOLOR_XRGB(255, 0, 255));
 			break;
 		case WEAPON_name::None:
-			this->m_textureWeapon = NULL;
+			this->m_textureWeapon->LoadImageFromFile(NONE_WEAPON_BANNER, D3DCOLOR_XRGB(255, 0, 255));
 			break;
 		}
 }

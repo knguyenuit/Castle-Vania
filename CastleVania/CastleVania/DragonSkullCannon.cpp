@@ -50,3 +50,46 @@ void CDragonSkullCannon::Update(float deltaTime)
 	CFireBallManage::GetInstance()->Draw();
 	OnWeaponCollision(deltaTime, CWeaponManage::GetInstance()->m_weaponList);
 }
+
+void CDragonSkullCannon::OnCaneCollision()
+{
+	if (this->simon->cane->getCurrentFrame() == 2 ||
+		this->simon->cane->getCurrentFrame() == 6 ||
+		this->simon->cane->getCurrentFrame() == 10)
+	{
+		if (CCollision::GetInstance()->AABBCheck(this->simon->cane->GetBox(), this->GetBox()))
+		{
+			CAnimationObjectManage::GetInstance()->CreateAnimation(Animation_object::FireOn, this->m_Pos);
+			this->simon->m_Score += 10;
+			this->m_isRemove = true;
+			CSimon::GetInstance()->isAttackEnemy = true;
+			if (CSimon::GetInstance()->isAttackEnemy)
+			{
+				ManageAudio::GetInstance()->playSound(TypeAudio::Hit);
+				CSimon::GetInstance()->isAttackEnemy = false;
+				CFireBallManage::GetInstance()->m_ListFireBall.clear();
+			}
+			if (this->enemyItem != ITEM_name::None)
+			{
+				CItemManage::GetInstance()->CreateItem(this->enemyItem, this->GetPos());
+			}
+			else
+			{
+				CItemManage::GetInstance()->CreateRandomItem(this->GetPos());
+			}
+
+			/*switch (this->enemyType)
+			{
+			case ENEMY_type::Zombie:
+
+			break;
+			case ENEMY_type::BlackLeopard:
+			this->changeState(ENEMY_state::FREE);
+			break;
+			default:
+			break;
+			}*/
+		}
+
+	}
+}

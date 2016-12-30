@@ -147,6 +147,9 @@ public:
 	// mau  boss enemy (choi lay)
 	int m_BossVampireBatHP = 16;
 	WEAPON_name m_currentWeapon;
+
+	// co cho ve fireball hay ko
+
 public: // change screeen down
 	bool canChangeDown = false;
 	bool isChangeDown = false;

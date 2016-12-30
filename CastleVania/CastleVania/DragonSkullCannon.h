@@ -12,6 +12,8 @@ public:
 	float timeCountIntanceFireBall = 0; // thoi gian instance ra 1 fire ball
 	Vector2 posIntanceFireBall1;
 	Vector2 posIntanceFireBall2;
+	void OnCaneCollision();
+	
 public:
 	void Init();
 	void Update(float deltaTime);

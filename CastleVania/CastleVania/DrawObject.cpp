@@ -92,7 +92,7 @@ void CDrawObject::Draw(CBaseGameObject *obj)// quan li viec load va ve cac doi t
 			break;
 		case 207:
 			texture->LoadImageFromFile(ENEMY_DRAGON_SKULL, D3DCOLOR_XRGB(255, 0, 255));
-			if (obj->m_Dir == LEFT)
+			if (obj->m_Dir == RIGHT)
 			{
 				this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 			}
@@ -126,7 +126,7 @@ void CDrawObject::Draw(CBaseGameObject *obj)// quan li viec load va ve cac doi t
 			break;
 		case 204:
 			texture->LoadImageFromFile(ENEMY_MEDUSA, D3DCOLOR_XRGB(255, 0, 255));
-			this->m_draw->Draw(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
+			this->m_draw->DrawFlipX(texture, obj->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 			break;
 		case 203:
 			texture->LoadImageFromFile(ENEMY_VAMPIREBAT, D3DCOLOR_XRGB(255, 0, 255));

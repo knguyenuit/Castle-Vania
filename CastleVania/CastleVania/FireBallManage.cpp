@@ -27,7 +27,7 @@ void CFireBallManage::Update(float deltaTime)
 			}
 		}
 	}
-}
+ }
 
 void CFireBallManage::CreateFireBall(Vector2 pos, Direction m_Dir)
 {

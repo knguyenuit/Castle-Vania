@@ -71,6 +71,7 @@
 #define AXE_BANNER "..\\Resources\\image\\item\\Axe.png"
 #define BOOMERANG_BANNER "..\\Resources\\image\\item\\Boomerang.png"
 #define FIRE_BOMB_BANNER "..\\Resources\\image\\item\\FireBomb.png"
+#define NONE_WEAPON_BANNER "..\\Resources\\image\\item\\None.png"
 #define CROSS_BANNER "..\\Resources\\image\\item\\Cross.png"
 
 //ANIMATION

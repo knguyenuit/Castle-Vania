@@ -11,7 +11,7 @@ CSimon::CSimon()
 	this->InitMove();
 	this->InitAnimation();
 	this->cane = new CCane();
-	this->m_currentLevel = 3;
+	this->m_currentLevel = 1;
 	this->hv = new CHinhChuNhat();
 	this->m_currentWeapon = WEAPON_name::Dagger;
 	//init stair status
@@ -231,7 +231,7 @@ void CSimon::ResetSimon()
 		isSimonDie = false;
 		break;
 	case 4:
-		m_Pos = Vector2(200, 90);
+		m_Pos = Vector2(150, 90);
 		simon_Status = SIMON_status::IDLE;
 		this->isOnStair = false;
 		this->isCancelStairMove = true;
@@ -273,7 +273,7 @@ void CSimon::ResetSimon()
 		}
 		else
 		{
-			m_Pos = Vector2(1360, 200);
+			m_Pos = Vector2(1360, 30);
 		}
 		isSimonDie = false;
 		simon_Status = SIMON_status::IDLE;
@@ -1023,6 +1023,9 @@ void CSimon::OnKeyDown(float deltaTime)
 	case DIK_L:
 		this->isKey_L = true;
 		break;
+	case DIK_A:
+		this->m_currentWeapon = WEAPON_name::None;
+		break;
 	case DIK_SPACE:
 		/*if (canJump)
 		{
@@ -1107,7 +1110,11 @@ void CSimon::OnKeyDown(float deltaTime)
 		this->isCheckChangeState = true;
 		break;
 	case DIK_E:
-		this->isWeaponAttacking = true;
+		if (this->m_currentWeapon!=WEAPON_name::None)
+		{
+			this->isWeaponAttacking = true;
+		}
+		
 		break;
 	default:
 		break;
