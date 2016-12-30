@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __FIREBALLMANAGE_H__
+#define __FIREBALLMANAGE_H__
 #include "FireBall.h"
 #include "Singleton.h"	
 class CFireBallManage : public CSingleton<CFireBallManage>
@@ -14,6 +15,8 @@ public:
 	
 	void DrawFireBall(CFireBall* obj);
 	void Draw();
+	CTexture* Texture = new CTexture();
 	CSprite* m_draw; //quan ly viec ve
 };
 
+#endif // !__FIREBALLMANAGE_H__

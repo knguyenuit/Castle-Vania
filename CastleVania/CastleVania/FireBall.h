@@ -18,6 +18,7 @@ public:
 	void MoveUpdate(float deltaTime);
 	float m_currentTimeLife = 0;
 	RECT * GetRectRS();
+	CTexture* Texture = new CTexture();
 	CSprite * m_draw;
 };
 

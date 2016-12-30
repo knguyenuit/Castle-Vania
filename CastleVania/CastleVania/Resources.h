@@ -47,7 +47,7 @@
 #define WEAPON_BOOMERANG "..\\Resources\\image\\weapon\\Boomerang.png"
 #define WEAPON_DAGGER "..\\Resources\\image\\weapon\\Dagger.png"
 #define WEAPON_FIREBOMB "..\\Resources\\image\\weapon\\FireBomb2.png"
-
+#define WEAPON_SNAKE "..\\Resources\\image\\boss\\2.png"
 //Enemy
 #define ENEMY_ZOMBIE "..\\Resources\\image\\enemy\\Zombie.png"
 #define ENEMY_BLACKLEOPARD "..\\Resources\\image\\enemy\\BlackLeopard.png"
@@ -61,6 +61,8 @@
 #define ENEMY_DRAGON_SKULL "..\\Resources\\image\\enemy\\DragonSkullCannon.png"
 //BOSS
 #define BOSS_VAMPIREBAT "..\\Resources\\image\\boss\\0.png"
+#define BOSS_MEDUSA "..\\Resources\\image\\boss\\1.png"
+#define BOSS_SNAKE "..\\Resources\\image\\boss\\2.png"
 
 //Banner
 #define BANNER "..\\Resources\\image\\Banner\\fullbanner.png"

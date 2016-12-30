@@ -15,6 +15,7 @@
 #include "BlackKnight.h"
 #include "Medusa.h"
 #include "DragonSkullCannon.h"
+#include "BossMedusa.h"
 class CEnemyManage : public CSingleton<CEnemyManage>
 {
 	friend class CSingleton<CEnemyManage>;

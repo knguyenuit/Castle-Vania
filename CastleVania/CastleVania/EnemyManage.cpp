@@ -16,6 +16,7 @@ CEnemyManage::CEnemyManage()
 	/*CreateEnemy(SmallLight, Vector2(300, 100));*/
 	CreateEnemy(Medusa, Vector2(800, 250));
 	CreateEnemy(DragonSkullCanon, Vector2(900, 300));
+	CreateEnemy(BossMedusa, Vector2(300, 100));
 }
 CEnemyManage::~CEnemyManage()
 {
@@ -26,9 +27,9 @@ void CEnemyManage::Update(float deltaTime)
 
 	if (CSimon::GetInstance()->cane->m_checkActive)
 	{
-		CEnemyManage::OnCaneCollision();
+		//CEnemyManage::OnCaneCollision();
 	}
-	CEnemyManage::OnSimonCollision(deltaTime);
+	//CEnemyManage::OnSimonCollision(deltaTime);
 	if (!this->m_ListEnemy.empty())
 	{
 		for (std::vector<CEnemy*>::iterator it = this->m_ListEnemy.begin();
@@ -177,6 +178,9 @@ CEnemy* CEnemyManage::CreateEnemy(ENEMY_type enemyType, Vector2 pos)
 	case ENEMY_type::DragonSkullCanon:
 		enemy = new CDragonSkullCannon(pos);
 		break;
+	case ENEMY_type::BossMedusa:
+		enemy = new CBossMedusa(pos);
+		break;
 	default:
 		break;
 	}
@@ -232,7 +236,8 @@ void CEnemyManage::DrawEnemy(CEnemy* enemyObj)
 	case BossVampireBat:
 		Texture->LoadImageFromFile(BOSS_VAMPIREBAT, D3DCOLOR_XRGB(255, 0, 255));
 		break;
-	case BossLevel2:
+	case BossMedusa:
+		Texture->LoadImageFromFile(BOSS_MEDUSA, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 		//object
 	case SmallLight:

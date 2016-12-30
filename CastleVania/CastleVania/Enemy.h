@@ -25,7 +25,8 @@ enum ENEMY_type
 	FireBall = 211,
 	Bullet = 212,
 	BossVampireBat = 401,
-	BossLevel2 = 402,
+	BossMedusa = 402,
+	Snake = 403,
 	SmallLight = 600
 };
 

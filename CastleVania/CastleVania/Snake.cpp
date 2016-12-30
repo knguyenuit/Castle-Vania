@@ -1,16 +1,15 @@
-#include "FireBall.h"
+#include "Snake.h"
 
 
-CFireBall::CFireBall()
+
+CSnake::CSnake()
 {
-	//this->m_vxDefault = this->m_vx = 300;
-	//this->m_vyDefault = this->m_vx = 300;
 	this->Init();
 	this->m_Pos = Vector2(300, 300);
 	this->m_Dir = LEFT;
 }
 
-CFireBall::CFireBall(Vector2 pos, Direction dir)
+CSnake::CSnake(Vector2 pos, Direction dir)
 {
 	this->m_PosDefault = this->m_Pos = pos;
 	this->m_Dir = dir;
@@ -19,7 +18,7 @@ CFireBall::CFireBall(Vector2 pos, Direction dir)
 	this->Init();
 }
 
-CFireBall::CFireBall(Vector2 pos, Direction dir, float v_x, float v_y)
+CSnake::CSnake(Vector2 pos, Direction dir, float v_x, float v_y)
 {
 	this->m_PosDefault = this->m_Pos = pos;
 	this->m_Dir = dir;
@@ -28,24 +27,23 @@ CFireBall::CFireBall(Vector2 pos, Direction dir, float v_x, float v_y)
 	this->Init();
 }
 
-void CFireBall::Init()
+void CSnake::Init()
 {
-	this->enemyType = ENEMY_type::FireBall;
-	this->m_Width = 14;
-	this->m_Height = 12;
+	this->enemyType = ENEMY_type::Snake;
+	this->m_Width = 64;
+	this->m_Height = 20;
 }
 
 
-CFireBall::~CFireBall()
+CSnake::~CSnake()
 {
 }
 
-void CFireBall::Draw()
+void CSnake::Draw()
 {
-	
 	Vector3 pos = Vector3();
 	pos = CCamera::GetInstance()->GetPointTransform(this->m_Pos.x, this->m_Pos.y);
-	this->Texture->LoadImageFromFile(ENEMY_FIREBALL, D3DCOLOR_XRGB(255, 0, 255));
+	Texture->LoadImageFromFile(BOSS_SNAKE, D3DCOLOR_XRGB(255, 0, 255));
 	if (this->m_Dir == LEFT)
 	{
 		this->m_draw->Draw(this->Texture, this->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
@@ -54,12 +52,15 @@ void CFireBall::Draw()
 	{
 		this->m_draw->DrawFlipX(this->Texture, this->GetRectRS(), pos, D3DCOLOR_XRGB(255, 255, 255), true);
 	}
-
 }
 
-void CFireBall::Update(float deltaTime)
+void CSnake::Update(float deltaTime)
 {
-	//this->Draw();
+	this->OnSimonCollision(deltaTime);
+	if (this->simon->cane->m_checkActive == true)
+	{
+		this->OnCaneCollision();
+	}
 	MoveUpdate(deltaTime);
 	m_currentTimeLife += deltaTime;
 	if (m_currentTimeLife >= 3)
@@ -69,7 +70,7 @@ void CFireBall::Update(float deltaTime)
 	}
 }
 
-void CFireBall::MoveUpdate(float deltaTime)
+void CSnake::MoveUpdate(float deltaTime)
 {
 	if (this->m_Dir == LEFT)
 	{
@@ -79,10 +80,9 @@ void CFireBall::MoveUpdate(float deltaTime)
 	{
 		this->m_Pos.x += this->m_vx * deltaTime;
 	}
-
 }
 
-RECT * CFireBall::GetRectRS()
+RECT * CSnake::GetRectRS()
 {
 	RECT * rec = new RECT();
 	rec->left = 0;
@@ -91,4 +91,3 @@ RECT * CFireBall::GetRectRS()
 	rec->bottom = rec->top + m_Height;
 	return rec;
 }
-
