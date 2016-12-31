@@ -20,17 +20,34 @@ CLoadObject::~CLoadObject()
 
 void CLoadObject::Update(float deltaTime)
 {
+	
 	this->CreateObjectOnScreen();
-
 	for (std::vector<CBaseGameObject*>::iterator it = this->m_listGameObject.begin();
 		it != this->m_listGameObject.end();
 		)
 	{
 		CBaseGameObject* gameObj = *it;
-		
+		if (CSimon::GetInstance()->isCrossItem == true)
+		{
+			if (dynamic_cast<CEnemy*>(gameObj) != NULL)
+			{
+				it = this->m_listGameObject.erase(it);
+				return;
+			}
+		}
+
 		if (gameObj != NULL && gameObj->m_isRemove == false)
 		{
-			gameObj->Update(deltaTime);
+			if (CSimon::GetInstance()->isWatchItem == true && dynamic_cast<CEnemy*>(gameObj) != NULL)
+			{
+				
+			}
+			else
+			{
+				gameObj->Update(deltaTime);
+			}
+				
+			
 		}
 
  		if (gameObj->m_isRemove)

@@ -109,15 +109,17 @@ void CBrick::OnItemCollision(float deltaTime, std::vector<CItem*> listItem)
 		CDirection normalX;
 		CDirection normalY;
 		float timeCollision;
-		for (std::vector<CItem*>::iterator it = listItem.begin(); it != listItem.end(); it++)
+		for (std::vector<CItem*>::iterator it = listItem.begin(); it != listItem.end(); ++it)
 		{
 			CItem* item = *it;
-			if (COnCollision::GetInstance()->AABBCheck(item->GetBox(), this->GetBox()))
+			if (COnCollision::GetInstance()->AABBCheck(item->GetBox(), this->GetBox()) 
+				|| ( abs(item->m_Pos.y - this->m_Pos.y) <= 32 && abs(item->m_Pos.x - this->m_Pos.x) <=32) )
 			{
 				item->m_Pos.y = this->m_Pos.y + this->m_Height/2 + 10;
-				item->m_vyDefault = 0;
+				item->m_vyDefault = item->m_vy = 0;
 			}
 		}
+	
 	}
 	
 }

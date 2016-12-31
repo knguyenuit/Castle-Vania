@@ -1,10 +1,12 @@
-﻿  Simon.cpp
+﻿  Brick.cpp
   c:\program files (x86)\microsoft directx sdk (june 2010)\include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(52): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\basegameobject.h(53): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\simon.cpp(944): warning C4101: 'timeCollision': unreferenced local variable
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\simon.cpp(971): warning C4101: 'normalY': unreferenced local variable
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\simon.cpp(990): warning C4101: 'normalY': unreferenced local variable
-d:\game castlevania\castle vania\trunk\castlevania\castlevania\simon.cpp(1012): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  CastleVania.vcxproj -> D:\Game CastleVania\Castle Vania\trunk\CastleVania\Debug\CastleVania.exe
-  CastleVania.vcxproj -> D:\Game CastleVania\Castle Vania\trunk\CastleVania\Debug\CastleVania.pdb (Full PDB)
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(52): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\basegameobject.h(53): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\brick.cpp(13): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\brick.cpp(14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\brick.cpp(46): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\brick.cpp(48): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+d:\study\courses\game\cv\trunk\castlevania\castlevania\brick.cpp(109): warning C4101: 'normalX': unreferenced local variable
+d:\study\courses\game\cv\trunk\castlevania\castlevania\brick.cpp(111): warning C4101: 'timeCollision': unreferenced local variable
+d:\study\courses\game\cv\trunk\castlevania\castlevania\brick.cpp(110): warning C4101: 'normalY': unreferenced local variable
+  CastleVania.vcxproj -> D:\STUDY\Courses\game\cv\trunk\CastleVania\Debug\CastleVania.exe

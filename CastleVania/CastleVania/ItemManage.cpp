@@ -41,7 +41,7 @@ void CItemManage::CreateItem(ITEM_name itemName, Vector2 pos)
 
 void CItemManage::CreateRandomItem(Vector2 pos)
 {
-	ITEM_name item_name_arr[10] = {
+	ITEM_name item_name_arr[14] = {
 		ITEM_name::SmallHeart,
 		ITEM_name::LargeHeart,
 		ITEM_name::Axe,
@@ -51,10 +51,14 @@ void CItemManage::CreateRandomItem(Vector2 pos)
 		ITEM_name::PorkChop,
 		ITEM_name::Cross,
 		ITEM_name::MoneyBag,
-		ITEM_name::MorningStar
+		ITEM_name::MoneyBagBlue,
+		ITEM_name::MoneyBagPointRed,
+		ITEM_name::MoneyBagPointWhite,
+		ITEM_name::MorningStar,
+		ITEM_name::Watch
 	};
-	int item_index = rand() % 10;
-	this->CreateItem(item_name_arr[item_index], Vector2(pos.x, pos.y));
+	int item_index = rand() % 14;
+	this->CreateItem(item_name_arr[13], Vector2(pos.x, pos.y));
 }
 
 void CItemManage::Draw()
@@ -65,10 +69,6 @@ void CItemManage::Draw()
 		for (std::vector<CItem*>::iterator em = m_ListItem.begin(); em != m_ListItem.end(); ++em)
 		{
 			CItem* Item = *em;
-			if (Item->itemName == ITEM_name::MoneyBagPoint)
-			{
-				int a = 1;
-			}
 			this->DrawItem(Item);
 		}
 	}
@@ -129,6 +129,9 @@ void CItemManage::DrawItem(CItem * obj)
 
 	case ITEM_name::Cross:
 		texture->LoadImageFromFile(ITEM_CROSS, D3DCOLOR_XRGB(255, 0, 255));
+		break;
+	case ITEM_name::Watch:
+		texture->LoadImageFromFile(ITEM_WATCH, D3DCOLOR_XRGB(255, 0, 255));
 		break;
 	case ITEM_name::PorkChop:
 		texture->LoadImageFromFile(ITEM_PORK_CHOP, D3DCOLOR_XRGB(255, 0, 255));
@@ -193,9 +196,19 @@ void CItemManage::OnSimonCollision(float deltaTime)
 					}
 					break;
 				case ITEM_name::PorkChop:
+					this->simon->m_hpSimon += 5;
+					if (this->simon->m_hpSimon > 16)
+					{
+						this->simon->m_hpSimon = 16;
+					}
 					ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
 					break;
 				case ITEM_name::Cross:
+					this->simon->isCrossItem = true;
+					ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
+					break;
+				case ITEM_name::Watch:
+					simon->m_currentWeapon = WEAPON_name::Watch;
 					ManageAudio::GetInstance()->playSound(TypeAudio::Collect_Item);
 					break;
 				case ITEM_name::LargeHeart:

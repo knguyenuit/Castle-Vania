@@ -50,6 +50,7 @@ void CPoolObject::Update(float deltaTime)
 	//CEnemyManage::GetInstance()->Update(deltaTime);
 	CWeaponManage::GetInstance()->Update(deltaTime);
 	CAnimationObjectManage::GetInstance()->Update(deltaTime);
+	CMakeSimonDieManage::GetInstance()->Update(deltaTime);
 	//CHideObjectManage::GetInstance()->Update(deltaTime);
 	
 	banner->Update(deltaTime);
@@ -117,6 +118,7 @@ void CPoolObject::Draw()
 	CWeaponManage::GetInstance()->Draw();
 	CSnakeManage::GetInstance()->Draw();
 	CFireBallManage::GetInstance()->Draw();
+	CMakeSimonDieManage::GetInstance()->Draw();
 	//ve banner
 	banner->DrawBannerBG();
 	banner->DrawBannerProperty();

@@ -13,6 +13,7 @@
 #include "DrawObject.h"
 #include "HideObjectManage.h"
 #include "GroundMovingManage.h"
+#include "Simon.h"
 
 class CLoadObject : public CSingleton<CLoadObject>
 {

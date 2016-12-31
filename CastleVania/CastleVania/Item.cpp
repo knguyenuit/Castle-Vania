@@ -105,6 +105,10 @@ void CItem::Init()
 		this->m_Width = 32;
 		this->m_Height = 32;
 		break;
+	case ITEM_name::Watch:
+		this->m_Width = 30;
+		this->m_Height = 32;
+		break;
 	//WEAPON ITEM
 	case ITEM_name::Axe:
 		this->m_Width = 30;

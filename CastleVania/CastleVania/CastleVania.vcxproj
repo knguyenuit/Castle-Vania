@@ -194,6 +194,8 @@
     <ClInclude Include="Level.h" />
     <ClInclude Include="LoadBackground.h" />
     <ClInclude Include="LoadObject.h" />
+    <ClInclude Include="MakeSimonDie.h" />
+    <ClInclude Include="MakeSimonDieManage.h" />
     <ClInclude Include="ManageAudio.h" />
     <ClInclude Include="Medusa.h" />
     <ClInclude Include="Move.h" />
@@ -279,6 +281,8 @@
     <ClCompile Include="LoadBackground.cpp" />
     <ClCompile Include="LoadObject.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MakeSimonDie.cpp" />
+    <ClCompile Include="MakeSimonDieManage.cpp" />
     <ClCompile Include="ManageAudio.cpp" />
     <ClCompile Include="Medusa.cpp" />
     <ClCompile Include="Move.cpp" />

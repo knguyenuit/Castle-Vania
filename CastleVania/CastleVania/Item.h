@@ -23,6 +23,7 @@ enum class ITEM_name
 	//!MoneyBag
 	PorkChop = 309,
 	MorningStar = 310,
+	Watch = 311,
 	Dagger = 312,
 	Axe = 315,
 	Cross = 316,

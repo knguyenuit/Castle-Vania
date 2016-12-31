@@ -32,6 +32,7 @@
 #define ITEM_MONEY_BAG_WHITE "..\\Resources\\image\\item\\MoneyBagWhite.png"
 #define ITEM_MONEY_BAG_POINT "..\\Resources\\image\\item\\MoneyBagPoint.png"
 #define ITEM_CROSS "..\\Resources\\image\\item\\Cross.png"
+#define ITEM_WATCH "..\\Resources\\image\\item\\Watch.png"
 #define ITEM_AXE "..\\Resources\\image\\item\\Axe.png"
 #define ITEM_BOOMERANG "..\\Resources\\image\\item\\Boomerang.png"
 #define ITEM_FIREBOMB "..\\Resources\\image\\item\\FireBomb.png"
@@ -46,6 +47,7 @@
 #define WEAPON_AXE "..\\Resources\\image\\weapon\\Axe.png"
 #define WEAPON_BOOMERANG "..\\Resources\\image\\weapon\\Boomerang.png"
 #define WEAPON_DAGGER "..\\Resources\\image\\weapon\\Dagger.png"
+#define WEAPON_WATCH "..\\Resources\\image\\item\\Watch.png"
 #define WEAPON_FIREBOMB "..\\Resources\\image\\weapon\\FireBomb2.png"
 #define WEAPON_SNAKE "..\\Resources\\image\\boss\\2.png"
 //Enemy
@@ -59,6 +61,8 @@
 #define ENEMY_BLACKKNIGHT "..\\Resources\\image\\enemy\\BlackKnight.png"
 #define ENEMY_MEDUSA "..\\Resources\\image\\enemy\\Medusa.png"
 #define ENEMY_DRAGON_SKULL "..\\Resources\\image\\enemy\\DragonSkullCannon.png"
+#define ENEMY_MAKE_SIMON_DIE "..\\Resources\\image\\Light\\7.png"
+#define ENEMY_MAKE_SIMON_DIE_2 "..\\Resources\\image\\Light\\7-1.png"
 //BOSS
 #define BOSS_VAMPIREBAT "..\\Resources\\image\\boss\\0.png"
 #define BOSS_MEDUSA "..\\Resources\\image\\boss\\1.png"
@@ -77,6 +81,7 @@
 //ANIMATION
 #define ANIMATION_FIREON "..\\Resources\\image\\animation\\FireOn.png"
 #define ANIMATION_ROCKFALL "..\\Resources\\image\\animation\\RockFall.png"
+#define CROSS_ANIMATION "..\\Resources\\image\\crossAnimation.png"
 //BRICK
 #define BRICK_LV1 "..\\Resources\\image\\Light\\Brick.png"
 #define BRICK_LV2 "..\\Resources\\image\\Light\\2-3.png"

@@ -151,6 +151,9 @@
     <Filter Include="Framework\Game Object\AnimationObject\Brick With Item">
       <UniqueIdentifier>{b53e861e-3437-4a5d-9808-a75aa5e8b91d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\Game Object\MakeSimonDie">
+      <UniqueIdentifier>{6a0a2f6b-3037-4bca-8394-497cbe1bff3f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Global.h">
@@ -392,6 +395,12 @@
     <ClInclude Include="BrickWithItemLv2.h">
       <Filter>Framework\Game Object\AnimationObject\Brick With Item</Filter>
     </ClInclude>
+    <ClInclude Include="MakeSimonDie.h">
+      <Filter>Framework\Game Object\MakeSimonDie</Filter>
+    </ClInclude>
+    <ClInclude Include="MakeSimonDieManage.h">
+      <Filter>Framework\Game Object\MakeSimonDie</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Texture.cpp">
@@ -547,7 +556,6 @@
     <ClCompile Include="HideObjectManage.cpp">
       <Filter>Framework\Game Object\Hide Object</Filter>
     </ClCompile>
-    <ClCompile Include="DrawFont.cpp" />
     <ClCompile Include="ChangeScreen.cpp">
       <Filter>Framework\Game Object\Hide Object\Change Screen</Filter>
     </ClCompile>
@@ -628,6 +636,13 @@
     </ClCompile>
     <ClCompile Include="BrickWithItemLv2.cpp">
       <Filter>Framework\Game Object\AnimationObject\Brick With Item</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawFont.cpp" />
+    <ClCompile Include="MakeSimonDie.cpp">
+      <Filter>Framework\Game Object\MakeSimonDie</Filter>
+    </ClCompile>
+    <ClCompile Include="MakeSimonDieManage.cpp">
+      <Filter>Framework\Game Object\MakeSimonDie</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

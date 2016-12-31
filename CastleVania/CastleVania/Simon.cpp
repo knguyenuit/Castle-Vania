@@ -320,6 +320,26 @@ void CSimon::Draw()
 			this->m_draw->DrawFlipX(texture, this->cane->GetRectRS(), this->posDraw, D3DCOLOR_XRGB(255, 255, 255), true);
 		}
 	}
+	//draw cross animation
+	if (this->isCrossItem == true)
+	{
+		this->isCrossItemDraw = !this->isCrossItemDraw;
+		if (this->isCrossItemDraw == true)
+		{
+			CTexture* texture2 = new CTexture();
+			Vector3 animationCrossPos = Vector3();
+			RECT * rec2 = new RECT();
+			rec2->left = this->m_Pos.x - 300;
+			rec2->right = rec2->right + 3000;
+			rec2->top = this->m_Pos.y - 500;
+			rec2->bottom = rec2->top + 3000;
+			animationCrossPos = CCamera::GetInstance()->GetPointTransform(this->m_Pos.x, this->m_Pos.y + 390);
+			texture2->LoadImageFromFile(CROSS_ANIMATION, D3DCOLOR_XRGB(255, 0, 255));
+			this->m_draw->Draw(texture2, rec2, animationCrossPos, D3DCOLOR_XRGB(255, 255, 255), true);
+		}
+		
+	}
+	
 	//draw simon
 	this->posDraw = CCamera::GetInstance()->GetPointTransform(this->GetPos().x, this->GetPos().y);
 	if (this->m_isLive == true)
@@ -692,6 +712,28 @@ void CSimon::ActionUpdate(float deltaTime)
 	this->UpdateStatus(deltaTime);
 	//update camera
 	CCamera::GetInstance()->Update(this->m_Pos.x, this->m_Pos.y);
+#pragma region On Watch item pick
+	if (this->isWatchItem == true)
+	{
+		this->isWatchItemTime += deltaTime;
+		if (this->isWatchItemTime >= 1.5f)
+		{
+			this->isWatchItem = false;
+			this->isWatchItemTime = 0.0f;
+		}
+	}
+#pragma endregion
+#pragma region On Cross Item Pick
+	if (this->isCrossItem == true)
+	{
+		this->isCrossItemTime += deltaTime;
+		if (this->isCrossItemTime >= 0.5f)
+		{
+			this->isCrossItem = false;
+			this->isCrossItemTime = 0.0f;
+		}
+	}
+#pragma endregion
 #pragma region On UnAvailable
 	if (this->isUnAvailable == true)
 	{
@@ -1115,6 +1157,14 @@ void CSimon::OnKeyDown(float deltaTime)
 			this->isWeaponAttacking = true;
 		}
 		
+		break;
+	case DIK_P:
+		this->isCrossItem = true;
+
+		break;
+	case DIK_O:
+		this->isWatchItem = true;
+
 		break;
 	default:
 		break;

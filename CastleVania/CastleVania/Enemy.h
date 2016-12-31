@@ -27,7 +27,8 @@ enum ENEMY_type
 	BossVampireBat = 401,
 	BossMedusa = 402,
 	Snake = 403,
-	SmallLight = 600
+	SmallLight = 600,
+	MakeSimonDie = 9999
 };
 
 enum class ENEMY_state {

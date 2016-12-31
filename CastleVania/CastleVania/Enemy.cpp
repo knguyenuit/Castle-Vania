@@ -288,7 +288,8 @@ void CEnemy::OnWeaponCollision(float deltaTime, std::vector<CWeapon*> listWeapon
 	{
 		CWeapon* weapon = *it;
 		timeCollision = COnCollision::GetInstance()->SweepAABB(weapon->GetBox(), this->GetBox(), normalX, normalY, deltaTime);
-		if (normalX == ON_LEFT || normalX == ON_RIGHT || normalY == ON_UP || normalY == ON_DOWN)
+		/*if (normalX == ON_LEFT || normalX == ON_RIGHT || normalY == ON_UP || normalY == ON_DOWN)*/
+		if (CCollision::GetInstance()->AABBCheck(weapon->GetBox(), this->GetBox()))
 		{
 
 			m_isRemove = true;

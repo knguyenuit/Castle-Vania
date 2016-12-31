@@ -41,8 +41,16 @@ void CWeaponManage::Update(float deltaTime)
 	{
 		if (this->simon->timeDelayWeaponAttacking == 0.3f)
 		{
-			this->CreateWeapon(simon->m_currentWeapon);
-			ManageAudio::GetInstance()->playSound(TypeAudio::Using_Whip);
+			if (this->simon->m_currentWeapon == WEAPON_name::Watch)
+			{
+				this->simon->isWatchItem = true;
+			}
+			else
+			{
+				this->CreateWeapon(simon->m_currentWeapon);
+				ManageAudio::GetInstance()->playSound(TypeAudio::Using_Whip);
+			}
+			
 		}
 		this->simon->timeDelayWeaponAttacking -= deltaTime;
 		this->simon->isWeaponAttacking = false;

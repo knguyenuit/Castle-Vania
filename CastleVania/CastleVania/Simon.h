@@ -57,6 +57,11 @@ public:
 	RECT* GetRectRS();
 	CSprite * m_draw;
 	//cac ham ke thua tu Animation
+	bool isCrossItem = false;
+	bool isCrossItemDraw = false;
+	float isCrossItemTime = 0.0f;
+	bool isWatchItem = false;
+	float isWatchItemTime = 0.0f;
 public:
 	void SetFrame();		// ham chuyen frame.
 public://Collect item

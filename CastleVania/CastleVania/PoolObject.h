@@ -15,6 +15,7 @@
 #include "AnimationObjectManage.h"
 #include "Banner.h"
 #include "FireBallManage.h"
+#include "MakeSimonDieManage.h"
 
 class CPoolObject : public CSingleton<CPoolObject>
 {

@@ -20,7 +20,7 @@ void CBanner::Init()
 	m_textureHpEnemy->LoadImageFromFile(ENEMY_HP, D3DCOLOR_XRGB(255, 0, 255));
 	this->posHpSimon = D3DXVECTOR3(122, 48, 0);
 	this->posHpEnemy = D3DXVECTOR3(122, 70, 0);
-	this->posWeapon = D3DXVECTOR3(300, 55, 0);
+	this->posWeapon = D3DXVECTOR3(308, 50, 0);
 	this->posPoint = D3DXVECTOR3(122, 30, 0);
 
 	this->m_hpSimon = CSimon::GetInstance()->m_hpSimon;
@@ -101,7 +101,7 @@ void CBanner::Update(float deltaTime)
 			this->m_textureWeapon->LoadImageFromFile(FIRE_BOMB_BANNER, D3DCOLOR_XRGB(255, 0, 255));
 			break;
 		case WEAPON_name::Watch:
-			this->m_textureWeapon->LoadImageFromFile(FIRE_BOMB_BANNER, D3DCOLOR_XRGB(255, 0, 255));
+			this->m_textureWeapon->LoadImageFromFile(WEAPON_WATCH, D3DCOLOR_XRGB(255, 0, 255));
 			break;
 		case WEAPON_name::None:
 			this->m_textureWeapon->LoadImageFromFile(NONE_WEAPON_BANNER, D3DCOLOR_XRGB(255, 0, 255));
